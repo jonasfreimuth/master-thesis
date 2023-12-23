@@ -62,7 +62,5 @@ Macosko EZ, Basu A, Satija R, Nemesh J, Shekhar K, Goldman M, et al. Highly
 parallel genome‑wide expression profiling of individual cells using nanoliter
 droplets. Cell. 2015;161:1202–14.
 
-[TO IMPORT]
-
 Li, X., Wang, CY. From bulk, single-cell to spatial RNA sequencing. _Int J Oral
 Sci_ **13**, 36 (2021). <https://doi.org/10.1038/s41368-021-00146-0>
