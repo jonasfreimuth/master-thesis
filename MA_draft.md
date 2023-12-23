@@ -9,9 +9,9 @@ comprises not only cancerous cells, but also others, like normal tissue cells
 infiltrating lymphocytes). These cells constitute the tumor microenvironment,
 whose influence on disease progression and treatment response is not yet
 entirely understood. When sequencing tumor tissue samples, the transcripts
-expressed in these non-tumor cells get incorporated into the expression data,
-which can represent confounding for downstream predictive modeling taking the
-bulk RNA-seq data as input.
+expressed in these non-tumor cells get incorporated into the expression data
+[Li & Wang, 2021], which can represent confounding for downstream predictive
+modeling taking the bulk RNA-seq data as input.
 
 [Deal with whether the expression contains information useful for downstream prediction tasks]
 
