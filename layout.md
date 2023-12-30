@@ -89,7 +89,16 @@
 ### Random simulation
 
 ![metric_summary_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_files/figure-html/summary_metric_plot_print-1.png)  
-*Analysis of the deconvolution results. Each subplot represents a combination of relative biological noise level (first line per column), bulk model (second line per column), and reference type (row). For each combination, the root mean squared error (RMSE) or R² value is given in the top right corner. A: Root mean squared error (RMSE) between true cell type abundances and abundances predicted by the deconvolution model. B: R² values of simulated bulk gene expression with fitted values of the deconvolution model. C: R² values of simulated bulk gene expression with residual values of the deconvolution model. D: R² values of simulated cancer cell type gene expression with residual values of the deconvolution model.*
+*Analysis of the deconvolution results. Each subplot represents a combination of
+relative biological noise level (first line per column), bulk model (second line
+per column), and reference type (row). For each combination, the root mean
+squared error (RMSE) or R² value is given in the top right corner. A: Root mean
+squared error (RMSE) between true cell type abundances and abundances predicted
+by the deconvolution model. B: R² values of simulated bulk gene expression with
+fitted values of the deconvolution model. C: R² values of simulated bulk gene
+expression with residual values of the deconvolution model. D: R² values of
+simulated cancer cell type gene expression with residual values of the
+deconvolution model.*
 
 ### scRNA-seq based simulation
 
@@ -125,10 +134,22 @@
 ### Random simulation
 
 ![ground_truth_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_files/figure-html/ground_truth_plot-1.png)  
-*Exploration of the generated ground truth data. A: Boxplot of per cell type reference expression by relative biological noise level. B: Boxplot of per ground truth type bulk expression by relative biological noise level. C: Relationship of cancer expression to total bulk expression by relative biological noise level.*
+*Exploration of the generated ground truth data. A: Boxplot of per cell type
+reference expression by relative biological noise level. B: Boxplot of per
+ground truth type bulk expression by relative biological noise level. C:
+Relationship of cancer expression to total bulk expression by relative
+biological noise level.*
 
 ![analysis_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_files/figure-html/analysis_plot-1.png)  
-*Analysis of the deconvolution results. Each subplot represents a combination of relative biological noise level (first line per column), bulk model (second line per column), and reference type (row). For each combination, the root mean squared error (RMSE) or R² value is given in the top right corner. A: Boxplot of per cell type reference expression by relative biological noise level. B: Boxplot of per ground truth type bulk expression by relative biological noise level. C: Relationship of cancer expression to total bulk expression by relative biological noise level. D: Boxplot of per cell type reference expression by relative biological noise level.*
+*Analysis of the deconvolution results. Each subplot represents a combination of
+relative biological noise level (first line per column), bulk model (second line
+per column), and reference type (row). For each combination, the root mean
+squared error (RMSE) or R² value is given in the top right corner. A: Boxplot of
+per cell type reference expression by relative biological noise level. B:
+Boxplot of per ground truth type bulk expression by relative biological noise
+level. C: Relationship of cancer expression to total bulk expression by relative
+biological noise level. D: Boxplot of per cell type reference expression by
+relative biological noise level.*
 
 ### scRNA-seq based simulation
 
