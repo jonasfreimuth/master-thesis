@@ -115,6 +115,11 @@
 
 ### Verification
 
+### Outlook
+
+* Might be sensible to try more advanced deconvolution approaches, i.e. SQUID
+  (Cobos, Panah, et al. 2023)
+
 ## Supplementary plots
 
 ### Random simulation
