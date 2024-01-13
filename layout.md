@@ -25,12 +25,6 @@
 * Survival data: TCGA-BRCA derived survival endpoints from
   [Liu et al.](https://doi.org/10.1016/j.cell.2018.02.052)
 
-### General workflow
-
-1. Reference construction
-1. Deconvolution
-1. Analysis
-
 ### Random simulation
 
 ### scRNA-seq based simulation
