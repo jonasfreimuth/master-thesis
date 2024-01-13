@@ -60,11 +60,15 @@ Deconvolution inputs:
 Deconvolution:
 
 * Using nnls (Simple)
-* Transcript predictions computed (Deconvoluted cell type abundance * reference
-  matrix)
+* _Always_ using only marker genes to estimate cell type abundances
+* Transcript predictions computed (Deconvoluted cell type abundance $*$ _full_
+  reference matrix) $\rarr$ Getting transcript predictions for _all_ genes.
 * Residuals computed as pseudobulk expression - transcript predictions
   * absolute values (they are supposed to be a measure for bulk expression, and
     so can’t be negative. It’s about the deviation, the sign is not relevant)
+
+$\rarr$ Resulting data is available for all genes by default, but can be subset
+to only markers.
 
 Analysis:
 
