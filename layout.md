@@ -29,6 +29,7 @@
 
 1. Reference construction
 1. Deconvolution
+1. Analysis
 
 ### Random simulation
 
@@ -37,51 +38,47 @@
 * Normalizing the reference and bulk probably not necessary for `nnls`
   * See Cobos et al. (2023) Fig. 3.
 
-* Use a pseudo-bulks by summing scRNA expression of individual tumors
-* Details
-  * scRNA data log-normed with scuttle
+Deconvolution inputs:
 
-  * Reference
-    * Averaging of cell expression belonging to one cell type
-    * Marker selection
-      * Using wilcox test
-        * via Seurat (v5.0.1)
-        * using `Presto` implementation
-        * previous normalization via `NormalizeData`, method relative counts
-          (`RC`)
-        * Using bonferroni method for p-value adjustment
-        * Cutoff: Adjusted p-value under 0.05
-      * Outlier distance (similar to Hampel filter)
-        * Gene is defined as a marker for a cell type if its expression is more
-          than three median absolute deviations away from the median _average_
-          expression (i.e. this runs on the reference matrix)
-        * No scaling constant (We can't assume normality, this is just
-          arbitrary)
-      * Using random genes as markers
-        * Cutoff: None, at threshold 1 all genes are used.
+* Reference
+  * Averaging of cell expression belonging to one cell type
+  * Using raw count matrix [Why?]
+  * Marker selection [Expand on purpose of marker selection]
+    * Using wilcox test
+      * via Seurat (v5.0.1)
+      * using `Presto` implementation
+      * previous normalization via `NormalizeData`, method relative counts
+        (`RC`)
+      * Using bonferroni method for p-value adjustment
+      * Cutoff: Adjusted p-value under 0.05
+    * Outlier distance (similar to Hampel filter)
+      * Gene is defined as a marker for a cell type if its expression is more
+        than three median absolute deviations away from the median _average_
+        expression (i.e. this runs on the reference matrix)
+      * No scaling constant (We can't assume normality, this is just arbitrary)
+    * Using random genes as markers
+      * Cutoff: None, at threshold 1 all genes are used.
 
-  * Pseudobulk
-    * Summing up all transcripts of a sample (Using log-normed counts! Done
-      because there is an inherent disconnect between scRNA-seq derived
-      pseudobulk data and actual bulk RNA-seq data, due to drop-outs, etc.
-      Therefore, this represents the best case for accuracy.)
+* Pseudobulk
+  * Summing up all transcripts of a tumor sample
+  * Using log-normed counts (via `scuttle::logNormCounts`)
 
-  * Deconvolution
-    * Using nnls (Simple)
-    * Using
-      * summed log norm counts for the pseudobulk
-      * averaged counts for the reference
-    * Transcript predictions computed (Deconvoluted cell type abundance *
-      reference matrix)
-    * Residuals computed as pseudobulk expression - transcript predictions
-      * absolute values (they are supposed to be a measure for bulk
-        expression, and so can’t be negative. It’s about the deviation, the
-        sign is not relevant)
-    * Correlations computed
-      * bulk expr vs. cancer expr: baseline
-      * bulk expr vs. residuals: diagnosis
-      * cancer expr vs. residuals: analysis
-      * All correlates log transformed
+Deconvolution:
+
+* Using nnls (Simple)
+* Transcript predictions computed (Deconvoluted cell type abundance * reference
+  matrix)
+* Residuals computed as pseudobulk expression - transcript predictions
+  * absolute values (they are supposed to be a measure for bulk expression, and
+    so can’t be negative. It’s about the deviation, the sign is not relevant)
+
+Analysis:
+
+* Correlations computed
+  * bulk expr vs. cancer expr: baseline
+  * bulk expr vs. residuals: diagnosis
+  * cancer expr vs. residuals: analysis
+  * All correlates log transformed
 
 ### Verification
 
