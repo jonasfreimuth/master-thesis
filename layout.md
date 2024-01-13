@@ -69,9 +69,17 @@ Deconvolution:
 Analysis:
 
 * Correlations computed
-  * bulk expr vs. cancer expr: baseline
-  * bulk expr vs. residuals: diagnosis
-  * cancer expr vs. residuals: analysis
+  * cancer expr vs. residuals: This is the main thing we are interested in, it
+    represents the degree to which residuals may be used as a surrogate for
+    actual cancer expression. The higher, the better.
+  * bulk expr vs. cancer expr: Used as a baseline to contextualize other
+    results. If this correlation is high, and the correlation of bulk expr. to
+    residuals is high, it would also follow that the correlation of cancer expr.
+    with residuals is high, but just by definition, not by virtue of the method.
+  * bulk expr vs. residuals: If this is high, it hints at problems with
+    deconvolution. Generally deconvolution residuals should not be correlated
+    with input data. Expected to be higher for reference missing the cancer
+    signature.
   * All correlates log transformed
 
 ### Verification
