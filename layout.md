@@ -141,6 +141,24 @@ expression with residual values of the deconvolution model.*
   expression & bulk expression, with residuals generally following bulk
   expression patterns.
 
+![pbulk_sim_metric_summary_plot_kendall](./cancer-cleaning-output/script_run/simulation/plots/deconv_summary/metric_summary_plot_kendall.png)
+*Analysis of sc RNA-seq derived pseudo-bulk deconvolution. A: Dot plot of
+Kendall's $\tau$ correlations corrected for zero-inflation for various
+parameters, where dot size corresponds to correlation strength (dot color
+corresponds to correlation type to aid in orientation, see following). The three
+main deconvolution correlation types of cancer expression with deconvolution
+residuals, total bulk expression with deconvolution residuals, and bulk
+expression with cancer expression are contrasted by whether only marker genes
+are used. The plot is further facetted by the method used to select
+deconvolution markers (columns), by the quantile of marker significance used
+(inner rows), and whether the deconvolution reference included the expression
+signature for cancer (outer rows) B: Dot plot of deconvolution accuracy between
+actual and predicted cell type abundances. Dot size corresponds to Kendall's
+$\tau$ zero inflation adjusted, and dot color to the root mean squared error
+(RMSE). The metrics are shown by marker selection method versus the quantile of
+marker significance used, and facetted by whether the deconvolution reference
+included the expression signature for cancer (columns).*
+
 ### Verification
 
 * Sometimes residuals better, sometimes bulk better, generally ~70% accuracy.
