@@ -14,12 +14,16 @@
 
 ### Data
 
-* Dataset by [Wu et. al](https://www.nature.com/articles/s41588-021-00911-1)
-* Using all available BRCA project data from TCGA (ver. 1.30.4 INCLUDE
-  `MANIFEST.txt`)
+* sc RNA-seq: Dataset by
+  [Wu et. al](https://www.nature.com/articles/s41588-021-00911-1)
+* Clinical data: Using all available BRCA project data from TCGA (ver. 1.30.4
+  INCLUDE `MANIFEST.txt`)
   * Using STAR count data
     * Using sums of counts per `gene_name`!
-    * _Some sort of normalization_ + log + scale
+    * Raw counts, FPKM (upper-quartile norm'd)
+    * Optionally log + scaled
+* Survival data: TCGA-BRCA derived survival endpoints from
+  [Liu et al.](https://doi.org/10.1016/j.cell.2018.02.052)
 
 ### General workflow
 
@@ -30,60 +34,91 @@
 
 ### scRNA-seq based simulation
 
+* Normalizing the reference and bulk probably not necessary for `nnls`
+  * See Cobos et al. (2023) Fig. 3.
+
 * Use a pseudo-bulks by summing scRNA expression of individual tumors
 * Details
   * scRNA data log-normed with scuttle
+
   * Reference
     * Averaging of cell expression belonging to one cell type
-    * Marker selection (Probably only necessary for saving on resources)?
+    * Marker selection
+      * Using wilcox test
+        * via Seurat (v5.0.1)
+        * using `Presto` implementation
+        * previous normalization via `NormalizeData`, method relative counts
+          (`RC`)
+        * Using bonferroni method for p-value adjustment
+        * Cutoff: Adjusted p-value under 0.05
+      * Outlier distance (similar to Hampel filter)
+        * Gene is defined as a marker for a cell type if its expression is more
+          than three median absolute deviations away from the median _average_
+          expression (i.e. this runs on the reference matrix)
+        * No scaling constant (We can't assume normality, this is just
+          arbitrary)
+      * Using random genes as markers
+        * Cutoff: None, at threshold 1 all genes are used.
+
   * Pseudobulk
     * Summing up all transcripts of a sample (Using log-normed counts! Done
       because there is an inherent disconnect between scRNA-seq derived
       pseudobulk data and actual bulk RNA-seq data, due to drop-outs, etc.
       Therefore, this represents the best case for accuracy.)
+
   * Deconvolution
     * Using nnls (Simple)
     * Using
       * summed log norm counts for the pseudobulk
-      * averaged log norm counts for the reference
-    * Transcript predictions computed (Deconvoluted cell type prop * reference
-      matrix)
+      * averaged counts for the reference
+    * Transcript predictions computed (Deconvoluted cell type abundance *
+      reference matrix)
     * Residuals computed as pseudobulk expression - transcript predictions
-      (both min-max transformed, as they are not on the same scale due to the
-      sum vs averaging methodology)
       * absolute values (they are supposed to be a measure for bulk
         expression, and so can’t be negative. It’s about the deviation, the
         sign is not relevant)
-      * Adaptive log normalization procedure (Residuals are of a weird
-        distribution WHY?)
-    * Correlations computed (bulk expr - cancer expr as baseline, bulk expr -
-      residuals as diagnosis, cancer expr - residuals as analysis)
-      * All correlates also adaptive log transformed in the same way
+    * Correlations computed
+      * bulk expr vs. cancer expr: baseline
+      * bulk expr vs. residuals: diagnosis
+      * cancer expr vs. residuals: analysis
+      * All correlates log transformed
 
 ### Verification
 
-* Deconvolving with _some sort of_ reference
-  * Using nnls
-  * Only intersect of transcripts (`gene_name`) between reference and bulk
-* Calculating transcript predictions
-  * Reference * cell type prop predictions
-  * Reference adaptive log transformed (see section on simulation)
-    * Transcript predictions are scaled (Need to be on the same scale as bulk
-      expression)
-* Calculating residuals
-  * Bulk expression - transcript predictions
-* Residuals qc plots
-  * Bulk expression v transcript prediction plot
-  * Bulk expression v residuals plot
+#### Prediction of an intrinsic categorical variable
+
+* PAM50 subtype
+* Performing same deconvolution procedure as during pseudobulk simulation ->
+  obtaining residuals as training data
 * Model training
-  * Currently PAM50 subtype is predicted
-  * Using bulk and split and no-split residuals as predictors
-  * Doing UMAP as pre-training qc
-    * Currently not looking good, barely any separation.
-  * Doing heatmaps separated between classes
-    * Can’t really say anything, except classes don’t look much different
+  * Using TCGA bulk data and residuals (derived from references including and
+    not including cancer) as predictors
+    * [Dimensions of training data]
+    * Filtered to only include "Primary solid Tumor" samples
+  * Pre-training QC:
+    * UMAP
+      * Currently not looking good, barely any separation.
+    * Heatmaps separated between classes
+      * Can’t really say anything, except classes don’t look much different
   * Doing repeated cross-validation (4-fold, 10 repeats, SMOTE up-sampling)
+  * Pre-processing: Decorrelation via PCA, excluding zero variance genes
   * Training SVM, linear kernel
+* Using model accuracy [what exactly] to assess performance
+
+#### Prediction of a clinical variable
+
+* Progression free interval [Why?]
+* Training random survival forests
+* Using same sample data as in previous section but filtered to fit survival
+  data
+  * Filtered to only include "Primary solid Tumor" samples
+  * Using unique samples (Multiple tumor samples from the same patient are
+    present in the TCGA data.)
+* Tuning model for best out-of-sample error using fast survival forest fitting
+  via sub-sampling.
+  * Using 200 trees
+* Using optimal parameters to fit a full model.
+* Using reported Harrell's C (1 - model error) to assess performance.
 
 ## Results
 
