@@ -95,11 +95,6 @@
     not including cancer) as predictors
     * [Dimensions of training data]
     * Filtered to only include "Primary solid Tumor" samples
-  * Pre-training QC:
-    * UMAP
-      * Currently not looking good, barely any separation.
-    * Heatmaps separated between classes
-      * Can’t really say anything, except classes don’t look much different
   * Doing repeated cross-validation (4-fold, 10 repeats, SMOTE up-sampling)
   * Pre-processing: Decorrelation via PCA, excluding zero variance genes
   * Training SVM, linear kernel
