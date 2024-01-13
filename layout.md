@@ -101,7 +101,7 @@ Analysis:
   * Doing repeated cross-validation (4-fold, 10 repeats, SMOTE up-sampling)
   * Pre-processing: Decorrelation via PCA, excluding zero variance genes
   * Training SVM, linear kernel
-* Using model accuracy [what exactly] to assess performance
+* Using model accuracy (percentage of correct predictions) to assess performance
 
 #### Prediction of a clinical variable
 
