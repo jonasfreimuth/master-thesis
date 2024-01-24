@@ -123,16 +123,17 @@ Analysis:
 ### Random simulation
 
 ![metric_summary_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/metric_summary_plot.png)  
-*Analysis of the deconvolution results. Each subplot represents a combination of
-relative biological noise level (first line per column), bulk model (second line
-per column), and reference type (row). For each combination, the root mean
-squared error (RMSE) or R² value is given in the top right corner. A: Average
-root mean squared error (RMSE) between true cell type abundances and abundances
-predicted by the deconvolution model. B: Average R² values of simulated bulk
-gene expression with fitted values of the deconvolution model. C: Average R²
-values of simulated bulk gene expression with residual values of the
-deconvolution model. D: Average R² values of simulated cancer cell type gene
-expression with residual values of the deconvolution model.*
+*Analysis of the deconvolution results by parameter combinations. Each subplot
+represents a combination of whether the deconv. reference included the cancer
+signature (outer rows), whether individual cells differ from the reference
+(inner rows), and, whether the cancer signature is more variable than other cell
+types (columns). A: Average root mean squared error (RMSE) between true cell
+type abundances and abundances predicted by the deconvolution model. B: Average
+R² values of simulated bulk gene expression with fitted values of the
+deconvolution model. C: Average R² values of simulated bulk gene expression with
+residual values of the deconvolution model. D: Average R² values of simulated
+cancer cell type gene expression with residual values of the deconvolution
+model.*
 
 ### scRNA-seq based simulation
 
@@ -188,20 +189,44 @@ included the expression signature for cancer (columns).*
 ![ground_truth_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/ground_truth_plot.png)  
 *Exploration of a randomly picked example of the generated ground truth data per
 parameter noise ratio. A: Boxplot of per cell type reference expression by
-relative biological noise level. B: Boxplot of per ground truth type bulk
-expression by relative biological noise level. C: Relationship of cancer
-expression to total bulk expression by relative biological noise level.*
+whether the cancer signature is more variable than other cell types (outer
+rows), whether the deconv. reference included the cancer signature (inner rows),
+and relative biological noise level (columns). B: Boxplot of per ground truth
+type bulk expression vs whether individual cells differ from the reference by
+whether the cancer signature is more variable than other cell types (rows) and
+(columns). C: Relationship of cancer expression to total bulk expression by
+whether the cancer signature is more variable than other cell types (outer
+rows), whether the deconv. reference included the cancer signature (inner rows),
+and relative biological noise level (columns).*
 
 ![analysis_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/analysis_plot.png)  
 *Analysis of a randomly picked example of the deconvolution results. Each
 subplot represents a combination of relative biological noise level (first line
 per column), bulk model (second line per column), and reference type (row). For
 each combination, the root mean squared error (RMSE) or R² value is given in the
-top right corner. A: Actual versus predicted cell type abundances. B: Boxplot of
-the deconvolution model residuals. C: Simulated bulk gene expression vs. fitted
-values of the deconvolution model. D: Simulated bulk gene expression vs.
-residuals of the deconvolution model. E: Simulated cancer cell type gene
-expression vs. residuals of the deconvolution model.*
+top right corner. A: Actual versus predicted cell type abundances by whether the
+deconv. reference included the cancer signature (outer rows), whether individual
+cells differ from the reference (inner rows), relative biological noise level
+(outer columns), and whether the cancer signature is more variable than other
+cell types (inner columns). B: Boxplot of the deconvolution model residuals vs
+whether the cancer signature is more variable than other cell types by whether
+the deconv. reference included the cancer signature (outer rows), whether
+individual cells differ from the reference (inner rows), and relative biological
+noise level (columns). C: Simulated bulk gene expression vs. fitted values of
+the deconvolution model by whether the deconv. reference included the cancer
+signature (outer rows), whether individual cells differ from the reference
+(inner rows), relative biological noise level (outer columns), and whether the
+cancer signature is more variable than other cell types (inner columns). D:
+Simulated bulk gene expression vs. residuals of the deconvolution model by
+whether the deconv. reference included the cancer signature (outer rows),
+whether individual cells differ from the reference (inner rows), relative
+biological noise level (outer columns), and whether the cancer signature is more
+variable than other cell types (inner columns). E: Simulated cancer cell type
+gene expression vs. residuals of the deconvolution model by whether the deconv.
+reference included the cancer signature (outer rows), whether individual cells
+differ from the reference (inner rows), relative biological noise level (outer
+columns), and whether the cancer signature is more variable than other cell
+types (inner columns).*
 
 ### scRNA-seq based simulation
 
