@@ -2,6 +2,7 @@
 title: "Cancer transcriptome cleaning by deconvolution"
 author: "Jonas Freimuth"
 output: html_document
+bibliography: citations/cancer-cleaning_File.bib
 ---
 
 ## Introduction
@@ -18,23 +19,22 @@ output: html_document
 
 ### Data
 
-* sc RNA-seq: Dataset by
-  [Wu et. al](https://www.nature.com/articles/s41588-021-00911-1)
+* sc RNA-seq: Dataset by @Wu.2021
+  * [Dimensions, expand on tumor samples]
 * Clinical data: Using all available BRCA project data from TCGA (ver. 1.30.4
   INCLUDE `MANIFEST.txt`)
   * Using STAR count data
     * Using sums of counts per `gene_name`!
     * Raw counts, FPKM (upper-quartile norm'd)
     * Optionally log + scaled
-* Survival data: TCGA-BRCA derived survival endpoints from
-  [Liu et al.](https://doi.org/10.1016/j.cell.2018.02.052)
+* Survival data: TCGA-BRCA derived survival endpoints from @Liu.2018
 
 ### Random simulation
 
 ### scRNA-seq based simulation
 
 * Normalizing the reference and bulk probably not necessary for `nnls`
-  * See Cobos et al. (2023) Fig. 3.
+  * See @Cobos.2023 Fig. 3.
 
 Deconvolution inputs:
 
@@ -159,7 +159,11 @@ Analysis:
 ### Outlook
 
 * Might be sensible to try more advanced deconvolution approaches, i.e. SQUID
-  (Cobos, Panah, et al. 2023)
+  [@Cobos.2023]
+
+## References
+
+<div id="refs"></div>
 
 ## Supplementary plots
 
