@@ -127,17 +127,7 @@ Analysis:
 ### Random simulation
 
 ![metric_summary_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/metric_summary_plot.png)  
-*Analysis of the deconvolution results by parameter combinations. Each subplot
-represents a combination of whether the deconv. reference included the cancer
-signature (outer rows), whether individual cells differ from the reference
-(inner rows), and, whether the cancer signature is more variable than other cell
-types (columns). A: Average root mean squared error (RMSE) between true cell
-type abundances and abundances predicted by the deconvolution model. B: Average
-R² values of simulated bulk gene expression with fitted values of the
-deconvolution model. C: Average R² values of simulated bulk gene expression with
-residual values of the deconvolution model. D: Average R² values of simulated
-cancer cell type gene expression with residual values of the deconvolution
-model.*
+*`r readLines("cancer-cleaning-output/notebook/random_deconv_exploration_output/metric_summary_plot_caption.txt")`*
 
 ### scRNA-seq based simulation
 
@@ -147,22 +137,7 @@ model.*
   expression patterns.
 
 ![pbulk_sim_metric_summary_plot_kendall](./cancer-cleaning-output/script_run/simulation/plots/deconv_summary/metric_summary_plot_kendall.png)
-*Analysis of sc RNA-seq derived pseudo-bulk deconvolution. A: Dot plot of
-Kendall's $\tau$ correlations corrected for zero-inflation for various
-parameters, where dot size corresponds to correlation strength (dot color
-corresponds to correlation type to aid in orientation, see following). The three
-main deconvolution correlation types of cancer expression with deconvolution
-residuals, total bulk expression with deconvolution residuals, and bulk
-expression with cancer expression are contrasted by whether only marker genes
-are used. The plot is further facetted by the method used to select
-deconvolution markers (columns), by the quantile of marker significance used
-(inner rows), and whether the deconvolution reference included the expression
-signature for cancer (outer rows) B: Dot plot of deconvolution accuracy between
-actual and predicted cell type abundances. Dot size corresponds to Kendall's
-$\tau$ zero inflation adjusted, and dot color to the root mean squared error
-(RMSE). The metrics are shown by marker selection method versus the quantile of
-marker significance used, and facetted by whether the deconvolution reference
-included the expression signature for cancer (columns).*
+*`r readLines("cancer-cleaning-output/script_run/simulation/plots/deconv_summary/metric_summary_plot_kendall_caption.txt")`*
 
 ### Verification
 
@@ -191,46 +166,10 @@ included the expression signature for cancer (columns).*
 ### Random simulation
 
 ![ground_truth_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/ground_truth_plot.png)  
-*Exploration of a randomly picked example of the generated ground truth data per
-parameter noise ratio. A: Boxplot of per cell type reference expression by
-whether the cancer signature is more variable than other cell types (outer
-rows), whether the deconv. reference included the cancer signature (inner rows),
-and relative biological noise level (columns). B: Boxplot of per ground truth
-type bulk expression vs whether individual cells differ from the reference by
-whether the cancer signature is more variable than other cell types (rows) and
-(columns). C: Relationship of cancer expression to total bulk expression by
-whether the cancer signature is more variable than other cell types (outer
-rows), whether the deconv. reference included the cancer signature (inner rows),
-and relative biological noise level (columns).*
+*`r readLines("cancer-cleaning-output/notebook/random_deconv_exploration_output/ground_truth_plot_caption.txt")`*
 
 ![analysis_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/analysis_plot.png)  
-*Analysis of a randomly picked example of the deconvolution results. Each
-subplot represents a combination of relative biological noise level (first line
-per column), bulk model (second line per column), and reference type (row). For
-each combination, the root mean squared error (RMSE) or R² value is given in the
-top right corner. A: Actual versus predicted cell type abundances by whether the
-deconv. reference included the cancer signature (outer rows), whether individual
-cells differ from the reference (inner rows), relative biological noise level
-(outer columns), and whether the cancer signature is more variable than other
-cell types (inner columns). B: Boxplot of the deconvolution model residuals vs
-whether the cancer signature is more variable than other cell types by whether
-the deconv. reference included the cancer signature (outer rows), whether
-individual cells differ from the reference (inner rows), and relative biological
-noise level (columns). C: Simulated bulk gene expression vs. fitted values of
-the deconvolution model by whether the deconv. reference included the cancer
-signature (outer rows), whether individual cells differ from the reference
-(inner rows), relative biological noise level (outer columns), and whether the
-cancer signature is more variable than other cell types (inner columns). D:
-Simulated bulk gene expression vs. residuals of the deconvolution model by
-whether the deconv. reference included the cancer signature (outer rows),
-whether individual cells differ from the reference (inner rows), relative
-biological noise level (outer columns), and whether the cancer signature is more
-variable than other cell types (inner columns). E: Simulated cancer cell type
-gene expression vs. residuals of the deconvolution model by whether the deconv.
-reference included the cancer signature (outer rows), whether individual cells
-differ from the reference (inner rows), relative biological noise level (outer
-columns), and whether the cancer signature is more variable than other cell
-types (inner columns).*
+*`r readLines("cancer-cleaning-output/notebook/random_deconv_exploration_output/ground_truth_plot_caption.txt")`*
 
 ### scRNA-seq based simulation
 
