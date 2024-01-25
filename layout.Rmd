@@ -23,6 +23,7 @@ bibliography: citations/cancer-cleaning_File.bib
   * [Dimensions, expand on tumor samples]
 * Clinical data: Using all available BRCA project data from TCGA (ver. 1.30.4
   INCLUDE `MANIFEST.txt`)
+  * Retrieved via `TCGA-biolinks` [@Colaprico.2016; @Mounir.2019]
   * Using STAR count data
     * Using sums of counts per `gene_name`!
     * Raw counts, FPKM (upper-quartile norm'd)
@@ -43,8 +44,8 @@ Deconvolution inputs:
   * Using raw count matrix [Why?]
   * Marker selection [Expand on purpose of marker selection]
     * Using wilcox test
-      * via Seurat (v5.0.1)
-      * using `Presto` implementation
+      * via Seurat (v5.0.1) [@Hao.2023]
+      * using `Presto` implementation [@IlyaKorsunsky.]
       * previous normalization via `NormalizeData`, method relative counts
         (`RC`)
       * Using bonferroni method for p-value adjustment
@@ -59,11 +60,11 @@ Deconvolution inputs:
 
 * Pseudobulk
   * Summing up all transcripts of a tumor sample
-  * Using log-normed counts (via `scuttle::logNormCounts`)
+  * Using log-normed counts (via `scuttle::logNormCounts` [@McCarthy.2017])
 
 Deconvolution:
 
-* Using nnls (Simple)
+* Using nnls [@KatharineM.Mullen.2023] (Simple)
 * _Always_ using only marker genes to estimate cell type abundances
 * Transcript predictions computed (Deconvoluted cell type abundance $*$ _full_
   reference matrix) $\rightarrow$ Getting transcript predictions for _all_ genes.
@@ -89,6 +90,7 @@ Analysis:
     with input data. Expected to be higher for reference missing the cancer
     signature.
   * All correlates log transformed
+  [Kendall v Pearson]
 
 ### Verification
 
@@ -110,7 +112,7 @@ Analysis:
 #### Prediction of a clinical variable
 
 * Progression free interval [Why?]
-* Training random survival forests
+* Training random survival forests [@Ishwaran.2008; @H.Ishwaran.2020]
 * Using same sample data as in previous section but filtered to fit survival
   data
   * Filtered to only include "Primary solid Tumor" samples
@@ -120,7 +122,7 @@ Analysis:
   via sub-sampling.
   * Using 200 trees
 * Using optimal parameters to fit a full model.
-* Using reported Harrell's C (1 - model error) to assess performance.
+* Using reported Harrell's C to assess performance [@Schmid.2016].
 
 ## Results
 
