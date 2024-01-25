@@ -1,4 +1,8 @@
-# Cancer transcriptome cleaning by deconvolution
+---
+title: "Cancer transcriptome cleaning by deconvolution"
+author: "Jonas Freimuth"
+output: html_document
+---
 
 ## Introduction
 
