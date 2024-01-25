@@ -1,4 +1,4 @@
-﻿% This file was created with Citavi 6.17.0.174
+﻿% This file was created with Citavi 6.12.0.177
 
 @article{Jew.2020,
  abstract = {We present Bisque, a tool for estimating cell type proportions in bulk expression. Bisque implements a regression-based approach that utilizes single-cell RNA-seq (scRNA-seq) or single-nucleus RNA-seq (snRNA-seq) data to generate a reference expression profile and learn gene-specific bulk expression transformations to robustly decompose RNA-seq data. These transformations significantly improve decomposition performance compared to existing methods when there is significant technical variation in the generation of the reference profile and observed bulk expression. Importantly, compared to existing methods, our approach is extremely efficient, making it suitable for the analysis of large genomic datasets that are becoming ubiquitous. When applied to subcutaneous adipose and dorsolateral prefrontal cortex expression datasets with both bulk RNA-seq and snRNA-seq data, Bisque replicates previously reported associations between cell type proportions and measured phenotypes across abundant and rare cell types. We further propose an additional mode of operation that merely requires a set of known marker genes.},
@@ -14,6 +14,31 @@
 }
 
 
+@misc{H.Ishwaran.2020,
+ author = {{H. Ishwaran} and {U.B. Kogalur}},
+ year = {2020},
+ title = {Fast Unified Random Forests for Survival, Regression, and  Classification (RF-SRC)},
+ url = {https://cran.r-project.org/package=randomForestSRC},
+ publisher = {manual}
+}
+
+
+@article{Love.2014,
+ abstract = {In comparative high-throughput sequencing assays, a fundamental task is the analysis of count data, such as read counts per gene in RNA-seq, for evidence of systematic changes across experimental conditions. Small replicate numbers, discreteness, large dynamic range and the presence of outliers require a suitable statistical approach. We present DESeq2, a method for differential analysis of count data, using shrinkage estimation for dispersions and fold changes to improve stability and interpretability of estimates. This enables a more quantitative analysis focused on the strength rather than the mere presence of differential expression. The DESeq2 package is available at http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html webcite.},
+ author = {Love, Michael I. and Huber, Wolfgang and Anders, Simon},
+ year = {2014},
+ title = {Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2},
+ url = {https://genomebiology.biomedcentral.com/counter/pdf/10.1186/s13059-014-0550-8.pdf},
+ urldate = {24.11.2022},
+ pages = {550},
+ volume = {15},
+ number = {12},
+ journal = {Genome biology},
+ doi = {10.1186/s13059-014-0550-8},
+ file = {s13059-014-0550-8:Attachments/s13059-014-0550-8.pdf:application/pdf}
+}
+
+
 @article{Curtis.2012,
  abstract = {The elucidation of breast cancer subgroups and their molecular drivers requires integrated views of the genome and transcriptome from representative numbers of patients. We present an integrated analysis of copy number and gene expression in a discovery and validation set of 997 and 995 primary breast tumours, respectively, with long-term clinical follow-up. Inherited variants (copy number variants and single nucleotide polymorphisms) and acquired somatic copy number aberrations (CNAs) were associated with expression in {\~{}}40{\%} of genes, with the landscape dominated by cis- and trans-acting CNAs. By delineating expression outlier genes driven in cis by CNAs, we identified putative cancer genes, including deletions in PPP2R2A, MTAP and MAP2K4. Unsupervised analysis of paired DNA--RNA profiles revealed novel subgroups with distinct clinical outcomes, which reproduced in the validation cohort. These include a high-risk, oestrogen-receptor-positive 11q13/14 cis-acting subgroup and a favourable prognosis subgroup devoid of CNAs. Trans-acting aberration hotspots were found to modulate subgroup-specific gene networks, including a TCR deletion-mediated adaptive immune response in the `CNA-devoid' subgroup and a basal-specific chromosome 5 deletion-associated mitotic network. Our results provide a novel molecular stratification of the breast cancer population, derived from the impact of somatic CNAs on the transcriptome.},
  author = {Curtis, Christina and Shah, Sohrab P. and Chin, Suet-Feung and Turashvili, Gulisa and Rueda, Oscar M. and Dunning, Mark J. and Speed, Doug and Lynch, Andy G. and Samarajiwa, Shamith and Yuan, Yinyin and Gr{\"a}f, Stefan and Ha, Gavin and Haffari, Gholamreza and Bashashati, Ali and Russell, Roslin and McKinney, Steven and Langer{\o}d, Anita and Green, Andrew and Provenzano, Elena and Wishart, Gordon and Pinder, Sarah and Watson, Peter and Markowetz, Florian and Murphy, Leigh and Ellis, Ian and Purushotham, Arnie and B{\o}rresen-Dale, Anne-Lise and Brenton, James D. and Tavar{\'e}, Simon and Caldas, Carlos and Aparicio, Samuel},
@@ -25,6 +50,14 @@
  journal = {Nature},
  doi = {10.1038/nature10983},
  file = {nature10983:Attachments/nature10983.pdf:application/pdf}
+}
+
+
+@misc{KatharineM.Mullen.2023,
+ author = {{Katharine M. Mullen} and {Ivo H. M. van Stokkum}},
+ year = {2023},
+ title = {nnls: The Lawson-Hanson Algorithm for Non-Negative Least Squares  (NNLS)},
+ url = {https://CRAN.R-project.org/package=nnls}
 }
 
 
@@ -68,6 +101,18 @@
 }
 
 
+@article{Mounir.2019,
+ author = {Mounir and Mohamed and Lucchetta and Marta and Silva and {Tiago C} and Olsen and Catharina and Bontempi and Gianluca and Chen and Xi and Noushmehr and Houtan and Colaprico and Antonio and Papaleo and Elena},
+ year = {2019},
+ title = {New functionalities in the TCGAbiolinks package for the study and integration of cancer data from GDC and GTEx},
+ pages = {e1006701},
+ volume = {15},
+ number = {3},
+ journal = {PLoS computational biology},
+ file = {newTCGA-biolinks:Attachments/newTCGA-biolinks.pdf:application/pdf}
+}
+
+
 @article{Pimentel.2015,
  author = {Pimentel, Ronald S. and Niewiadomska-Bugaj, Magdalena and Wang, Jung-Chao},
  year = {2015},
@@ -104,6 +149,17 @@ The deconfounding algorithm without decorrelation using quantile normalization o
 }
 
 
+@article{Hao.2023,
+ abstract = {Mapping single-cell sequencing profiles to comprehensive reference datasets provides a powerful alternative to unsupervised analysis. However, most reference datasets are constructed from single-cell RNA-sequencing data and cannot be used to annotate datasets that do not measure gene expression. Here we introduce 'bridge integration', a method to integrate single-cell datasets across modalities using a multiomic dataset as a molecular bridge. Each cell in the multiomic dataset constitutes an element in a 'dictionary', which is used to reconstruct unimodal datasets and transform them into a shared space. Our procedure accurately integrates transcriptomic data with independent single-cell measurements of chromatin accessibility, histone modifications, DNA methylation and protein levels. Moreover, we demonstrate how dictionary learning can be combined with sketching techniques to improve computational scalability and harmonize 8.6 million human immune cell profiles from sequencing and mass cytometry experiments. Our approach, implemented in version 5 of our Seurat toolkit ( http://www.satijalab.org/seurat ), broadens the utility of single-cell reference datasets and facilitates comparisons across diverse molecular modalities.},
+ author = {Hao, Yuhan and Stuart, Tim and Kowalski, Madeline H. and Choudhary, Saket and Hoffman, Paul and Hartman, Austin and Srivastava, Avi and Molla, Gesmira and Madad, Shaista and Fernandez-Granda, Carlos and Satija, Rahul},
+ year = {2023},
+ title = {Dictionary learning for integrative, multimodal and scalable single-cell analysis},
+ journal = {Nature biotechnology},
+ doi = {10.1038/s41587-023-01767-y},
+ file = {s41587-023-01767-y:Attachments/s41587-023-01767-y.pdf:application/pdf}
+}
+
+
 @article{Newman.2015,
  abstract = {We introduce CIBERSORT, a method for characterizing cell composition of complex tissues from their gene expression profiles. When applied to enumeration of hematopoietic subsets in RNA mixtures from fresh, frozen and fixed tissues, including solid tumors, CIBERSORT outperformed other methods with respect to noise, unknown mixture content and closely related cell types. CIBERSORT should enable large-scale analysis of RNA mixtures for cellular biomarkers and therapeutic targets (http://cibersort.stanford.edu/).},
  author = {Newman, Aaron M. and Liu, Chih Long and Green, Michael R. and Gentles, Andrew J. and Feng, Weiguo and Xu, Yue and Hoang, Chuong D. and Diehn, Maximilian and Alizadeh, Ash A.},
@@ -136,6 +192,29 @@ The deconfounding algorithm without decorrelation using quantile normalization o
 }
 
 
+@article{Bullard.2010,
+ abstract = {BACKGROUND
+
+High-throughput sequencing technologies, such as the Illumina Genome Analyzer, are powerful new tools for investigating a wide range of biological and medical questions. Statistical and computational methods are key for drawing meaningful and accurate conclusions from the massive and complex datasets generated by the sequencers. We provide a detailed evaluation of statistical methods for normalization and differential expression (DE) analysis of Illumina transcriptome sequencing (mRNA-Seq) data.
+
+RESULTS
+
+We compare statistical methods for detecting genes that are significantly DE between two types of biological samples and find that there are substantial differences in how the test statistics handle low-count genes. We evaluate how DE results are affected by features of the sequencing platform, such as, varying gene lengths, base-calling calibration method (with and without phi X control lane), and flow-cell/library preparation effects. We investigate the impact of the read count normalization method on DE results and show that the standard approach of scaling by total lane counts (e.g., RPKM) can bias estimates of DE. We propose more general quantile-based normalization procedures and demonstrate an improvement in DE detection.
+
+CONCLUSIONS
+
+Our results have significant practical and methodological implications for the design and analysis of mRNA-Seq experiments. They highlight the importance of appropriate statistical methods for normalization and DE inference, to account for features of the sequencing platform that could impact the accuracy of results. They also reveal the need for further research in the development of statistical and computational methods for mRNA-Seq.},
+ author = {Bullard, James H. and Purdom, Elizabeth and Hansen, Kasper D. and Dudoit, Sandrine},
+ year = {2010},
+ title = {Evaluation of statistical methods for normalization and differential expression in mRNA-Seq experiments},
+ pages = {94},
+ volume = {11},
+ journal = {BMC bioinformatics},
+ doi = {10.1186/1471-2105-11-94},
+ file = {1471-2105-11-94:Attachments/1471-2105-11-94.pdf:application/pdf}
+}
+
+
 @article{Hong.2020,
  abstract = {Over the past few decades, RNA sequencing has significantly progressed, becoming a paramount approach for transcriptome profiling. The revolution from bulk RNA sequencing to single-molecular, single-cell and spatial transcriptome approaches has enabled increasingly accurate, individual cell resolution incorporated with spatial information. Cancer, a major malignant and heterogeneous lethal disease, remains an enormous challenge in medical research and clinical treatment. As a vital tool, RNA sequencing has been utilized in many aspects of cancer research and therapy, including biomarker discovery and characterization of cancer heterogeneity and evolution, drug resistance, cancer immune microenvironment and immunotherapy, cancer neoantigens and so on. In this review, the latest studies on RNA sequencing technology and their applications in cancer are summarized, and future challenges and opportunities for RNA sequencing technology in cancer applications are discussed.},
  author = {Hong, Mingye and Tao, Shuang and Zhang, Ling and Diao, Li-Ting and Huang, Xuanmei and Huang, Shaohui and Xie, Shu-Juan and Xiao, Zhen-Dong and Zhang, Hua},
@@ -147,32 +226,6 @@ The deconfounding algorithm without decorrelation using quantile normalization o
  journal = {Journal of hematology {\&} oncology},
  doi = {10.1186/s13045-020-01005-x},
  file = {s13045-020-01005-x:Attachments/s13045-020-01005-x.pdf:application/pdf}
-}
-
-
-@article{Love.2014,
- abstract = {In comparative high-throughput sequencing assays, a fundamental task is the analysis of count data, such as read counts per gene in RNA-seq, for evidence of systematic changes across experimental conditions. Small replicate numbers, discreteness, large dynamic range and the presence of outliers require a suitable statistical approach. We present DESeq2, a method for differential analysis of count data, using shrinkage estimation for dispersions and fold changes to improve stability and interpretability of estimates. This enables a more quantitative analysis focused on the strength rather than the mere presence of differential expression. The DESeq2 package is available at http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html webcite.},
- author = {Love, Michael I. and Huber, Wolfgang and Anders, Simon},
- year = {2014},
- title = {Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2},
- url = {https://genomebiology.biomedcentral.com/counter/pdf/10.1186/s13059-014-0550-8.pdf},
- urldate = {24.11.2022},
- pages = {550},
- volume = {15},
- number = {12},
- journal = {Genome biology},
- doi = {10.1186/s13059-014-0550-8},
- file = {s13059-014-0550-8:Attachments/s13059-014-0550-8.pdf:application/pdf}
-}
-
-
-@misc{Schmid.7112015,
- abstract = {Random survival forests (RSF) are a powerful method for risk prediction of right-censored outcomes in biomedical research. RSF use the log-rank split criterion to form an ensemble of survival trees. The most common approach to evaluate the prediction accuracy of a RSF model is Harrell's concordance index for survival data ('C index'). Conceptually, this strategy implies that the split criterion in RSF is different from the evaluation criterion of interest. This discrepancy can be overcome by using Harrell's C for both node splitting and evaluation. We compare the difference between the two split criteria analytically and in simulation studies with respect to the preference of more unbalanced splits, termed end-cut preference (ECP). Specifically, we show that the log-rank statistic has a stronger ECP compared to the C index. In simulation studies and with the help of two medical data sets we demonstrate that the accuracy of RSF predictions, as measured by Harrell's C, can be improved if the log-rank statistic is replaced by the C index for node splitting. This is especially true in situations where the censoring rate or the fraction of informative continuous predictor variables is high. Conversely, log-rank splitting is preferable in noisy scenarios. Both C-based and log-rank splitting are implemented in the R{\~{}}package ranger. We recommend Harrell's C as split criterion for use in smaller scale clinical studies and the log-rank split criterion for use in large-scale 'omics' studies.},
- author = {Schmid, Matthias and Wright, Marvin and Ziegler, Andreas},
- date = {7/11/2015},
- title = {On the use of Harrell's C for clinical risk prediction via random  survival forests},
- url = {http://arxiv.org/pdf/1507.03092v2},
- file = {1507.03092:Attachments/1507.03092.pdf:application/pdf}
 }
 
 
@@ -197,6 +250,33 @@ Source code is available on Github at https://github.com/CMUSchwartzLab/RADs.},
  journal = {Bioinformatics (Oxford, England)},
  doi = {10.1093/bioinformatics/btac262},
  file = {btac262:Attachments/btac262.pdf:application/pdf}
+}
+
+
+@article{Schmid.2016,
+ author = {Schmid, Matthias and Wright, Marvin N. and Ziegler, Andreas},
+ year = {2016},
+ title = {On the use of Harrell's C for clinical risk prediction via random survival forests},
+ pages = {450--459},
+ volume = {63},
+ issn = {09574174},
+ journal = {Expert Systems with Applications},
+ doi = {10.1016/j.eswa.2016.07.018},
+ file = {1507.03092-1:Attachments/1507.03092-1.pdf:application/pdf}
+}
+
+
+@article{Ishwaran.2008,
+ abstract = {The Annals of Applied Statistics , 2008, Vol.2, No.3, 841-860},
+ author = {Ishwaran, Hemant and Kogalur, Udaya B. and Blackstone, Eugene H. and Lauer, Michael S.},
+ year = {2008},
+ title = {Random survival forests},
+ volume = {2},
+ number = {3},
+ issn = {1932-6157},
+ journal = {The Annals of Applied Statistics},
+ doi = {10.1214/08-AOAS169},
+ file = {08-AOAS169:Attachments/08-AOAS169.pdf:application/pdf}
 }
 
 
@@ -228,6 +308,46 @@ Source code is available on Github at https://github.com/CMUSchwartzLab/RADs.},
  journal = {Nature communications},
  doi = {10.1038/s41467-018-07466-6},
  file = {Comprehensive human cell-type methylation atlas reveals origins of circulating cell-free DNA in health and disease - s41467-018-07466-6:Attachments/Comprehensive human cell-type methylation atlas reveals origins of circulating cell-free DNA in health and disease - s41467-018-07466-6.pdf:application/pdf}
+}
+
+
+@article{McCarthy.2017,
+ abstract = {MOTIVATION
+
+Single-cell RNA sequencing (scRNA-seq) is increasingly used to study gene expression at the level of individual cells. However, preparing raw sequence data for further analysis is not a straightforward process. Biases, artifacts and other sources of unwanted variation are present in the data, requiring substantial time and effort to be spent on pre-processing, quality control (QC) and normalization.
+
+RESULTS
+
+We have developed the R/Bioconductor package scater to facilitate rigorous pre-processing, quality control, normalization and visualization of scRNA-seq data. The package provides a convenient, flexible workflow to process raw sequencing reads into a high-quality expression dataset ready for downstream analysis. scater provides a rich suite of plotting tools for single-cell data and a flexible data structure that is compatible with existing tools and can be used as infrastructure for future software development.
+
+AVAILABILITY AND IMPLEMENTATION
+
+The open-source code, along with installation instructions, vignettes and case studies, is available through Bioconductor at http://bioconductor.org/packages/scater .
+
+CONTACT
+
+davis@ebi.ac.uk.
+
+SUPPLEMENTARY INFORMATION
+
+Supplementary data are available at Bioinformatics online.},
+ author = {McCarthy, Davis J. and Campbell, Kieran R. and Lun, Aaron T. L. and Wills, Quin F.},
+ year = {2017},
+ title = {Scater: pre-processing, quality control, normalization and visualization of single-cell RNA-seq data in R},
+ pages = {1179--1186},
+ volume = {33},
+ number = {8},
+ journal = {Bioinformatics (Oxford, England)},
+ doi = {10.1093/bioinformatics/btw777},
+ file = {bioinformatics_33_8_1179:Attachments/bioinformatics_33_8_1179.pdf:application/pdf}
+}
+
+
+@misc{IlyaKorsunsky.2020,
+ author = {{Ilya Korsunsky} and {Aparna Nathan} and {Nghia Millard} and {Soumya Raychaudhuri}},
+ year = {2020},
+ title = {presto: Fast Functions for Differential Expression using Wilcox and AUC},
+ url = {https://github.com/immunogenomics/presto}
 }
 
 
@@ -340,26 +460,16 @@ We showed that analysis of concurrent RNA-seq and scnRNA-seq profiles with SQUID
 }
 
 
-@article{Bullard.2010,
- abstract = {BACKGROUND
-
-High-throughput sequencing technologies, such as the Illumina Genome Analyzer, are powerful new tools for investigating a wide range of biological and medical questions. Statistical and computational methods are key for drawing meaningful and accurate conclusions from the massive and complex datasets generated by the sequencers. We provide a detailed evaluation of statistical methods for normalization and differential expression (DE) analysis of Illumina transcriptome sequencing (mRNA-Seq) data.
-
-RESULTS
-
-We compare statistical methods for detecting genes that are significantly DE between two types of biological samples and find that there are substantial differences in how the test statistics handle low-count genes. We evaluate how DE results are affected by features of the sequencing platform, such as, varying gene lengths, base-calling calibration method (with and without phi X control lane), and flow-cell/library preparation effects. We investigate the impact of the read count normalization method on DE results and show that the standard approach of scaling by total lane counts (e.g., RPKM) can bias estimates of DE. We propose more general quantile-based normalization procedures and demonstrate an improvement in DE detection.
-
-CONCLUSIONS
-
-Our results have significant practical and methodological implications for the design and analysis of mRNA-Seq experiments. They highlight the importance of appropriate statistical methods for normalization and DE inference, to account for features of the sequencing platform that could impact the accuracy of results. They also reveal the need for further research in the development of statistical and computational methods for mRNA-Seq.},
- author = {Bullard, James H. and Purdom, Elizabeth and Hansen, Kasper D. and Dudoit, Sandrine},
- year = {2010},
- title = {Evaluation of statistical methods for normalization and differential expression in mRNA-Seq experiments},
- pages = {94},
- volume = {11},
- journal = {BMC bioinformatics},
- doi = {10.1186/1471-2105-11-94},
- file = {1471-2105-11-94:Attachments/1471-2105-11-94.pdf:application/pdf}
+@article{Colaprico.2016,
+ abstract = {The Cancer Genome Atlas (TCGA) research network has made public a large collection of clinical and molecular phenotypes of more than 10 000 tumor patients across 33 different tumor types. Using this cohort, TCGA has published over 20 marker papers detailing the genomic and epigenomic alterations associated with these tumor types. Although many important discoveries have been made by TCGA's research network, opportunities still exist to implement novel methods, thereby elucidating new biological pathways and diagnostic markers. However, mining the TCGA data presents several bioinformatics challenges, such as data retrieval and integration with clinical data and other molecular data types (e.g. RNA and DNA methylation). We developed an R/Bioconductor package called TCGAbiolinks to address these challenges and offer bioinformatics solutions by using a guided workflow to allow users to query, download and perform integrative analyses of TCGA data. We combined methods from computer science and statistics into the pipeline and incorporated methodologies developed in previous TCGA marker studies and in our own group. Using four different TCGA tumor types (Kidney, Brain, Breast and Colon) as examples, we provide case studies to illustrate examples of reproducibility, integrative analysis and utilization of different Bioconductor packages to advance and accelerate novel discoveries.},
+ author = {Colaprico, Antonio and Silva, Tiago C. and Olsen, Catharina and Garofano, Luciano and Cava, Claudia and Garolini, Davide and Sabedot, Thais S. and Malta, Tathiane M. and Pagnotta, Stefano M. and Castiglioni, Isabella and Ceccarelli, Michele and Bontempi, Gianluca and Noushmehr, Houtan},
+ year = {2016},
+ title = {TCGAbiolinks: an R/Bioconductor package for integrative analysis of TCGA data},
+ pages = {e71},
+ volume = {44},
+ number = {8},
+ journal = {Nucleic acids research},
+ doi = {10.1093/nar/gkv1507}
 }
 
 
