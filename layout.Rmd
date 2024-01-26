@@ -45,7 +45,7 @@ Deconvolution inputs:
   * Marker selection [Expand on purpose of marker selection]
     * Using wilcox test
       * via Seurat (v5.0.1) [@Hao.2023]
-      * using `Presto` implementation [@IlyaKorsunsky.]
+      * using `Presto` implementation [@IlyaKorsunsky.2020]
       * previous normalization via `NormalizeData`, method relative counts
         (`RC`)
       * Using bonferroni method for p-value adjustment
