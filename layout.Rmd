@@ -5,6 +5,24 @@ output: html_document
 bibliography: citations/cancer-cleaning_File.bib
 ---
 
+```{r setup, echo = FALSE}
+suppressMessages(here::i_am("./layout.Rmd"))
+
+embed_cap_plot <- function(plot_file, caption = NULL) {
+  if (is.null(caption)) {
+    cap_filename <- paste0(
+        stringr::str_replace(plot_file, "\\.[^.]+$", ""),
+        "_caption.txt"
+      )
+    caption <- readLines(con = cap_filename)
+  }
+
+  paste0(
+    "![*", caption, "*](", plot_file, ")"
+  )
+}
+```
+
 ## Introduction
 
 * A lot of bulk expression data around
@@ -128,8 +146,7 @@ Analysis:
 
 ### Random simulation
 
-![metric_summary_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/metric_summary_plot.png)  
-*`r readLines("cancer-cleaning-output/notebook/random_deconv_exploration_output/metric_summary_plot_caption.txt")`*
+`r embed_cap_plot(here::here("cancer-cleaning-output/notebook/random_deconv_exploration_output/metric_summary_plot.png"))`
 
 ### scRNA-seq based simulation
 
@@ -138,8 +155,7 @@ Analysis:
   expression & bulk expression, with residuals generally following bulk
   expression patterns.
 
-![pbulk_sim_metric_summary_plot_kendall](./cancer-cleaning-output/script_run/simulation/plots/deconv_summary/metric_summary_plot_kendall.png)
-*`r readLines("cancer-cleaning-output/script_run/simulation/plots/deconv_summary/metric_summary_plot_kendall_caption.txt")`*
+`r embed_cap_plot(here::here("cancer-cleaning-output/script_run/simulation/plots/deconv_summary/metric_summary_plot_kendall.png"))`
 
 ### Verification
 
@@ -171,11 +187,9 @@ Analysis:
 
 ### Random simulation
 
-![ground_truth_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/ground_truth_plot.png)  
-*`r readLines("cancer-cleaning-output/notebook/random_deconv_exploration_output/ground_truth_plot_caption.txt")`*
+`r embed_cap_plot(here::here("cancer-cleaning-output/notebook/random_deconv_exploration_output/ground_truth_plot.png"))`
 
-![analysis_plot](./cancer-cleaning-output/notebook/random_deconv_exploration_output/analysis_plot.png)  
-*`r readLines("cancer-cleaning-output/notebook/random_deconv_exploration_output/ground_truth_plot_caption.txt")`*
+`r embed_cap_plot(here::here("cancer-cleaning-output/notebook/random_deconv_exploration_output/analysis_plot.png"))`
 
 ### scRNA-seq based simulation
 
