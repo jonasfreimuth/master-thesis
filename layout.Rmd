@@ -18,7 +18,7 @@ embed_cap_plot <- function(plot_file, caption = NULL) {
   }
 
   paste0(
-    "![*", caption, "*](", plot_file, ")"
+    "![](", plot_file, ")\n*", caption, "*"
   )
 }
 ```
