@@ -171,7 +171,27 @@ Analysis:
 
 ### Verification
 
-* Sometimes residuals better, sometimes bulk better, generally ~70% accuracy.
+#### Prediction of an intrinsic categorical variable
+
+`r embed_cap_plot(
+  here::here("cancer-cleaning-output/script_run/prediction/categorical_prediction/performance_plot.png")
+)`
+
+*Categorical prediction performance table*
+`r embed_perf_table(here::here(
+  "cancer-cleaning-output/script_run/prediction/categorical_prediction/performance_table.csv"
+))`
+
+#### Prediction of a clinical variable
+
+`r embed_cap_plot(
+  here::here("cancer-cleaning-output/script_run/prediction/survival_prediction/c_index_plot.png")
+)`
+
+*PFI prediction performance table*
+`r embed_perf_table(here::here(
+  "cancer-cleaning-output/script_run/prediction/survival_prediction/c_indices.csv"
+))`
 
 ## Discussion
 
