@@ -6,6 +6,10 @@ bibliography: citations/cancer-cleaning_File.bib
 ---
 
 ```{r setup, echo = FALSE}
+suppressPackageStartupMessages({
+  library("dplyr")
+})
+
 suppressMessages(here::i_am("./layout.Rmd"))
 
 embed_cap_plot <- function(plot_file, caption = NULL) {
@@ -20,6 +24,14 @@ embed_cap_plot <- function(plot_file, caption = NULL) {
   paste0(
     "![](", plot_file, ")\n*", caption, "*"
   )
+}
+
+embed_perf_table <- function(table_file) {
+  data.table::fread(table_file) %>%
+    select(-matches("*_name")) %>%
+    select(feature_set, everything()) %>%
+    mutate(across(where(is.numeric), function(x) round(x, 3))) %>%
+    DT::datatable()
 }
 ```
 
