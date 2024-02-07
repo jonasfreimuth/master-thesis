@@ -26,6 +26,25 @@ embed_cap_plot <- function(plot_file, caption = NULL) {
   )
 }
 
+embed_list_table <- function(list) {
+  header <- paste(
+    "| Name | Value |",
+    "|-----:|:------|",
+    sep = "\n"
+  )
+
+  x <- unlist(list)
+
+  body <- paste(
+    "|", names(x), "|", x, "|",
+    collapse = "\n"
+  )
+
+  paste(
+    header, "\n", body, collapse = "\n"
+  )
+}
+
 embed_perf_table <- function(table_file) {
   data.table::fread(table_file) %>%
     select(-matches("*_name")) %>%
