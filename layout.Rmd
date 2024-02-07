@@ -7,10 +7,15 @@ bibliography: citations/cancer-cleaning_File.bib
 
 ```{r setup, echo = FALSE}
 suppressPackageStartupMessages({
+  library("yaml")
   library("dplyr")
 })
 
 suppressMessages(here::i_am("./layout.Rmd"))
+
+rnd_deconv_params <- read_yaml(here::here(
+  "cancer-cleaning-output/notebook/random_deconv_exploration_output/settings.yaml"
+))
 
 embed_cap_plot <- function(plot_file, caption = NULL) {
   if (is.null(caption)) {
@@ -89,6 +94,59 @@ Research questions:
 
 ### Random simulation
 
+Using normally distributed data to simulate the deconvolution process and the
+relationship of bulk expression, fitted values, residual, and cancer expression.
+
+* Done to show the method works under ideal conditions.
+* Testing the effect of removing the cancer signature from the reference.
+* Testing the effect of a cancer signature which is more variable than other
+  cell types in the reference.
+
+1. Generation of a reference matrix of per cell type average expression
+1. Generation of per cell bulk expression matrix from the reference matrix and a
+   vector of cell type counts
+1. Generation of a bulk expression vector by summing up each row of the bulk
+   expression matrix
+1. Deconvolution of the bulk vector using the reference matrix to obtain
+   predicted cell type counts, fitted values, and residuals
+
+Parameters used:
+
+*Values for the biological to technical noise ratio parameter*
+
+`r embed_list_table(rnd_deconv_params$bio_tech_noise_ratios)`
+
+*Parameters fixed across ground truths*
+
+| Description                                                                                  | Value                                                           |
+|---------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|
+| Number of replicates per parameter combination.                                              | `r rnd_deconv_params$fix_params$n_repeats`                      |
+| Number of cell types per ground truth.                                                       | `r rnd_deconv_params$fix_params$n_celltype`                     |
+| Number of genes per ground truth.                                                            | `r rnd_deconv_params$fix_params$n_transcript`                   |
+| Lower bound for number of cells per cell type.                                               | `r rnd_deconv_params$fix_params$ctype_counts_lower`             |
+| Upper bound for number of cells per cell type.                                               | `r rnd_deconv_params$fix_params$ctype_counts_upper`             |
+| Basic amount of noise in the reference.                                                      | `r rnd_deconv_params$fix_params$basic_noise_sd`                 |
+| Relative amount of biol. noise to be added to each cell of the bulk expr. matrix.            | `r rnd_deconv_params$fix_params$cell_diff_bio_noise_rel`        |
+| Relative amount of biol. noise to be added to the cancer expr. signature in the ref. matrix. | `r rnd_deconv_params$fix_params$cancer_to_transcript_noise_rel` |
+
+
+
+Analysis:
+
+* Four metrics
+  * RMSE between true & predicted cell type counts: Basic deconv. accuracy
+  * cancer expr vs. residuals: This is the main thing we are interested in, it
+    represents the degree to which residuals may be used as a surrogate for
+    actual cancer expression. The higher, the better.
+  * bulk expr vs. cancer expr: Used as a baseline to contextualize other
+    results. If this correlation is high, and the correlation of bulk expr. to
+    residuals is high, it would also follow that the correlation of cancer expr.
+    with residuals is high, but just by definition, not by virtue of the method.
+  * bulk expr vs. residuals: If this is high, it hints at problems with
+    deconvolution. Generally deconvolution residuals should not be correlated
+    with input data. Expected to be higher for reference missing the cancer
+    signature.
+
 ### scRNA-seq based simulation
 
 * Normalizing the reference and bulk probably not necessary for `nnls`
@@ -135,19 +193,11 @@ to only markers.
 Analysis:
 
 * Correlations computed
-  * cancer expr vs. residuals: This is the main thing we are interested in, it
-    represents the degree to which residuals may be used as a surrogate for
-    actual cancer expression. The higher, the better.
-  * bulk expr vs. cancer expr: Used as a baseline to contextualize other
-    results. If this correlation is high, and the correlation of bulk expr. to
-    residuals is high, it would also follow that the correlation of cancer expr.
-    with residuals is high, but just by definition, not by virtue of the method.
-  * bulk expr vs. residuals: If this is high, it hints at problems with
-    deconvolution. Generally deconvolution residuals should not be correlated
-    with input data. Expected to be higher for reference missing the cancer
-    signature.
-  * All correlates log transformed
-  [Kendall v Pearson]
+  * Same corr metrics as in [random simulation](#random-simulation-1)
+  * All correlates log transformed (for reasonably accurrate pearson
+    correlation)
+  * [Note on (zero inflation adjusted) Kendall v Pearson correlation with
+    regards to residuals and expression distribution]
 
 ### Verification
 
