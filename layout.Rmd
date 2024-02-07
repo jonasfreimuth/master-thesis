@@ -63,6 +63,14 @@ embed_perf_table <- function(table_file) {
 * Characterization of bulk as linear combination of average cell type expression
   plus varying levels of noise, technical and biological → Let’s do linear
   deconvolution!
+  
+Research questions:
+
+* Can the residuals from basic linear deconvolution methods be used to infer
+  information about the tumor and inform treatment?
+* Are the residuals gathered this way superior to using plain bulk data?
+* Is there a difference [what sort?] in the usefulness of the residuals when the
+  cancer reference is not included?
 
 ## Materials / Methods
 
