@@ -327,4 +327,36 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
 
 ### scRNA-seq based simulation
 
+`r embed_cap_plot(
+  here::here(
+    "cancer-cleaning-output/script_run/simulation/plots/deconv_summary/cor_FALSE_kendall_cancer_expression_v_deconv_residuals_plot.png"
+  ),
+  paste(
+    "Rank plot of true cancer expression versus deconvolution residuals",
+    "across pseudo-bulks",
+    "using a reference INcluding cancer signatures",
+    "facetted by whether the correlation was computed using only marker",
+    "transcripts (inner rows), by the quantile of marker significance used",
+    "(outer rows), and by the method used to select deconvolution markers",
+    "(columns).",
+    "Facet text shows the mean kendall correlation."
+  )
+)`
+
+`r embed_cap_plot(
+  here::here(
+    "cancer-cleaning-output/script_run/simulation/plots/deconv_summary/cor_TRUE_kendall_cancer_expression_v_deconv_residuals_plot.png"
+  ),
+  paste(
+    "Rank plot of true cancer expression versus deconvolution residuals",
+    "across pseudo-bulks",
+    "using a reference EXcluding cancer signatures",
+    "facetted by whether the correlation was computed using only marker",
+    "transcripts (inner rows), by the quantile of marker significance used",
+    "(outer rows), and by the method used to select deconvolution markers",
+    "(columns).",
+    "Facet text shows the mean kendall correlation."
+  )
+)`
+
 ### Verification
