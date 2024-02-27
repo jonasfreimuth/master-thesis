@@ -183,7 +183,7 @@ Deconvolution inputs:
 
 * Pseudobulk
   * Summing up all transcripts of a tumor sample
-  * Using log-normed counts (via `scuttle::logNormCounts` [@McCarthy.2017])
+  * Using raw count matrix
 
 Deconvolution:
 
@@ -259,9 +259,12 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
     present in the TCGA data.)
 * Tuning model for best out-of-sample error using fast survival forest fitting
   via sub-sampling.
-  * Using 200 trees
-* Using optimal parameters to fit a full model.
-* Using reported Harrell's C to assess performance [@Schmid.2016].
+  * Using `r n_tree` trees
+  * Using optimal parameters to fit a full model.
+  * Using a 70-30 training-testing split [Report numbers]
+* Model evaluation:
+  * Using reported Harrell's C to assess performance [@Schmid.2016].
+  * [Statistics on C index accuracy?]
 
 ## Results
 
