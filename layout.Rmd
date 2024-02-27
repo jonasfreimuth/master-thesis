@@ -363,3 +363,15 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
 )`
 
 ### Verification
+
+## Supplementary tables
+
+### scRNA-seq based simulation
+
+*Deconvolution metric table*
+`r data.table::fread(
+  "cancer-cleaning-output/script_run/simulation/data/cancer_comparison_summary.csv"
+) %>%
+  mutate(across(where(is.numeric), ~ round(.x, 3))) %>%  
+  DT::datatable()`
+
