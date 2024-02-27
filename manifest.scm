@@ -1,0 +1,11 @@
+(specifications->manifest (list "texlive"
+                                "pandoc"
+                                "r"
+                                "r-data-table"
+                                "r-dt"
+                                "r-dplyr"
+                                "r-here"
+                                "r-stringr"
+                                "r-rmarkdown"
+                                "r-tinytex"
+                                "r-yaml"))
