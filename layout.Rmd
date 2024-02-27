@@ -89,7 +89,7 @@ Research questions:
 ### Data
 
 * sc RNA-seq: Dataset by @Wu.2021
-  * [Dimensions, expand on tumor samples]
+  * 100'064 cells, from 26 samples, 29'733 genes in total
 * Clinical data: Using all available BRCA project data from TCGA (ver. 1.30.4
   see `MANIFEST.txt`)
   * Retrieved via `TCGA-biolinks` [@Colaprico.2016; @Mounir.2019]
