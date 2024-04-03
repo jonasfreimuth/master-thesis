@@ -307,12 +307,16 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
 
 ### Random simulation
 
+[WIP]
+
 ### scRNA-seq based simulation
 
 * Comparability of data distribution between random and scRNA-seq based deconv
 * Issue of correlation between bulk expression & cancer expression
 
 ### Verification
+
+[WIP]
 
 ### Outlook
 
@@ -366,6 +370,8 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
 )`
 
 ### Verification
+
+[WIP]
 
 ## Supplementary tables
 
