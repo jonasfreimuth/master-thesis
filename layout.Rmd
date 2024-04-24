@@ -185,8 +185,17 @@ Deconvolution inputs:
       * Cutoff: None, at threshold 1 all genes are used.
 
 * Pseudobulk
-  * Summing up all transcripts of a tumor sample
-  * Using raw count matrix
+  * Random:
+    * Using raw count matrix
+    * Choosing a cancer proportion (between 0 and 1) uniformly at random
+    * Choosing a proportion for the remaining cell types (so that all cell type
+      proportions sum to 1)
+    * Selecting cell indices from the count matrix by cell type in their
+      respective proportions
+    * Summing transcript expression across all cells
+  * Tumor based:
+    * Summing up the transcript expression of all cells belonging to one tumor
+      sample containing cancer expression.
 
 Deconvolution:
 
