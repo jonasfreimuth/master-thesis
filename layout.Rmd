@@ -8,6 +8,13 @@ output:
 bibliography: citations/cancer-cleaning_File.bib
 ---
 
+## TODOs
+
+* [ ] Include bulk deconvolution?
+* [ ] Include BayesPrism comparison?
+* [ ] Write results
+* [ ] Write discussion
+
 ```{r setup, echo = FALSE}
 suppressPackageStartupMessages({
   library("yaml")
@@ -167,8 +174,8 @@ Deconvolution inputs:
 
 * Reference
   * Averaging of cell expression belonging to one cell type
-  * Using raw count matrix [Why?]
-  * Marker selection [Expand on purpose of marker selection]
+  * Using raw count matrix
+  * Marker selection
     * Using wilcox test
       * via Seurat (v5.0.1) [@Hao.2023]
       * using `Presto` implementation [@IlyaKorsunsky.2020]
@@ -314,6 +321,9 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
 
 ## Discussion
 
+Might some issues stem from using only major cell-type lables? Could accounting
+for within cell-type heterogeneity (also maybe cell states) improve accuracy?
+
 ### Random simulation
 
 [WIP]
@@ -321,6 +331,8 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
 ### scRNA-seq based simulation
 
 * Comparability of data distribution between random and scRNA-seq based deconv
+* Realism of pseudo-bulk expression data (many low counts), may be addressable
+  using cell mixture data.
 * Issue of correlation between bulk expression & cancer expression
 
 ### Verification
@@ -329,6 +341,11 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
 
 ### Outlook
 
+* Comparison to BayesPrism [@Chu.2022]
+  * BayesPrism has higher accurracy
+  * BP can't infer expression of non-marker transcripts (except via
+  ref * ctype_props, but that depends on the reference accurracy.)
+* [Explore possibility of using DWLS for deconvolution]
 * Might be sensible to try more advanced deconvolution approaches, i.e. SQUID
   [@Cobos.2023]
 
