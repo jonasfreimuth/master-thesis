@@ -1,0 +1,8 @@
+# Output files
+*.html
+*.tex
+*.pdf
+*.zip
+
+# Other dirs
+citations/Attachments
