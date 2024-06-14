@@ -116,6 +116,20 @@ The deconfounding algorithm without decorrelation using quantile normalization o
 }
 
 
+@article{Newman.2015,
+ abstract = {We introduce CIBERSORT, a method for characterizing cell composition of complex tissues from their gene expression profiles. When applied to enumeration of hematopoietic subsets in RNA mixtures from fresh, frozen and fixed tissues, including solid tumors, CIBERSORT outperformed other methods with respect to noise, unknown mixture content and closely related cell types. CIBERSORT should enable large-scale analysis of RNA mixtures for cellular biomarkers and therapeutic targets (http://cibersort.stanford.edu/).},
+ author = {Newman, Aaron M. and Liu, Chih Long and Green, Michael R. and Gentles, Andrew J. and Feng, Weiguo and Xu, Yue and Hoang, Chuong D. and Diehn, Maximilian and Alizadeh, Ash A.},
+ year = {2015},
+ title = {Robust enumeration of cell subsets from tissue expression profiles},
+ pages = {453--457},
+ volume = {12},
+ number = {5},
+ journal = {Nature methods},
+ doi = {10.1038/nmeth.3337},
+ file = {nmeth.3337:Attachments/nmeth.3337.pdf:application/pdf;Newman, Liu et al. 2015 - Robust enumeration of cell subsets:Attachments/Newman, Liu et al. 2015 - Robust enumeration of cell subsets.pdf:application/pdf}
+}
+
+
 @article{Lun.2016,
  abstract = {Normalization of single-cell RNA sequencing data is necessary to eliminate cell-specific biases prior to downstream analyses. However, this is not straightforward for noisy single-cell data where many counts are zero. We present a novel approach where expression values are summed across pools of cells, and the summed values are used for normalization. Pool-based size factors are then deconvolved to yield cell-based factors. Our deconvolution approach outperforms existing methods for accurate normalization of cell-specific biases in simulated data. Similar behavior is observed in real data, where deconvolution improves the relevance of results of downstream analyses.},
  author = {Lun, Aaron T. L. and Bach, Karsten and Marioni, John C.},
@@ -126,14 +140,6 @@ The deconfounding algorithm without decorrelation using quantile normalization o
  journal = {Genome biology},
  doi = {10.1186/s13059-016-0947-7},
  file = {Lun, Bach et al. 2016 - Pooling across cells to normalize:Attachments/Lun, Bach et al. 2016 - Pooling across cells to normalize.pdf:application/pdf}
-}
-
-
-@misc{KatharineM.Mullen.2023,
- author = {{Katharine M. Mullen} and {Ivo H. M. van Stokkum}},
- year = {2023},
- title = {nnls: The Lawson-Hanson Algorithm for Non-Negative Least Squares  (NNLS)},
- url = {https://CRAN.R-project.org/package=nnls}
 }
 
 
@@ -161,6 +167,20 @@ The deconfounding algorithm without decorrelation using quantile normalization o
  journal = {Nature},
  doi = {10.1038/nature11412},
  file = {nature11412:Attachments/nature11412.pdf:application/pdf}
+}
+
+
+@article{Davies.1993,
+ author = {Davies, Laurie and Gather, Ursula},
+ year = {1993},
+ title = {The Identification of Multiple Outliers},
+ pages = {782--792},
+ volume = {88},
+ number = {423},
+ issn = {0162-1459},
+ journal = {Journal of the American Statistical Association},
+ doi = {10.1080/01621459.1993.10476339},
+ file = {davies1993:Attachments/davies1993.pdf:application/pdf}
 }
 
 
@@ -226,17 +246,24 @@ Our results have significant practical and methodological implications for the d
 }
 
 
-@article{Newman.2015,
- abstract = {We introduce CIBERSORT, a method for characterizing cell composition of complex tissues from their gene expression profiles. When applied to enumeration of hematopoietic subsets in RNA mixtures from fresh, frozen and fixed tissues, including solid tumors, CIBERSORT outperformed other methods with respect to noise, unknown mixture content and closely related cell types. CIBERSORT should enable large-scale analysis of RNA mixtures for cellular biomarkers and therapeutic targets (http://cibersort.stanford.edu/).},
- author = {Newman, Aaron M. and Liu, Chih Long and Green, Michael R. and Gentles, Andrew J. and Feng, Weiguo and Xu, Yue and Hoang, Chuong D. and Diehn, Maximilian and Alizadeh, Ash A.},
- year = {2015},
- title = {Robust enumeration of cell subsets from tissue expression profiles},
- pages = {453--457},
- volume = {12},
- number = {5},
- journal = {Nature methods},
- doi = {10.1038/nmeth.3337},
- file = {nmeth.3337:Attachments/nmeth.3337.pdf:application/pdf;Newman, Liu et al. 2015 - Robust enumeration of cell subsets:Attachments/Newman, Liu et al. 2015 - Robust enumeration of cell subsets.pdf:application/pdf}
+@misc{KatharineM.Mullen.2023,
+ author = {{Katharine M. Mullen} and {Ivo H. M. van Stokkum}},
+ year = {2023},
+ title = {nnls: The Lawson-Hanson Algorithm for Non-Negative Least Squares  (NNLS)},
+ url = {https://CRAN.R-project.org/package=nnls}
+}
+
+
+@article{Colaprico.2016,
+ abstract = {The Cancer Genome Atlas (TCGA) research network has made public a large collection of clinical and molecular phenotypes of more than 10 000 tumor patients across 33 different tumor types. Using this cohort, TCGA has published over 20 marker papers detailing the genomic and epigenomic alterations associated with these tumor types. Although many important discoveries have been made by TCGA's research network, opportunities still exist to implement novel methods, thereby elucidating new biological pathways and diagnostic markers. However, mining the TCGA data presents several bioinformatics challenges, such as data retrieval and integration with clinical data and other molecular data types (e.g. RNA and DNA methylation). We developed an R/Bioconductor package called TCGAbiolinks to address these challenges and offer bioinformatics solutions by using a guided workflow to allow users to query, download and perform integrative analyses of TCGA data. We combined methods from computer science and statistics into the pipeline and incorporated methodologies developed in previous TCGA marker studies and in our own group. Using four different TCGA tumor types (Kidney, Brain, Breast and Colon) as examples, we provide case studies to illustrate examples of reproducibility, integrative analysis and utilization of different Bioconductor packages to advance and accelerate novel discoveries.},
+ author = {Colaprico, Antonio and Silva, Tiago C. and Olsen, Catharina and Garofano, Luciano and Cava, Claudia and Garolini, Davide and Sabedot, Thais S. and Malta, Tathiane M. and Pagnotta, Stefano M. and Castiglioni, Isabella and Ceccarelli, Michele and Bontempi, Gianluca and Noushmehr, Houtan},
+ year = {2016},
+ title = {TCGAbiolinks: an R/Bioconductor package for integrative analysis of TCGA data},
+ pages = {e71},
+ volume = {44},
+ number = {8},
+ journal = {Nucleic acids research},
+ doi = {10.1093/nar/gkv1507}
 }
 
 
@@ -255,20 +282,6 @@ Our results have significant practical and methodological implications for the d
  editor = {Kidder, Benjamin L.},
  doi = {10.1007/978-1-0716-0301-7},
  file = {978-1-0716-0301-7:Attachments/978-1-0716-0301-7.pdf:application/pdf}
-}
-
-
-@article{Hong.2020,
- abstract = {Over the past few decades, RNA sequencing has significantly progressed, becoming a paramount approach for transcriptome profiling. The revolution from bulk RNA sequencing to single-molecular, single-cell and spatial transcriptome approaches has enabled increasingly accurate, individual cell resolution incorporated with spatial information. Cancer, a major malignant and heterogeneous lethal disease, remains an enormous challenge in medical research and clinical treatment. As a vital tool, RNA sequencing has been utilized in many aspects of cancer research and therapy, including biomarker discovery and characterization of cancer heterogeneity and evolution, drug resistance, cancer immune microenvironment and immunotherapy, cancer neoantigens and so on. In this review, the latest studies on RNA sequencing technology and their applications in cancer are summarized, and future challenges and opportunities for RNA sequencing technology in cancer applications are discussed.},
- author = {Hong, Mingye and Tao, Shuang and Zhang, Ling and Diao, Li-Ting and Huang, Xuanmei and Huang, Shaohui and Xie, Shu-Juan and Xiao, Zhen-Dong and Zhang, Hua},
- year = {2020},
- title = {RNA sequencing: new technologies and applications in cancer research},
- pages = {166},
- volume = {13},
- number = {1},
- journal = {Journal of hematology {\&} oncology},
- doi = {10.1186/s13045-020-01005-x},
- file = {s13045-020-01005-x:Attachments/s13045-020-01005-x.pdf:application/pdf}
 }
 
 
@@ -395,16 +408,17 @@ We showed that analysis of concurrent RNA-seq and scnRNA-seq profiles with SQUID
 }
 
 
-@article{Colaprico.2016,
- abstract = {The Cancer Genome Atlas (TCGA) research network has made public a large collection of clinical and molecular phenotypes of more than 10 000 tumor patients across 33 different tumor types. Using this cohort, TCGA has published over 20 marker papers detailing the genomic and epigenomic alterations associated with these tumor types. Although many important discoveries have been made by TCGA's research network, opportunities still exist to implement novel methods, thereby elucidating new biological pathways and diagnostic markers. However, mining the TCGA data presents several bioinformatics challenges, such as data retrieval and integration with clinical data and other molecular data types (e.g. RNA and DNA methylation). We developed an R/Bioconductor package called TCGAbiolinks to address these challenges and offer bioinformatics solutions by using a guided workflow to allow users to query, download and perform integrative analyses of TCGA data. We combined methods from computer science and statistics into the pipeline and incorporated methodologies developed in previous TCGA marker studies and in our own group. Using four different TCGA tumor types (Kidney, Brain, Breast and Colon) as examples, we provide case studies to illustrate examples of reproducibility, integrative analysis and utilization of different Bioconductor packages to advance and accelerate novel discoveries.},
- author = {Colaprico, Antonio and Silva, Tiago C. and Olsen, Catharina and Garofano, Luciano and Cava, Claudia and Garolini, Davide and Sabedot, Thais S. and Malta, Tathiane M. and Pagnotta, Stefano M. and Castiglioni, Isabella and Ceccarelli, Michele and Bontempi, Gianluca and Noushmehr, Houtan},
- year = {2016},
- title = {TCGAbiolinks: an R/Bioconductor package for integrative analysis of TCGA data},
- pages = {e71},
- volume = {44},
- number = {8},
- journal = {Nucleic acids research},
- doi = {10.1093/nar/gkv1507}
+@article{Hong.2020,
+ abstract = {Over the past few decades, RNA sequencing has significantly progressed, becoming a paramount approach for transcriptome profiling. The revolution from bulk RNA sequencing to single-molecular, single-cell and spatial transcriptome approaches has enabled increasingly accurate, individual cell resolution incorporated with spatial information. Cancer, a major malignant and heterogeneous lethal disease, remains an enormous challenge in medical research and clinical treatment. As a vital tool, RNA sequencing has been utilized in many aspects of cancer research and therapy, including biomarker discovery and characterization of cancer heterogeneity and evolution, drug resistance, cancer immune microenvironment and immunotherapy, cancer neoantigens and so on. In this review, the latest studies on RNA sequencing technology and their applications in cancer are summarized, and future challenges and opportunities for RNA sequencing technology in cancer applications are discussed.},
+ author = {Hong, Mingye and Tao, Shuang and Zhang, Ling and Diao, Li-Ting and Huang, Xuanmei and Huang, Shaohui and Xie, Shu-Juan and Xiao, Zhen-Dong and Zhang, Hua},
+ year = {2020},
+ title = {RNA sequencing: new technologies and applications in cancer research},
+ pages = {166},
+ volume = {13},
+ number = {1},
+ journal = {Journal of hematology {\&} oncology},
+ doi = {10.1186/s13045-020-01005-x},
+ file = {s13045-020-01005-x:Attachments/s13045-020-01005-x.pdf:application/pdf}
 }
 
 
