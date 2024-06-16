@@ -1,578 +1,1306 @@
-﻿% This file was created with Citavi 6.12.0.177
 
-@article{Jew.2020,
- abstract = {We present Bisque, a tool for estimating cell type proportions in bulk expression. Bisque implements a regression-based approach that utilizes single-cell RNA-seq (scRNA-seq) or single-nucleus RNA-seq (snRNA-seq) data to generate a reference expression profile and learn gene-specific bulk expression transformations to robustly decompose RNA-seq data. These transformations significantly improve decomposition performance compared to existing methods when there is significant technical variation in the generation of the reference profile and observed bulk expression. Importantly, compared to existing methods, our approach is extremely efficient, making it suitable for the analysis of large genomic datasets that are becoming ubiquitous. When applied to subcutaneous adipose and dorsolateral prefrontal cortex expression datasets with both bulk RNA-seq and snRNA-seq data, Bisque replicates previously reported associations between cell type proportions and measured phenotypes across abundant and rare cell types. We further propose an additional mode of operation that merely requires a set of known marker genes.},
- author = {Jew, Brandon and Alvarez, Marcus and Rahmani, Elior and Miao, Zong and Ko, Arthur and Garske, Kristina M. and Sul, Jae Hoon and Pietil{\"a}inen, Kirsi H. and Pajukanta, P{\"a}ivi and Halperin, Eran},
- year = {2020},
- title = {Accurate estimation of cell composition in bulk expression through robust integration of single-cell information},
- pages = {1971},
- volume = {11},
- number = {1},
- journal = {Nature communications},
- doi = {10.1038/s41467-020-15816-6},
- file = {s41467-020-15816-6:Attachments/s41467-020-15816-6.pdf:application/pdf}
+@Article{	  .2012,
+  abstract	= {We analysed primary breast cancers by genomic DNA copy
+		  number arrays, DNA methylation, exome sequencing, messenger
+		  RNA arrays, microRNA sequencing and reverse-phase protein
+		  arrays. Our ability to integrate information across
+		  platforms provided key insights into previously defined
+		  gene expression subtypes and demonstrated the existence of
+		  four main breast cancer classes when combining data from
+		  five platforms, each of which shows significant molecular
+		  heterogeneity. Somatic mutations in only three genes (TP53,
+		  PIK3CA and GATA3) occurred at {\textgreater}10{\%}
+		  incidence across all breast cancers; however, there were
+		  numerous subtype-associated and novel gene mutations
+		  including the enrichment of specific mutations in GATA3,
+		  PIK3CA and MAP3K1 with the luminal A subtype. We identified
+		  two novel protein-expression-defined subgroups, possibly
+		  produced by stromal/microenvironmental elements, and
+		  integrated analyses identified specific signalling pathways
+		  dominant in each molecular subtype including a
+		  HER2/phosphorylated HER2/EGFR/phosphorylated EGFR signature
+		  within the HER2-enriched expression subtype. Comparison of
+		  basal-like breast tumours with high-grade serous ovarian
+		  tumours showed many molecular commonalities, indicating a
+		  related aetiology and similar therapeutic opportunities.
+		  The biological finding of the four main breast cancer
+		  subtypes caused by different subsets of genetic and
+		  epigenetic abnormalities raises the hypothesis that much of
+		  the clinically observable plasticity and heterogeneity
+		  occurs within, and not across, these major biological
+		  subtypes of breast cancer.},
+  year		= {2012},
+  title		= {Comprehensive molecular portraits of human breast
+		  tumours},
+  pages		= {61--70},
+  volume	= {490},
+  number	= {7418},
+  journal	= {Nature},
+  doi		= {10.1038/nature11412},
+  file		= {nature11412:Attachments/nature11412.pdf:application/pdf}
 }
 
-
-@article{Hao.2023,
- abstract = {Mapping single-cell sequencing profiles to comprehensive reference datasets provides a powerful alternative to unsupervised analysis. However, most reference datasets are constructed from single-cell RNA-sequencing data and cannot be used to annotate datasets that do not measure gene expression. Here we introduce 'bridge integration', a method to integrate single-cell datasets across modalities using a multiomic dataset as a molecular bridge. Each cell in the multiomic dataset constitutes an element in a 'dictionary', which is used to reconstruct unimodal datasets and transform them into a shared space. Our procedure accurately integrates transcriptomic data with independent single-cell measurements of chromatin accessibility, histone modifications, DNA methylation and protein levels. Moreover, we demonstrate how dictionary learning can be combined with sketching techniques to improve computational scalability and harmonize 8.6 million human immune cell profiles from sequencing and mass cytometry experiments. Our approach, implemented in version 5 of our Seurat toolkit ( http://www.satijalab.org/seurat ), broadens the utility of single-cell reference datasets and facilitates comparisons across diverse molecular modalities.},
- author = {Hao, Yuhan and Stuart, Tim and Kowalski, Madeline H. and Choudhary, Saket and Hoffman, Paul and Hartman, Austin and Srivastava, Avi and Molla, Gesmira and Madad, Shaista and Fernandez-Granda, Carlos and Satija, Rahul},
- year = {2023},
- title = {Dictionary learning for integrative, multimodal and scalable single-cell analysis},
- journal = {Nature biotechnology},
- doi = {10.1038/s41587-023-01767-y},
- file = {s41587-023-01767-y:Attachments/s41587-023-01767-y.pdf:application/pdf}
+@Article{	  bullard.2010,
+  abstract	= {BACKGROUND
+		  
+		  High-throughput sequencing technologies, such as the
+		  Illumina Genome Analyzer, are powerful new tools for
+		  investigating a wide range of biological and medical
+		  questions. Statistical and computational methods are key
+		  for drawing meaningful and accurate conclusions from the
+		  massive and complex datasets generated by the sequencers.
+		  We provide a detailed evaluation of statistical methods for
+		  normalization and differential expression (DE) analysis of
+		  Illumina transcriptome sequencing (mRNA-Seq) data.
+		  
+		  RESULTS
+		  
+		  We compare statistical methods for detecting genes that are
+		  significantly DE between two types of biological samples
+		  and find that there are substantial differences in how the
+		  test statistics handle low-count genes. We evaluate how DE
+		  results are affected by features of the sequencing
+		  platform, such as, varying gene lengths, base-calling
+		  calibration method (with and without phi X control lane),
+		  and flow-cell/library preparation effects. We investigate
+		  the impact of the read count normalization method on DE
+		  results and show that the standard approach of scaling by
+		  total lane counts (e.g., RPKM) can bias estimates of DE. We
+		  propose more general quantile-based normalization
+		  procedures and demonstrate an improvement in DE detection.
+		  
+		  CONCLUSIONS
+		  
+		  Our results have significant practical and methodological
+		  implications for the design and analysis of mRNA-Seq
+		  experiments. They highlight the importance of appropriate
+		  statistical methods for normalization and DE inference, to
+		  account for features of the sequencing platform that could
+		  impact the accuracy of results. They also reveal the need
+		  for further research in the development of statistical and
+		  computational methods for mRNA-Seq.},
+  author	= {Bullard, James H. and Purdom, Elizabeth and Hansen, Kasper
+		  D. and Dudoit, Sandrine},
+  year		= {2010},
+  title		= {Evaluation of statistical methods for normalization and
+		  differential expression in mRNA-Seq experiments},
+  pages		= {94},
+  volume	= {11},
+  journal	= {BMC bioinformatics},
+  doi		= {10.1186/1471-2105-11-94},
+  file		= {1471-2105-11-94:Attachments/1471-2105-11-94.pdf:application/pdf}
 }
 
-
-@article{Kang.2019,
- abstract = {Quantifying cell-type proportions and their corresponding gene expression profiles in tissue samples would enhance understanding of the contributions of individual cell types to the physiological states of the tissue. Current approaches that address tissue heterogeneity have drawbacks. Experimental techniques, such as fluorescence-activated cell sorting, and single cell RNA sequencing are expensive. Computational approaches that use expression data from heterogeneous samples are promising, but most of the current methods estimate either cell-type proportions or cell-type-specific expression profiles by requiring the other as input. Although such partial deconvolution methods have been successfully applied to tumor samples, the additional input required may be unavailable. We introduce a novel complete deconvolution method, CDSeq, that uses only RNA-Seq data from bulk tissue samples to simultaneously estimate both cell-type proportions and cell-type-specific expression profiles. Using several synthetic and real experimental datasets with known cell-type composition and cell-type-specific expression profiles, we compared CDSeq's complete deconvolution performance with seven other established deconvolution methods. Complete deconvolution using CDSeq represents a substantial technical advance over partial deconvolution approaches and will be useful for studying cell mixtures in tissue samples. CDSeq is available at GitHub repository (MATLAB and Octave code): https://github.com/kkang7/CDSeq.},
- author = {Kang, Kai and Meng, Qian and Shats, Igor and Umbach, David M. and Li, Melissa and Li, Yuanyuan and Li, Xiaoling and Li, Leping},
- year = {2019},
- title = {CDSeq: A novel complete deconvolution method for dissecting heterogeneous samples using gene expression data},
- pages = {e1007510},
- volume = {15},
- number = {12},
- journal = {PLoS computational biology},
- doi = {10.1371/journal.pcbi.1007510},
- file = {cd_seq:Attachments/cd_seq.pdf:application/pdf}
+@Article{	  chu.2022,
+  abstract	= {Inferring single-cell compositions and their contributions
+		  to global gene expression changes from bulk RNA sequencing
+		  (RNA-seq) datasets is a major challenge in oncology. Here
+		  we develop Bayesian cell proportion reconstruction inferred
+		  using statistical marginalization (BayesPrism), a Bayesian
+		  method to predict cellular composition and gene expression
+		  in individual cell types from bulk RNA-seq, using
+		  patient-derived, scRNA-seq as prior information. We conduct
+		  integrative analyses in primary glioblastoma, head and neck
+		  squamous cell carcinoma and skin cutaneous melanoma to
+		  correlate cell type composition with clinical outcomes
+		  across tumor types, and explore spatial heterogeneity in
+		  malignant and nonmalignant cell states. We refine current
+		  cancer subtypes using gene expression annotation after
+		  exclusion of confounding nonmalignant cells. Finally, we
+		  identify genes whose expression in malignant cells
+		  correlates with macrophage infiltration, T cells,
+		  fibroblasts and endothelial cells across multiple tumor
+		  types. Our work introduces a new lens to accurately infer
+		  cellular composition and expression in large cohorts of
+		  bulk RNA-seq data.},
+  author	= {Chu, Tinyi and Wang, Zhong and Pe'er, Dana and Danko,
+		  Charles G.},
+  year		= {2022},
+  title		= {Cell type and gene expression deconvolution with
+		  BayesPrism enables Bayesian integrative analysis across
+		  bulk and single-cell RNA sequencing in oncology},
+  pages		= {505--517},
+  volume	= {3},
+  number	= {4},
+  journal	= {Nature cancer},
+  doi		= {10.1038/s43018-022-00356-3},
+  file		= {s43018-022-00356-3:Attachments/s43018-022-00356-3.pdf:application/pdf}
 }
 
-
-@article{Mounir.2019,
- abstract = {The advent of Next-Generation Sequencing (NGS) technologies has opened new perspectives in deciphering the genetic mechanisms underlying complex diseases. Nowadays, the amount of genomic data is massive and substantial efforts and new tools are required to unveil the information hidden in the data. The Genomic Data Commons (GDC) Data Portal is a platform that contains different genomic studies including the ones from The Cancer Genome Atlas (TCGA) and the Therapeutically Applicable Research to Generate Effective Treatments (TARGET) initiatives, accounting for more than 40 tumor types originating from nearly 30000 patients. Such platforms, although very attractive, must make sure the stored data are easily accessible and adequately harmonized. Moreover, they have the primary focus on the data storage in a unique place, and they do not provide a comprehensive toolkit for analyses and interpretation of the data. To fulfill this urgent need, comprehensive but easily accessible computational methods for integrative analyses of genomic data that do not renounce a robust statistical and theoretical framework are required. In this context, the R/Bioconductor package TCGAbiolinks was developed, offering a variety of bioinformatics functionalities. Here we introduce new features and enhancements of TCGAbiolinks in terms of i) more accurate and flexible pipelines for differential expression analyses, ii) different methods for tumor purity estimation and filtering, iii) integration of normal samples from other platforms iv) support for other genomics datasets, exemplified here by the TARGET data. Evidence has shown that accounting for tumor purity is essential in the study of tumorigenesis, as these factors promote confounding behavior regarding differential expression analysis. With this in mind, we implemented these filtering procedures in TCGAbiolinks. Moreover, a limitation of some of the TCGA datasets is the unavailability or paucity of corresponding normal samples. We thus integrated into TCGAbiolinks the possibility to use normal samples from the Genotype-Tissue Expression (GTEx) project, which is another large-scale repository cataloging gene expression from healthy individuals. The new functionalities are available in the TCGAbiolinks version 2.8 and higher released in Bioconductor version 3.7.},
- author = {Mounir, Mohamed and Lucchetta, Marta and Silva, Tiago C. and Olsen, Catharina and Bontempi, Gianluca and Chen, Xi and Noushmehr, Houtan and Colaprico, Antonio and Papaleo, Elena},
- year = {2019},
- title = {New functionalities in the TCGAbiolinks package for the study and integration of cancer data from GDC and GTEx},
- pages = {e1006701},
- volume = {15},
- number = {3},
- journal = {PLoS computational biology},
- doi = {10.1371/journal.pcbi.1006701},
- file = {newTCGA-biolinks:Attachments/newTCGA-biolinks.pdf:application/pdf}
+@Article{	  cobos.2023,
+  abstract	= {BACKGROUND
+		  
+		  RNA profiling technologies at single-cell resolutions,
+		  including single-cell and single-nuclei RNA sequencing
+		  (scRNA-seq and snRNA-seq, scnRNA-seq for short), can help
+		  characterize the composition of tissues and reveal cells
+		  that influence key functions in both healthy and disease
+		  tissues. However, the use of these technologies is
+		  operationally challenging because of high costs and
+		  stringent sample-collection requirements. Computational
+		  deconvolution methods that infer the composition of
+		  bulk-profiled samples using scnRNA-seq-characterized cell
+		  types can broaden scnRNA-seq applications, but their
+		  effectiveness remains controversial.
+		  
+		  RESULTS
+		  
+		  We produced the first systematic evaluation of
+		  deconvolution methods on datasets with either known or
+		  scnRNA-seq-estimated compositions. Our analyses revealed
+		  biases that are common to scnRNA-seq 10X Genomics assays
+		  and illustrated the importance of accurate and properly
+		  controlled data preprocessing and method selection and
+		  optimization. Moreover, our results suggested that
+		  concurrent RNA-seq and scnRNA-seq profiles can help improve
+		  the accuracy of both scnRNA-seq preprocessing and the
+		  deconvolution methods that employ them. Indeed, our
+		  proposed method, Single-cell RNA Quantity Informed
+		  Deconvolution (SQUID), which combines RNA-seq
+		  transformation and dampened weighted least-squares
+		  deconvolution approaches, consistently outperformed other
+		  methods in predicting the composition of cell mixtures and
+		  tissue samples.
+		  
+		  CONCLUSIONS
+		  
+		  We showed that analysis of concurrent RNA-seq and
+		  scnRNA-seq profiles with SQUID can produce accurate
+		  cell-type abundance estimates and that this accuracy
+		  improvement was necessary for identifying
+		  outcomes-predictive cancer cell subclones in pediatric
+		  acute myeloid leukemia and neuroblastoma datasets. These
+		  results suggest that deconvolution accuracy improvements
+		  are vital to enabling its applications in the life
+		  sciences.},
+  author	= {Cobos, Francisco Avila and Panah, Mohammad Javad Najaf and
+		  Epps, Jessica and Long, Xiaochen and Man, Tsz-Kwong and
+		  Chiu, Hua-Sheng and Chomsky, Elad and Kiner, Evgeny and
+		  Krueger, Michael J. and {Di Bernardo}, Diego and Voloch,
+		  Luis and Molenaar, Jan and {van Hooff}, Sander R. and
+		  Westermann, Frank and Jansky, Selina and Redell, Michele L.
+		  and Mestdagh, Pieter and Sumazin, Pavel},
+  year		= {2023},
+  title		= {Effective methods for bulk RNA-seq deconvolution using
+		  scnRNA-seq transcriptomes},
+  pages		= {177},
+  volume	= {24},
+  number	= {1},
+  journal	= {Genome biology},
+  doi		= {10.1186/s13059-023-03016-6},
+  file		= {s13059-023-03016-6:Attachments/s13059-023-03016-6.pdf:application/pdf}
 }
 
-
-@article{Repsilber.2010,
- abstract = {BACKGROUND
-
-For heterogeneous tissues, such as blood, measurements of gene expression are confounded by relative proportions of cell types involved. Conclusions have to rely on estimation of gene expression signals for homogeneous cell populations, e.g. by applying micro-dissection, fluorescence activated cell sorting, or in-silico deconfounding. We studied feasibility and validity of a non-negative matrix decomposition algorithm using experimental gene expression data for blood and sorted cells from the same donor samples. Our objective was to optimize the algorithm regarding detection of differentially expressed genes and to enable its use for classification in the difficult scenario of reversely regulated genes. This would be of importance for the identification of candidate biomarkers in heterogeneous tissues.
-
-RESULTS
-
-Experimental data and simulation studies involving noise parameters estimated from these data revealed that for valid detection of differential gene expression, quantile normalization and use of non-log data are optimal. We demonstrate the feasibility of predicting proportions of constituting cell types from gene expression data of single samples, as a prerequisite for a deconfounding-based classification approach.Classification cross-validation errors with and without using deconfounding results are reported as well as sample-size dependencies. Implementation of the algorithm, simulation and analysis scripts are available.
-
-CONCLUSIONS
-
-The deconfounding algorithm without decorrelation using quantile normalization on non-log data is proposed for biomarkers that are difficult to detect, and for cases where confounding by varying proportions of cell types is the suspected reason. In this case, a deconfounding ranking approach can be used as a powerful alternative to, or complement of, other statistical learning approaches to define candidate biomarkers for molecular diagnosis and prediction in biomedicine, in realistically noisy conditions and with moderate sample sizes.},
- author = {Repsilber, Dirk and Kern, Sabine and Telaar, Anna and Walzl, Gerhard and Black, Gillian F. and Selbig, Joachim and Parida, Shreemanta K. and Kaufmann, Stefan H. E. and Jacobsen, Marc},
- year = {2010},
- title = {Biomarker discovery in heterogeneous tissue samples -taking the in-silico deconfounding approach},
- pages = {27},
- volume = {11},
- journal = {BMC bioinformatics},
- doi = {10.1186/1471-2105-11-27},
- file = {1471-2105-11-27:Attachments/1471-2105-11-27.pdf:application/pdf}
+@Article{	  colaprico.2016,
+  abstract	= {The Cancer Genome Atlas (TCGA) research network has made
+		  public a large collection of clinical and molecular
+		  phenotypes of more than 10 000 tumor patients across 33
+		  different tumor types. Using this cohort, TCGA has
+		  published over 20 marker papers detailing the genomic and
+		  epigenomic alterations associated with these tumor types.
+		  Although many important discoveries have been made by
+		  TCGA's research network, opportunities still exist to
+		  implement novel methods, thereby elucidating new biological
+		  pathways and diagnostic markers. However, mining the TCGA
+		  data presents several bioinformatics challenges, such as
+		  data retrieval and integration with clinical data and other
+		  molecular data types (e.g. RNA and DNA methylation). We
+		  developed an R/Bioconductor package called TCGAbiolinks to
+		  address these challenges and offer bioinformatics solutions
+		  by using a guided workflow to allow users to query,
+		  download and perform integrative analyses of TCGA data. We
+		  combined methods from computer science and statistics into
+		  the pipeline and incorporated methodologies developed in
+		  previous TCGA marker studies and in our own group. Using
+		  four different TCGA tumor types (Kidney, Brain, Breast and
+		  Colon) as examples, we provide case studies to illustrate
+		  examples of reproducibility, integrative analysis and
+		  utilization of different Bioconductor packages to advance
+		  and accelerate novel discoveries.},
+  author	= {Colaprico, Antonio and Silva, Tiago C. and Olsen,
+		  Catharina and Garofano, Luciano and Cava, Claudia and
+		  Garolini, Davide and Sabedot, Thais S. and Malta, Tathiane
+		  M. and Pagnotta, Stefano M. and Castiglioni, Isabella and
+		  Ceccarelli, Michele and Bontempi, Gianluca and Noushmehr,
+		  Houtan},
+  year		= {2016},
+  title		= {TCGAbiolinks: an R/Bioconductor package for integrative
+		  analysis of TCGA data},
+  pages		= {e71},
+  volume	= {44},
+  number	= {8},
+  journal	= {Nucleic acids research},
+  doi		= {10.1093/nar/gkv1507}
 }
 
-
-@article{Pimentel.2015,
- author = {Pimentel, Ronald S. and Niewiadomska-Bugaj, Magdalena and Wang, Jung-Chao},
- year = {2015},
- title = {Association of zero-inflated continuous variables},
- pages = {61--67},
- volume = {96},
- issn = {01677152},
- journal = {Statistics {\&} Probability Letters},
- doi = {10.1016/j.spl.2014.09.002},
- file = {Association_of_zero_inflated_continuous:Attachments/Association_of_zero_inflated_continuous.pdf:application/pdf}
+@Article{	  curtis.2012,
+  abstract	= {The elucidation of breast cancer subgroups and their
+		  molecular drivers requires integrated views of the genome
+		  and transcriptome from representative numbers of patients.
+		  We present an integrated analysis of copy number and gene
+		  expression in a discovery and validation set of 997 and 995
+		  primary breast tumours, respectively, with long-term
+		  clinical follow-up. Inherited variants (copy number
+		  variants and single nucleotide polymorphisms) and acquired
+		  somatic copy number aberrations (CNAs) were associated with
+		  expression in {\~{}}40{\%} of genes, with the landscape
+		  dominated by cis- and trans-acting CNAs. By delineating
+		  expression outlier genes driven in cis by CNAs, we
+		  identified putative cancer genes, including deletions in
+		  PPP2R2A, MTAP and MAP2K4. Unsupervised analysis of paired
+		  DNA--RNA profiles revealed novel subgroups with distinct
+		  clinical outcomes, which reproduced in the validation
+		  cohort. These include a high-risk,
+		  oestrogen-receptor-positive 11q13/14 cis-acting subgroup
+		  and a favourable prognosis subgroup devoid of CNAs.
+		  Trans-acting aberration hotspots were found to modulate
+		  subgroup-specific gene networks, including a TCR
+		  deletion-mediated adaptive immune response in the
+		  `CNA-devoid' subgroup and a basal-specific chromosome 5
+		  deletion-associated mitotic network. Our results provide a
+		  novel molecular stratification of the breast cancer
+		  population, derived from the impact of somatic CNAs on the
+		  transcriptome.},
+  author	= {Curtis, Christina and Shah, Sohrab P. and Chin, Suet-Feung
+		  and Turashvili, Gulisa and Rueda, Oscar M. and Dunning,
+		  Mark J. and Speed, Doug and Lynch, Andy G. and Samarajiwa,
+		  Shamith and Yuan, Yinyin and Gr{\"a}f, Stefan and Ha, Gavin
+		  and Haffari, Gholamreza and Bashashati, Ali and Russell,
+		  Roslin and McKinney, Steven and Langer{\o}d, Anita and
+		  Green, Andrew and Provenzano, Elena and Wishart, Gordon and
+		  Pinder, Sarah and Watson, Peter and Markowetz, Florian and
+		  Murphy, Leigh and Ellis, Ian and Purushotham, Arnie and
+		  B{\o}rresen-Dale, Anne-Lise and Brenton, James D. and
+		  Tavar{\'e}, Simon and Caldas, Carlos and Aparicio, Samuel},
+  year		= {2012},
+  title		= {The genomic and transcriptomic architecture of 2,000
+		  breast tumours reveals novel subgroups},
+  pages		= {346--352},
+  volume	= {486},
+  number	= {7403},
+  journal	= {Nature},
+  doi		= {10.1038/nature10983},
+  file		= {nature10983:Attachments/nature10983.pdf:application/pdf}
 }
 
-
-@article{Robinson.2010,
- abstract = {The fine detail provided by sequencing-based transcriptome surveys suggests that RNA-seq is likely to become the platform of choice for interrogating steady state RNA. In order to discover biologically important changes in expression, we show that normalization continues to be an essential step in the analysis. We outline a simple and effective method for performing normalization and show dramatically improved results for inferring differential expression in simulated and publicly available data sets.},
- author = {Robinson, Mark D. and Oshlack, Alicia},
- year = {2010},
- title = {A scaling normalization method for differential expression analysis of RNA-seq data},
- pages = {R25},
- volume = {11},
- number = {3},
- journal = {Genome biology},
- doi = {10.1186/gb-2010-11-3-r25},
- file = {Robinson, Oshlack 2010 - A scaling normalization method:Attachments/Robinson, Oshlack 2010 - A scaling normalization method.pdf:application/pdf}
+@Article{	  davies.1993,
+  author	= {Davies, Laurie and Gather, Ursula},
+  year		= {1993},
+  title		= {The Identification of Multiple Outliers},
+  pages		= {782--792},
+  volume	= {88},
+  number	= {423},
+  issn		= {0162-1459},
+  journal	= {Journal of the American Statistical Association},
+  doi		= {10.1080/01621459.1993.10476339},
+  file		= {davies1993:Attachments/davies1993.pdf:application/pdf}
 }
 
-
-@article{Longato.2020,
- abstract = {Developing a prognostic model for biomedical applications typically requires mapping an individual's set of covariates to a measure of the risk that he or she may experience the event to be predicted. Many scenarios, however, especially those involving adverse pathological outcomes, are better described by explicitly accounting for the timing of these events, as well as their probability. As a result, in these cases, traditional classification or ranking metrics may be inadequate to inform model evaluation or selection. To address this limitation, it is common practice to reframe the problem in the context of survival analysis, and resort, instead, to the concordance index (C-index), which summarises how well a predicted risk score describes an observed sequence of events. A practically meaningful interpretation of the C-index, however, may present several difficulties and pitfalls. Specifically, we identify two main issues: i) the C-index remains implicitly, and subtly, dependent on time, and ii) its relationship with the number of subjects whose risk was incorrectly predicted is not straightforward. Failure to consider these two aspects may introduce undesirable and unwanted biases in the evaluation process, and even result in the selection of a suboptimal model. Hence, here, we discuss ways to obtain a meaningful interpretation in spite of these difficulties. Aiming to assist experimenters regardless of their familiarity with the C-index, we start from an introductory-level presentation of its most popular estimator, highlighting the latter's temporal dependency, and suggesting how it might be correctly used to inform model selection. We also address the nonlinearity of the C-index with respect to the number of correct risk predictions, elaborating a simplified framework that may enable an easier interpretation and quantification of C-index improvements or deteriorations.},
- author = {Longato, Enrico and Vettoretti, Martina and {Di Camillo}, Barbara},
- year = {2020},
- title = {A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models},
- pages = {103496},
- volume = {108},
- journal = {Journal of biomedical informatics},
- doi = {10.1016/j.jbi.2020.103496},
- file = {1-s2.0-S1532046420301246-main:Attachments/1-s2.0-S1532046420301246-main.pdf:application/pdf}
+@Misc{		  h.ishwaran.2020,
+  author	= {{H. Ishwaran} and {U.B. Kogalur}},
+  year		= {2020},
+  title		= {Fast Unified Random Forests for Survival, Regression, and
+		  Classification (RF-SRC)},
+  url		= {https://cran.r-project.org/package=randomForestSRC},
+  publisher	= {manual}
 }
 
-
-@article{Newman.2015,
- abstract = {We introduce CIBERSORT, a method for characterizing cell composition of complex tissues from their gene expression profiles. When applied to enumeration of hematopoietic subsets in RNA mixtures from fresh, frozen and fixed tissues, including solid tumors, CIBERSORT outperformed other methods with respect to noise, unknown mixture content and closely related cell types. CIBERSORT should enable large-scale analysis of RNA mixtures for cellular biomarkers and therapeutic targets (http://cibersort.stanford.edu/).},
- author = {Newman, Aaron M. and Liu, Chih Long and Green, Michael R. and Gentles, Andrew J. and Feng, Weiguo and Xu, Yue and Hoang, Chuong D. and Diehn, Maximilian and Alizadeh, Ash A.},
- year = {2015},
- title = {Robust enumeration of cell subsets from tissue expression profiles},
- pages = {453--457},
- volume = {12},
- number = {5},
- journal = {Nature methods},
- doi = {10.1038/nmeth.3337},
- file = {nmeth.3337:Attachments/nmeth.3337.pdf:application/pdf;Newman, Liu et al. 2015 - Robust enumeration of cell subsets:Attachments/Newman, Liu et al. 2015 - Robust enumeration of cell subsets.pdf:application/pdf}
+@Article{	  hao.2023,
+  abstract	= {Mapping single-cell sequencing profiles to comprehensive
+		  reference datasets provides a powerful alternative to
+		  unsupervised analysis. However, most reference datasets are
+		  constructed from single-cell RNA-sequencing data and cannot
+		  be used to annotate datasets that do not measure gene
+		  expression. Here we introduce 'bridge integration', a
+		  method to integrate single-cell datasets across modalities
+		  using a multiomic dataset as a molecular bridge. Each cell
+		  in the multiomic dataset constitutes an element in a
+		  'dictionary', which is used to reconstruct unimodal
+		  datasets and transform them into a shared space. Our
+		  procedure accurately integrates transcriptomic data with
+		  independent single-cell measurements of chromatin
+		  accessibility, histone modifications, DNA methylation and
+		  protein levels. Moreover, we demonstrate how dictionary
+		  learning can be combined with sketching techniques to
+		  improve computational scalability and harmonize 8.6 million
+		  human immune cell profiles from sequencing and mass
+		  cytometry experiments. Our approach, implemented in version
+		  5 of our Seurat toolkit ( http://www.satijalab.org/seurat
+		  ), broadens the utility of single-cell reference datasets
+		  and facilitates comparisons across diverse molecular
+		  modalities.},
+  author	= {Hao, Yuhan and Stuart, Tim and Kowalski, Madeline H. and
+		  Choudhary, Saket and Hoffman, Paul and Hartman, Austin and
+		  Srivastava, Avi and Molla, Gesmira and Madad, Shaista and
+		  Fernandez-Granda, Carlos and Satija, Rahul},
+  year		= {2023},
+  title		= {Dictionary learning for integrative, multimodal and
+		  scalable single-cell analysis},
+  journal	= {Nature biotechnology},
+  doi		= {10.1038/s41587-023-01767-y},
+  file		= {s41587-023-01767-y:Attachments/s41587-023-01767-y.pdf:application/pdf}
 }
 
-
-@article{Lun.2016,
- abstract = {Normalization of single-cell RNA sequencing data is necessary to eliminate cell-specific biases prior to downstream analyses. However, this is not straightforward for noisy single-cell data where many counts are zero. We present a novel approach where expression values are summed across pools of cells, and the summed values are used for normalization. Pool-based size factors are then deconvolved to yield cell-based factors. Our deconvolution approach outperforms existing methods for accurate normalization of cell-specific biases in simulated data. Similar behavior is observed in real data, where deconvolution improves the relevance of results of downstream analyses.},
- author = {Lun, Aaron T. L. and Bach, Karsten and Marioni, John C.},
- year = {2016},
- title = {Pooling across cells to normalize single-cell RNA sequencing data with many zero counts},
- pages = {75},
- volume = {17},
- journal = {Genome biology},
- doi = {10.1186/s13059-016-0947-7},
- file = {Lun, Bach et al. 2016 - Pooling across cells to normalize:Attachments/Lun, Bach et al. 2016 - Pooling across cells to normalize.pdf:application/pdf}
+@Article{	  harrell.1982,
+  author	= {Harrell, Frank E.},
+  year		= {1982},
+  title		= {Evaluating the Yield of Medical Tests},
+  pages		= {2543},
+  volume	= {247},
+  number	= {18},
+  issn		= {0098-7484},
+  journal	= {JAMA: The Journal of the American Medical Association},
+  doi		= {10.1001/jama.1982.03320430047030},
+  file		= {harrell1982:Attachments/harrell1982.pdf:application/pdf}
 }
 
-
-@article{Curtis.2012,
- abstract = {The elucidation of breast cancer subgroups and their molecular drivers requires integrated views of the genome and transcriptome from representative numbers of patients. We present an integrated analysis of copy number and gene expression in a discovery and validation set of 997 and 995 primary breast tumours, respectively, with long-term clinical follow-up. Inherited variants (copy number variants and single nucleotide polymorphisms) and acquired somatic copy number aberrations (CNAs) were associated with expression in {\~{}}40{\%} of genes, with the landscape dominated by cis- and trans-acting CNAs. By delineating expression outlier genes driven in cis by CNAs, we identified putative cancer genes, including deletions in PPP2R2A, MTAP and MAP2K4. Unsupervised analysis of paired DNA--RNA profiles revealed novel subgroups with distinct clinical outcomes, which reproduced in the validation cohort. These include a high-risk, oestrogen-receptor-positive 11q13/14 cis-acting subgroup and a favourable prognosis subgroup devoid of CNAs. Trans-acting aberration hotspots were found to modulate subgroup-specific gene networks, including a TCR deletion-mediated adaptive immune response in the `CNA-devoid' subgroup and a basal-specific chromosome 5 deletion-associated mitotic network. Our results provide a novel molecular stratification of the breast cancer population, derived from the impact of somatic CNAs on the transcriptome.},
- author = {Curtis, Christina and Shah, Sohrab P. and Chin, Suet-Feung and Turashvili, Gulisa and Rueda, Oscar M. and Dunning, Mark J. and Speed, Doug and Lynch, Andy G. and Samarajiwa, Shamith and Yuan, Yinyin and Gr{\"a}f, Stefan and Ha, Gavin and Haffari, Gholamreza and Bashashati, Ali and Russell, Roslin and McKinney, Steven and Langer{\o}d, Anita and Green, Andrew and Provenzano, Elena and Wishart, Gordon and Pinder, Sarah and Watson, Peter and Markowetz, Florian and Murphy, Leigh and Ellis, Ian and Purushotham, Arnie and B{\o}rresen-Dale, Anne-Lise and Brenton, James D. and Tavar{\'e}, Simon and Caldas, Carlos and Aparicio, Samuel},
- year = {2012},
- title = {The genomic and transcriptomic architecture of 2,000 breast tumours reveals novel subgroups},
- pages = {346--352},
- volume = {486},
- number = {7403},
- journal = {Nature},
- doi = {10.1038/nature10983},
- file = {nature10983:Attachments/nature10983.pdf:application/pdf}
+@Article{	  hermida.2022,
+  abstract	= {Tumor gene expression is predictive of patient prognosis
+		  in some cancers. However, RNA-seq and whole genome
+		  sequencing data contain not only reads from host tumor and
+		  normal tissue, but also reads from the tumor microbiome,
+		  which can be used to infer the microbial abundances in each
+		  tumor. Here, we show that tumor microbial abundances, alone
+		  or in combination with tumor gene expression, can predict
+		  cancer prognosis and drug response to some extent-microbial
+		  abundances are significantly less predictive of prognosis
+		  than gene expression, although similarly as predictive of
+		  drug response, but in mostly different cancer-drug
+		  combinations. Thus, it appears possible to leverage
+		  existing sequencing technology, or develop new protocols,
+		  to obtain more non-redundant information about prognosis
+		  and drug response from RNA-seq and whole genome sequencing
+		  experiments than could be obtained from tumor gene
+		  expression or genomic data alone.},
+  author	= {Hermida, Leandro C. and Gertz, E. Michael and Ruppin,
+		  Eytan},
+  year		= {2022},
+  title		= {Predicting cancer prognosis and drug response from the
+		  tumor microbiome},
+  pages		= {2896},
+  volume	= {13},
+  number	= {1},
+  journal	= {Nature communications},
+  doi		= {10.1038/s41467-022-30512-3},
+  file		= {s41467-022-30512-3:Attachments/s41467-022-30512-3.pdf:application/pdf}
 }
 
-
-@article{.2012,
- abstract = {We analysed primary breast cancers by genomic DNA copy number arrays, DNA methylation, exome sequencing, messenger RNA arrays, microRNA sequencing and reverse-phase protein arrays. Our ability to integrate information across platforms provided key insights into previously defined gene expression subtypes and demonstrated the existence of four main breast cancer classes when combining data from five platforms, each of which shows significant molecular heterogeneity. Somatic mutations in only three genes (TP53, PIK3CA and GATA3) occurred at {\textgreater}10{\%} incidence across all breast cancers; however, there were numerous subtype-associated and novel gene mutations including the enrichment of specific mutations in GATA3, PIK3CA and MAP3K1 with the luminal A subtype. We identified two novel protein-expression-defined subgroups, possibly produced by stromal/microenvironmental elements, and integrated analyses identified specific signalling pathways dominant in each molecular subtype including a HER2/phosphorylated HER2/EGFR/phosphorylated EGFR signature within the HER2-enriched expression subtype. Comparison of basal-like breast tumours with high-grade serous ovarian tumours showed many molecular commonalities, indicating a related aetiology and similar therapeutic opportunities. The biological finding of the four main breast cancer subtypes caused by different subsets of genetic and epigenetic abnormalities raises the hypothesis that much of the clinically observable plasticity and heterogeneity occurs within, and not across, these major biological subtypes of breast cancer.},
- year = {2012},
- title = {Comprehensive molecular portraits of human breast tumours},
- pages = {61--70},
- volume = {490},
- number = {7418},
- journal = {Nature},
- doi = {10.1038/nature11412},
- file = {nature11412:Attachments/nature11412.pdf:application/pdf}
+@Article{	  hong.2020,
+  abstract	= {Over the past few decades, RNA sequencing has
+		  significantly progressed, becoming a paramount approach for
+		  transcriptome profiling. The revolution from bulk RNA
+		  sequencing to single-molecular, single-cell and spatial
+		  transcriptome approaches has enabled increasingly accurate,
+		  individual cell resolution incorporated with spatial
+		  information. Cancer, a major malignant and heterogeneous
+		  lethal disease, remains an enormous challenge in medical
+		  research and clinical treatment. As a vital tool, RNA
+		  sequencing has been utilized in many aspects of cancer
+		  research and therapy, including biomarker discovery and
+		  characterization of cancer heterogeneity and evolution,
+		  drug resistance, cancer immune microenvironment and
+		  immunotherapy, cancer neoantigens and so on. In this
+		  review, the latest studies on RNA sequencing technology and
+		  their applications in cancer are summarized, and future
+		  challenges and opportunities for RNA sequencing technology
+		  in cancer applications are discussed.},
+  author	= {Hong, Mingye and Tao, Shuang and Zhang, Ling and Diao,
+		  Li-Ting and Huang, Xuanmei and Huang, Shaohui and Xie,
+		  Shu-Juan and Xiao, Zhen-Dong and Zhang, Hua},
+  year		= {2020},
+  title		= {RNA sequencing: new technologies and applications in
+		  cancer research},
+  pages		= {166},
+  volume	= {13},
+  number	= {1},
+  journal	= {Journal of hematology {\&} oncology},
+  doi		= {10.1186/s13045-020-01005-x},
+  file		= {s13045-020-01005-x:Attachments/s13045-020-01005-x.pdf:application/pdf}
 }
 
-
-@article{Davies.1993,
- author = {Davies, Laurie and Gather, Ursula},
- year = {1993},
- title = {The Identification of Multiple Outliers},
- pages = {782--792},
- volume = {88},
- number = {423},
- issn = {0162-1459},
- journal = {Journal of the American Statistical Association},
- doi = {10.1080/01621459.1993.10476339},
- file = {davies1993:Attachments/davies1993.pdf:application/pdf}
+@Misc{		  ilyakorsunsky.2020,
+  author	= {{Ilya Korsunsky} and {Aparna Nathan} and {Nghia Millard}
+		  and {Soumya Raychaudhuri}},
+  year		= {2020},
+  title		= {presto: Fast Functions for Differential Expression using
+		  Wilcox and AUC},
+  url		= {https://github.com/immunogenomics/presto}
 }
 
-
-@article{Love.2014,
- abstract = {In comparative high-throughput sequencing assays, a fundamental task is the analysis of count data, such as read counts per gene in RNA-seq, for evidence of systematic changes across experimental conditions. Small replicate numbers, discreteness, large dynamic range and the presence of outliers require a suitable statistical approach. We present DESeq2, a method for differential analysis of count data, using shrinkage estimation for dispersions and fold changes to improve stability and interpretability of estimates. This enables a more quantitative analysis focused on the strength rather than the mere presence of differential expression. The DESeq2 package is available at http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html webcite.},
- author = {Love, Michael I. and Huber, Wolfgang and Anders, Simon},
- year = {2014},
- title = {Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2},
- url = {https://genomebiology.biomedcentral.com/counter/pdf/10.1186/s13059-014-0550-8.pdf},
- urldate = {24.11.2022},
- pages = {550},
- volume = {15},
- number = {12},
- journal = {Genome biology},
- doi = {10.1186/s13059-014-0550-8},
- file = {s13059-014-0550-8:Attachments/s13059-014-0550-8.pdf:application/pdf}
+@Article{	  ishwaran.2008,
+  abstract	= {The Annals of Applied Statistics , 2008, Vol.2, No.3,
+		  841-860},
+  author	= {Ishwaran, Hemant and Kogalur, Udaya B. and Blackstone,
+		  Eugene H. and Lauer, Michael S.},
+  year		= {2008},
+  title		= {Random survival forests},
+  volume	= {2},
+  number	= {3},
+  issn		= {1932-6157},
+  journal	= {The Annals of Applied Statistics},
+  doi		= {10.1214/08-AOAS169},
+  file		= {08-AOAS169:Attachments/08-AOAS169.pdf:application/pdf}
 }
 
-
-@article{Tran.2023,
- abstract = {Cells within the tumour microenvironment (TME) can impact tumour development and influence treatment response. Computational approaches have been developed to deconvolve the TME from bulk RNA-seq. Using scRNA-seq profiling from breast tumours we simulate thousands of bulk mixtures, representing tumour purities and cell lineages, to compare the performance of nine TME deconvolution methods (BayesPrism, Scaden, CIBERSORTx, MuSiC, DWLS, hspe, CPM, Bisque, and EPIC). Some methods are more robust in deconvolving mixtures with high tumour purity levels. Most methods tend to mis-predict normal epithelial for cancer epithelial as tumour purity increases, a finding that is validated in two independent datasets. The breast cancer molecular subtype influences this mis-prediction. BayesPrism and DWLS have the lowest combined numbers of false positives and false negatives, and have the best performance when deconvolving granular immune lineages. Our findings highlight the need for more single-cell characterisation of rarer cell types, and suggest that tumour cell compositions should be considered when deconvolving the TME.},
- author = {Tran, Khoa A. and Addala, Venkateswar and Johnston, Rebecca L. and Lovell, David and Bradley, Andrew and Koufariotis, Lambros T. and Wood, Scott and Wu, Sunny Z. and Roden, Daniel and Al-Eryani, Ghamdan and Swarbrick, Alexander and Williams, Elizabeth D. and Pearson, John V. and Kondrashova, Olga and Waddell, Nicola},
- year = {2023},
- title = {Performance of tumour microenvironment deconvolution methods in breast cancer using single-cell simulated bulk mixtures},
- pages = {5758},
- volume = {14},
- number = {1},
- journal = {Nature communications},
- doi = {10.1038/s41467-023-41385-5},
- file = {s41467-023-41385-5:Attachments/s41467-023-41385-5.pdf:application/pdf}
+@Article{	  jew.2020,
+  abstract	= {We present Bisque, a tool for estimating cell type
+		  proportions in bulk expression. Bisque implements a
+		  regression-based approach that utilizes single-cell RNA-seq
+		  (scRNA-seq) or single-nucleus RNA-seq (snRNA-seq) data to
+		  generate a reference expression profile and learn
+		  gene-specific bulk expression transformations to robustly
+		  decompose RNA-seq data. These transformations significantly
+		  improve decomposition performance compared to existing
+		  methods when there is significant technical variation in
+		  the generation of the reference profile and observed bulk
+		  expression. Importantly, compared to existing methods, our
+		  approach is extremely efficient, making it suitable for the
+		  analysis of large genomic datasets that are becoming
+		  ubiquitous. When applied to subcutaneous adipose and
+		  dorsolateral prefrontal cortex expression datasets with
+		  both bulk RNA-seq and snRNA-seq data, Bisque replicates
+		  previously reported associations between cell type
+		  proportions and measured phenotypes across abundant and
+		  rare cell types. We further propose an additional mode of
+		  operation that merely requires a set of known marker
+		  genes.},
+  author	= {Jew, Brandon and Alvarez, Marcus and Rahmani, Elior and
+		  Miao, Zong and Ko, Arthur and Garske, Kristina M. and Sul,
+		  Jae Hoon and Pietil{\"a}inen, Kirsi H. and Pajukanta,
+		  P{\"a}ivi and Halperin, Eran},
+  year		= {2020},
+  title		= {Accurate estimation of cell composition in bulk expression
+		  through robust integration of single-cell information},
+  pages		= {1971},
+  volume	= {11},
+  number	= {1},
+  journal	= {Nature communications},
+  doi		= {10.1038/s41467-020-15816-6},
+  file		= {s41467-020-15816-6:Attachments/s41467-020-15816-6.pdf:application/pdf}
 }
 
-
-@misc{H.Ishwaran.2020,
- author = {{H. Ishwaran} and {U.B. Kogalur}},
- year = {2020},
- title = {Fast Unified Random Forests for Survival, Regression, and  Classification (RF-SRC)},
- url = {https://cran.r-project.org/package=randomForestSRC},
- publisher = {manual}
+@Article{	  kang.2019,
+  abstract	= {Quantifying cell-type proportions and their corresponding
+		  gene expression profiles in tissue samples would enhance
+		  understanding of the contributions of individual cell types
+		  to the physiological states of the tissue. Current
+		  approaches that address tissue heterogeneity have
+		  drawbacks. Experimental techniques, such as
+		  fluorescence-activated cell sorting, and single cell RNA
+		  sequencing are expensive. Computational approaches that use
+		  expression data from heterogeneous samples are promising,
+		  but most of the current methods estimate either cell-type
+		  proportions or cell-type-specific expression profiles by
+		  requiring the other as input. Although such partial
+		  deconvolution methods have been successfully applied to
+		  tumor samples, the additional input required may be
+		  unavailable. We introduce a novel complete deconvolution
+		  method, CDSeq, that uses only RNA-Seq data from bulk tissue
+		  samples to simultaneously estimate both cell-type
+		  proportions and cell-type-specific expression profiles.
+		  Using several synthetic and real experimental datasets with
+		  known cell-type composition and cell-type-specific
+		  expression profiles, we compared CDSeq's complete
+		  deconvolution performance with seven other established
+		  deconvolution methods. Complete deconvolution using CDSeq
+		  represents a substantial technical advance over partial
+		  deconvolution approaches and will be useful for studying
+		  cell mixtures in tissue samples. CDSeq is available at
+		  GitHub repository (MATLAB and Octave code):
+		  https://github.com/kkang7/CDSeq.},
+  author	= {Kang, Kai and Meng, Qian and Shats, Igor and Umbach, David
+		  M. and Li, Melissa and Li, Yuanyuan and Li, Xiaoling and
+		  Li, Leping},
+  year		= {2019},
+  title		= {CDSeq: A novel complete deconvolution method for
+		  dissecting heterogeneous samples using gene expression
+		  data},
+  pages		= {e1007510},
+  volume	= {15},
+  number	= {12},
+  journal	= {PLoS computational biology},
+  doi		= {10.1371/journal.pcbi.1007510},
+  file		= {cd_seq:Attachments/cd_seq.pdf:application/pdf}
 }
 
-
-@article{Bullard.2010,
- abstract = {BACKGROUND
-
-High-throughput sequencing technologies, such as the Illumina Genome Analyzer, are powerful new tools for investigating a wide range of biological and medical questions. Statistical and computational methods are key for drawing meaningful and accurate conclusions from the massive and complex datasets generated by the sequencers. We provide a detailed evaluation of statistical methods for normalization and differential expression (DE) analysis of Illumina transcriptome sequencing (mRNA-Seq) data.
-
-RESULTS
-
-We compare statistical methods for detecting genes that are significantly DE between two types of biological samples and find that there are substantial differences in how the test statistics handle low-count genes. We evaluate how DE results are affected by features of the sequencing platform, such as, varying gene lengths, base-calling calibration method (with and without phi X control lane), and flow-cell/library preparation effects. We investigate the impact of the read count normalization method on DE results and show that the standard approach of scaling by total lane counts (e.g., RPKM) can bias estimates of DE. We propose more general quantile-based normalization procedures and demonstrate an improvement in DE detection.
-
-CONCLUSIONS
-
-Our results have significant practical and methodological implications for the design and analysis of mRNA-Seq experiments. They highlight the importance of appropriate statistical methods for normalization and DE inference, to account for features of the sequencing platform that could impact the accuracy of results. They also reveal the need for further research in the development of statistical and computational methods for mRNA-Seq.},
- author = {Bullard, James H. and Purdom, Elizabeth and Hansen, Kasper D. and Dudoit, Sandrine},
- year = {2010},
- title = {Evaluation of statistical methods for normalization and differential expression in mRNA-Seq experiments},
- pages = {94},
- volume = {11},
- journal = {BMC bioinformatics},
- doi = {10.1186/1471-2105-11-94},
- file = {1471-2105-11-94:Attachments/1471-2105-11-94.pdf:application/pdf}
+@Misc{		  katharinem.mullen.2023,
+  author	= {{Katharine M. Mullen} and {Ivo H. M. van Stokkum}},
+  year		= {2023},
+  title		= {nnls: The Lawson-Hanson Algorithm for Non-Negative Least
+		  Squares (NNLS)},
+  url		= {https://CRAN.R-project.org/package=nnls}
 }
 
-
-@misc{KatharineM.Mullen.2023,
- author = {{Katharine M. Mullen} and {Ivo H. M. van Stokkum}},
- year = {2023},
- title = {nnls: The Lawson-Hanson Algorithm for Non-Negative Least Squares  (NNLS)},
- url = {https://CRAN.R-project.org/package=nnls}
+@Book{		  kidder.2020,
+  abstract	= {This second edition provides techniques used to study of
+		  the underlying transcriptional programs of stem cells that
+		  promote self-renewal and differentiation. Chapters detail
+		  next-generation sequencing technologies, data analysis,
+		  protocols on analysis and visualization of single-cell
+		  RNA-Seq data, analysis of 3D chromatin architecture,
+		  interpretation of large-scale interaction networks,
+		  transcriptional networks in embryonic and adult stem cells,
+		  derivation of stem cells, and transcriptional programs that
+		  promote reprogramming, transdifferentiation, and cancer
+		  formation. Written in the highly successful Methods in
+		  Molecular Biology series format, chapters include
+		  introductions to their respective topics, lists of the
+		  necessary materials and reagents, step-by-step, readily
+		  reproducible laboratory protocols, and tips on
+		  troubleshooting and avoiding known pitfalls. Authoritative
+		  and cutting-edge, Stem Cell Transcriptional Network:
+		  Methods and Protocols, Second Edition aims to provide a key
+		  resource for biologists seeking to interrogate these vital
+		  networks.},
+  year		= {2020},
+  title		= {Stem Cell Transcriptional Networks: Methods and
+		  Protocols},
+  url		= {https://link.springer.com/content/pdf/10.1007/978-1-0716-0301-7.pdf},
+  address	= {New York, NY},
+  urldate	= {18.11.2022},
+  edition	= {2nd ed. 2020},
+  volume	= {2117},
+  publisher	= {{Springer US}},
+  isbn		= {9781071603017},
+  series	= {Methods in Molecular Biology},
+  editor	= {Kidder, Benjamin L.},
+  doi		= {10.1007/978-1-0716-0301-7},
+  file		= {978-1-0716-0301-7:Attachments/978-1-0716-0301-7.pdf:application/pdf}
 }
 
-
-@article{Colaprico.2016,
- abstract = {The Cancer Genome Atlas (TCGA) research network has made public a large collection of clinical and molecular phenotypes of more than 10 000 tumor patients across 33 different tumor types. Using this cohort, TCGA has published over 20 marker papers detailing the genomic and epigenomic alterations associated with these tumor types. Although many important discoveries have been made by TCGA's research network, opportunities still exist to implement novel methods, thereby elucidating new biological pathways and diagnostic markers. However, mining the TCGA data presents several bioinformatics challenges, such as data retrieval and integration with clinical data and other molecular data types (e.g. RNA and DNA methylation). We developed an R/Bioconductor package called TCGAbiolinks to address these challenges and offer bioinformatics solutions by using a guided workflow to allow users to query, download and perform integrative analyses of TCGA data. We combined methods from computer science and statistics into the pipeline and incorporated methodologies developed in previous TCGA marker studies and in our own group. Using four different TCGA tumor types (Kidney, Brain, Breast and Colon) as examples, we provide case studies to illustrate examples of reproducibility, integrative analysis and utilization of different Bioconductor packages to advance and accelerate novel discoveries.},
- author = {Colaprico, Antonio and Silva, Tiago C. and Olsen, Catharina and Garofano, Luciano and Cava, Claudia and Garolini, Davide and Sabedot, Thais S. and Malta, Tathiane M. and Pagnotta, Stefano M. and Castiglioni, Isabella and Ceccarelli, Michele and Bontempi, Gianluca and Noushmehr, Houtan},
- year = {2016},
- title = {TCGAbiolinks: an R/Bioconductor package for integrative analysis of TCGA data},
- pages = {e71},
- volume = {44},
- number = {8},
- journal = {Nucleic acids research},
- doi = {10.1093/nar/gkv1507}
+@Article{	  lei.2022,
+  abstract	= {MOTIVATION
+		  
+		  Identifying cell types and their abundances and how these
+		  evolve during tumor progression is critical to
+		  understanding the mechanisms of metastasis and identifying
+		  predictors of metastatic potential that can guide the
+		  development of new diagnostics or therapeutics. Single-cell
+		  RNA sequencing (scRNA-seq) has been especially promising in
+		  resolving heterogeneity of expression programs at the
+		  single-cell level, but is not always feasible, e.g. for
+		  large cohort studies or longitudinal analysis of archived
+		  samples. In such cases, clonal subpopulations may still be
+		  inferred via genomic deconvolution, but deconvolution
+		  methods have limited ability to resolve fine clonal
+		  structure and may require reference cell type profiles that
+		  are missing or imprecise. Prior methods can eliminate the
+		  need for reference profiles but show unstable performance
+		  when few bulk samples are available.
+		  
+		  RESULTS
+		  
+		  In this work, we develop a new method using reference
+		  scRNA-seq to interpret sample collections for which only
+		  bulk RNA-seq is available for some samples, e.g. clonally
+		  resolving archived primary tissues using scRNA-seq from
+		  metastases. By integrating such information in a Quadratic
+		  Programming framework, our method can recover more accurate
+		  cell types and corresponding cell type abundances in bulk
+		  samples. Application to a breast tumor bone metastases
+		  dataset confirms the power of scRNA-seq data to improve
+		  cell type inference and quantification in same-patient bulk
+		  samples.
+		  
+		  AVAILABILITY AND IMPLEMENTATION
+		  
+		  Source code is available on Github at
+		  https://github.com/CMUSchwartzLab/RADs.},
+  author	= {Lei, Haoyun and Guo, Xiaoyan A. and Tao, Yifeng and Ding,
+		  Kai and Fu, Xuecong and Oesterreich, Steffi and Lee, Adrian
+		  V. and Schwartz, Russell},
+  year		= {2022},
+  title		= {Semi-deconvolution of bulk and single-cell RNA-seq data
+		  with application to metastatic progression in breast
+		  cancer},
+  pages		= {i386-i394},
+  volume	= {38},
+  number	= {Suppl 1},
+  journal	= {Bioinformatics (Oxford, England)},
+  doi		= {10.1093/bioinformatics/btac262},
+  file		= {btac262:Attachments/btac262.pdf:application/pdf}
 }
 
-
-@book{Kidder.2020,
- abstract = {This second edition provides techniques used to study of the underlying transcriptional programs of stem cells that promote self-renewal and differentiation. Chapters detail next-generation sequencing technologies, data analysis, protocols on analysis and visualization of single-cell RNA-Seq data, analysis of 3D chromatin architecture, interpretation of large-scale interaction networks, transcriptional networks in embryonic and adult stem cells, derivation of stem cells, and transcriptional programs that promote reprogramming, transdifferentiation, and cancer formation. Written in the highly successful Methods in Molecular Biology series format, chapters include introductions to their respective topics, lists of the necessary materials and reagents, step-by-step, readily reproducible laboratory protocols, and tips on troubleshooting and avoiding known pitfalls. Authoritative and cutting-edge, Stem Cell Transcriptional Network: Methods and Protocols, Second Edition aims to provide a key resource for biologists seeking to interrogate these vital networks.},
- year = {2020},
- title = {Stem Cell Transcriptional Networks: Methods and Protocols},
- url = {https://link.springer.com/content/pdf/10.1007/978-1-0716-0301-7.pdf},
- address = {New York, NY},
- urldate = {18.11.2022},
- edition = {2nd ed. 2020},
- volume = {2117},
- publisher = {{Springer US}},
- isbn = {9781071603017},
- series = {Methods in Molecular Biology},
- editor = {Kidder, Benjamin L.},
- doi = {10.1007/978-1-0716-0301-7},
- file = {978-1-0716-0301-7:Attachments/978-1-0716-0301-7.pdf:application/pdf}
+@Article{	  li.2021,
+  abstract	= {RNA sequencing (RNAseq) can reveal gene fusions, splicing
+		  variants, mutations/indels in addition to differential gene
+		  expression, thus providing a more complete genetic picture
+		  than DNA sequencing. This most widely used technology in
+		  genomics tool box has evolved from classic bulk RNA
+		  sequencing (RNAseq), popular single cell RNA sequencing
+		  (scRNAseq) to newly emerged spatial RNA sequencing
+		  (spRNAseq). Bulk RNAseq studies average global gene
+		  expression, scRNAseq investigates single cell RNA biology
+		  up to 20,000 individual cells simultaneously, while
+		  spRNAseq has ability to dissect RNA activities spatially,
+		  representing next generation of RNA sequencing. This
+		  article highlights these technologies, characteristic
+		  features and suitable applications in precision oncology.},
+  author	= {Li, Xinmin and Wang, Cun-Yu},
+  year		= {2021},
+  title		= {From bulk, single-cell to spatial RNA sequencing},
+  pages		= {36},
+  volume	= {13},
+  number	= {1},
+  journal	= {International journal of oral science},
+  doi		= {10.1038/s41368-021-00146-0},
+  file		= {s41368-021-00146-0:Attachments/s41368-021-00146-0.pdf:application/pdf}
 }
 
-
-@article{Tsoucas.2019,
- abstract = {The rapid development of single-cell transcriptomic technologies has helped uncover the cellular heterogeneity within cell populations. However, bulk RNA-seq continues to be the main workhorse for quantifying gene expression levels due to technical simplicity and low cost. To most effectively extract information from bulk data given the new knowledge gained from single-cell methods, we have developed a novel algorithm to estimate the cell-type composition of bulk data from a single-cell RNA-seq-derived cell-type signature. Comparison with existing methods using various real RNA-seq data sets indicates that our new approach is more accurate and comprehensive than previous methods, especially for the estimation of rare cell types. More importantly, our method can detect cell-type composition changes in response to external perturbations, thereby providing a valuable, cost-effective method for dissecting the cell-type-specific effects of drug treatments or condition changes. As such, our method is applicable to a wide range of biological and clinical investigations.},
- author = {Tsoucas, Daphne and Dong, Rui and Chen, Haide and Zhu, Qian and Guo, Guoji and Yuan, Guo-Cheng},
- year = {2019},
- title = {Accurate estimation of cell-type composition from gene expression data},
- pages = {2975},
- volume = {10},
- number = {1},
- journal = {Nature communications},
- doi = {10.1038/s41467-019-10802-z},
- file = {s41467-019-10802-z:Attachments/s41467-019-10802-z.pdf:application/pdf}
+@Book{		  lipnitskaya.2022,
+  author	= {Lipnitskaya, Sofya and Shen, Yang and Legewie, Stefan and
+		  Klein, Holger and Becker, Kolja},
+  year		= {2022},
+  title		= {Machine learning-assisted identification of factors
+		  contributing to the technical variability between bulk and
+		  single-cell RNA-seq experiments},
+  doi		= {10.1101/2022.01.06.474932},
+  file		= {2022.01.06.474932v1.full:Attachments/2022.01.06.474932v1.full.pdf:application/pdf}
 }
 
-
-@article{Cobos.2023,
- abstract = {BACKGROUND
-
-RNA profiling technologies at single-cell resolutions, including single-cell and single-nuclei RNA sequencing (scRNA-seq and snRNA-seq, scnRNA-seq for short), can help characterize the composition of tissues and reveal cells that influence key functions in both healthy and disease tissues. However, the use of these technologies is operationally challenging because of high costs and stringent sample-collection requirements. Computational deconvolution methods that infer the composition of bulk-profiled samples using scnRNA-seq-characterized cell types can broaden scnRNA-seq applications, but their effectiveness remains controversial.
-
-RESULTS
-
-We produced the first systematic evaluation of deconvolution methods on datasets with either known or scnRNA-seq-estimated compositions. Our analyses revealed biases that are common to scnRNA-seq 10X Genomics assays and illustrated the importance of accurate and properly controlled data preprocessing and method selection and optimization. Moreover, our results suggested that concurrent RNA-seq and scnRNA-seq profiles can help improve the accuracy of both scnRNA-seq preprocessing and the deconvolution methods that employ them. Indeed, our proposed method, Single-cell RNA Quantity Informed Deconvolution (SQUID), which combines RNA-seq transformation and dampened weighted least-squares deconvolution approaches, consistently outperformed other methods in predicting the composition of cell mixtures and tissue samples.
-
-CONCLUSIONS
-
-We showed that analysis of concurrent RNA-seq and scnRNA-seq profiles with SQUID can produce accurate cell-type abundance estimates and that this accuracy improvement was necessary for identifying outcomes-predictive cancer cell subclones in pediatric acute myeloid leukemia and neuroblastoma datasets. These results suggest that deconvolution accuracy improvements are vital to enabling its applications in the life sciences.},
- author = {Cobos, Francisco Avila and Panah, Mohammad Javad Najaf and Epps, Jessica and Long, Xiaochen and Man, Tsz-Kwong and Chiu, Hua-Sheng and Chomsky, Elad and Kiner, Evgeny and Krueger, Michael J. and {Di Bernardo}, Diego and Voloch, Luis and Molenaar, Jan and {van Hooff}, Sander R. and Westermann, Frank and Jansky, Selina and Redell, Michele L. and Mestdagh, Pieter and Sumazin, Pavel},
- year = {2023},
- title = {Effective methods for bulk RNA-seq deconvolution using scnRNA-seq transcriptomes},
- pages = {177},
- volume = {24},
- number = {1},
- journal = {Genome biology},
- doi = {10.1186/s13059-023-03016-6},
- file = {s13059-023-03016-6:Attachments/s13059-023-03016-6.pdf:application/pdf}
+@Article{	  liu.2018,
+  abstract	= {For a decade, The Cancer Genome Atlas (TCGA) program
+		  collected clinicopathologic annotation data along with
+		  multi-platform molecular profiles of more than 11,000 human
+		  tumors across 33 different cancer types. TCGA clinical data
+		  contain key features representing the democratized nature
+		  of the data collection process. To ensure proper use of
+		  this large clinical dataset associated with genomic
+		  features, we developed a standardized dataset named the
+		  TCGA Pan-Cancer Clinical Data Resource (TCGA-CDR), which
+		  includes four major clinical outcome endpoints. In addition
+		  to detailing major challenges and statistical limitations
+		  encountered during the effort of integrating the acquired
+		  clinical data, we present a summary that includes endpoint
+		  usage recommendations for each cancer type. These TCGA-CDR
+		  findings appear to be consistent with cancer genomics
+		  studies independent of the TCGA effort and provide
+		  opportunities for investigating cancer biology using
+		  clinical correlates at an unprecedented scale.},
+  author	= {Liu, Jianfang and Lichtenberg, Tara and Hoadley, Katherine
+		  A. and Poisson, Laila M. and Lazar, Alexander J. and
+		  Cherniack, Andrew D. and Kovatich, Albert J. and Benz,
+		  Christopher C. and Levine, Douglas A. and Lee, Adrian V.
+		  and Omberg, Larsson and Wolf, Denise M. and Shriver, Craig
+		  D. and Thorsson, Vesteinn and Hu, Hai},
+  year		= {2018},
+  title		= {An Integrated TCGA Pan-Cancer Clinical Data Resource to
+		  Drive High-Quality Survival Outcome Analytics},
+  pages		= {400-416.e11},
+  volume	= {173},
+  number	= {2},
+  journal	= {Cell},
+  doi		= {10.1016/j.cell.2018.02.052},
+  file		= {PIIS0092867418302290:Attachments/PIIS0092867418302290.pdf:application/pdf}
 }
 
-
-@article{Liu.2018,
- abstract = {For a decade, The Cancer Genome Atlas (TCGA) program collected clinicopathologic annotation data along with multi-platform molecular profiles of more than 11,000 human tumors across 33 different cancer types. TCGA clinical data contain key features representing the democratized nature of the data collection process. To ensure proper use of this large clinical dataset associated with genomic features, we developed a standardized dataset named the TCGA Pan-Cancer Clinical Data Resource (TCGA-CDR), which includes four major clinical outcome endpoints. In addition to detailing major challenges and statistical limitations encountered during the effort of integrating the acquired clinical data, we present a summary that includes endpoint usage recommendations for each cancer type. These TCGA-CDR findings appear to be consistent with cancer genomics studies independent of the TCGA effort and provide opportunities for investigating cancer biology using clinical correlates at an unprecedented scale.},
- author = {Liu, Jianfang and Lichtenberg, Tara and Hoadley, Katherine A. and Poisson, Laila M. and Lazar, Alexander J. and Cherniack, Andrew D. and Kovatich, Albert J. and Benz, Christopher C. and Levine, Douglas A. and Lee, Adrian V. and Omberg, Larsson and Wolf, Denise M. and Shriver, Craig D. and Thorsson, Vesteinn and Hu, Hai},
- year = {2018},
- title = {An Integrated TCGA Pan-Cancer Clinical Data Resource to Drive High-Quality Survival Outcome Analytics},
- pages = {400-416.e11},
- volume = {173},
- number = {2},
- journal = {Cell},
- doi = {10.1016/j.cell.2018.02.052},
- file = {PIIS0092867418302290:Attachments/PIIS0092867418302290.pdf:application/pdf}
+@Article{	  longato.2020,
+  abstract	= {Developing a prognostic model for biomedical applications
+		  typically requires mapping an individual's set of
+		  covariates to a measure of the risk that he or she may
+		  experience the event to be predicted. Many scenarios,
+		  however, especially those involving adverse pathological
+		  outcomes, are better described by explicitly accounting for
+		  the timing of these events, as well as their probability.
+		  As a result, in these cases, traditional classification or
+		  ranking metrics may be inadequate to inform model
+		  evaluation or selection. To address this limitation, it is
+		  common practice to reframe the problem in the context of
+		  survival analysis, and resort, instead, to the concordance
+		  index (C-index), which summarises how well a predicted risk
+		  score describes an observed sequence of events. A
+		  practically meaningful interpretation of the C-index,
+		  however, may present several difficulties and pitfalls.
+		  Specifically, we identify two main issues: i) the C-index
+		  remains implicitly, and subtly, dependent on time, and ii)
+		  its relationship with the number of subjects whose risk was
+		  incorrectly predicted is not straightforward. Failure to
+		  consider these two aspects may introduce undesirable and
+		  unwanted biases in the evaluation process, and even result
+		  in the selection of a suboptimal model. Hence, here, we
+		  discuss ways to obtain a meaningful interpretation in spite
+		  of these difficulties. Aiming to assist experimenters
+		  regardless of their familiarity with the C-index, we start
+		  from an introductory-level presentation of its most popular
+		  estimator, highlighting the latter's temporal dependency,
+		  and suggesting how it might be correctly used to inform
+		  model selection. We also address the nonlinearity of the
+		  C-index with respect to the number of correct risk
+		  predictions, elaborating a simplified framework that may
+		  enable an easier interpretation and quantification of
+		  C-index improvements or deteriorations.},
+  author	= {Longato, Enrico and Vettoretti, Martina and {Di Camillo},
+		  Barbara},
+  year		= {2020},
+  title		= {A practical perspective on the concordance index for the
+		  evaluation and selection of prognostic time-to-event
+		  models},
+  pages		= {103496},
+  volume	= {108},
+  journal	= {Journal of biomedical informatics},
+  doi		= {10.1016/j.jbi.2020.103496},
+  file		= {1-s2.0-S1532046420301246-main:Attachments/1-s2.0-S1532046420301246-main.pdf:application/pdf}
 }
 
-
-@article{Wu.2021,
- abstract = {Breast cancers are complex cellular ecosystems where heterotypic interactions play central roles in disease progression and response to therapy. However, our knowledge of their cellular composition and organization is limited. Here we present a single-cell and spatially resolved transcriptomics analysis of human breast cancers. We developed a single-cell method of intrinsic subtype classification (SCSubtype) to reveal recurrent neoplastic cell heterogeneity. Immunophenotyping using cellular indexing of transcriptomes and epitopes by sequencing (CITE-seq) provides high-resolution immune profiles, including new PD-L1/PD-L2+ macrophage populations associated with clinical outcome. Mesenchymal cells displayed diverse functions and cell-surface protein expression through differentiation within three major lineages. Stromal-immune niches were spatially organized in tumors, offering insights into antitumor immune regulation. Using single-cell signatures, we deconvoluted large breast cancer cohorts to stratify them into nine clusters, termed 'ecotypes', with unique cellular compositions and clinical outcomes. This study provides a comprehensive transcriptional atlas of the cellular architecture of breast cancer.},
- author = {Wu, Sunny Z. and Al-Eryani, Ghamdan and Roden, Daniel Lee and Junankar, Simon and Harvey, Kate and Andersson, Alma and Thennavan, Aatish and Wang, Chenfei and Torpy, James R. and Bartonicek, Nenad and Wang, Taopeng and Larsson, Ludvig and Kaczorowski, Dominik and Weisenfeld, Neil I. and Uytingco, Cedric R. and Chew, Jennifer G. and Bent, Zachary W. and Chan, Chia-Ling and Gnanasambandapillai, Vikkitharan and Dutertre, Charles-Antoine and Gluch, Laurence and Hui, Mun N. and Beith, Jane and Parker, Andrew and Robbins, Elizabeth and Segara, Davendra and Cooper, Caroline and Mak, Cindy and Chan, Belinda and Warrier, Sanjay and Ginhoux, Florent and Millar, Ewan and Powell, Joseph E. and Williams, Stephen R. and Liu, X. Shirley and O'Toole, Sandra and Lim, Elgene and Lundeberg, Joakim and Perou, Charles M. and Swarbrick, Alexander},
- year = {2021},
- title = {A single-cell and spatially resolved atlas of human breast cancers},
- pages = {1334--1347},
- volume = {53},
- number = {9},
- issn = {1061-4036},
- journal = {Nature Genetics},
- doi = {10.1038/s41588-021-00911-1},
- file = {Wu, Al-Eryani et al. 2021 - A single-cell and spatially resolved:Attachments/Wu, Al-Eryani et al. 2021 - A single-cell and spatially resolved.pdf:application/pdf}
+@Article{	  love.2014,
+  abstract	= {In comparative high-throughput sequencing assays, a
+		  fundamental task is the analysis of count data, such as
+		  read counts per gene in RNA-seq, for evidence of systematic
+		  changes across experimental conditions. Small replicate
+		  numbers, discreteness, large dynamic range and the presence
+		  of outliers require a suitable statistical approach. We
+		  present DESeq2, a method for differential analysis of count
+		  data, using shrinkage estimation for dispersions and fold
+		  changes to improve stability and interpretability of
+		  estimates. This enables a more quantitative analysis
+		  focused on the strength rather than the mere presence of
+		  differential expression. The DESeq2 package is available at
+		  http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html
+		  webcite.},
+  author	= {Love, Michael I. and Huber, Wolfgang and Anders, Simon},
+  year		= {2014},
+  title		= {Moderated estimation of fold change and dispersion for
+		  RNA-seq data with DESeq2},
+  url		= {https://genomebiology.biomedcentral.com/counter/pdf/10.1186/s13059-014-0550-8.pdf},
+  urldate	= {24.11.2022},
+  pages		= {550},
+  volume	= {15},
+  number	= {12},
+  journal	= {Genome biology},
+  doi		= {10.1186/s13059-014-0550-8},
+  file		= {s13059-014-0550-8:Attachments/s13059-014-0550-8.pdf:application/pdf}
 }
 
-
-@article{Hermida.2022,
- abstract = {Tumor gene expression is predictive of patient prognosis in some cancers. However, RNA-seq and whole genome sequencing data contain not only reads from host tumor and normal tissue, but also reads from the tumor microbiome, which can be used to infer the microbial abundances in each tumor. Here, we show that tumor microbial abundances, alone or in combination with tumor gene expression, can predict cancer prognosis and drug response to some extent-microbial abundances are significantly less predictive of prognosis than gene expression, although similarly as predictive of drug response, but in mostly different cancer-drug combinations. Thus, it appears possible to leverage existing sequencing technology, or develop new protocols, to obtain more non-redundant information about prognosis and drug response from RNA-seq and whole genome sequencing experiments than could be obtained from tumor gene expression or genomic data alone.},
- author = {Hermida, Leandro C. and Gertz, E. Michael and Ruppin, Eytan},
- year = {2022},
- title = {Predicting cancer prognosis and drug response from the tumor microbiome},
- pages = {2896},
- volume = {13},
- number = {1},
- journal = {Nature communications},
- doi = {10.1038/s41467-022-30512-3},
- file = {s41467-022-30512-3:Attachments/s41467-022-30512-3.pdf:application/pdf}
+@Article{	  lun.2016,
+  abstract	= {Normalization of single-cell RNA sequencing data is
+		  necessary to eliminate cell-specific biases prior to
+		  downstream analyses. However, this is not straightforward
+		  for noisy single-cell data where many counts are zero. We
+		  present a novel approach where expression values are summed
+		  across pools of cells, and the summed values are used for
+		  normalization. Pool-based size factors are then deconvolved
+		  to yield cell-based factors. Our deconvolution approach
+		  outperforms existing methods for accurate normalization of
+		  cell-specific biases in simulated data. Similar behavior is
+		  observed in real data, where deconvolution improves the
+		  relevance of results of downstream analyses.},
+  author	= {Lun, Aaron T. L. and Bach, Karsten and Marioni, John C.},
+  year		= {2016},
+  title		= {Pooling across cells to normalize single-cell RNA
+		  sequencing data with many zero counts},
+  pages		= {75},
+  volume	= {17},
+  journal	= {Genome biology},
+  doi		= {10.1186/s13059-016-0947-7},
+  file		= {Lun, Bach et al. 2016 - Pooling across cells to
+		  normalize:Attachments/Lun, Bach et al. 2016 - Pooling
+		  across cells to normalize.pdf:application/pdf}
 }
 
-
-@article{Harrell.1982,
- author = {Harrell, Frank E.},
- year = {1982},
- title = {Evaluating the Yield of Medical Tests},
- pages = {2543},
- volume = {247},
- number = {18},
- issn = {0098-7484},
- journal = {JAMA: The Journal of the American Medical Association},
- doi = {10.1001/jama.1982.03320430047030},
- file = {harrell1982:Attachments/harrell1982.pdf:application/pdf}
+@Article{	  mccarthy.2017,
+  abstract	= {MOTIVATION
+		  
+		  Single-cell RNA sequencing (scRNA-seq) is increasingly used
+		  to study gene expression at the level of individual cells.
+		  However, preparing raw sequence data for further analysis
+		  is not a straightforward process. Biases, artifacts and
+		  other sources of unwanted variation are present in the
+		  data, requiring substantial time and effort to be spent on
+		  pre-processing, quality control (QC) and normalization.
+		  
+		  RESULTS
+		  
+		  We have developed the R/Bioconductor package scater to
+		  facilitate rigorous pre-processing, quality control,
+		  normalization and visualization of scRNA-seq data. The
+		  package provides a convenient, flexible workflow to process
+		  raw sequencing reads into a high-quality expression dataset
+		  ready for downstream analysis. scater provides a rich suite
+		  of plotting tools for single-cell data and a flexible data
+		  structure that is compatible with existing tools and can be
+		  used as infrastructure for future software development.
+		  
+		  AVAILABILITY AND IMPLEMENTATION
+		  
+		  The open-source code, along with installation instructions,
+		  vignettes and case studies, is available through
+		  Bioconductor at http://bioconductor.org/packages/scater .
+		  
+		  CONTACT
+		  
+		  davis@ebi.ac.uk.
+		  
+		  SUPPLEMENTARY INFORMATION
+		  
+		  Supplementary data are available at Bioinformatics
+		  online.},
+  author	= {McCarthy, Davis J. and Campbell, Kieran R. and Lun, Aaron
+		  T. L. and Wills, Quin F.},
+  year		= {2017},
+  title		= {Scater: pre-processing, quality control, normalization and
+		  visualization of single-cell RNA-seq data in R},
+  pages		= {1179--1186},
+  volume	= {33},
+  number	= {8},
+  journal	= {Bioinformatics (Oxford, England)},
+  doi		= {10.1093/bioinformatics/btw777},
+  file		= {bioinformatics_33_8_1179:Attachments/bioinformatics_33_8_1179.pdf:application/pdf}
 }
 
-
-@article{Zaitsev.2022,
- abstract = {Cellular deconvolution algorithms virtually reconstruct tissue composition by analyzing the gene expression of complex tissues. We present the decision tree machine learning algorithm, Kassandra, trained on a broad collection of {\textgreater}9,400 tissue and blood sorted cell RNA profiles incorporated into millions of artificial transcriptomes to accurately reconstruct the tumor microenvironment (TME). Bioinformatics correction for technical and biological variability, aberrant cancer cell expression inclusion, and accurate quantification and normalization of transcript expression increased Kassandra stability and robustness. Performance was validated on 4,000 H{\&}E slides and 1,000 tissues by comparison with cytometric, immunohistochemical, or single-cell RNA-seq measurements. Kassandra accurately deconvolved TME elements, showing the role of these populations in tumor pathogenesis and other biological processes. Digital TME reconstruction revealed that the presence of PD-1-positive CD8+ T~cells strongly correlated with immunotherapy response and increased the predictive potential of established biomarkers, indicating that Kassandra could potentially be utilized in future clinical applications.},
- author = {Zaitsev, Aleksandr and Chelushkin, Maksim and Dyikanov, Daniiar and Cheremushkin, Ilya and Shpak, Boris and Nomie, Krystle and Zyrin, Vladimir and Nuzhdina, Ekaterina and Lozinsky, Yaroslav and Zotova, Anastasia and Degryse, Sandrine and Kotlov, Nikita and Baisangurov, Artur and Shatsky, Vladimir and Afenteva, Daria and Kuznetsov, Alexander and Paul, Susan Raju and Davies, Diane L. and Reeves, Patrick M. and Lanuti, Michael and Goldberg, Michael F. and Tazearslan, Cagdas and Chasse, Madison and Wang, Iris and Abdou, Mary and Aslanian, Sharon M. and Andrewes, Samuel and Hsieh, James J. and Ramachandran, Akshaya and Lyu, Yang and Galkin, Ilia and Svekolkin, Viktor and Cerchietti, Leandro and Poznansky, Mark C. and Ataullakhanov, Ravshan and Fowler, Nathan and Bagaev, Alexander},
- year = {2022},
- title = {Precise reconstruction of the TME using bulk RNA-seq and a machine learning algorithm trained on artificial transcriptomes},
- pages = {879-894.e16},
- volume = {40},
- number = {8},
- journal = {Cancer cell},
- doi = {10.1016/j.ccell.2022.07.006},
- file = {PIIS1535610822003191:Attachments/PIIS1535610822003191.pdf:application/pdf}
+@Article{	  moss.2018,
+  abstract	= {Methylation patterns of circulating cell-free DNA (cfDNA)
+		  contain rich information about recent cell death events in
+		  the body. Here, we present an approach for unbiased
+		  determination of the tissue origins of cfDNA, using a
+		  reference methylation atlas of 25 human tissues and cell
+		  types. The method is validated using in silico simulations
+		  as well as in vitro mixes of DNA from different tissue
+		  sources at known proportions. We show that plasma cfDNA of
+		  healthy donors originates from white blood cells (55{\%}),
+		  erythrocyte progenitors (30{\%}), vascular endothelial
+		  cells (10{\%}) and hepatocytes (1{\%}). Deconvolution of
+		  cfDNA from patients reveals tissue contributions that agree
+		  with clinical findings in sepsis, islet transplantation,
+		  cancer of the colon, lung, breast and prostate, and cancer
+		  of unknown primary. We propose a procedure which can be
+		  easily adapted to study the cellular contributors to cfDNA
+		  in many settings, opening a broad window into healthy and
+		  pathologic human tissue dynamics.},
+  author	= {Moss, Joshua and Magenheim, Judith and Neiman, Daniel and
+		  Zemmour, Hai and Loyfer, Netanel and Korach, Amit and
+		  Samet, Yaacov and Maoz, Myriam and Druid, Henrik and Arner,
+		  Peter and Fu, Keng-Yeh and Kiss, Endre and Spalding, Kirsty
+		  L. and Landesberg, Giora and Zick, Aviad and Grinshpun,
+		  Albert and Shapiro, A. M. James and Grompe, Markus and
+		  Wittenberg, Avigail Dreazan and Glaser, Benjamin and
+		  Shemer, Ruth and Kaplan, Tommy and Dor, Yuval},
+  year		= {2018},
+  title		= {Comprehensive human cell-type methylation atlas reveals
+		  origins of circulating cell-free DNA in health and
+		  disease},
+  url		= {https://www.nature.com/articles/s41467-018-07466-6.pdf},
+  urldate	= {18.11.2022},
+  pages		= {5068},
+  volume	= {9},
+  number	= {1},
+  journal	= {Nature communications},
+  doi		= {10.1038/s41467-018-07466-6},
+  file		= {Comprehensive human cell-type methylation atlas reveals
+		  origins of circulating cell-free DNA in health and disease
+		  - s41467-018-07466-6:Attachments/Comprehensive human
+		  cell-type methylation atlas reveals origins of circulating
+		  cell-free DNA in health and disease -
+		  s41467-018-07466-6.pdf:application/pdf}
 }
 
-
-@article{Chu.2022,
- abstract = {Inferring single-cell compositions and their contributions to global gene expression changes from bulk RNA sequencing (RNA-seq) datasets is a major challenge in oncology. Here we develop Bayesian cell proportion reconstruction inferred using statistical marginalization (BayesPrism), a Bayesian method to predict cellular composition and gene expression in individual cell types from bulk RNA-seq, using patient-derived, scRNA-seq as prior information. We conduct integrative analyses in primary glioblastoma, head and neck squamous cell carcinoma and skin cutaneous melanoma to correlate cell type composition with clinical outcomes across tumor types, and explore spatial heterogeneity in malignant and nonmalignant cell states. We refine current cancer subtypes using gene expression annotation after exclusion of confounding nonmalignant cells. Finally, we identify genes whose expression in malignant cells correlates with macrophage infiltration, T cells, fibroblasts and endothelial cells across multiple tumor types. Our work introduces a new lens to accurately infer cellular composition and expression in large cohorts of bulk RNA-seq data.},
- author = {Chu, Tinyi and Wang, Zhong and Pe'er, Dana and Danko, Charles G.},
- year = {2022},
- title = {Cell type and gene expression deconvolution with BayesPrism enables Bayesian integrative analysis across bulk and single-cell RNA sequencing in oncology},
- pages = {505--517},
- volume = {3},
- number = {4},
- journal = {Nature cancer},
- doi = {10.1038/s43018-022-00356-3},
- file = {s43018-022-00356-3:Attachments/s43018-022-00356-3.pdf:application/pdf}
+@Article{	  mounir.2019,
+  abstract	= {The advent of Next-Generation Sequencing (NGS)
+		  technologies has opened new perspectives in deciphering the
+		  genetic mechanisms underlying complex diseases. Nowadays,
+		  the amount of genomic data is massive and substantial
+		  efforts and new tools are required to unveil the
+		  information hidden in the data. The Genomic Data Commons
+		  (GDC) Data Portal is a platform that contains different
+		  genomic studies including the ones from The Cancer Genome
+		  Atlas (TCGA) and the Therapeutically Applicable Research to
+		  Generate Effective Treatments (TARGET) initiatives,
+		  accounting for more than 40 tumor types originating from
+		  nearly 30000 patients. Such platforms, although very
+		  attractive, must make sure the stored data are easily
+		  accessible and adequately harmonized. Moreover, they have
+		  the primary focus on the data storage in a unique place,
+		  and they do not provide a comprehensive toolkit for
+		  analyses and interpretation of the data. To fulfill this
+		  urgent need, comprehensive but easily accessible
+		  computational methods for integrative analyses of genomic
+		  data that do not renounce a robust statistical and
+		  theoretical framework are required. In this context, the
+		  R/Bioconductor package TCGAbiolinks was developed, offering
+		  a variety of bioinformatics functionalities. Here we
+		  introduce new features and enhancements of TCGAbiolinks in
+		  terms of i) more accurate and flexible pipelines for
+		  differential expression analyses, ii) different methods for
+		  tumor purity estimation and filtering, iii) integration of
+		  normal samples from other platforms iv) support for other
+		  genomics datasets, exemplified here by the TARGET data.
+		  Evidence has shown that accounting for tumor purity is
+		  essential in the study of tumorigenesis, as these factors
+		  promote confounding behavior regarding differential
+		  expression analysis. With this in mind, we implemented
+		  these filtering procedures in TCGAbiolinks. Moreover, a
+		  limitation of some of the TCGA datasets is the
+		  unavailability or paucity of corresponding normal samples.
+		  We thus integrated into TCGAbiolinks the possibility to use
+		  normal samples from the Genotype-Tissue Expression (GTEx)
+		  project, which is another large-scale repository cataloging
+		  gene expression from healthy individuals. The new
+		  functionalities are available in the TCGAbiolinks version
+		  2.8 and higher released in Bioconductor version 3.7.},
+  author	= {Mounir, Mohamed and Lucchetta, Marta and Silva, Tiago C.
+		  and Olsen, Catharina and Bontempi, Gianluca and Chen, Xi
+		  and Noushmehr, Houtan and Colaprico, Antonio and Papaleo,
+		  Elena},
+  year		= {2019},
+  title		= {New functionalities in the TCGAbiolinks package for the
+		  study and integration of cancer data from GDC and GTEx},
+  pages		= {e1006701},
+  volume	= {15},
+  number	= {3},
+  journal	= {PLoS computational biology},
+  doi		= {10.1371/journal.pcbi.1006701},
+  file		= {newTCGA-biolinks:Attachments/newTCGA-biolinks.pdf:application/pdf}
 }
 
-
-@article{Hong.2020,
- abstract = {Over the past few decades, RNA sequencing has significantly progressed, becoming a paramount approach for transcriptome profiling. The revolution from bulk RNA sequencing to single-molecular, single-cell and spatial transcriptome approaches has enabled increasingly accurate, individual cell resolution incorporated with spatial information. Cancer, a major malignant and heterogeneous lethal disease, remains an enormous challenge in medical research and clinical treatment. As a vital tool, RNA sequencing has been utilized in many aspects of cancer research and therapy, including biomarker discovery and characterization of cancer heterogeneity and evolution, drug resistance, cancer immune microenvironment and immunotherapy, cancer neoantigens and so on. In this review, the latest studies on RNA sequencing technology and their applications in cancer are summarized, and future challenges and opportunities for RNA sequencing technology in cancer applications are discussed.},
- author = {Hong, Mingye and Tao, Shuang and Zhang, Ling and Diao, Li-Ting and Huang, Xuanmei and Huang, Shaohui and Xie, Shu-Juan and Xiao, Zhen-Dong and Zhang, Hua},
- year = {2020},
- title = {RNA sequencing: new technologies and applications in cancer research},
- pages = {166},
- volume = {13},
- number = {1},
- journal = {Journal of hematology {\&} oncology},
- doi = {10.1186/s13045-020-01005-x},
- file = {s13045-020-01005-x:Attachments/s13045-020-01005-x.pdf:application/pdf}
+@Article{	  newman.2015,
+  abstract	= {We introduce CIBERSORT, a method for characterizing cell
+		  composition of complex tissues from their gene expression
+		  profiles. When applied to enumeration of hematopoietic
+		  subsets in RNA mixtures from fresh, frozen and fixed
+		  tissues, including solid tumors, CIBERSORT outperformed
+		  other methods with respect to noise, unknown mixture
+		  content and closely related cell types. CIBERSORT should
+		  enable large-scale analysis of RNA mixtures for cellular
+		  biomarkers and therapeutic targets
+		  (http://cibersort.stanford.edu/).},
+  author	= {Newman, Aaron M. and Liu, Chih Long and Green, Michael R.
+		  and Gentles, Andrew J. and Feng, Weiguo and Xu, Yue and
+		  Hoang, Chuong D. and Diehn, Maximilian and Alizadeh, Ash
+		  A.},
+  year		= {2015},
+  title		= {Robust enumeration of cell subsets from tissue expression
+		  profiles},
+  pages		= {453--457},
+  volume	= {12},
+  number	= {5},
+  journal	= {Nature methods},
+  doi		= {10.1038/nmeth.3337},
+  file		= {nmeth.3337:Attachments/nmeth.3337.pdf:application/pdf;Newman,
+		  Liu et al. 2015 - Robust enumeration of cell
+		  subsets:Attachments/Newman, Liu et al. 2015 - Robust
+		  enumeration of cell subsets.pdf:application/pdf}
 }
 
-
-@article{Li.2021,
- abstract = {RNA sequencing (RNAseq) can reveal gene fusions, splicing variants, mutations/indels in addition to differential gene expression, thus providing a more complete genetic picture than DNA sequencing. This most widely used technology in genomics tool box has evolved from classic bulk RNA sequencing (RNAseq), popular single cell RNA sequencing (scRNAseq) to newly emerged spatial RNA sequencing (spRNAseq). Bulk RNAseq studies average global gene expression, scRNAseq investigates single cell RNA biology up to 20,000 individual cells simultaneously, while spRNAseq has ability to dissect RNA activities spatially, representing next generation of RNA sequencing. This article highlights these technologies, characteristic features and suitable applications in precision oncology.},
- author = {Li, Xinmin and Wang, Cun-Yu},
- year = {2021},
- title = {From bulk, single-cell to spatial RNA sequencing},
- pages = {36},
- volume = {13},
- number = {1},
- journal = {International journal of oral science},
- doi = {10.1038/s41368-021-00146-0},
- file = {s41368-021-00146-0:Attachments/s41368-021-00146-0.pdf:application/pdf}
+@Article{	  pimentel.2015,
+  author	= {Pimentel, Ronald S. and Niewiadomska-Bugaj, Magdalena and
+		  Wang, Jung-Chao},
+  year		= {2015},
+  title		= {Association of zero-inflated continuous variables},
+  pages		= {61--67},
+  volume	= {96},
+  issn		= {01677152},
+  journal	= {Statistics {\&} Probability Letters},
+  doi		= {10.1016/j.spl.2014.09.002},
+  file		= {Association_of_zero_inflated_continuous:Attachments/Association_of_zero_inflated_continuous.pdf:application/pdf}
 }
 
-
-@book{Uyar.2021,
- author = {Uyar, Bora and Ronen, Jonathan and Franke, Vedran and Gargiulo, Gaetano and Akalin, Altuna},
- year = {2021},
- title = {Multi-omics and deep learning provide a multifaceted view of cancer},
- doi = {10.1101/2021.09.29.462364},
- file = {2021.09.29.462364v1.full:Attachments/2021.09.29.462364v1.full.pdf:application/pdf}
+@Article{	  repsilber.2010,
+  abstract	= {BACKGROUND
+		  
+		  For heterogeneous tissues, such as blood, measurements of
+		  gene expression are confounded by relative proportions of
+		  cell types involved. Conclusions have to rely on estimation
+		  of gene expression signals for homogeneous cell
+		  populations, e.g. by applying micro-dissection,
+		  fluorescence activated cell sorting, or in-silico
+		  deconfounding. We studied feasibility and validity of a
+		  non-negative matrix decomposition algorithm using
+		  experimental gene expression data for blood and sorted
+		  cells from the same donor samples. Our objective was to
+		  optimize the algorithm regarding detection of
+		  differentially expressed genes and to enable its use for
+		  classification in the difficult scenario of reversely
+		  regulated genes. This would be of importance for the
+		  identification of candidate biomarkers in heterogeneous
+		  tissues.
+		  
+		  RESULTS
+		  
+		  Experimental data and simulation studies involving noise
+		  parameters estimated from these data revealed that for
+		  valid detection of differential gene expression, quantile
+		  normalization and use of non-log data are optimal. We
+		  demonstrate the feasibility of predicting proportions of
+		  constituting cell types from gene expression data of single
+		  samples, as a prerequisite for a deconfounding-based
+		  classification approach.Classification cross-validation
+		  errors with and without using deconfounding results are
+		  reported as well as sample-size dependencies.
+		  Implementation of the algorithm, simulation and analysis
+		  scripts are available.
+		  
+		  CONCLUSIONS
+		  
+		  The deconfounding algorithm without decorrelation using
+		  quantile normalization on non-log data is proposed for
+		  biomarkers that are difficult to detect, and for cases
+		  where confounding by varying proportions of cell types is
+		  the suspected reason. In this case, a deconfounding ranking
+		  approach can be used as a powerful alternative to, or
+		  complement of, other statistical learning approaches to
+		  define candidate biomarkers for molecular diagnosis and
+		  prediction in biomedicine, in realistically noisy
+		  conditions and with moderate sample sizes.},
+  author	= {Repsilber, Dirk and Kern, Sabine and Telaar, Anna and
+		  Walzl, Gerhard and Black, Gillian F. and Selbig, Joachim
+		  and Parida, Shreemanta K. and Kaufmann, Stefan H. E. and
+		  Jacobsen, Marc},
+  year		= {2010},
+  title		= {Biomarker discovery in heterogeneous tissue samples
+		  -taking the in-silico deconfounding approach},
+  pages		= {27},
+  volume	= {11},
+  journal	= {BMC bioinformatics},
+  doi		= {10.1186/1471-2105-11-27},
+  file		= {1471-2105-11-27:Attachments/1471-2105-11-27.pdf:application/pdf}
 }
 
-
-@article{McCarthy.2017,
- abstract = {MOTIVATION
-
-Single-cell RNA sequencing (scRNA-seq) is increasingly used to study gene expression at the level of individual cells. However, preparing raw sequence data for further analysis is not a straightforward process. Biases, artifacts and other sources of unwanted variation are present in the data, requiring substantial time and effort to be spent on pre-processing, quality control (QC) and normalization.
-
-RESULTS
-
-We have developed the R/Bioconductor package scater to facilitate rigorous pre-processing, quality control, normalization and visualization of scRNA-seq data. The package provides a convenient, flexible workflow to process raw sequencing reads into a high-quality expression dataset ready for downstream analysis. scater provides a rich suite of plotting tools for single-cell data and a flexible data structure that is compatible with existing tools and can be used as infrastructure for future software development.
-
-AVAILABILITY AND IMPLEMENTATION
-
-The open-source code, along with installation instructions, vignettes and case studies, is available through Bioconductor at http://bioconductor.org/packages/scater .
-
-CONTACT
-
-davis@ebi.ac.uk.
-
-SUPPLEMENTARY INFORMATION
-
-Supplementary data are available at Bioinformatics online.},
- author = {McCarthy, Davis J. and Campbell, Kieran R. and Lun, Aaron T. L. and Wills, Quin F.},
- year = {2017},
- title = {Scater: pre-processing, quality control, normalization and visualization of single-cell RNA-seq data in R},
- pages = {1179--1186},
- volume = {33},
- number = {8},
- journal = {Bioinformatics (Oxford, England)},
- doi = {10.1093/bioinformatics/btw777},
- file = {bioinformatics_33_8_1179:Attachments/bioinformatics_33_8_1179.pdf:application/pdf}
+@Article{	  robinson.2008,
+  abstract	= {We derive a quantile-adjusted conditional maximum
+		  likelihood estimator for the dispersion parameter of the
+		  negative binomial distribution and compare its performance,
+		  in terms of bias, to various other methods. Our estimation
+		  scheme outperforms all other methods in very small samples,
+		  typical of those from serial analysis of gene expression
+		  studies, the motivating data for this study. The impact of
+		  dispersion estimation on hypothesis testing is studied. We
+		  derive an {\textquotedbl}exact{\textquotedbl} test that
+		  outperforms the standard approximate asymptotic tests.},
+  author	= {Robinson, Mark D. and Smyth, Gordon K.},
+  year		= {2008},
+  title		= {Small-sample estimation of negative binomial dispersion,
+		  with applications to SAGE data},
+  pages		= {321--332},
+  volume	= {9},
+  number	= {2},
+  issn		= {1465-4644},
+  journal	= {Biostatistics},
+  doi		= {10.1093/biostatistics/kxm030},
+  file		= {Robinson, Smyth 2008 - Small-sample estimation of negative
+		  binomial:Attachments/Robinson, Smyth 2008 - Small-sample
+		  estimation of negative binomial.pdf:application/pdf}
 }
 
-
-@article{Moss.2018,
- abstract = {Methylation patterns of circulating cell-free DNA (cfDNA) contain rich information about recent cell death events in the body. Here, we present an approach for unbiased determination of the tissue origins of cfDNA, using a reference methylation atlas of 25 human tissues and cell types. The method is validated using in silico simulations as well as in vitro mixes of DNA from different tissue sources at known proportions. We show that plasma cfDNA of healthy donors originates from white blood cells (55{\%}), erythrocyte progenitors (30{\%}), vascular endothelial cells (10{\%}) and hepatocytes (1{\%}). Deconvolution of cfDNA from patients reveals tissue contributions that agree with clinical findings in sepsis, islet transplantation, cancer of the colon, lung, breast and prostate, and cancer of unknown primary. We propose a procedure which can be easily adapted to study the cellular contributors to cfDNA in many settings, opening a broad window into healthy and pathologic human tissue dynamics.},
- author = {Moss, Joshua and Magenheim, Judith and Neiman, Daniel and Zemmour, Hai and Loyfer, Netanel and Korach, Amit and Samet, Yaacov and Maoz, Myriam and Druid, Henrik and Arner, Peter and Fu, Keng-Yeh and Kiss, Endre and Spalding, Kirsty L. and Landesberg, Giora and Zick, Aviad and Grinshpun, Albert and Shapiro, A. M. James and Grompe, Markus and Wittenberg, Avigail Dreazan and Glaser, Benjamin and Shemer, Ruth and Kaplan, Tommy and Dor, Yuval},
- year = {2018},
- title = {Comprehensive human cell-type methylation atlas reveals origins of circulating cell-free DNA in health and disease},
- url = {https://www.nature.com/articles/s41467-018-07466-6.pdf},
- urldate = {18.11.2022},
- pages = {5068},
- volume = {9},
- number = {1},
- journal = {Nature communications},
- doi = {10.1038/s41467-018-07466-6},
- file = {Comprehensive human cell-type methylation atlas reveals origins of circulating cell-free DNA in health and disease - s41467-018-07466-6:Attachments/Comprehensive human cell-type methylation atlas reveals origins of circulating cell-free DNA in health and disease - s41467-018-07466-6.pdf:application/pdf}
+@Article{	  robinson.2010,
+  abstract	= {The fine detail provided by sequencing-based transcriptome
+		  surveys suggests that RNA-seq is likely to become the
+		  platform of choice for interrogating steady state RNA. In
+		  order to discover biologically important changes in
+		  expression, we show that normalization continues to be an
+		  essential step in the analysis. We outline a simple and
+		  effective method for performing normalization and show
+		  dramatically improved results for inferring differential
+		  expression in simulated and publicly available data sets.},
+  author	= {Robinson, Mark D. and Oshlack, Alicia},
+  year		= {2010},
+  title		= {A scaling normalization method for differential expression
+		  analysis of RNA-seq data},
+  pages		= {R25},
+  volume	= {11},
+  number	= {3},
+  journal	= {Genome biology},
+  doi		= {10.1186/gb-2010-11-3-r25},
+  file		= {Robinson, Oshlack 2010 - A scaling normalization
+		  method:Attachments/Robinson, Oshlack 2010 - A scaling
+		  normalization method.pdf:application/pdf}
 }
 
-
-@article{Robinson.2008,
- abstract = {We derive a quantile-adjusted conditional maximum likelihood estimator for the dispersion parameter of the negative binomial distribution and compare its performance, in terms of bias, to various other methods. Our estimation scheme outperforms all other methods in very small samples, typical of those from serial analysis of gene expression studies, the motivating data for this study. The impact of dispersion estimation on hypothesis testing is studied. We derive an {\textquotedbl}exact{\textquotedbl} test that outperforms the standard approximate asymptotic tests.},
- author = {Robinson, Mark D. and Smyth, Gordon K.},
- year = {2008},
- title = {Small-sample estimation of negative binomial dispersion, with applications to SAGE data},
- pages = {321--332},
- volume = {9},
- number = {2},
- issn = {1465-4644},
- journal = {Biostatistics},
- doi = {10.1093/biostatistics/kxm030},
- file = {Robinson, Smyth 2008 - Small-sample estimation of negative binomial:Attachments/Robinson, Smyth 2008 - Small-sample estimation of negative binomial.pdf:application/pdf}
+@Article{	  schmid.2016,
+  author	= {Schmid, Matthias and Wright, Marvin N. and Ziegler,
+		  Andreas},
+  year		= {2016},
+  title		= {On the use of Harrell's C for clinical risk prediction via
+		  random survival forests},
+  pages		= {450--459},
+  volume	= {63},
+  issn		= {09574174},
+  journal	= {Expert Systems with Applications},
+  doi		= {10.1016/j.eswa.2016.07.018},
+  file		= {1507.03092-1:Attachments/1507.03092-1.pdf:application/pdf}
 }
 
-
-@article{Ishwaran.2008,
- abstract = {The Annals of Applied Statistics , 2008, Vol.2, No.3, 841-860},
- author = {Ishwaran, Hemant and Kogalur, Udaya B. and Blackstone, Eugene H. and Lauer, Michael S.},
- year = {2008},
- title = {Random survival forests},
- volume = {2},
- number = {3},
- issn = {1932-6157},
- journal = {The Annals of Applied Statistics},
- doi = {10.1214/08-AOAS169},
- file = {08-AOAS169:Attachments/08-AOAS169.pdf:application/pdf}
+@Article{	  tran.2023,
+  abstract	= {Cells within the tumour microenvironment (TME) can impact
+		  tumour development and influence treatment response.
+		  Computational approaches have been developed to deconvolve
+		  the TME from bulk RNA-seq. Using scRNA-seq profiling from
+		  breast tumours we simulate thousands of bulk mixtures,
+		  representing tumour purities and cell lineages, to compare
+		  the performance of nine TME deconvolution methods
+		  (BayesPrism, Scaden, CIBERSORTx, MuSiC, DWLS, hspe, CPM,
+		  Bisque, and EPIC). Some methods are more robust in
+		  deconvolving mixtures with high tumour purity levels. Most
+		  methods tend to mis-predict normal epithelial for cancer
+		  epithelial as tumour purity increases, a finding that is
+		  validated in two independent datasets. The breast cancer
+		  molecular subtype influences this mis-prediction.
+		  BayesPrism and DWLS have the lowest combined numbers of
+		  false positives and false negatives, and have the best
+		  performance when deconvolving granular immune lineages. Our
+		  findings highlight the need for more single-cell
+		  characterisation of rarer cell types, and suggest that
+		  tumour cell compositions should be considered when
+		  deconvolving the TME.},
+  author	= {Tran, Khoa A. and Addala, Venkateswar and Johnston,
+		  Rebecca L. and Lovell, David and Bradley, Andrew and
+		  Koufariotis, Lambros T. and Wood, Scott and Wu, Sunny Z.
+		  and Roden, Daniel and Al-Eryani, Ghamdan and Swarbrick,
+		  Alexander and Williams, Elizabeth D. and Pearson, John V.
+		  and Kondrashova, Olga and Waddell, Nicola},
+  year		= {2023},
+  title		= {Performance of tumour microenvironment deconvolution
+		  methods in breast cancer using single-cell simulated bulk
+		  mixtures},
+  pages		= {5758},
+  volume	= {14},
+  number	= {1},
+  journal	= {Nature communications},
+  doi		= {10.1038/s41467-023-41385-5},
+  file		= {s41467-023-41385-5:Attachments/s41467-023-41385-5.pdf:application/pdf}
 }
 
-
-@article{Schmid.2016,
- author = {Schmid, Matthias and Wright, Marvin N. and Ziegler, Andreas},
- year = {2016},
- title = {On the use of Harrell's C for clinical risk prediction via random survival forests},
- pages = {450--459},
- volume = {63},
- issn = {09574174},
- journal = {Expert Systems with Applications},
- doi = {10.1016/j.eswa.2016.07.018},
- file = {1507.03092-1:Attachments/1507.03092-1.pdf:application/pdf}
+@Article{	  tsoucas.2019,
+  abstract	= {The rapid development of single-cell transcriptomic
+		  technologies has helped uncover the cellular heterogeneity
+		  within cell populations. However, bulk RNA-seq continues to
+		  be the main workhorse for quantifying gene expression
+		  levels due to technical simplicity and low cost. To most
+		  effectively extract information from bulk data given the
+		  new knowledge gained from single-cell methods, we have
+		  developed a novel algorithm to estimate the cell-type
+		  composition of bulk data from a single-cell RNA-seq-derived
+		  cell-type signature. Comparison with existing methods using
+		  various real RNA-seq data sets indicates that our new
+		  approach is more accurate and comprehensive than previous
+		  methods, especially for the estimation of rare cell types.
+		  More importantly, our method can detect cell-type
+		  composition changes in response to external perturbations,
+		  thereby providing a valuable, cost-effective method for
+		  dissecting the cell-type-specific effects of drug
+		  treatments or condition changes. As such, our method is
+		  applicable to a wide range of biological and clinical
+		  investigations.},
+  author	= {Tsoucas, Daphne and Dong, Rui and Chen, Haide and Zhu,
+		  Qian and Guo, Guoji and Yuan, Guo-Cheng},
+  year		= {2019},
+  title		= {Accurate estimation of cell-type composition from gene
+		  expression data},
+  pages		= {2975},
+  volume	= {10},
+  number	= {1},
+  journal	= {Nature communications},
+  doi		= {10.1038/s41467-019-10802-z},
+  file		= {s41467-019-10802-z:Attachments/s41467-019-10802-z.pdf:application/pdf}
 }
 
-
-@article{Lei.2022,
- abstract = {MOTIVATION
-
-Identifying cell types and their abundances and how these evolve during tumor progression is critical to understanding the mechanisms of metastasis and identifying predictors of metastatic potential that can guide the development of new diagnostics or therapeutics. Single-cell RNA sequencing (scRNA-seq) has been especially promising in resolving heterogeneity of expression programs at the single-cell level, but is not always feasible, e.g. for large cohort studies or longitudinal analysis of archived samples. In such cases, clonal subpopulations may still be inferred via genomic deconvolution, but deconvolution methods have limited ability to resolve fine clonal structure and may require reference cell type profiles that are missing or imprecise. Prior methods can eliminate the need for reference profiles but show unstable performance when few bulk samples are available.
-
-RESULTS
-
-In this work, we develop a new method using reference scRNA-seq to interpret sample collections for which only bulk RNA-seq is available for some samples, e.g. clonally resolving archived primary tissues using scRNA-seq from metastases. By integrating such information in a Quadratic Programming framework, our method can recover more accurate cell types and corresponding cell type abundances in bulk samples. Application to a breast tumor bone metastases dataset confirms the power of scRNA-seq data to improve cell type inference and quantification in same-patient bulk samples.
-
-AVAILABILITY AND IMPLEMENTATION
-
-Source code is available on Github at https://github.com/CMUSchwartzLab/RADs.},
- author = {Lei, Haoyun and Guo, Xiaoyan A. and Tao, Yifeng and Ding, Kai and Fu, Xuecong and Oesterreich, Steffi and Lee, Adrian V. and Schwartz, Russell},
- year = {2022},
- title = {Semi-deconvolution of bulk and single-cell RNA-seq data with application to metastatic progression in breast cancer},
- pages = {i386-i394},
- volume = {38},
- number = {Suppl 1},
- journal = {Bioinformatics (Oxford, England)},
- doi = {10.1093/bioinformatics/btac262},
- file = {btac262:Attachments/btac262.pdf:application/pdf}
+@Book{		  uyar.2021,
+  author	= {Uyar, Bora and Ronen, Jonathan and Franke, Vedran and
+		  Gargiulo, Gaetano and Akalin, Altuna},
+  year		= {2021},
+  title		= {Multi-omics and deep learning provide a multifaceted view
+		  of cancer},
+  doi		= {10.1101/2021.09.29.462364},
+  file		= {2021.09.29.462364v1.full:Attachments/2021.09.29.462364v1.full.pdf:application/pdf}
 }
 
-
-@misc{IlyaKorsunsky.2020,
- author = {{Ilya Korsunsky} and {Aparna Nathan} and {Nghia Millard} and {Soumya Raychaudhuri}},
- year = {2020},
- title = {presto: Fast Functions for Differential Expression using Wilcox and AUC},
- url = {https://github.com/immunogenomics/presto}
+@Article{	  wu.2021,
+  abstract	= {Breast cancers are complex cellular ecosystems where
+		  heterotypic interactions play central roles in disease
+		  progression and response to therapy. However, our knowledge
+		  of their cellular composition and organization is limited.
+		  Here we present a single-cell and spatially resolved
+		  transcriptomics analysis of human breast cancers. We
+		  developed a single-cell method of intrinsic subtype
+		  classification (SCSubtype) to reveal recurrent neoplastic
+		  cell heterogeneity. Immunophenotyping using cellular
+		  indexing of transcriptomes and epitopes by sequencing
+		  (CITE-seq) provides high-resolution immune profiles,
+		  including new PD-L1/PD-L2+ macrophage populations
+		  associated with clinical outcome. Mesenchymal cells
+		  displayed diverse functions and cell-surface protein
+		  expression through differentiation within three major
+		  lineages. Stromal-immune niches were spatially organized in
+		  tumors, offering insights into antitumor immune regulation.
+		  Using single-cell signatures, we deconvoluted large breast
+		  cancer cohorts to stratify them into nine clusters, termed
+		  'ecotypes', with unique cellular compositions and clinical
+		  outcomes. This study provides a comprehensive
+		  transcriptional atlas of the cellular architecture of
+		  breast cancer.},
+  author	= {Wu, Sunny Z. and Al-Eryani, Ghamdan and Roden, Daniel Lee
+		  and Junankar, Simon and Harvey, Kate and Andersson, Alma
+		  and Thennavan, Aatish and Wang, Chenfei and Torpy, James R.
+		  and Bartonicek, Nenad and Wang, Taopeng and Larsson, Ludvig
+		  and Kaczorowski, Dominik and Weisenfeld, Neil I. and
+		  Uytingco, Cedric R. and Chew, Jennifer G. and Bent, Zachary
+		  W. and Chan, Chia-Ling and Gnanasambandapillai, Vikkitharan
+		  and Dutertre, Charles-Antoine and Gluch, Laurence and Hui,
+		  Mun N. and Beith, Jane and Parker, Andrew and Robbins,
+		  Elizabeth and Segara, Davendra and Cooper, Caroline and
+		  Mak, Cindy and Chan, Belinda and Warrier, Sanjay and
+		  Ginhoux, Florent and Millar, Ewan and Powell, Joseph E. and
+		  Williams, Stephen R. and Liu, X. Shirley and O'Toole,
+		  Sandra and Lim, Elgene and Lundeberg, Joakim and Perou,
+		  Charles M. and Swarbrick, Alexander},
+  year		= {2021},
+  title		= {A single-cell and spatially resolved atlas of human breast
+		  cancers},
+  pages		= {1334--1347},
+  volume	= {53},
+  number	= {9},
+  issn		= {1061-4036},
+  journal	= {Nature Genetics},
+  doi		= {10.1038/s41588-021-00911-1},
+  file		= {Wu, Al-Eryani et al. 2021 - A single-cell and spatially
+		  resolved:Attachments/Wu, Al-Eryani et al. 2021 - A
+		  single-cell and spatially resolved.pdf:application/pdf}
 }
 
-
-@book{Lipnitskaya.2022,
- author = {Lipnitskaya, Sofya and Shen, Yang and Legewie, Stefan and Klein, Holger and Becker, Kolja},
- year = {2022},
- title = {Machine learning-assisted identification of factors contributing to the technical variability between bulk and single-cell RNA-seq experiments},
- doi = {10.1101/2022.01.06.474932},
- file = {2022.01.06.474932v1.full:Attachments/2022.01.06.474932v1.full.pdf:application/pdf}
+@Article{	  zaitsev.2022,
+  abstract	= {Cellular deconvolution algorithms virtually reconstruct
+		  tissue composition by analyzing the gene expression of
+		  complex tissues. We present the decision tree machine
+		  learning algorithm, Kassandra, trained on a broad
+		  collection of {\textgreater}9,400 tissue and blood sorted
+		  cell RNA profiles incorporated into millions of artificial
+		  transcriptomes to accurately reconstruct the tumor
+		  microenvironment (TME). Bioinformatics correction for
+		  technical and biological variability, aberrant cancer cell
+		  expression inclusion, and accurate quantification and
+		  normalization of transcript expression increased Kassandra
+		  stability and robustness. Performance was validated on
+		  4,000 H{\&}E slides and 1,000 tissues by comparison with
+		  cytometric, immunohistochemical, or single-cell RNA-seq
+		  measurements. Kassandra accurately deconvolved TME
+		  elements, showing the role of these populations in tumor
+		  pathogenesis and other biological processes. Digital TME
+		  reconstruction revealed that the presence of PD-1-positive
+		  CD8+ T~cells strongly correlated with immunotherapy
+		  response and increased the predictive potential of
+		  established biomarkers, indicating that Kassandra could
+		  potentially be utilized in future clinical applications.},
+  author	= {Zaitsev, Aleksandr and Chelushkin, Maksim and Dyikanov,
+		  Daniiar and Cheremushkin, Ilya and Shpak, Boris and Nomie,
+		  Krystle and Zyrin, Vladimir and Nuzhdina, Ekaterina and
+		  Lozinsky, Yaroslav and Zotova, Anastasia and Degryse,
+		  Sandrine and Kotlov, Nikita and Baisangurov, Artur and
+		  Shatsky, Vladimir and Afenteva, Daria and Kuznetsov,
+		  Alexander and Paul, Susan Raju and Davies, Diane L. and
+		  Reeves, Patrick M. and Lanuti, Michael and Goldberg,
+		  Michael F. and Tazearslan, Cagdas and Chasse, Madison and
+		  Wang, Iris and Abdou, Mary and Aslanian, Sharon M. and
+		  Andrewes, Samuel and Hsieh, James J. and Ramachandran,
+		  Akshaya and Lyu, Yang and Galkin, Ilia and Svekolkin,
+		  Viktor and Cerchietti, Leandro and Poznansky, Mark C. and
+		  Ataullakhanov, Ravshan and Fowler, Nathan and Bagaev,
+		  Alexander},
+  year		= {2022},
+  title		= {Precise reconstruction of the TME using bulk RNA-seq and a
+		  machine learning algorithm trained on artificial
+		  transcriptomes},
+  pages		= {879-894.e16},
+  volume	= {40},
+  number	= {8},
+  journal	= {Cancer cell},
+  doi		= {10.1016/j.ccell.2022.07.006},
+  file		= {PIIS1535610822003191:Attachments/PIIS1535610822003191.pdf:application/pdf}
 }
-
-

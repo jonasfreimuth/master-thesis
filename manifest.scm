@@ -1,4 +1,5 @@
-(specifications->manifest (list "texlive"
+(specifications->manifest (list "bibtool"
+                                "texlive"
                                 "pandoc"
                                 "r"
                                 "r-data-table"
