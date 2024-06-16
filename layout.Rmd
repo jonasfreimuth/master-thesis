@@ -294,6 +294,8 @@ for within cell-type heterogeneity (also maybe cell states) improve accuracy?
 ### Verification
 
 [WIP]
+* Using bulk-RNA based reference might improve deconvolution accuracy along with
+  cancer expression prediction accuracy.
 
 ### Outlook
 
