@@ -81,6 +81,61 @@
   file		= {og_nnls_deconv:Attachments/og_nnls_deconv.pdf:application/pdf}
 }
 
+@Article{	  ahn.2013,
+  abstract	= {MOTIVATION
+		  
+		  Tissue samples of tumor cells mixed with stromal cells
+		  cause underdetection of gene expression signatures
+		  associated with cancer prognosis or response to treatment.
+		  In silico dissection of mixed cell samples is essential for
+		  analyzing expression data generated in cancer studies.
+		  Currently, a systematic approach is lacking to address
+		  three challenges in computational deconvolution: (i)
+		  violation of linear addition of expression levels from
+		  multiple tissues when log-transformed microarray data are
+		  used; (ii) estimation of both tumor proportion and
+		  tumor-specific expression, when neither is known a priori;
+		  and (iii) estimation of expression profiles for individual
+		  patients.
+		  
+		  RESULTS
+		  
+		  We have developed a statistical method for deconvolving
+		  mixed cancer transcriptomes, DeMix, which addresses the
+		  aforementioned issues in array-based expression data. We
+		  demonstrate the performance of our model in synthetic and
+		  real, publicly available, datasets. DeMix can be applied to
+		  ongoing biomarker-based clinical studies and to the vast
+		  expression datasets previously generated from mixed tumor
+		  and stromal cell samples.
+		  
+		  AVAILABILITY
+		  
+		  All codes are written in C and integrated into an R
+		  function, which is available at
+		  http://odin.mdacc.tmc.edu/$\sim$wwang7/DeMix.html.
+		  
+		  CONTACT
+		  
+		  wwang7@mdanderson.org
+		  
+		  SUPPLEMENTARY INFORMATION
+		  
+		  Supplementary data are available at Bioinformatics online.},
+  author	= {Ahn, Jaeil and Yuan, Ying and Parmigiani, Giovanni and
+		  Suraokar, Milind B. and Diao, Lixia and Wistuba, Ignacio I.
+		  and Wang, Wenyi},
+  year		= {2013},
+  title		= {DeMix: deconvolution for mixed cancer transcriptomes using
+		  raw measured data},
+  pages		= {1865--1871},
+  volume	= {29},
+  number	= {15},
+  journal	= {Bioinformatics (Oxford, England)},
+  doi		= {10.1093/bioinformatics/btt301},
+  file		= {bioinformatics_29_15_1865:Attachments/bioinformatics_29_15_1865.pdf:application/pdf}
+}
+
 @Article{	  anderson.2020,
   abstract	= {A tumor is not simply a group of cancer cells, but rather
 		  a heterogeneous collection of infiltrating and resident
@@ -117,6 +172,44 @@
   journal	= {Current biology : CB},
   doi		= {10.1016/j.cub.2020.06.081},
   file		= {PIIS0960982220309337:Attachments/PIIS0960982220309337.pdf:application/pdf}
+}
+
+@Article{	  andradebarbosa.2021,
+  abstract	= {Deconvolution of bulk gene expression profiles into the
+		  cellular components is pivotal to portraying tissue's
+		  complex cellular make-up, such as the tumor
+		  microenvironment. However, the inherently variable nature
+		  of gene expression requires a comprehensive statistical
+		  model and reliable prior knowledge of individual cell types
+		  that can be obtained from single-cell RNA sequencing. We
+		  introduce BLADE (Bayesian Log-normAl Deconvolution), a
+		  unified Bayesian framework to estimate both cellular
+		  composition and gene expression profiles for each cell
+		  type. Unlike previous comprehensive statistical approaches,
+		  BLADE can handle {\textgreater} 20 types of cells due to
+		  the efficient variational inference. Throughout an
+		  intensive evaluation with {\textgreater} 700 simulated and
+		  real datasets, BLADE demonstrated enhanced robustness
+		  against gene expression variability and better completeness
+		  than conventional methods, in particular, to reconstruct
+		  gene expression profiles of each cell type. In summary,
+		  BLADE is a powerful tool to unravel heterogeneous cellular
+		  activity in complex biological systems from standard bulk
+		  gene expression data.},
+  author	= {{Andrade Barbosa}, B{\'a}rbara and {van Asten}, Saskia D.
+		  and Oh, Ji Won and Farina-Sarasqueta, Arantza and Verheij,
+		  Joanne and Dijk, Frederike and {van Laarhoven}, Hanneke W.
+		  M. and Ylstra, Bauke and {Garcia Vallejo}, Juan J. and {van
+		  de Wiel}, Mark A. and Kim, Yongsoo},
+  year		= {2021},
+  title		= {Bayesian log-normal deconvolution for enhanced in silico
+		  microdissection of bulk gene expression data},
+  pages		= {6106},
+  volume	= {12},
+  number	= {1},
+  journal	= {Nature communications},
+  doi		= {10.1038/s41467-021-26328-2},
+  file		= {s41467-021-26328-2:Attachments/s41467-021-26328-2.pdf:application/pdf}
 }
 
 @Article{	  avilacobos.2020,
@@ -342,70 +435,6 @@
   number	= {1},
   journal	= {Genome biology},
   doi		= {10.1186/s13059-023-03016-6},
-  file		= {13059_2023_Article_3016:Attachments/13059_2023_Article_3016.pdf:application/pdf}
-}
-
-@Article{	  cobos.2023b,
-  abstract	= {BACKGROUND
-		  
-		  RNA profiling technologies at single-cell resolutions,
-		  including single-cell and single-nuclei RNA sequencing
-		  (scRNA-seq and snRNA-seq, scnRNA-seq for short), can help
-		  characterize the composition of tissues and reveal cells
-		  that influence key functions in both healthy and disease
-		  tissues. However, the use of these technologies is
-		  operationally challenging because of high costs and
-		  stringent sample-collection requirements. Computational
-		  deconvolution methods that infer the composition of
-		  bulk-profiled samples using scnRNA-seq-characterized cell
-		  types can broaden scnRNA-seq applications, but their
-		  effectiveness remains controversial.
-		  
-		  RESULTS
-		  
-		  We produced the first systematic evaluation of
-		  deconvolution methods on datasets with either known or
-		  scnRNA-seq-estimated compositions. Our analyses revealed
-		  biases that are common to scnRNA-seq 10X Genomics assays
-		  and illustrated the importance of accurate and properly
-		  controlled data preprocessing and method selection and
-		  optimization. Moreover, our results suggested that
-		  concurrent RNA-seq and scnRNA-seq profiles can help improve
-		  the accuracy of both scnRNA-seq preprocessing and the
-		  deconvolution methods that employ them. Indeed, our
-		  proposed method, Single-cell RNA Quantity Informed
-		  Deconvolution (SQUID), which combines RNA-seq
-		  transformation and dampened weighted least-squares
-		  deconvolution approaches, consistently outperformed other
-		  methods in predicting the composition of cell mixtures and
-		  tissue samples.
-		  
-		  CONCLUSIONS
-		  
-		  We showed that analysis of concurrent RNA-seq and
-		  scnRNA-seq profiles with SQUID can produce accurate
-		  cell-type abundance estimates and that this accuracy
-		  improvement was necessary for identifying
-		  outcomes-predictive cancer cell subclones in pediatric
-		  acute myeloid leukemia and neuroblastoma datasets. These
-		  results suggest that deconvolution accuracy improvements
-		  are vital to enabling its applications in the life
-		  sciences.},
-  author	= {Cobos, Francisco Avila and Panah, Mohammad Javad Najaf and
-		  Epps, Jessica and Long, Xiaochen and Man, Tsz-Kwong and
-		  Chiu, Hua-Sheng and Chomsky, Elad and Kiner, Evgeny and
-		  Krueger, Michael J. and {Di Bernardo}, Diego and Voloch,
-		  Luis and Molenaar, Jan and {van Hooff}, Sander R. and
-		  Westermann, Frank and Jansky, Selina and Redell, Michele L.
-		  and Mestdagh, Pieter and Sumazin, Pavel},
-  year		= {2023},
-  title		= {Effective methods for bulk RNA-seq deconvolution using
-		  scnRNA-seq transcriptomes},
-  pages		= {177},
-  volume	= {24},
-  number	= {1},
-  journal	= {Genome biology},
-  doi		= {10.1186/s13059-023-03016-6},
   file		= {s13059-023-03016-6:Attachments/s13059-023-03016-6.pdf:application/pdf}
 }
 
@@ -514,6 +543,47 @@
   file		= {davies1993:Attachments/davies1993.pdf:application/pdf}
 }
 
+@Book{		  dietrich.2024,
+  author	= {Dietrich, Alexander and Merotto, Lorenzo and Pelz,
+		  Konstantin and Eder, Bernhard and Zackl, Constantin and
+		  Reinisch, Katharina and Edenhofer, Frank and Marini,
+		  Federico and Sturm, Gregor and List, Markus and Finotello,
+		  Francesca},
+  year		= {2024},
+  title		= {Benchmarking second-generation methods for cell-type
+		  deconvolution of transcriptomic data},
+  doi		= {10.1101/2024.06.10.598226},
+  file		= {2024.06.10.598226.full:Attachments/2024.06.10.598226.full.pdf:application/pdf}
+}
+
+@Article{	  finotello.2018,
+  abstract	= {By exerting pro- and anti-tumorigenic actions,
+		  tumor-infiltrating immune cells can profoundly influence
+		  tumor progression, as well as the success of anti-cancer
+		  therapies. Therefore, the quantification of
+		  tumor-infiltrating immune cells holds the promise to unveil
+		  the multi-faceted role of the immune system in human
+		  cancers and its involvement in tumor escape mechanisms and
+		  response to therapy. Tumor-infiltrating immune cells can be
+		  quantified from RNA sequencing data of human tumors using
+		  bioinformatics approaches. In this review, we describe
+		  state-of-the-art computational methods for the
+		  quantification of immune cells from transcriptomics data
+		  and discuss the open challenges that must be addressed to
+		  accurately quantify immune infiltrates from RNA sequencing
+		  data of human bulk tumors.},
+  author	= {Finotello, Francesca and Trajanoski, Zlatko},
+  year		= {2018},
+  title		= {Quantifying tumor-infiltrating immune cells from
+		  transcriptomics data},
+  pages		= {1031--1040},
+  volume	= {67},
+  number	= {7},
+  journal	= {Cancer immunology, immunotherapy : CII},
+  doi		= {10.1007/s00262-018-2150-z},
+  file		= {s00262-018-2150-z:Attachments/s00262-018-2150-z.pdf:application/pdf}
+}
+
 @Article{	  garg.2021,
   abstract	= {Adjuvant systemic therapies are now routinely used
 		  following resection of stage III melanoma, however accurate
@@ -559,6 +629,47 @@
   journal	= {Nature communications},
   doi		= {10.1038/s41467-021-21207-2},
   file		= {s41467-021-21207-2:Attachments/s41467-021-21207-2.pdf:application/pdf}
+}
+
+@Article{	  ghosh.2004,
+  abstract	= {MOTIVATION
+		  
+		  The use of DNA microarrays has become quite popular in many
+		  scientific and medical disciplines, such as in cancer
+		  research. One common goal of these studies is to determine
+		  which genes are differentially expressed between cancer and
+		  healthy tissue, or more generally, between two experimental
+		  conditions. A major complication in the molecular profiling
+		  of tumors using gene expression data is that the data
+		  represent a combination of tumor and normal cells. Much of
+		  the methodology developed for assessing differential
+		  expression with microarray data has assumed that tissue
+		  samples are homogeneous.
+		  
+		  RESULTS
+		  
+		  In this paper, we outline a general framework for
+		  determining differential expression in the presence of
+		  mixed cell populations. We consider study designs in which
+		  paired tissues and unpaired tissues are available. A
+		  hierarchical mixture model is used for modeling the data; a
+		  combination of methods of moments procedures and the
+		  expectation-maximization algorithm are used to estimate the
+		  model parameters. The finite-sample properties of the
+		  methods are assessed in simulation studies; they are
+		  applied to two microarray datasets from cancer studies.
+		  Commands in the R language can be downloaded from the URL
+		  http://www.sph.umich.edu/{\~{}}ghoshd/COMPBIO/COMPMIX/.},
+  author	= {Ghosh, Debashis},
+  year		= {2004},
+  title		= {Mixture models for assessing differential expression in
+		  complex tissues using microarray data},
+  pages		= {1663--1669},
+  volume	= {20},
+  number	= {11},
+  journal	= {Bioinformatics (Oxford, England)},
+  doi		= {10.1093/bioinformatics/bth139},
+  file		= {bioinformatics_20_11_1663:Attachments/bioinformatics_20_11_1663.pdf:application/pdf}
 }
 
 @Misc{		  h.ishwaran.2020,
@@ -650,6 +761,48 @@
   file		= {s41467-022-30512-3:Attachments/s41467-022-30512-3.pdf:application/pdf}
 }
 
+@Article{	  holik.2017,
+  abstract	= {Carefully designed control experiments provide a gold
+		  standard for benchmarking different genomics research
+		  tools. A shortcoming of many gene expression control
+		  studies is that replication involves profiling the same
+		  reference RNA sample multiple times. This leads to low,
+		  pure technical noise that is atypical of regular studies.
+		  To achieve a more realistic noise structure, we generated a
+		  RNA-sequencing mixture experiment using two cell lines of
+		  the same cancer type. Variability was added by extracting
+		  RNA from independent cell cultures and degrading particular
+		  samples. The systematic gene expression changes induced by
+		  this design allowed benchmarking of different library
+		  preparation kits (standard poly-A versus total RNA with
+		  Ribozero depletion) and analysis pipelines. Data generated
+		  using the total RNA kit had more signal for introns and
+		  various RNA classes (ncRNA, snRNA, snoRNA) and less
+		  variability after degradation. For differential expression
+		  analysis, voom with quality weights marginally outperformed
+		  other popular methods, while for differential splicing,
+		  DEXSeq was simultaneously the most sensitive and the most
+		  inconsistent method. For sample deconvolution analysis,
+		  DeMix outperformed IsoPure convincingly. Our RNA-sequencing
+		  data set provides a valuable resource for benchmarking
+		  different protocols and data pre-processing workflows. The
+		  extra noise mimics routine lab experiments more closely,
+		  ensuring any conclusions are widely applicable.},
+  author	= {Holik, Aliaksei Z. and Law, Charity W. and Liu, Ruijie and
+		  Wang, Zeya and Wang, Wenyi and Ahn, Jaeil and
+		  Asselin-Labat, Marie-Liesse and Smyth, Gordon K. and
+		  Ritchie, Matthew E.},
+  year		= {2017},
+  title		= {RNA-seq mixology: designing realistic control experiments
+		  to compare protocols and analysis methods},
+  pages		= {e30},
+  volume	= {45},
+  number	= {5},
+  journal	= {Nucleic acids research},
+  doi		= {10.1093/nar/gkw1063},
+  file		= {gkw1063:Attachments/gkw1063.pdf:application/pdf}
+}
+
 @Article{	  holm.1979,
   author	= {Holm, Sture},
   year		= {1979},
@@ -698,6 +851,38 @@
   title		= {presto: Fast Functions for Differential Expression using
 		  Wilcox and AUC},
   url		= {https://github.com/immunogenomics/presto}
+}
+
+@Article{	  im.2023,
+  abstract	= {Tumors are surrounded by a variety of tumor
+		  microenvironmental cells. Profiling individual cells within
+		  the tumor tissues is crucial to characterize the tumor
+		  microenvironment and its therapeutic implications. Since
+		  single-cell technologies are still not cost-effective,
+		  scientists have developed many statistical deconvolution
+		  methods to delineate cellular characteristics from bulk
+		  transcriptome data. Here, we present an overview of 20
+		  deconvolution techniques, including cutting-edge techniques
+		  recently established. We categorized deconvolution
+		  techniques by three primary criteria: characteristics of
+		  methodology, use of prior knowledge of cell types and
+		  outcome of the methods. We highlighted the advantage of the
+		  recent deconvolution tools that are based on probabilistic
+		  models. Moreover, we illustrated two scenarios of the
+		  common application of deconvolution methods to study tumor
+		  microenvironments. This comprehensive review will serve as
+		  a guideline for the researchers to select the appropriate
+		  method for their application of deconvolution.},
+  author	= {Im, Yebin and Kim, Yongsoo},
+  year		= {2023},
+  title		= {A Comprehensive Overview of RNA Deconvolution Methods and
+		  Their Application},
+  pages		= {99--105},
+  volume	= {46},
+  number	= {2},
+  journal	= {Molecules and cells},
+  doi		= {10.14348/molcells.2023.2178},
+  file		= {1-s2.0-S1016847823000158-main:Attachments/1-s2.0-S1016847823000158-main.pdf:application/pdf}
 }
 
 @Article{	  ishwaran.2008,
@@ -839,6 +1024,50 @@
   editor	= {Kidder, Benjamin L.},
   doi		= {10.1007/978-1-0716-0301-7},
   file		= {978-1-0716-0301-7:Attachments/978-1-0716-0301-7.pdf:application/pdf}
+}
+
+@Article{	  lambrechts.2018,
+  abstract	= {Cancer cells are embedded in the tumor microenvironment
+		  (TME), a complex ecosystem of stromal cells. Here, we
+		  present a 52,698-cell catalog of the TME transcriptome in
+		  human lung tumors at single-cell resolution, validated in
+		  independent samples where 40,250 additional cells were
+		  sequenced. By comparing with matching non-malignant lung
+		  samples, we reveal a highly complex TME that profoundly
+		  molds stromal cells. We identify 52 stromal cell subtypes,
+		  including novel subpopulations in cell types hitherto
+		  considered to be homogeneous, as well as transcription
+		  factors underlying their heterogeneity. For instance, we
+		  discover fibroblasts expressing different collagen sets,
+		  endothelial cells downregulating immune cell homing and
+		  genes coregulated with established immune checkpoint
+		  transcripts and correlating with T-cell activity. By
+		  assessing marker genes for these cell subtypes in bulk
+		  RNA-sequencing data from 1,572 patients, we illustrate how
+		  these correlate with survival, while immunohistochemistry
+		  for selected markers validates them as separate cellular
+		  entities in an independent series of lung tumors. Hence, in
+		  providing a comprehensive catalog of stromal cells types
+		  and by characterizing their phenotype and co-optive
+		  behavior, this resource provides deeper insights into lung
+		  cancer biology that will be helpful in advancing lung
+		  cancer diagnosis and therapy.},
+  author	= {Lambrechts, Diether and Wauters, Els and Boeckx, Bram and
+		  Aibar, Sara and Nittner, David and Burton, Oliver and
+		  Bassez, Ayse and Decaluw{\'e}, Herbert and Pircher, Andreas
+		  and {van den Eynde}, Kathleen and Weynand, Birgit and
+		  Verbeken, Erik and de Leyn, Paul and Liston, Adrian and
+		  Vansteenkiste, Johan and Carmeliet, Peter and Aerts, Stein
+		  and Thienpont, Bernard},
+  year		= {2018},
+  title		= {Phenotype molding of stromal cells in the lung tumor
+		  microenvironment},
+  pages		= {1277--1289},
+  volume	= {24},
+  number	= {8},
+  journal	= {Nature medicine},
+  doi		= {10.1038/s41591-018-0096-5},
+  file		= {TYU2LlftrpEuPLMp:Attachments/TYU2LlftrpEuPLMp.pdf:application/pdf}
 }
 
 @Book{		  lawson.1995,
@@ -1356,6 +1585,40 @@
   file		= {nihms-1525543:Attachments/nihms-1525543.pdf:application/pdf}
 }
 
+@Article{	  nguyen.2016,
+  abstract	= {Individual cells within a tumour can exhibit distinct
+		  genetic and molecular features. The impact of such
+		  diversification on metastatic potential is unknown. Here we
+		  identify clonal human breast cancer subpopulations that
+		  display different levels of morphological and molecular
+		  diversity. Highly variable subpopulations are more
+		  proficient at metastatic colonization and chemotherapeutic
+		  survival. Through single-cell RNA-sequencing, inter-cell
+		  transcript expression variability is identified as a
+		  defining feature of the highly variable subpopulations that
+		  leads to protein-level variation. Furthermore, we identify
+		  high variability in the spliceosomal machinery gene set.
+		  Engineered variable expression of the spliceosomal gene
+		  SNRNP40 promotes metastasis, attributable to cells with low
+		  expression. Clinically, low SNRNP40 expression is
+		  associated with metastatic relapse. Our findings reveal
+		  transcriptomic variability generation as a mechanism by
+		  which cancer subpopulations can diversify gene expression
+		  states, which may allow for enhanced fitness under changing
+		  environmental pressures encountered during cancer
+		  progression.},
+  author	= {Nguyen, Alexander and Yoshida, Mitsukuni and Goodarzi,
+		  Hani and Tavazoie, Sohail F.},
+  year		= {2016},
+  title		= {Highly variable cancer subpopulations that exhibit
+		  enhanced transcriptome variability and metastatic fitness},
+  pages		= {11246},
+  volume	= {7},
+  journal	= {Nature communications},
+  doi		= {10.1038/ncomms11246},
+  file		= {ncomms11246:Attachments/ncomms11246.pdf:application/pdf}
+}
+
 @Article{	  pimentel.2015,
   author	= {Pimentel, Ronald S. and Niewiadomska-Bugaj, Magdalena and
 		  Wang, Jung-Chao},
@@ -1367,6 +1630,34 @@
   journal	= {Statistics {\&} Probability Letters},
   doi		= {10.1016/j.spl.2014.09.002},
   file		= {Association_of_zero_inflated_continuous:Attachments/Association_of_zero_inflated_continuous.pdf:application/pdf}
+}
+
+@Article{	  quon.2013,
+  abstract	= {Tumor heterogeneity is a limiting factor in cancer
+		  treatment and in the discovery of biomarkers to personalize
+		  it. We describe a computational purification tool, ISOpure,
+		  to directly address the effects of variable normal tissue
+		  contamination in clinical tumor specimens. ISOpure uses a
+		  set of tumor expression profiles and a panel of healthy
+		  tissue expression profiles to generate a purified cancer
+		  profile for each tumor sample and an estimate of the
+		  proportion of RNA originating from cancerous cells.
+		  Applying ISOpure before identifying gene signatures leads
+		  to significant improvements in the prediction of prognosis
+		  and other clinical variables in lung and prostate cancer.},
+  author	= {Quon, Gerald and Haider, Syed and Deshwar, Amit G. and
+		  Cui, Ang and Boutros, Paul C. and Morris, Quaid},
+  year		= {2013},
+  title		= {Computational purification of individual tumor gene
+		  expression profiles leads to significant improvements in
+		  prognostic prediction},
+  pages		= {29},
+  volume	= {5},
+  number	= {3},
+  issn		= {1756-994X},
+  journal	= {Genome medicine},
+  doi		= {10.1186/gm433},
+  file		= {gm433:Attachments/gm433.pdf:application/pdf}
 }
 
 @Article{	  repsilber.2010,
@@ -1492,6 +1783,46 @@
   journal	= {Expert Systems with Applications},
   doi		= {10.1016/j.eswa.2016.07.018},
   file		= {1507.03092-1:Attachments/1507.03092-1.pdf:application/pdf}
+}
+
+@Article{	  stuart.2004,
+  abstract	= {Prostate tumors are complex entities composed of malignant
+		  cells mixed and interacting with nonmalignant cells.
+		  However, molecular analyses by standard gene expression
+		  profiling are limited because spatial information and
+		  nontumor cell types are lost in sample preparation. We
+		  scored 88 prostate specimens for relative content of tumor,
+		  benign hyperplastic epithelium, stroma, and dilated cystic
+		  glands. The proportions of these cell types were then
+		  linked in silico to gene expression levels determined by
+		  microarray analysis, revealing unique cell-specific
+		  profiles. Gene expression differences for malignant and
+		  nonmalignant epithelial cells (tumor versus benign
+		  hyperplastic epithelium) could be identified without being
+		  confounded by contributions from stroma that dominate many
+		  samples or sacrificing possible paracrine influences.
+		  Cell-specific expression of selected genes was validated by
+		  immunohistochemistry and quantitative PCR. The results
+		  provide patterns of gene expression for these three
+		  lineages with relevance to pathogenetic, diagnostic, and
+		  therapeutic considerations.},
+  author	= {Stuart, Robert O. and Wachsman, William and Berry, Charles
+		  C. and Wang-Rodriguez, Jessica and Wasserman, Linda and
+		  Klacansky, Igor and Masys, Dan and Arden, Karen and
+		  Goodison, Steven and McClelland, Michael and Wang, Yipeng
+		  and Sawyers, Anne and Kalcheva, Iveta and Tarin, David and
+		  Mercola, Dan},
+  year		= {2004},
+  title		= {In silico dissection of cell-type-associated patterns of
+		  gene expression in prostate cancer},
+  pages		= {615--620},
+  volume	= {101},
+  number	= {2},
+  issn		= {0027-8424},
+  journal	= {Proceedings of the National Academy of Sciences of the
+		  United States of America},
+  doi		= {10.1073/pnas.2536479100},
+  file		= {stuart-et-al-2004-in-silico-dissection-of-cell-type-associated-patterns-of-gene-expression-in-prostate-cancer:Attachments/stuart-et-al-2004-in-silico-dissection-of-cell-type-associated-patterns-of-gene-expression-in-prostate-cancer.pdf:application/pdf}
 }
 
 @Article{	  tran.2023,
@@ -1719,4 +2050,17 @@
   journal	= {Cancer cell},
   doi		= {10.1016/j.ccell.2022.07.006},
   file		= {PIIS1535610822003191:Attachments/PIIS1535610822003191.pdf:application/pdf}
+}
+
+@Article{	  zhong.2011,
+  abstract	= {Nature Methods 9, 8 (2012). doi:10.1038/nmeth.1830},
+  author	= {Zhong, Yi and Liu, Zhandong},
+  year		= {2011},
+  title		= {Gene expression deconvolution in linear space},
+  pages		= {8-9; author reply 9},
+  volume	= {9},
+  number	= {1},
+  journal	= {Nature methods},
+  doi		= {10.1038/nmeth.1830},
+  file		= {zhong2011:Attachments/zhong2011.pdf:application/pdf}
 }
