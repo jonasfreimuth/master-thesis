@@ -4,7 +4,7 @@ author: "Jonas Freimuth"
 output:
   html_document:
     toc: true
-    toc_depth: 2
+    toc_depth: 3
 bibliography: citations/cancer-cleaning_File.bib
 ---
 
@@ -12,15 +12,15 @@ bibliography: citations/cancer-cleaning_File.bib
 
 Due to its relatively low cost, bulk RNA sequencing (bulk RNA-seq) has seen
 widespread adoption in clinical cancer studies [@hong.2020]. While there
-currently is a boom in single-cell as well as spatial transcriptomics, which
-allow for very detailed expression profiling on the level of individual
-cells, the associated cost remains a factor preventing these technologies from
-being a resource of large-scale, high quality data-sets. Such resources would,
-however, be of great use in generating new insights in cancer research when
-combined with the wealth of machine-learning applications developed over the
-last decades (e.g. @garg.2021, @newell.2022). With the limitations of the more
-advanced methods in mind, efforts to improve the usability of tumor bulk RNA-seq
-data for machine-learning tasks would be well spent.
+currently is a boom in single-cell and spatial transcriptomics, which both allow
+for highly detailed expression profiling on the level of individual cells, the
+associated cost remains a factor preventing these technologies from being a
+resource of large-scale, high quality data-sets. Such resources would, however,
+be of great use in generating new insights in cancer research when combined with
+the wealth of machine-learning applications developed over the last decades
+(e.g. @garg.2021, @newell.2022). With the limitations of the more advanced
+methods in mind, efforts to improve the usability of tumor bulk RNA-seq data for
+machine-learning tasks would be well spent.
 
 However, the resolution of bulk RNA-seq data compared to the other methods
 mentioned above is low. For tumor samples this means that bulk RNA-seq profiles
@@ -36,46 +36,98 @@ represent confounding for downstream predictive modeling taking. If the
 expression profiles of the TME and of the cancer cells could be separated, the
 performance of such models may be increased.
 
+[Disentangle terminology of deconvolution / expression purification.]
+
 Ever since the widespread adoption of bulk gene expression quantification
-technologies in the form of microarrays, researchers had to deal with the
-problem of dissecting the combined expression of a mixtures of cells
-[@ghosh.2003, @stuart.2004]. Methods developed for microarray deconvolution
+technologies in the form of microarrays, researchers had to address the problem
+of dissecting the combined expression of mixtures of heterogeneous cells
+[@venet.2001; @ghosh.2004; @stuart.2004]. Most early methods attempted only to
+infer differentially expressed genes between the cell types [@ghosh.2004], but
+later ones were already able to estimate cell type specific expression
+[@lahdesmaki.2005]. Historically, these methods were based on non-negative
+matrix factorization (NMF), which modeled the problem as consisting of
+
+* a $n \times p$ bulk matrix, $B$ (also called mixture matrix), giving the
+  expression of $n$ genes for $p$ samples (mixtures/measurements, depending on
+  context),
+* a $n \times m$ signature matrix, $S$, giving the cell type specific expression
+  signature of $m$ cell types,
+* and a $m \times p$ concentration matrix $C$, giving the abundance of each
+  cell type in each sample.
+
+A priori, only $B$ is experimentally measured, $S$ and $C$ are estimated by
+solving
+
+$$B = S C$$
+
+with some simple constraints allowing to a tractable, unique solution
+[@venet.2001]. This approach on its own, while impressive, had several
+drawbacks. While not as big an issue for deconvolving only two cell types, the
+resulting cell type specific estimates for abundance and gene expression could
+not be directly attributed to specific cell types. The number of cell types had
+to be known a priori, and misspecification would bias model results
+[@lahdesmaki.2005]. Also, model solutions would depend on the set of samples,
+with a low number of samples leading to worse estimates [@repsilber.2010].
+@gaujoux.2012 improved the NMF approach by incorporating the prior knowledge of
+genes particularly highly expressed in specific cell types. This approach was
+then refined into a multi-step approach
+  
 
 
 
 
 
- approaches to estimate the expression profiles of
-individual cell types from RNA-seq data. Most older methods addressing the issue
-of disentangling tumor expression from other cells, like DeMix [@ahn.2013],
-ISOpure [@aran.2017], are designed for expression profiling arrays and may not
-generalize to the unlimited number of genes made accessible by bulk RNA-seq.
-Also, they were designed to only distinguish between two or few cell types /
-conditions and may not be suited to dissect the cancer cells from the specific
-mix of cell types surrounding them. 
+
+Most older methods addressing the issue of disentangling tumor expression from
+other cells, like DeMix [@ahn.2013], ISOpure [@aran.2017], were designed for
+expression profiling arrays and may not generalize to the unlimited number of
+genes made accessible by bulk RNA-seq. Also, they were designed to only
+distinguish between two or few cell types / conditions and may not be suited to
+dissect the cancer cells from the specific mix of cell types surrounding them.
 
 
 
 
 
 
-and I am aware of two methods using bulk RNA-seq data, whose primary objective
-is to estimate cell type proportion. These are Cibersortx [@newman.2019], and
-BayesPrism [@chu.2022].
+* Cibersortx [@newman.2019]
+* BayesPrism [@chu.2022].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [Cibersortx ist doof und erfordert mehr bulks wie cell types, BayesPrism computationally intensive]
 
 Cell type deconvolution already exists as a way to estimate the proportions of
 cell types contributing to the expression profile of a bulk tissue RNA-seq
 sample. One of the basic approaches consists of solving a system of linear
 equations, minimizing the distance between the transcript predictions and the
-bulk data. Under the assumption that cancer cells vary stronger in their
-expression than the other cells in the microenvironment, we can expect the
-residuals to contain much of this excess variation, thus representing a way to
-“clean” the bulk cancer expression of the expression of non-cancer cells. This
-method requires average expression profiles.
+bulk data.
 
 [High variability of cancer cells vs. remaining TME cells.]
+
+Under the assumption that cancer cells vary stronger in their
+expression than the other cells in the microenvironment, we can expect the
+residuals to contain much of this excess variation, thus representing a way to
+“clean” the bulk cancer expression of the expression of non-cancer cells.
+
 [Compare to BayesPrism only as it works natively in R while BLADE is python, Cibersortx is container]
+
 
 * Average expression profiles derived from scRNA-seq data
 * Issue of increasing distance between actual cell expression and average
@@ -162,15 +214,47 @@ choosing a random value for the marker score [Why?].
 
 ## Methods - Proof of concept
 
+Before applying my method to real-world problems, I carried out two analyses
+assesing its performance under ideal conditions. First, I explored the method's
+behavior when applied to normally distributed data with varying levels of noise
+added. Then, I quantified its performance under 
+
 ### Methods - Normally distributed simulation
+
+To demonstrate the functionality of the principle of extracting expression
+information of a heterogeneous cell type from the residuals of a linear
+deconvolution model, I first applied the method to highly simplistic, normally
+distributed data. 
 
 ### Methods - scRNA-seq pseudo-bulks
 
+I then proceeded to apply the method to *in-silico* simulated bulk RNA-seq data
+("pseudo-bulks") generated from the scRNA-seq data obtained from @wu.2021, to
+assess its performance on actual expression data with precisely known cell type
+abundances and expression profiles.
+
 ## Methods - Evaluation
+
+After ensuring my method behaves as expected, I compared the performance to an
+established method. First, I tested performance on correctly inferring true
+cancer expression in both pseudo-bulks and actual RNA-sequencing data. Second, I
+used cancer expression predictions of bulk RNA-seq data to train machine
+learning models predicting tumor subtype and progression free interval (PFI)
+and compared the performance of both BayesPrism and my method to models trained
+on raw bulk data.
 
 ### Methods - Comparison to BayesPrism
 
+To compare my transcriptome cleaning method to an established state-of-the-art
+method of estimating cell type specific expression profiles from bulk RNA-seq
+data, I applied both my method and BayesPrism to both tumor sample derived
+pseudo-bulks, as well as to actual bulk RNA-seq samples, both from @wu.2021.
+
 ### Methods - Prediction
+
+As the final evalutation of the method, I compared the predictive power of
+machine learning models trained on both estimated cancer expression data to
+models trained on bulk RNA-seq data alone.
 
 # Results
 
@@ -205,6 +289,10 @@ choosing a random value for the marker score [Why?].
 ## Discussion - Proof of concept
 
 ## Discussion - Outlook
+
+* Need to benchmark microarray expression purification techniques on bulk
+  RNA-seq data.
+* [Look into if spillover correction may be worked into method formulation.]
 
 # References
 
