@@ -31,9 +31,9 @@ script_run_params <- read_yaml(here::here(
 
 ## Introduction
 
-* Bulk RNA-seq has been widely adopted for many years [@Li.2021] $\rightarrow$
+* Bulk RNA-seq has been widely adopted for many years [@li.2021] $\rightarrow$
   There's an abundance of data available.
-* Contains an unknown fraction of non-cancer expression [@Li.2021]
+* Contains an unknown fraction of non-cancer expression [@li.2021]
 * This is a blokade in leveraging bulk RNA-seq data for machine learning
 * If cancer expression and microenvironment expression could be separated, a
   large amount of data would be available for more accurate analysis and
@@ -54,15 +54,15 @@ Research questions:
 
 ### Data
 
-* sc RNA-seq: Dataset by @Wu.2021
+* sc RNA-seq: Dataset by @wu.2021
   * 100'064 cells, from 26 samples, 29'733 genes in total
 * Clinical data: Using all available BRCA project data from TCGA (ver. 1.30.4
   see `MANIFEST.txt`)
-  * Retrieved via `TCGA-biolinks` [@Colaprico.2016; @Mounir.2019]
+  * Retrieved via `TCGA-biolinks` [@colaprico.2016; @mounir.2019]
   * Using STAR count data
   * Using sums of counts per `gene_name`!
   * Assays: Raw counts, FPKM (upper-quartile norm'd)
-* Survival data: TCGA-BRCA derived survival endpoints from @Liu.2018
+* Survival data: TCGA-BRCA derived survival endpoints from @liu.2018
 
 ### Random simulation
 
@@ -124,7 +124,7 @@ Analysis:
 ### scRNA-seq based simulation
 
 * Normalizing the reference and bulk probably not necessary for `nnls`
-  * See @Cobos.2023 Fig. 3.
+  * See @cobos.2023 Fig. 3.
 
 Deconvolution inputs:
 
@@ -133,8 +133,8 @@ Deconvolution inputs:
   * Using raw count matrix
   * Marker selection
     * Using wilcox test
-      * via Seurat (v5.0.1) [@Hao.2023]
-      * using `Presto` implementation [@IlyaKorsunsky.2020]
+      * via Seurat (v5.0.1) [@hao.2023]
+      * using `Presto` implementation [@ilyakorsunsky.2020]
       * previous normalization via `NormalizeData`, method relative counts
         (`RC`)
       * Using bonferroni method for p-value adjustment
@@ -162,7 +162,7 @@ Deconvolution inputs:
 
 Deconvolution:
 
-* Using nnls [@KatharineM.Mullen.2023] (Simple)
+* Using nnls [@katharinem.mullen.2023] (Simple)
 * _Always_ using only marker genes to estimate cell type abundances
 * Transcript predictions computed (Deconvoluted cell type abundance $*$ _full_
   reference matrix) $\rightarrow$ Getting transcript predictions for _all_ genes.
@@ -184,7 +184,7 @@ Analysis:
     distributions (see [supp. plots](#scrna-seq-based-simulation-3)), where
     normal correlation measures are not meaningful. Therefore correlations are
     for this section are reported as Kendalls $\tau$ adjusted for zero
-    inflation, as defined in @Pimentel.2015.
+    inflation, as defined in @pimentel.2015.
 
 ### Verification
 
@@ -226,7 +226,7 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
 * Progression free interval
   * Highest data quality
   * More data available due to shorter required follow-up times
-* Training random survival forests [@Ishwaran.2008; @H.Ishwaran.2020]
+* Training random survival forests [@ishwaran.2008; @h.ishwaran.2020]
 * Using same sample data as in previous section but filtered to fit survival
   data
   * Filtered to only include "Primary solid Tumor" samples
@@ -238,7 +238,7 @@ n_tree <- script_run_params$prediction$control$survival_prediction$n_tree
   * Using optimal parameters to fit a full model.
   * Using a 70-30 training-testing split [Report numbers]
 * Model evaluation:
-  * Using reported Harrell's C to assess performance [@Schmid.2016].
+  * Using reported Harrell's C to assess performance [@schmid.2016].
   * [Statistics on C index accuracy?]
 
 ## Results
@@ -299,13 +299,13 @@ for within cell-type heterogeneity (also maybe cell states) improve accuracy?
 
 ### Outlook
 
-* Comparison to BayesPrism [@Chu.2022]
+* Comparison to BayesPrism [@chu.2022]
   * BayesPrism has higher accurracy
   * BP can't infer expression of non-marker transcripts (except via
   ref * ctype_props, but that depends on the reference accurracy.)
 * [Explore possibility of using DWLS for deconvolution]
 * Might be sensible to try more advanced deconvolution approaches, i.e. SQUID
-  [@Cobos.2023]
+  [@cobos.2023]
 
 ## References
 
