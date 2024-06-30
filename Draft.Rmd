@@ -36,16 +36,15 @@ represent confounding for downstream predictive modeling taking. If the
 expression profiles of the TME and of the cancer cells could be separated, the
 performance of such models may be increased.
 
-[Disentangle terminology of deconvolution / expression purification.]
-
 Ever since the widespread adoption of bulk gene expression quantification
 technologies in the form of microarrays, researchers had to address the problem
 of dissecting the combined expression of mixtures of heterogeneous cells
 [@venet.2001; @ghosh.2004; @stuart.2004]. Most early methods attempted only to
 infer differentially expressed genes between the cell types [@ghosh.2004], but
 later ones were already able to estimate cell type specific expression
-[@lahdesmaki.2005]. Historically, these methods were based on non-negative
-matrix factorization (NMF), which modeled the problem as consisting of
+[@lahdesmaki.2005], with the latter process often being called *in-silico*
+purification. Historically, these methods were based on non-negative matrix
+factorization (NMF), which modeled the problem as consisting of
 
 * a $n \times p$ bulk matrix, $B$ (also called mixture matrix), giving the
   expression of $n$ genes for $p$ samples (mixtures/measurements, depending on
@@ -69,29 +68,22 @@ to be known a priori, and misspecification would bias model results
 [@lahdesmaki.2005]. Also, model solutions would depend on the set of samples,
 with a low number of samples leading to worse estimates [@repsilber.2010].
 @gaujoux.2012 improved the NMF approach by incorporating the prior knowledge of
-genes particularly highly expressed in specific cell types. This approach was
-then refined into a multi-step approach
-  
+genes particularly highly expressed in specific cell types. This represents the
+step from an entirely unsupervised method of deconvolution, where no prior
+information besides the mixture data was needed, to more accurate supervised
+methods.
 
+Modern high resolution methods for *in-silico* purification of bulk tumor
+RNA-seq data are usually supervised full deconvolution methods. Of the 20 bulk
+RNA-seq deconvolution methods reviewed in @im.2023, only three included the
+capacity to estimate cell type specific expression profiles from more than two
+individual samples, all of them use scRNA-seq derived reference profiles for
+deconvolution. Theses methods are Cibersortx [@newman.2019], BLADE
+[@andradebarbosa.2021], and BayesPrism [@chu.2022]. Cibersortx accomplishes the
+purification by using a multi-stage matrix factorization approach, while the
+latter two methods use probabalistic approaches. 
 
-
-
-
-
-Most older methods addressing the issue of disentangling tumor expression from
-other cells, like DeMix [@ahn.2013], ISOpure [@aran.2017], were designed for
-expression profiling arrays and may not generalize to the unlimited number of
-genes made accessible by bulk RNA-seq. Also, they were designed to only
-distinguish between two or few cell types / conditions and may not be suited to
-dissect the cancer cells from the specific mix of cell types surrounding them.
-
-
-
-
-
-
-* Cibersortx [@newman.2019]
-* BayesPrism [@chu.2022].
+[Cibersortx ist doof und erfordert mehr bulks als cell types, BayesPrism computationally intensive]
 
 
 
@@ -111,7 +103,38 @@ dissect the cancer cells from the specific mix of cell types surrounding them.
 
 
 
-[Cibersortx ist doof und erfordert mehr bulks wie cell types, BayesPrism computationally intensive]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Cell type deconvolution already exists as a way to estimate the proportions of
 cell types contributing to the expression profile of a bulk tissue RNA-seq
