@@ -89,53 +89,6 @@ latter two methods use probabalistic approaches.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Cell type deconvolution already exists as a way to estimate the proportions of
 cell types contributing to the expression profile of a bulk tissue RNA-seq
 sample. One of the basic approaches consists of solving a system of linear
