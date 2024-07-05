@@ -8,19 +8,3 @@ output:
 bibliography: ../citations/cancer-cleaning_File.bib
 ---
 
-```{r utils, echo = FALSE}
-EQ_REFS <- list()
-
-eq_register <- function(id) {
-  # Register an equation at the point of definition and print its index.
-  eq_ind <- length(EQ_REFS) + 1
-  EQ_REFS[[id]] <<- eq_ind
-
-  paste0("\\quad(", eq_ind, ")")
-}
-
-eq_reference <- function(id) {
-  # Return the index of a given equation.
-  paste("*(", EQ_REFS[[id]], ")*")
-}
-```

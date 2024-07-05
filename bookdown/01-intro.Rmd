@@ -47,7 +47,10 @@ factorization (NMF), which modeled the problem as consisting of
 A priori, only $B$ is experimentally measured, $S$ and $C$ are estimated by
 solving
 
-$$B = S C `r eq_register("basic_matrix_deconv")`$$
+\begin{equation}
+  B = S C
+  (\#eq:basic-matrix-deconv)
+\end{equation}
 
 with some simple constraints allowing to a tractable, unique solution
 [@venet.2001]. This approach on its own, while impressive, had several
@@ -82,7 +85,7 @@ deconvolution model might be useful in cases where explainability and
 computational efficency are more important than high accuracy.
 
 As mentioned above, the problem of pure cell type deconvolution can be modeled
-as a system of linear equations `r eq_reference("basic_matrix_deconv")`.
+as a system of linear equations \@ref(eq:basic-matrix-deconv).
 
 Cell type deconvolution already exists as a way to estimate the proportions of
 cell types contributing to the expression profile of a bulk tissue RNA-seq
