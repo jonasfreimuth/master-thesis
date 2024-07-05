@@ -8,6 +8,23 @@ output:
 bibliography: citations/cancer-cleaning_File.bib
 ---
 
+```{r utils, echo = FALSE}
+EQ_REFS <- list()
+
+eq_register <- function(id) {
+  # Register an equation at the point of definition and print its index.
+  eq_ind <- length(EQ_REFS) + 1
+  EQ_REFS[[id]] <<- eq_ind
+
+  paste0("\\quad(", eq_ind, ")")
+}
+
+eq_reference <- function(id) {
+  # Return the index of a given equation.
+  paste("*(", EQ_REFS[[id]], ")*")
+}
+```
+
 # Introduction
 
 Due to its relatively low cost, bulk RNA sequencing (bulk RNA-seq) has seen
@@ -57,7 +74,7 @@ factorization (NMF), which modeled the problem as consisting of
 A priori, only $B$ is experimentally measured, $S$ and $C$ are estimated by
 solving
 
-$$B = S C$$
+$$B = S C `r eq_register("basic_matrix_deconv")`$$
 
 with some simple constraints allowing to a tractable, unique solution
 [@venet.2001]. This approach on its own, while impressive, had several
@@ -71,23 +88,28 @@ with a low number of samples leading to worse estimates [@repsilber.2010].
 genes particularly highly expressed in specific cell types. This represents the
 step from an entirely unsupervised method of deconvolution, where no prior
 information besides the mixture data was needed, to more accurate supervised
-methods.
+methods. However, previous methods only allow for estimation of the general
+expression profiles of their respective cell types / conditions.
 
 Modern high resolution methods for *in-silico* purification of bulk tumor
 RNA-seq data are usually supervised full deconvolution methods. Of the 20 bulk
 RNA-seq deconvolution methods reviewed in @im.2023, only three included the
 capacity to estimate cell type specific expression profiles from more than two
 individual samples, all of them use scRNA-seq derived reference profiles for
-deconvolution. Theses methods are Cibersortx [@newman.2019], BLADE
-[@andradebarbosa.2021], and BayesPrism [@chu.2022]. Cibersortx accomplishes the
-purification by using a multi-stage matrix factorization approach, while the
-latter two methods use probabalistic approaches. 
+deconvolution. Theses methods are Cibersortx [@newman.2019], a
+$\nu$-support-vector-regression ($\nu$-SVR) based general purpose method, BLADE
+[@andradebarbosa.2021], a probabalistic general purpose method, and BayesPrism
+[@chu.2022] a probabalistic method specifically designed for tumor
+deconvolution. Cibersortx accomplishes the purification by using a multi-stage
+matrix factorization approach supplemented by the cell type abundance
+information estimated via $\nu$-SVR. The latter two methods' probabalistic
+approaches use fairly complex model formulations and, in the case of BLADE, need
+to rely on hyperparameter tuning for optimal performance. Hence, a simpler
+deconvolution model might be useful in cases where explainability and
+computational efficency are more important than high accuracy.
 
-[Cibersortx ist doof und erfordert mehr bulks als cell types, BayesPrism computationally intensive]
-
-
-
-
+As mentioned above, the problem of pure cell type deconvolution can be modeled
+as a system of linear equations `r eq_reference("basic_matrix_deconv")`.
 
 Cell type deconvolution already exists as a way to estimate the proportions of
 cell types contributing to the expression profile of a bulk tissue RNA-seq
