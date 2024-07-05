@@ -1,0 +1,107 @@
+# Methods & Data
+
+## Data
+
+Single cell RNA sequencing data consists of transcript count data breast cancer
+tumor samples from @wu.2021 (Gene Expression Omnibus, GEO accession
+[GSE176078](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE176078)). It
+contains 100'064 cells, 29'733 genes, from 26 samples. The cells are annotated
+as belonging to one of nine cell types, with further sub-type information
+available. A subset of 20 tumor samples has been processed via bulk RNA-seq.
+
+For prediction tasks, bulk RNA-seq data of breast cancers annotated with
+clinical data was obtained from the Cancer Genome Atalas (TCGA). The data was
+comprised of all 1'095 patient samples from the TCGA-BRCA project with bulk
+RNA-seq data available [Ensure reproducibility]. For the survival prediction
+task, survival endpoint data derived from curated clincial data by @liu.2018 was
+retrieved for the corresponding tumor samples.
+
+## Methods - Transcriptome cleaning overview
+
+To clean a bulk RNA-seq transcriptome, you first need to run a deconvolution on
+it.
+
+[Explanation of deconvolution as least squares problem & why nnls is sensible.]
+[Mention other, more advanced methods.]
+[Mathematical explanation.]
+[Problem using cleaned bulk RNA-seq profiles as reference: It would need to be ensured that each profile represents a single-cell.]
+
+For this you need a Reference and the bulk RNA-seq data to deconvolute.
+
+### Reference
+
+Here, the Reference is always made up averaged expression profiles derived from
+scRNA data. For this, the per gene expression counts from @wu.2021 were averaged
+across all cells of the same cell type. Since the dataset provided by @wu.2021
+is already filtered for high quality cells, no cell quality control was
+performed by me.
+
+To explore the effects of restricting the set of genes used for deconvolution on
+estimation accuracy for both cell type abundances and cancer expression, a set
+of selection criteria was applied to the genes of the Reference. (First was
+basic gene quality control, which comprised filtering the genes to be expressed
+in at least 5 cells, removal of )
+
+Second, each gene was assigned a marker score, quantifying its likely usefulness
+as a gene in the deconvolution reference. Genes with a good score would have an
+expression signature across cell types which would allow for clear
+identification of just a single cell type by having particularly high or low
+expression in just that cell type. Multiple ways to determine this score were
+explored during preliminary experiments (DESeq2 @love.2014, Hampel filter
+@davies.1993), but ultimately a simple Wilcoxon test [wilcoxon.1945] for
+comparing each cell type to the pooled remaining cell types (via
+`FindAllMarkers` from the R Seurat package v.5, @hao.2023) was chosen for its
+combination of relative simplicity and accuracy. The marker score for the
+Wilcoxon test based marker selection was the test p-Value (adjusted for multiple
+testing via the Holm-Bonferroni method [@holm.1979]). Only genes differentially
+expressed in a single cell type with at $p_{adj} < 0.05$ were considered as
+marker genes, with lower values being considered better. It was contrasted with
+choosing a random value for the marker score [Why?].
+
+### Bulk
+
+
+
+## Methods - Proof of concept
+
+Before applying my method to real-world problems, I carried out two analyses
+assesing its performance under ideal conditions. First, I explored the method's
+behavior when applied to normally distributed data with varying levels of noise
+added. Then, I quantified its performance under 
+
+### Methods - Normally distributed simulation
+
+To demonstrate the functionality of the principle of extracting expression
+information of a heterogeneous cell type from the residuals of a linear
+deconvolution model, I first applied the method to highly simplistic, normally
+distributed data. 
+
+### Methods - scRNA-seq pseudo-bulks
+
+I then proceeded to apply the method to *in-silico* simulated bulk RNA-seq data
+("pseudo-bulks") generated from the scRNA-seq data obtained from @wu.2021, to
+assess its performance on actual expression data with precisely known cell type
+abundances and expression profiles.
+
+## Methods - Evaluation
+
+After ensuring my method behaves as expected, I compared the performance to an
+established method. First, I tested performance on correctly inferring true
+cancer expression in both pseudo-bulks and actual RNA-sequencing data. Second, I
+used cancer expression predictions of bulk RNA-seq data to train machine
+learning models predicting tumor subtype and progression free interval (PFI)
+and compared the performance of both BayesPrism and my method to models trained
+on raw bulk data.
+
+### Methods - Comparison to BayesPrism
+
+To compare my transcriptome cleaning method to an established state-of-the-art
+method of estimating cell type specific expression profiles from bulk RNA-seq
+data, I applied both my method and BayesPrism to both tumor sample derived
+pseudo-bulks, as well as to actual bulk RNA-seq samples, both from @wu.2021.
+
+### Methods - Prediction
+
+As the final evalutation of the method, I compared the predictive power of
+machine learning models trained on both estimated cancer expression data to
+models trained on bulk RNA-seq data alone.

@@ -2,6 +2,7 @@
                                 "texlive"
                                 "pandoc"
                                 "r"
+                                "r-bookdown"
                                 "r-data-table"
                                 "r-dt"
                                 "r-dplyr"

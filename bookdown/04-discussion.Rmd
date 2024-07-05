@@ -1,0 +1,21 @@
+# Discussion
+
+## Discussion - Proof of concept
+
+### Discussion - Normally distributed simulation
+
+### Discussion - scRNA-seq pseudo-bulks
+
+## Discussion - Evaluation
+
+### Discussion - Comparison to BayesPrism
+
+### Discussion - Prediction
+
+## Discussion - Proof of concept
+
+## Discussion - Outlook
+
+* Need to benchmark microarray expression purification techniques on bulk
+  RNA-seq data.
+* [Look into if spillover correction may be worked into method formulation.]
