@@ -3,7 +3,10 @@ title: "Cancer transcriptome cleaning by deconvolution"
 author: "Jonas Freimuth"
 documentclass: article
 output:
-  html_document:
+  html_document2:
+    toc: true
+    toc_depth: 3
+  pdf_book:
     toc: true
     toc_depth: 3
 bibliography: ../citations/cancer-cleaning_File.bib
