@@ -1,6 +1,7 @@
 ---
 title: "Cancer transcriptome cleaning by deconvolution"
 author: "Jonas Freimuth"
+documentclass: article
 output:
   html_document:
     toc: true
