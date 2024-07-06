@@ -36,19 +36,19 @@ later ones were already able to estimate cell type specific expression
 purification. Historically, these methods were based on non-negative matrix
 factorization (NMF), which modeled the problem as consisting of
 
-* a $n \times p$ bulk matrix, $B$ (also called mixture matrix), giving the
-  expression of $n$ genes for $p$ samples (mixtures/measurements, depending on
-  context),
-* a $n \times m$ signature matrix, $S$, giving the cell type specific expression
-  signature of $m$ cell types,
-* and a $m \times p$ concentration matrix $C$, giving the abundance of each
-  cell type in each sample.
+* a $n \times p$ bulk matrix, $\mathbf{B}$ (also called mixture matrix), giving
+  the expression of $n$ genes for $p$ samples (mixtures/measurements, depending
+  on context),
+* a $n \times m$ signature matrix, $\mathbf{S}$, giving the cell type specific
+  expression signature of $m$ cell types,
+* and a $m \times p$ concentration matrix $\mathbf{C}$, giving the abundance of
+  each cell type in each sample.
 
-A priori, only $B$ is experimentally measured, $S$ and $C$ are estimated by
-solving
+A priori, only $\mathbf{B}$ is experimentally measured, $\mathbf{S}$ and
+$\mathbf{C}$ are estimated by solving
 
 \begin{equation}
-  B = S C
+  \mathbf{B} = \mathbf{S} \mathbf{C}
   (\#eq:basic-matrix-deconv)
 \end{equation}
 
