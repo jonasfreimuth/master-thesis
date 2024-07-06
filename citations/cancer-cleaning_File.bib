@@ -1076,6 +1076,46 @@
   file		= {s41467-020-15816-6:Attachments/s41467-020-15816-6.pdf:application/pdf}
 }
 
+@Article{	  jin.2021,
+  abstract	= {BACKGROUND
+		  
+		  Deconvolution analyses have been widely used to track
+		  compositional alterations of cell types in gene expression
+		  data. Although a large number of novel methods have been
+		  developed, due to a lack of understanding of the effects of
+		  modeling assumptions and tuning parameters, it is
+		  challenging for researchers to select an optimal
+		  deconvolution method suitable for the targeted biological
+		  conditions.
+		  
+		  RESULTS
+		  
+		  To systematically reveal the pitfalls and challenges of
+		  deconvolution analyses, we investigate the impact of
+		  several technical and biological factors including
+		  simulation model, quantification unit, component number,
+		  weight matrix, and unknown content by constructing three
+		  benchmarking frameworks. These frameworks cover comparative
+		  analysis of 11 popular deconvolution methods under 1766
+		  conditions.
+		  
+		  CONCLUSIONS
+		  
+		  We provide new insights to researchers for future
+		  application, standardization, and development of
+		  deconvolution tools on RNA-seq data.},
+  author	= {Jin, Haijing and Liu, Zhandong},
+  year		= {2021},
+  title		= {A benchmark for RNA-seq deconvolution analysis under
+		  dynamic testing environments},
+  pages		= {102},
+  volume	= {22},
+  number	= {1},
+  journal	= {Genome biology},
+  doi		= {10.1186/s13059-021-02290-6},
+  file		= {s13059-021-02290-6:Attachments/s13059-021-02290-6.pdf:application/pdf}
+}
+
 @Article{	  kang.2019,
   abstract	= {Quantifying cell-type proportions and their corresponding
 		  gene expression profiles in tissue samples would enhance
@@ -1626,6 +1666,21 @@
   file		= {bioinformatics_33_8_1179:Attachments/bioinformatics_33_8_1179.pdf:application/pdf}
 }
 
+@Article{	  mohammadi.2017,
+  author	= {Mohammadi, Shahin and Zuckerman, Neta and Goldsmith,
+		  Andrea and Grama, Ananth},
+  year		= {2017},
+  title		= {A Critical Survey of Deconvolution Methods for Separating
+		  Cell Types in Complex Tissues},
+  pages		= {340--366},
+  volume	= {105},
+  number	= {2},
+  issn		= {0018-9219},
+  journal	= {Proceedings of the IEEE},
+  doi		= {10.1109/JPROC.2016.2607121},
+  file		= {mohammadi2016:Attachments/mohammadi2016.pdf:application/pdf}
+}
+
 @Article{	  moss.2018,
   abstract	= {Methylation patterns of circulating cell-free DNA (cfDNA)
 		  contain rich information about recent cell death events in
@@ -1929,6 +1984,52 @@
   file		= {Association_of_zero_inflated_continuous:Attachments/Association_of_zero_inflated_continuous.pdf:application/pdf}
 }
 
+@Article{	  qiao.2012,
+  abstract	= {The cellular composition of heterogeneous samples can be
+		  predicted using an expression deconvolution algorithm to
+		  decompose their gene expression profiles based on
+		  pre-defined, reference gene expression profiles of the
+		  constituent populations in these samples. However, the
+		  expression profiles of the actual constituent populations
+		  are often perturbed from those of the reference profiles
+		  due to gene expression changes in cells associated with
+		  microenvironmental or developmental effects. Existing
+		  deconvolution algorithms do not account for these changes
+		  and give incorrect results when benchmarked against those
+		  measured by well-established flow cytometry, even after
+		  batch correction was applied. We introduce PERT, a new
+		  probabilistic expression deconvolution method that detects
+		  and accounts for a shared, multiplicative perturbation in
+		  the reference profiles when performing expression
+		  deconvolution. We applied PERT and three other
+		  state-of-the-art expression deconvolution methods to
+		  predict cell frequencies within heterogeneous human blood
+		  samples that were collected under several conditions
+		  (uncultured mono-nucleated and lineage-depleted cells, and
+		  culture-derived lineage-depleted cells). Only PERT's
+		  predicted proportions of the constituent populations
+		  matched those assigned by flow cytometry. Genes associated
+		  with cell cycle processes were highly enriched among those
+		  with the largest predicted expression changes between the
+		  cultured and uncultured conditions. We anticipate that PERT
+		  will be widely applicable to expression deconvolution
+		  strategies that use profiles from reference populations
+		  that vary from the corresponding constituent populations in
+		  cellular state but not cellular phenotypic identity.},
+  author	= {Qiao, Wenlian and Quon, Gerald and Csaszar, Elizabeth and
+		  Yu, Mei and Morris, Quaid and Zandstra, Peter W.},
+  year		= {2012},
+  title		= {PERT: a method for expression deconvolution of human blood
+		  samples from varied microenvironmental and developmental
+		  conditions},
+  pages		= {e1002838},
+  volume	= {8},
+  number	= {12},
+  journal	= {PLoS computational biology},
+  doi		= {10.1371/journal.pcbi.1002838},
+  file		= {document:Attachments/document.pdf:application/pdf}
+}
+
 @Article{	  quon.2013,
   abstract	= {Tumor heterogeneity is a limiting factor in cancer
 		  treatment and in the discovery of biomarkers to personalize
@@ -1955,6 +2056,35 @@
   journal	= {Genome medicine},
   doi		= {10.1186/gm433},
   file		= {gm433:Attachments/gm433.pdf:application/pdf}
+}
+
+@Article{	  racle.2017,
+  abstract	= {Immune cells infiltrating tumors can have important impact
+		  on tumor progression and response to therapy. We present an
+		  efficient algorithm to simultaneously estimate the fraction
+		  of cancer and immune cell types from bulk tumor gene
+		  expression data. Our method integrates novel gene
+		  expression profiles from each major non-malignant cell type
+		  found in tumors, renormalization based on
+		  cell-type-specific mRNA content, and the ability to
+		  consider uncharacterized and possibly highly variable cell
+		  types. Feasibility is demonstrated by validation with flow
+		  cytometry, immunohistochemistry and single-cell RNA-Seq
+		  analyses of human melanoma and colorectal tumor specimens.
+		  Altogether, our work not only improves accuracy but also
+		  broadens the scope of absolute cell fraction predictions
+		  from tumor gene expression data, and provides a unique
+		  novel experimental benchmark for immunogenomics analyses in
+		  cancer research (http://epic.gfellerlab.org).},
+  author	= {Racle, Julien and de Jonge, Kaat and Baumgaertner, Petra
+		  and Speiser, Daniel E. and Gfeller, David},
+  year		= {2017},
+  title		= {Simultaneous enumeration of cancer and immune cell types
+		  from bulk tumor gene expression data},
+  volume	= {6},
+  journal	= {eLife},
+  doi		= {10.7554/eLife.26476},
+  file		= {:Attachments/:application/octet-stream}
 }
 
 @Article{	  repsilber.2010,
@@ -2148,6 +2278,40 @@
   file		= {stuart-et-al-2004-in-silico-dissection-of-cell-type-associated-patterns-of-gene-expression-in-prostate-cancer:Attachments/stuart-et-al-2004-in-silico-dissection-of-cell-type-associated-patterns-of-gene-expression-in-prostate-cancer.pdf:application/pdf}
 }
 
+@Article{	  sutton.2022,
+  abstract	= {Transcriptome deconvolution aims to estimate the cellular
+		  composition of an RNA sample from its gene expression data,
+		  which in turn can be used to correct for composition
+		  differences across samples. The human brain is unique in
+		  its transcriptomic diversity, and comprises a complex
+		  mixture of cell-types, including transcriptionally similar
+		  subtypes of neurons. Here, we carry out a comprehensive
+		  evaluation of deconvolution methods for human brain
+		  transcriptome data, and assess the tissue-specificity of
+		  our key observations by comparison with human pancreas and
+		  heart. We evaluate eight transcriptome deconvolution
+		  approaches and nine cell-type signatures, testing the
+		  accuracy of deconvolution using in silico mixtures of
+		  single-cell RNA-seq data, RNA mixtures, as well as nearly
+		  2000 human brain samples. Our results identify the main
+		  factors that drive deconvolution accuracy for brain data,
+		  and highlight the importance of biological factors
+		  influencing cell-type signatures, such as brain region and
+		  in vitro cell culturing.},
+  author	= {Sutton, Gavin J. and Poppe, Daniel and Simmons, Rebecca K.
+		  and Walsh, Kieran and Nawaz, Urwah and Lister, Ryan and
+		  Gagnon-Bartsch, Johann A. and Voineagu, Irina},
+  year		= {2022},
+  title		= {Comprehensive evaluation of deconvolution methods for
+		  human brain gene expression},
+  pages		= {1358},
+  volume	= {13},
+  number	= {1},
+  journal	= {Nature communications},
+  doi		= {10.1038/s41467-022-28655-4},
+  file		= {s41467-022-28655-4:Attachments/s41467-022-28655-4.pdf:application/pdf}
+}
+
 @Article{	  tran.2023,
   abstract	= {Cells within the tumour microenvironment (TME) can impact
 		  tumour development and influence treatment response.
@@ -2251,6 +2415,39 @@
   journal	= {Bioinformatics (Oxford, England)},
   doi		= {10.1093/bioinformatics/17.suppl{\textunderscore }1.s279},
   file		= {gene-expr-complex-samples-ismb2001:Attachments/gene-expr-complex-samples-ismb2001.pdf:application/pdf}
+}
+
+@Article{	  wang.2019,
+  abstract	= {Knowledge of cell type composition in disease relevant
+		  tissues is an important step towards the identification of
+		  cellular targets of disease. We present MuSiC, a method
+		  that utilizes cell-type specific gene expression from
+		  single-cell RNA sequencing (RNA-seq) data to characterize
+		  cell type compositions from bulk RNA-seq data in complex
+		  tissues. By appropriate weighting of genes showing
+		  cross-subject and cross-cell consistency, MuSiC enables the
+		  transfer of cell type-specific gene expression information
+		  from one dataset to another. When applied to pancreatic
+		  islet and whole kidney expression data in human, mouse, and
+		  rats, MuSiC outperformed existing methods, especially for
+		  tissues with closely related cell types. MuSiC enables the
+		  characterization of cellular heterogeneity of complex
+		  tissues for understanding of disease mechanisms. As bulk
+		  tissue data are more easily accessible than single-cell
+		  RNA-seq, MuSiC allows the utilization of the vast amounts
+		  of disease relevant bulk tissue RNA-seq data for
+		  elucidating cell type contributions in disease.},
+  author	= {Wang, Xuran and Park, Jihwan and Susztak, Katalin and
+		  Zhang, Nancy R. and Li, Mingyao},
+  year		= {2019},
+  title		= {Bulk tissue cell type deconvolution with multi-subject
+		  single-cell expression reference},
+  pages		= {380},
+  volume	= {10},
+  number	= {1},
+  journal	= {Nature communications},
+  doi		= {10.1038/s41467-018-08023-x},
+  file		= {s41467-018-08023-x:Attachments/s41467-018-08023-x.pdf:application/pdf}
 }
 
 @Article{	  wilcoxon.1945,
