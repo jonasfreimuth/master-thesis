@@ -1,15 +1,15 @@
 # Results
 
-## Results - Proof of concept
+## Proof of concept
 
-### Results - Normally distributed simulation
+### Normally distributed simulation
 
-### Results - scRNA-seq pseudo-bulks
+### scRNA-seq pseudo-bulks
 
-## Results - Evaluation
+## Evaluation
 
-### Results - Comparison to BayesPrism
+### Comparison to BayesPrism
 
-### Results - Prediction
+### Prediction
 
-## Results - Proof of concept
+## Proof of concept

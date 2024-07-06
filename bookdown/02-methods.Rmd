@@ -16,7 +16,7 @@ RNA-seq data available [Ensure reproducibility]. For the survival prediction
 task, survival endpoint data derived from curated clincial data by @liu.2018 was
 retrieved for the corresponding tumor samples.
 
-## Methods - Transcriptome cleaning overview
+## Transcriptome cleaning overview
 
 To clean a bulk RNA-seq transcriptome, you first need to run a deconvolution on
 it.
@@ -62,28 +62,28 @@ choosing a random value for the marker score [Why?].
 
 
 
-## Methods - Proof of concept
+## Proof of concept
 
 Before applying my method to real-world problems, I carried out two analyses
 assesing its performance under ideal conditions. First, I explored the method's
 behavior when applied to normally distributed data with varying levels of noise
 added. Then, I quantified its performance under 
 
-### Methods - Normally distributed simulation
+### Normally distributed simulation
 
 To demonstrate the functionality of the principle of extracting expression
 information of a heterogeneous cell type from the residuals of a linear
 deconvolution model, I first applied the method to highly simplistic, normally
 distributed data. 
 
-### Methods - scRNA-seq pseudo-bulks
+### scRNA-seq pseudo-bulks
 
 I then proceeded to apply the method to *in-silico* simulated bulk RNA-seq data
 ("pseudo-bulks") generated from the scRNA-seq data obtained from @wu.2021, to
 assess its performance on actual expression data with precisely known cell type
 abundances and expression profiles.
 
-## Methods - Evaluation
+## Evaluation
 
 After ensuring my method behaves as expected, I compared the performance to an
 established method. First, I tested performance on correctly inferring true
@@ -93,14 +93,14 @@ learning models predicting tumor subtype and progression free interval (PFI)
 and compared the performance of both BayesPrism and my method to models trained
 on raw bulk data.
 
-### Methods - Comparison to BayesPrism
+### Comparison to BayesPrism
 
 To compare my transcriptome cleaning method to an established state-of-the-art
 method of estimating cell type specific expression profiles from bulk RNA-seq
 data, I applied both my method and BayesPrism to both tumor sample derived
 pseudo-bulks, as well as to actual bulk RNA-seq samples, both from @wu.2021.
 
-### Methods - Prediction
+### Prediction
 
 As the final evalutation of the method, I compared the predictive power of
 machine learning models trained on both estimated cancer expression data to
