@@ -84,14 +84,42 @@ to rely on hyperparameter tuning for optimal performance. Hence, a simpler
 deconvolution model might be useful in cases where explainability and
 computational efficency are more important than high accuracy.
 
-As mentioned above, the problem of pure cell type deconvolution can be modeled
-as a system of linear equations \@ref(eq:basic-matrix-deconv).
+Following from the basic deconvolution model of equation
+\@ref(eq:basic-matrix-deconv), the problem becomes tractable when the signature
+matrix $\mathbf{S}$ is already known as it is then reduced to a system of linear
+equations for each bulk $k$:
 
-Cell type deconvolution already exists as a way to estimate the proportions of
-cell types contributing to the expression profile of a bulk tissue RNA-seq
-sample. One of the basic approaches consists of solving a system of linear
-equations, minimizing the distance between the transcript predictions and the
-bulk data.
+\begin{equation*}
+  \mathbf{B}_{\cdot k} = \mathbf{S} \mathbf{C}_{\cdot k}
+  \qquad \forall 1 \leq k \leq n
+\end{equation*}
+
+To reduce the solution space, usually a non-negativity constraint is placed on
+elements of $\mathbf{C}$, as a mixture can't contain negative concentations
+[@venet.2001]. Adding this constraint, and considering the bulks $\mathbf{b}$
+and associated concentration vectors $\mathbf{c}$ independently the problem can
+be formulated as
+
+\begin{equation*}
+  \mathbf{b} = \mathbf{S} \mathbf{c}
+  \qquad s.t.\ \mathbf{c}_i < 0 \; \forall 1 \leq j \leq m
+\end{equation*}
+
+This can then be solved using a least-squares method with the objective function
+
+\begin{equation}
+  \min_{\mathbf{c} \geq 0} \|\mathbf{Sc} - \mathbf{b}\|^2
+\end{equation}
+
+Such prior information may be obtained in different ways. Relatively simple
+approaches like expression profiling of cultured purified cell lines, allow for
+characterization of cell type specific expression profiles at low cost and
+effort, but require normalization to eliminate bias from differing cell counts.
+More complex methods allowing for single cell level expression quantification
+like micro-dissection, fluorescence-activated cell sorting, and more recently
+scRNA-seq do not have this problem, but are limited in application due to their
+cost.
+
 
 [High variability of cancer cells vs. remaining TME cells.]
 
