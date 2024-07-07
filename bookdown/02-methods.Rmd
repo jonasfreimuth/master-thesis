@@ -21,9 +21,6 @@ retrieved for the corresponding tumor samples.
 To clean a bulk RNA-seq transcriptome, you first need to run a deconvolution on
 it.
 
-[Explanation of deconvolution as least squares problem & why nnls is sensible.]
-[Mention other, more advanced methods.]
-[Mathematical explanation.]
 [Problem using cleaned bulk RNA-seq profiles as reference: It would need to be ensured that each profile represents a single-cell.]
 
 For this you need a Reference and the bulk RNA-seq data to deconvolute.
