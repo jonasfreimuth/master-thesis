@@ -6,15 +6,15 @@ Single cell RNA sequencing data consists of transcript count data breast cancer
 tumor samples from @wu.2021 (Gene Expression Omnibus, GEO accession
 [GSE176078](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE176078)). It
 contains 100'064 cells, 29'733 genes, from 26 samples. The cells are annotated
-as belonging to one of nine cell types, with further sub-type information
+as belonging to one of nine cell types, with further subtype information
 available. A subset of 20 tumor samples has been processed via bulk RNA-seq.
 
-For prediction tasks, bulk RNA-seq data of breast cancers annotated with
-clinical data was obtained from the Cancer Genome Atalas (TCGA). The data was
-comprised of all 1'095 patient samples from the TCGA-BRCA project with bulk
-RNA-seq data available [Ensure reproducibility]. For the survival prediction
-task, survival endpoint data derived from curated clincial data by @liu.2018 was
-retrieved for the corresponding tumor samples.
+For prediction tasks, I used bulk RNA-seq data of breast cancers annotated with
+clinical data from the Cancer Genome Atlas (TCGA). The data comprised all 1'095
+patient samples from the TCGA-BRCA project with bulk RNA-seq data available
+[Ensure reproducibility]. For the survival prediction task, I retrieved survival
+endpoint data derived from curated clinical data by @liu.2018 for the
+corresponding tumor samples.
 
 ## Transcriptome cleaning overview
 
@@ -37,7 +37,7 @@ To explore the effects of restricting the set of genes used for deconvolution on
 estimation accuracy for both cell type abundances and cancer expression, a set
 of selection criteria was applied to the genes of the Reference. (First was
 basic gene quality control, which comprised filtering the genes to be expressed
-in at least 5 cells, removal of )
+in at least 5 cells, removal of [...])
 
 Second, each gene was assigned a marker score, quantifying its likely usefulness
 as a gene in the deconvolution reference. Genes with a good score would have an
@@ -62,7 +62,7 @@ choosing a random value for the marker score [Why?].
 ## Proof of concept
 
 Before applying my method to real-world problems, I carried out two analyses
-assesing its performance under ideal conditions. First, I explored the method's
+assessing its performance under ideal conditions. First, I explored the method's
 behavior when applied to normally distributed data with varying levels of noise
 added. Then, I quantified its performance under 
 
@@ -71,7 +71,15 @@ added. Then, I quantified its performance under
 To demonstrate the functionality of the principle of extracting expression
 information of a heterogeneous cell type from the residuals of a linear
 deconvolution model, I first applied the method to highly simplistic, normally
-distributed data. 
+distributed data.
+
+
+
+
+
+
+
+
 
 ### scRNA-seq pseudo-bulks
 
@@ -79,6 +87,29 @@ I then proceeded to apply the method to *in-silico* simulated bulk RNA-seq data
 ("pseudo-bulks") generated from the scRNA-seq data obtained from @wu.2021, to
 assess its performance on actual expression data with precisely known cell type
 abundances and expression profiles.
+
+I computed reference profiles across a spectrum of parameters, one reference for
+each combination. I used both marker selection strategies outlined above
+(Wilcoxon test, random score), each with a threshold of the top XXX of the best
+scoring marker genes being selected. I also contrasted across including the
+cancer cell type or not, and running the transcript quality control or not.
+
+[Were there any references that were removed due to NULL / no markers?]
+
+I generated XXX pseudo-bulks by randomly sampling XXX cells (twice the
+median number of cells per sample in the data) with replacement from the
+overall count matrix from @wu.2021, stratified by cell type. Cell type fractions
+were also randomly selected by first choosing each cell type's fraction from
+$[0, 1]$ uniformly at random, and then normalizing the fraction of all
+non-cancer cell types to the complement of the fraction of the cancer cell type.
+This was to allow for a broad range of cancer cell type fractions, which would
+have been restricted to lower values due to the normalization.
+
+I then deconvoluted each pseudo-bulk using each reference and calculated
+performance metrics for estimation of both cell type concentrations and cancer
+cell type expression from residuals.
+
+[...]
 
 ## Evaluation
 
@@ -95,10 +126,10 @@ on raw bulk data.
 To compare my transcriptome cleaning method to an established state-of-the-art
 method of estimating cell type specific expression profiles from bulk RNA-seq
 data, I applied both my method and BayesPrism to both tumor sample derived
-pseudo-bulks, as well as to actual bulk RNA-seq samples, both from @wu.2021.
+pseudo-bulks, and to actual bulk RNA-seq samples, both from @wu.2021.
 
 ### Prediction
 
-As the final evalutation of the method, I compared the predictive power of
+As the final evaluation of the method, I compared the predictive power of
 machine learning models trained on both estimated cancer expression data to
 models trained on bulk RNA-seq data alone.

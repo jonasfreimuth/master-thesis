@@ -95,7 +95,7 @@ equations for each bulk $k$:
 \end{equation*}
 
 To reduce the solution space, usually a non-negativity constraint is placed on
-elements of $\mathbf{C}$, as a mixture can't contain negative concentations
+elements of $\mathbf{C}$, as a mixture can't contain negative concentrations
 [@venet.2001]. Adding this constraint, and considering the bulks $\mathbf{b}$
 and associated concentration vectors $\mathbf{c}$ independently the problem can
 be formulated as
