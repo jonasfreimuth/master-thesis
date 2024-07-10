@@ -54,7 +54,7 @@ $\mathbf{C}$ are estimated by solving
 
 with some simple constraints allowing to a tractable, unique solution
 [@venet.2001]. This approach on its own, while impressive, had several
-drawbacks. While not as big an issue for deconvolving only two cell types, the
+drawbacks. While not as big an issue for deconvoluting only two cell types, the
 resulting cell type specific estimates for abundance and gene expression could
 not be directly attributed to specific cell types. The number of cell types had
 to be known a priori, and misspecification would bias model results
@@ -72,17 +72,17 @@ RNA-seq data are usually supervised full deconvolution methods. Of the 20 bulk
 RNA-seq deconvolution methods reviewed in @im.2023, only three included the
 capacity to estimate cell type specific expression profiles from more than two
 individual samples, all of them use scRNA-seq derived reference profiles for
-deconvolution. Theses methods are Cibersortx [@newman.2019], a
+deconvolution. These methods are Cibersortx [@newman.2019], a
 $\nu$-support-vector-regression ($\nu$-SVR) based general purpose method, BLADE
-[@andradebarbosa.2021], a probabalistic general purpose method, and BayesPrism
-[@chu.2022] a probabalistic method specifically designed for tumor
+[@andradebarbosa.2021], a probabilistic general purpose method, and BayesPrism
+[@chu.2022] a probabilistic method specifically designed for tumor
 deconvolution. Cibersortx accomplishes the purification by using a multi-stage
 matrix factorization approach supplemented by the cell type abundance
-information estimated via $\nu$-SVR. The latter two methods' probabalistic
+information estimated via $\nu$-SVR. The latter two methods' probabilistic
 approaches use fairly complex model formulations and, in the case of BLADE, need
 to rely on hyperparameter tuning for optimal performance. Hence, a simpler
 deconvolution model might be useful in cases where explainability and
-computational efficency are more important than high accuracy.
+computational efficiency are more important than high accuracy.
 
 Following from the basic deconvolution model of equation
 \@ref(eq:basic-matrix-deconv), the problem becomes tractable when the signature
@@ -130,7 +130,6 @@ residuals to contain much of this excess variation, thus representing a way to
 
 [Compare to BayesPrism only as it works natively in R while BLADE is python, Cibersortx is container]
 
-
 * Average expression profiles derived from scRNA-seq data
 * Issue of increasing distance between actual cell expression and average
   expression profile.
@@ -141,7 +140,7 @@ residuals to contain much of this excess variation, thus representing a way to
   cancer cells that is not explained by the model, and which would therefore end
   up in the residuals. [I think however that it's not straightforward which
   portions end up in the residuals. There is still a fraction of each expression
-  which gets “mis-attributed” to another cell type, but which counts as
+  which gets “misattributed” to another cell type, but which counts as
   accounted for and thus is not present in the residuals.]
 
 Research questions:
