@@ -1,0 +1,19 @@
+{
+    "r.rpath.linux": ".guix/R_guix_wrapper",
+    "ltex.enabled": [
+        "rsweave",
+        "R markdown",
+        "rmarkdown",
+        "Rmd",
+        ".Rmd",
+        "markdown"
+    ],
+    "git.enabled": false,
+    "ltex.checkFrequency": "save",
+    "ltex.completionEnabled": true,
+    "ltex.dictionary": {
+        "en-US": [
+            ":ltex.dictionary.en-US.txt"
+        ]
+    }
+}
