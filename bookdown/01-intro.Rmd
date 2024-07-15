@@ -1,38 +1,39 @@
 # Introduction
 
 Due to its relatively low cost, bulk RNA sequencing (bulk RNA-seq) has seen
-widespread adoption in clinical cancer studies [@hong.2020]. While there
-currently is a boom in single-cell and spatial transcriptomics, which both allow
-for highly detailed expression profiling on the level of individual cells, the
-associated cost remains a factor preventing these technologies from being a
-resource of large-scale, high quality data-sets. Such resources would, however,
-be of great use in generating new insights in cancer research when combined with
-the wealth of machine-learning applications developed over the last decades
-(e.g. @garg.2021, @newell.2022). With the limitations of the more advanced
-methods in mind, efforts to improve the usability of tumor bulk RNA-seq data for
-machine-learning tasks would be well spent.
+widespread adoption in clinical cancer studies [@hong.2020]. More advanced
+methods like single-cell and spatial transcriptomics have been available for
+some years, allowing for highly detailed expression profiling on the level of
+individual cells, but the associated cost remains a factor preventing these
+technologies from being a resource of large-scale, high quality data-sets. Such
+resources would, however, be of great use in generating new insights in cancer
+research when combined with the wealth of machine-learning applications
+developed over the last decades (e.g. @garg.2021, @newell.2022). With the
+limitations of the more advanced methods in mind, efforts to improve the
+usability of tumor bulk RNA-seq data for machine-learning tasks would be well
+spent.
 
-However, the resolution of bulk RNA-seq data compared to the other methods
-mentioned above is low. For tumor samples this means that bulk RNA-seq profiles
-do not represent pure expression of cancerous cells, as a tumor tissue sample
-usually also includes other cell types. These may be cells belonging to the
+However, as mentioned, the resolution of bulk RNA-seq data compared to the more
+advanced methods is low. For tumor samples this implies that bulk RNA-seq
+profiles do not represent pure expression of cancerous cells, since tumor tissue
+samples generally also include cells of other types. These cells may be of the
 surrounding tissue (possibly due to imprecision during biopsy), or immune cells
 (like tumor infiltrating lymphocytes). These cells constitute the tumor
-microenvironment (TME), whose influence on disease progression [@barkley.2022]
-and as a treatment target itself [@xiao.2021] is still being studied. When
-sequencing tumor tissue samples, the transcripts expressed in these non-tumor
-cells become incorporated into the expression data [@li.2021], which can
-represent confounding for downstream predictive modeling taking. If the
-expression profiles of the TME and of the cancer cells could be separated, the
-performance of such models may be increased.
+microenvironment (TME), and their influence on disease progression
+[@barkley.2022] and as a treatment target itself [@xiao.2021] is still being
+studied. When sequencing tumor tissue samples, the transcripts expressed in
+these non-tumor cells become incorporated into the expression data [@li.2021],
+which can represent confounding for downstream predictive modeling taking. If
+the expression profiles of the cancer cells could be separated from the profile
+of the TME, the performance of such models may be increased.
 
 Ever since the widespread adoption of bulk gene expression quantification
 technologies in the form of microarrays, researchers had to address the problem
 of dissecting the combined expression of mixtures of heterogeneous cells
-[@venet.2001; @ghosh.2004; @stuart.2004]. Most early methods attempted only to
-infer differentially expressed genes between the cell types [@ghosh.2004], but
+[@venet.2001; @ghosh.2004; @stuart.2004]. Most early methods attempted to infer
+only differentially expressed genes between the cell types [@ghosh.2004], but
 later ones were already able to estimate cell type specific expression
-[@lahdesmaki.2005], with the latter process often being called *in-silico*
+[@lahdesmaki.2005], with the latter approach often being called *in-silico*
 purification. Historically, these methods were based on non-negative matrix
 factorization (NMF), which modeled the problem as consisting of
 
@@ -53,7 +54,7 @@ $\mathbf{C}$ are estimated by solving
 \end{equation}
 
 with some simple constraints allowing to a tractable, unique solution
-[@venet.2001]. This approach on its own, while impressive, had several
+[@venet.2001]. This approach on its own, innovative as it was, had several
 drawbacks. While not as big an issue for deconvoluting only two cell types, the
 resulting cell type specific estimates for abundance and gene expression could
 not be directly attributed to specific cell types. The number of cell types had
@@ -112,14 +113,13 @@ This can then be solved using a least-squares method with the objective function
 \end{equation}
 
 Such prior information may be obtained in different ways. Relatively simple
-approaches like expression profiling of cultured purified cell lines, allow for
+approaches like expression profiling of cultured purified cell lines allow for
 characterization of cell type specific expression profiles at low cost and
 effort, but require normalization to eliminate bias from differing cell counts.
 More complex methods allowing for single cell level expression quantification
 like micro-dissection, fluorescence-activated cell sorting, and more recently
 scRNA-seq do not have this problem, but are limited in application due to their
 cost.
-
 
 [High variability of cancer cells vs. remaining TME cells.]
 
