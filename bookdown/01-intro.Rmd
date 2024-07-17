@@ -86,66 +86,23 @@ to rely on hyperparameter tuning for optimal performance. Hence, a simpler
 deconvolution model might be useful in cases where explainability and
 computational efficiency are more important than high accuracy.
 
-Following from the basic deconvolution model of equation
-\@ref(eq:basic-matrix-deconv), the problem becomes tractable when the signature
-matrix $\mathbf{S}$ is already known as it is then reduced to a system of linear
-equations for each bulk $k$:
+<!-- Possibly expand on high cancer variability. -->
 
-\begin{equation*}
-  \mathbf{B}_{\cdot k} = \mathbf{S} \mathbf{C}_{\cdot k}
-  \qquad \forall 1 \leq k \leq n
-\end{equation*}
+Here I propose a simple method for estimating the expression profile of cancer
+cells in individual bulk RNA-seq samples through using model residuals from
+simple least-squares based cell type deconvolution, a special case of the NMF
+method for full deconvolution outlined above. Cancer cells generally show
+increased variability in their expression compared to sourrounding cell types
+[@nguyen.2016; @ramonycajal.2020]. For least-squares based cell type
+deconvolution, this implies that a higher proportion of the cancer cell's
+variability in expression will be present in the deconvolution residuals
+compared to the other cell types. Therefore, the residuals of such a
+deconvolution model fit should contain some information specific to the
+expression patterns of cancer cells.
 
-To reduce the solution space, usually a non-negativity constraint is placed on
-elements of $\mathbf{C}$, as a mixture can't contain negative concentrations
-[@venet.2001]. Adding this constraint, and considering the bulks $\mathbf{b}$
-and associated concentration vectors $\mathbf{c}$ independently the problem can
-be formulated as
-
-\begin{equation*}
-  \mathbf{b} = \mathbf{S} \mathbf{c}
-  \qquad s.t.\ \mathbf{c}_i < 0 \; \forall 1 \leq j \leq m
-\end{equation*}
-
-This can then be solved using a least-squares method with the objective function
-
-\begin{equation}
-  \min_{\mathbf{c} \geq 0} \|\mathbf{Sc} - \mathbf{b}\|^2
-\end{equation}
-
-Such prior information may be obtained in different ways. Relatively simple
-approaches like expression profiling of cultured purified cell lines allow for
-characterization of cell type specific expression profiles at low cost and
-effort, but require normalization to eliminate bias from differing cell counts.
-More complex methods allowing for single cell level expression quantification
-like micro-dissection, fluorescence-activated cell sorting, and more recently
-scRNA-seq do not have this problem, but are limited in application due to their
-cost.
-
-[High variability of cancer cells vs. remaining TME cells.]
-
-Under the assumption that cancer cells vary stronger in their
-expression than the other cells in the microenvironment, we can expect the
-residuals to contain much of this excess variation, thus representing a way to
-“clean” the bulk cancer expression of the expression of non-cancer cells.
-
-[Compare to BayesPrism only as it works natively in R while BLADE is python, Cibersortx is container]
-
-* Average expression profiles derived from scRNA-seq data
-* Issue of increasing distance between actual cell expression and average
-  expression profile.
-* A way to possibly “boost” the signal of pure cancer expression, would be to
-  not include the cancer cell type in the reference. This would of course 
-  decrease the accuracy of the deconvolution model for predicting cell type
-  proportions, but would in theory increase the variance in expression due to
-  cancer cells that is not explained by the model, and which would therefore end
-  up in the residuals. [I think however that it's not straightforward which
-  portions end up in the residuals. There is still a fraction of each expression
-  which gets “misattributed” to another cell type, but which counts as
-  accounted for and thus is not present in the residuals.]
-
-Research questions:
-
-* Can the residuals from basic linear deconvolution methods be used to infer
-  information about the tumor and inform treatment?
-* Are the residuals gathered this way superior to using plain bulk data?
+Using this approach, I will explore if the residuals from simple least squares
+based cell type deconvolution actually contain information on the expression
+patterns of cancerous cells in a bulk RNA-seq sample of tumor tissue, and if the
+information used can be used to train machine learning models which have
+improved predictive power compared to models trained on ordinary bulk RNA-seq
+data.

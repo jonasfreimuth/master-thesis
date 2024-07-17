@@ -1,5 +1,68 @@
 # Methods & Data
 
+## Transcriptome cleaning overview
+
+Under the assumption that cancer cells vary stronger in their
+expression than the other cells in the microenvironment, we can expect the
+residuals to contain much of this excess variation, thus representing a way to
+“clean” the bulk cancer expression of the expression of non-cancer cells.
+
+Following from the basic deconvolution model of equation
+\@ref(eq:basic-matrix-deconv), the problem becomes tractable when the signature
+matrix $\mathbf{S}$ is already known as it is then reduced to a system of linear
+equations for each bulk $k$:
+
+\begin{equation*}
+  \mathbf{B}_{\cdot k} = \mathbf{S} \mathbf{C}_{\cdot k}
+  \qquad \forall 1 \leq k \leq n
+\end{equation*}
+
+To reduce the solution space, usually a non-negativity constraint is placed on
+elements of $\mathbf{C}$, as a mixture can't contain negative concentrations
+[@venet.2001]. Adding this constraint, and considering the bulks $\mathbf{b}$
+and associated concentration vectors $\mathbf{c}$ independently the problem can
+be formulated as
+
+\begin{equation*}
+  \mathbf{b} = \mathbf{S} \mathbf{c}
+  \qquad s.t.\ \mathbf{c}_i < 0 \; \forall 1 \leq j \leq m
+\end{equation*}
+
+This can then be solved using a least-squares method with the objective function
+
+\begin{equation}
+  \min_{\mathbf{c} \geq 0} \|\mathbf{Sc} - \mathbf{b}\|^2
+\end{equation}
+
+Such prior information may be obtained in different ways. Relatively simple
+approaches like expression profiling of cultured purified cell lines allow for
+characterization of cell type specific expression profiles at low cost and
+effort, but require normalization to eliminate bias from differing cell counts.
+More complex methods allowing for single cell level expression quantification
+like micro-dissection, fluorescence-activated cell sorting, and more recently
+scRNA-seq do not have this problem, but are limited in application due to their
+cost.
+
+<!-- Compare to BayesPrism only as it works natively in R while BLADE is python, Cibersortx is container -->
+
+
+* A way to possibly “boost” the signal of pure cancer expression, would be to
+  not include the cancer cell type in the reference. This would of course 
+  decrease the accuracy of the deconvolution model for predicting cell type
+  proportions, but would in theory increase the variance in expression due to
+  cancer cells that is not explained by the model, and which would therefore end
+  up in the residuals. [I think however that it's not straightforward which
+  portions end up in the residuals. There is still a fraction of each expression
+  which gets “misattributed” to another cell type, but which counts as
+  accounted for and thus is not present in the residuals.]
+
+To clean a bulk RNA-seq transcriptome, you first need to run a deconvolution on
+it.
+
+<!-- Problem using cleaned bulk RNA-seq profiles as reference: It would need to be ensured that each profile represents a single-cell. -->
+
+For this you need a Reference and the bulk RNA-seq data to deconvolute.
+
 ## Data
 
 Single cell RNA sequencing data consists of transcript count data breast cancer
@@ -15,15 +78,6 @@ patient samples from the TCGA-BRCA project with bulk RNA-seq data available
 [Ensure reproducibility]. For the survival prediction task, I retrieved survival
 endpoint data derived from curated clinical data by @liu.2018 for the
 corresponding tumor samples.
-
-## Transcriptome cleaning overview
-
-To clean a bulk RNA-seq transcriptome, you first need to run a deconvolution on
-it.
-
-[Problem using cleaned bulk RNA-seq profiles as reference: It would need to be ensured that each profile represents a single-cell.]
-
-For this you need a Reference and the bulk RNA-seq data to deconvolute.
 
 ### Reference
 
@@ -57,8 +111,6 @@ choosing a random value for the marker score [Why?].
 
 ### Bulk
 
-
-
 ## Proof of concept
 
 Before applying my method to real-world problems, I carried out two analyses
@@ -72,14 +124,6 @@ To demonstrate the functionality of the principle of extracting expression
 information of a heterogeneous cell type from the residuals of a linear
 deconvolution model, I first applied the method to highly simplistic, normally
 distributed data.
-
-
-
-
-
-
-
-
 
 ### scRNA-seq pseudo-bulks
 
