@@ -5,8 +5,8 @@ widespread adoption in clinical cancer studies [@hong.2020]. More advanced
 methods like single-cell and spatial transcriptomics have been available for
 some years, allowing for highly detailed expression profiling on the level of
 individual cells, but the associated cost remains a factor preventing these
-technologies from being a resource of large-scale, high quality data-sets. Such
-resources would, however, be of great use in generating new insights in cancer
+technologies from being a source for large-scale, high quality data-sets. Such
+data-sets would, however, be of great use in generating new insights in cancer
 research when combined with the wealth of machine-learning applications
 developed over the last decades (e.g. @garg.2021, @newell.2022). With the
 limitations of the more advanced methods in mind, efforts to improve the
@@ -23,13 +23,13 @@ microenvironment (TME), and their influence on disease progression
 [@barkley.2022] and as a treatment target itself [@xiao.2021] is still being
 studied. When sequencing tumor tissue samples, the transcripts expressed in
 these non-tumor cells become incorporated into the expression data [@li.2021],
-which can represent confounding for downstream predictive modeling taking. If
-the expression profiles of the cancer cells could be separated from the profile
-of the TME, the performance of such models may be increased.
+which can represent confounding for downstream predictive modeling. If the
+expression profiles of the cancer cells could be separated from the profile of
+the TME, the performance of such models may be increased.
 
-Ever since the widespread adoption of bulk gene expression quantification
-technologies in the form of microarrays, researchers had to address the problem
-of dissecting the combined expression of mixtures of heterogeneous cells
+The problem of dissecting the combined expression of mixtures of heterogeneous
+cells has been a focus for researchers since the widespread adoption of bulk
+gene expression quantification technologies in the form of microarrays
 [@venet.2001; @ghosh.2004; @stuart.2004]. Most early methods attempted to infer
 only differentially expressed genes between the cell types [@ghosh.2004], but
 later ones were already able to estimate cell type specific expression
@@ -65,7 +65,7 @@ with a low number of samples leading to worse estimates [@repsilber.2010].
 genes particularly highly expressed in specific cell types. This represents the
 step from an entirely unsupervised method of deconvolution, where no prior
 information besides the mixture data was needed, to more accurate supervised
-methods. However, previous methods only allow for estimation of the general
+methods. However, all of these methods only allow for estimation of the general
 expression profiles of their respective cell types / conditions.
 
 Today, most methods for *in-silico* purification of bulk tumor RNA-seq data are
