@@ -166,7 +166,7 @@ above (Wilcoxon test, random score), each with a threshold of the top XXX of the
 best scoring marker genes being selected. I also contrasted across including the
 cancer cell type or not, and running the transcript quality control or not.
 
-[Were there any references that were removed due to NULL / no markers?]
+<!-- Were there any references that were removed due to NULL / no markers? -->
 
 I generated XXX pseudo-bulks by randomly sampling XXX cells (twice the
 median number of cells per sample in the data) with replacement from the
@@ -181,7 +181,7 @@ I then deconvoluted each pseudo-bulk using each reference and calculated
 performance metrics for estimation of both cell type concentrations and cancer
 cell type expression from residuals.
 
-[...]
+<!-- ... -->
 
 ## Evaluation
 
