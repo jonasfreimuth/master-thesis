@@ -73,18 +73,17 @@ available. A subset of 20 tumor samples has been processed via bulk RNA-seq.
 
 For prediction tasks, I used bulk RNA-seq data of breast cancers annotated with
 clinical data from the Cancer Genome Atlas (TCGA). The data comprised all 1'095
-patient samples from the TCGA-BRCA project with bulk RNA-seq data available
-[Ensure reproducibility]. For the survival prediction task, I retrieved survival
-endpoint data derived from curated clinical data by @liu.2018 for the
-corresponding tumor samples.
+patient samples from the TCGA-BRCA project with bulk RNA-seq data available .
+For the survival prediction task, I retrieved data on survival endpoints derived
+from curated clinical data from @liu.2018 for the corresponding tumor samples.
 
 ### Reference
 
 Here, the Reference is always made up averaged expression profiles derived from
 scRNA data. For this, the per gene expression counts from @wu.2021 were averaged
 across all cells of the same cell type. Since the dataset provided by @wu.2021
-is already filtered for high quality cells, no cell quality control was
-performed by me.
+is already filtered for high quality cells, I performed no additional cell
+quality control.
 
 To explore the effects of restricting the set of genes used for deconvolution on
 estimation accuracy for both cell type abundances and cancer expression, a set
@@ -106,7 +105,9 @@ Wilcoxon test based marker selection was the test p-Value (adjusted for multiple
 testing via the Holm-Bonferroni method [@holm.1979]). Only genes differentially
 expressed in a single cell type with at $p_{adj} < 0.05$ were considered as
 marker genes, with lower values being considered better. It was contrasted with
-choosing a random value for the marker score [Why?].
+choosing a random value for the marker score to ensure any changes in
+performance were not simply due to the restricted size of the set of marker
+genes.
 
 ### Bulk
 
@@ -115,7 +116,8 @@ choosing a random value for the marker score [Why?].
 Before applying my method to real-world problems, I carried out two analyses
 assessing its performance under ideal conditions. First, I explored the method's
 behavior when applied to normally distributed data with varying levels of noise
-added. Then, I quantified its performance under 
+added, and then quantified its performance on more realistic data using
+scRNA-seq derived pseudo-bulk data.
 
 ### Normally distributed simulation
 
@@ -159,9 +161,9 @@ assess its performance on actual expression data with precisely known cell type
 abundances and expression profiles.
 
 I computed reference profiles across a spectrum of parameters, one reference for
-each combination. I used both marker selection strategies outlined above
-(Wilcoxon test, random score), each with a threshold of the top XXX of the best
-scoring marker genes being selected. I also contrasted across including the
+each combination. For marker selection strategies, I used both methods outlined
+above (Wilcoxon test, random score), each with a threshold of the top XXX of the
+best scoring marker genes being selected. I also contrasted across including the
 cancer cell type or not, and running the transcript quality control or not.
 
 [Were there any references that were removed due to NULL / no markers?]
@@ -198,7 +200,7 @@ Cibersortx is container -->
 
 To compare my transcriptome cleaning method to an established state-of-the-art
 method of estimating cell type specific expression profiles from bulk RNA-seq
-data, I applied both my method and BayesPrism to both tumor sample derived
+data, I applied both my method and BayesPrism to tumor sample derived
 pseudo-bulks, and to actual bulk RNA-seq samples, both from @wu.2021.
 
 ### Prediction
