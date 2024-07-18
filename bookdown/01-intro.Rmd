@@ -3,15 +3,14 @@
 Due to its relatively low cost, bulk RNA sequencing (bulk RNA-seq) has seen
 widespread adoption in clinical cancer studies [@hong.2020]. More advanced
 methods like single-cell and spatial transcriptomics have been available for
-some years, allowing for highly detailed expression profiling on the level of
-individual cells, but the associated cost remains a factor preventing these
-technologies from being a source for large-scale, high quality data-sets. Such
-data-sets would, however, be of great use in generating new insights in cancer
-research when combined with the wealth of machine-learning applications
-developed over the last decades (e.g. @garg.2021, @newell.2022). With the
-limitations of the more advanced methods in mind, efforts to improve the
-usability of tumor bulk RNA-seq data for machine-learning tasks would be well
-spent.
+some years, allowing for highly detailed expression profiling on a cellular
+level, but the associated cost remains a factor preventing these technologies
+from being a source for large-scale, high quality data-sets. Such data-sets
+would, however, be of great use in generating new insights in cancer research
+when combined with the wealth of machine-learning applications developed over
+the last decades (e.g. @garg.2021, @newell.2022). With the limitations of the
+more advanced methods in mind, efforts to improve the usability of tumor bulk
+RNA-seq data for machine-learning tasks would be well spent.
 
 However, as mentioned, the resolution of bulk RNA-seq data compared to the more
 advanced methods is low. For tumor samples this implies that bulk RNA-seq
@@ -90,10 +89,11 @@ computational efficiency are more important than high accuracy.
 
 Here I propose a simple method for estimating the expression profile of cancer
 cells in individual bulk RNA-seq samples through using model residuals from
-simple least-squares based cell type deconvolution, a special case of the NMF
-method for full deconvolution outlined above. Cancer cells generally show
-increased variability in their expression compared to sourrounding cell types
-[@nguyen.2016; @ramonycajal.2020]. For least-squares based cell type
+simple least-squares based cell type deconvolution. Cell type deconvolution is a
+special case of the NMF method for full deconvolution outlined above for when
+the cell type specific expression profiles are already known. Cancer cells
+generally show increased variability in their expression compared to surrounding
+cell types [@nguyen.2016; @ramonycajal.2020]. For least-squares based cell type
 deconvolution, this implies that a higher proportion of the cancer cell's
 variability in expression will be present in the deconvolution residuals
 compared to the other cell types. Therefore, the residuals of such a
@@ -102,7 +102,7 @@ expression patterns of cancer cells.
 
 Using this approach, I will explore if the residuals from simple least squares
 based cell type deconvolution actually contain information on the expression
-patterns of cancerous cells in a bulk RNA-seq sample of tumor tissue, and if the
-information used can be used to train machine learning models which have
-improved predictive power compared to models trained on ordinary bulk RNA-seq
-data.
+patterns of cancerous cells in a bulk RNA-seq sample of tumor tissue. I will
+further evaluate if the information used can be used to train machine learning
+models which have improved predictive power compared to models trained on
+ordinary bulk RNA-seq data.
