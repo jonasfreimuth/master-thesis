@@ -203,6 +203,24 @@ method of estimating cell type specific expression profiles from bulk RNA-seq
 data, I applied both my method and BayesPrism to tumor sample derived
 pseudo-bulks, and to actual bulk RNA-seq samples, both from @wu.2021.
 
+Here, I used similar methods as in the previous scRNA-seq based
+[section](#scrna-seq-pseudo-bulks), but derived pseudo-bulks not from random
+cell indices, but rather used all cells belonging to a distinct tumor sample in
+the original data. This was done to be able to compare results between
+pseudo-bulks and actual bulk RNA-seq data. In addition to the pseudo-bulk data,
+I retrieved bulk RNA-seq data available for a subset of samples in @wu.2021.
+For both data types (pseudo-bulk and bulk), I restricted samples to [...].
+
+For computing reference profiles, I also used similar methodology to the
+scRNA-seq based pseudo-bulks [section](#scrna-seq-pseudo-bulks), except that I
+did not compare the effect of cancer splitting or skipping marker gene quality
+control to simplify the analysis.
+
+I deconvoluted every bulk and pseudo-bulk using every reference again, but this
+time I used BayesPrism in addition to the NNLS method. I extracted and processed
+residuals from NNLS as in the scRNA-seq based pseudo-bulks
+[section](#scrna-seq-pseudo-bulks)
+
 ### Prediction
 
 As the final evaluation of the method, I compared the predictive power of
