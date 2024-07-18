@@ -161,12 +161,11 @@ assess its performance on actual expression data with precisely known cell type
 abundances and expression profiles.
 
 I computed reference profiles across a spectrum of parameters, one reference for
-each combination. For marker selection strategies, I used both methods outlined
-above (Wilcoxon test, random score), each with a threshold of the top XXX of the
-best scoring marker genes being selected. I also contrasted across including the
-cancer cell type or not, and running the transcript quality control or not.
-
-<!-- Were there any references that were removed due to NULL / no markers? -->
+each combination. For marker selection strategies I used both methods outlined
+above (Wilcoxon test, random score), each with a threshold of the top XXX, XXX,
+..., of the best scoring marker genes being selected. I also contrasted across
+including the cancer cell type or not, and including either only genes passing
+transcript quality control or all marker genes for a reference.
 
 I generated XXX pseudo-bulks by randomly sampling XXX cells (twice the
 median number of cells per sample in the data) with replacement from the
@@ -178,10 +177,8 @@ This was to allow for a broad range of cancer cell type fractions, which would
 have been restricted to lower values due to the normalization.
 
 I then deconvoluted each pseudo-bulk using each reference and calculated
-performance metrics for estimation of both cell type concentrations and cancer
-cell type expression from residuals.
-
-<!-- ... -->
+Pearson's $\rho$ between true and estimate values for both cell type
+concentrations and cancer cell type expression.
 
 ## Evaluation
 
