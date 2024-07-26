@@ -64,9 +64,6 @@ most discriminant ones (see the later
 accuracy and reduce computation time.
 
 <!-- Talk about previous work on marker genes for deconvolution? -->
-<!-- TODO Mention the scale on which cell type abundances can be expected to be
-on & scaling considerations. -->
-<!-- TODO Talk about zero transript prediction mitigation. -->
 
 After reference creation, the computation of residuals as a measure for true
 expression of cancerous cells is relatively straightforward. First the
@@ -93,7 +90,9 @@ of one to preserve values of zero on the original scale) so that the variance in
 residuals stays reasonably consistent across the spectrum of actual and
 predicted gene expression values.
 
-[...]
+<!-- TODO Talk about zero transript prediction mitigation. "Also, some cell types
+may erroneously be predicted as absent from a bulk (i.e. at an abundance of
+zero)..." -->
 
 ## Proof of concept
 
