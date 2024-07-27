@@ -87,9 +87,10 @@ From this it also follows that the estimated TME expression in this context is
 simply $\mathbf{\hat{b}}$. For real-world applications (i.e. everything except
 [normally distributed simulation](#normally-distributed-simulation)), both
 $\mathbf{b}$ and $\mathbf{\hat{b}}$ are log-transformed (adding a pseudo-count
-of one to preserve values of zero on the original scale) so that the variance in
-residuals stays reasonably consistent across the spectrum of actual and
-predicted gene expression values.
+of one to preserve values of zero on the original scale;
+$\mathbf{x}_{\text{trans}} = \log_{10}{\left( \mathbf{x} + 1 \right)}$) so that
+the variance of the residuals stays reasonably consistent across the spectrum of
+actual and predicted gene expression values.
 
 <!-- TODO Talk about zero transript prediction mitigation. "Also, some cell types
 may erroneously be predicted as absent from a bulk (i.e. at an abundance of
