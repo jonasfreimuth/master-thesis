@@ -8,7 +8,7 @@ level, but the associated cost remains a factor preventing these technologies
 from being a source for large-scale, high quality data-sets. Such data-sets
 would, however, be of great use in generating new insights in cancer research
 when combined with the wealth of machine-learning applications developed over
-the last decades (e.g. @garg.2021, @newell.2022). With the limitations of the
+the last decades [e.g. @garg.2021; @newell.2022]. With the limitations of the
 more advanced methods in mind, efforts to improve the usability of tumor bulk
 RNA-seq data for machine-learning tasks would be well spent.
 

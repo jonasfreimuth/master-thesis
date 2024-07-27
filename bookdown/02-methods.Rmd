@@ -256,33 +256,23 @@ reference.
 
 I generated XXX pseudo-bulks by randomly sampling XXX cells (twice the median
 number of cells per sample in the data) with replacement from the overall count
-matrix from @wu.2021, stratified by cell type. Cell type fractions $\mathbf{f}$
-were also randomly selected by first choosing each cell type's fraction
-uniformly at random, and then normalizing the fraction of all non-cancer cell
-types to the complement of the fraction of the cancer cell type:
+matrix from @wu.2021, stratified by cell type. Cell type fractions
+$\mathbf{f}_norm$ were also randomly selected by first choosing each cell type's
+fraction uniformly at random, and then normalizing the fraction of all
+non-cancer cell types to sum to the complement of the fraction of the cancer
+cell type:
 
 \begin{equation*}
   \begin{aligned}
-    f_{\text{cancer}}           &\sim \mathcal{U}(0, 1) \\
-    f_{\text{non cancer, raw}}  &\sim \mathcal{U}(0, 1 - f_{\text{cancer}}) \\
-    \left( f_{\text{non cancer, norm}} \right)_j &= \frac{
-      \left( f_{\text{non cancer, raw}} \right)_j
+    \mathbf{f}_{\text{raw}} &\sim \mathcal{U}(0, 1) \\
+    \left( f_{\text{norm}} \right)_j &= \frac{
+      \left( f_{\text{raw}} \right)_j
     } {
-      \sum_{j=1}^{m-1} {f_{\text{non cancer, raw}}}
-    }
-  \end{aligned}
-\end{equation*}
-
-
-
-\begin{equation*}
-  \mathbf{f} = \left( \begin{array}{c|c}
-    f_{\text{cancer}} &
-    \left( f_{\text{non cancer, norm}} \right)_1 &
-    \left( f_{\text{non cancer, norm}} \right)_2 &
-    \cdots &
-    \left( f_{\text{non cancer, norm}} \right)_{m - 1}
-  \end{array} \right)
+      \sum_{j=1}^{m-1} {\left( f_{\text{raw}} \right)_j}
+    } - {\left( f_{\text{raw}} \right)_m}
+  \end{aligned} \\
+  \text{with} \ 1 \leq j \leq (m - 1) \in
+  \text{non cancer, and} \ m \in \text{cancer}
 \end{equation*}
 
 This was to allow for a broad range of cancer cell type fractions, which would
