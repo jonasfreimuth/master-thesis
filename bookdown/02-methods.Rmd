@@ -331,7 +331,9 @@ before, but this time I used BayesPrism in addition to the NNLS method. I
 extracted and processed residuals from my method as in the scRNA-seq based
 pseudo-bulks [section](#scrna-seq-pseudo-bulks). Extracting the predictions for
 cancer expression from BayesPrism is straightforward as it computes cell type
-expression predictions for all cell types on the original scale. As before, I
+expression predictions for all cell types on the original scale. However, it is
+not capable of estimating gene expression for non-marker genes, so comparisons
+bettween it and my method are based on a different number of genes. As before, I
 used Pearson's $\rho$ to assess the relationship of predicted expression to
 actual expression.
 
