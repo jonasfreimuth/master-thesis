@@ -38,8 +38,8 @@ of pure expression of cancer cells by simply not including the reference profile
 for cancer cells during deconvolution. While this would certainly lead to less
 accurate results for the prediction of cell type abundance as some proportion of
 cancer cell gene expression would be erroneously attributed to other cell types
-(although this issue seems to be already present in the ideal case, see
-@aran.2017), the residuals might then more accurately reflect the patterns of
+[although this issue seems to be already present in the ideal case, see
+@aran.2017], the residuals might then more accurately reflect the patterns of
 cancer cell type expression as when they are already accounted for by the
 inclusion of the cancer cell type reference profile.
 
@@ -234,13 +234,13 @@ quantifying its likely usefulness as a gene in the deconvolution reference.
 Genes with a good score would have an expression signature across cell types
 which would allow for clear identification of just a single cell type by having
 particularly high or low expression in just that cell type. I explored multiple
-ways to determine this score during preliminary experiments (DESeq2 @love.2014,
-Hampel filter @davies.1993), but ultimately chose a simple Wilcoxon test
-[wilcoxon.1945] for comparing each cell type to the pooled remaining cell types
-(via `FindAllMarkers` from the R Seurat package v.5, @hao.2023) for its
+ways to determine this score during preliminary experiments [DESeq2 @love.2014;
+Hampel filter @davies.1993], but ultimately chose a simple Wilcoxon test
+[@wilcoxon.1945] for comparing each cell type to the pooled remaining cell types
+[via `FindAllMarkers` from the R Seurat package v.5, @hao.2023] for its
 combination of relative simplicity and accuracy. The marker score for the
-Wilcoxon test based marker selection was the test p-Value (adjusted for multiple
-testing via the Holm-Bonferroni method [@holm.1979]). I only considered genes
+Wilcoxon test based marker selection was the test p-Value [adjusted for multiple
+testing via the Holm-Bonferroni method @holm.1979]. I only considered genes
 differentially expressed in a single cell type with at $p_{adj} < 0.05$ as
 marker genes, with lower values being considered better. I contrasted the
 wilcoxon marker selection method with choosing a random value for the marker
