@@ -280,6 +280,10 @@ cell type:
 This was to allow for a broad range of cancer cell type fractions, which would
 have been restricted to lower values due to the normalization.
 
+<!-- TODO Mention scaling of expected expression & averaging across
+deconvolutions of the same parameters. Don't forget to do the latter across
+sections -->
+
 I then deconvoluted each pseudo-bulk using each reference and calculated
 Pearson's $\rho$ between true and estimate values for both cell type
 concentrations and cancer cell type expression.
