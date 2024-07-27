@@ -299,13 +299,10 @@ method of estimating cell type specific expression profiles from bulk RNA-seq
 data, I applied both my method and BayesPrism to tumor sample derived
 pseudo-bulks, and to actual bulk RNA-seq samples, both from @wu.2021. A subset
 of tumor samples used in their paper has also been processed via bulk RNA-seq.
-Of the three high resolution *in-silico* dissection methods mentioned before, I
-chose BayesPrism for comparison here since it is specifically designed for tumor
-samples, and integrates well with my existing analysis framework since it is
-also written in `R`.
-
-<!-- TODO Ensure it is clear how both cell type count and cancer expression
-predictions were extracted from BayesPrism. -->
+Of the three high resolution *in-silico* dissection methods mentioned before,
+BayesPrism seems the best suited for a comparison here. It is specifically
+designed for tumor samples and integrates well with my existing analysis
+framework since it is also written in `R`.
 
 The general methodology for the comparison to BayesPrism was similar to the
 previous scRNA-seq based [section](#scrna-seq-pseudo-bulks), however, I derived
@@ -320,14 +317,17 @@ data.
 I also computed reference profiles similarly to the scRNA-seq based pseudo-bulks
 [section](#scrna-seq-pseudo-bulks), except that I did not include the same
 contrasting across reference parameters to simplify the analysis. I only
-included the expected optimal parameters, namely that cancer splitting, Wilcoxon
-marker selection, and marker gene quality control would lead to the best
-results.
+included the parameters expected to lead to optimal results, namely including
+cancer splitting, Wilcoxon marker selection, and marker gene quality control.
 
 Lastly, I deconvoluted every bulk and pseudo-bulk using every reference as
 before, but this time I used BayesPrism in addition to the NNLS method. I
-extracted and processed residuals from NNLS as in the scRNA-seq based
-pseudo-bulks [section](#scrna-seq-pseudo-bulks).
+extracted and processed residuals from my method as in the scRNA-seq based
+pseudo-bulks [section](#scrna-seq-pseudo-bulks). Extracting the predictions for
+cancer expression from BayesPrism is straightforward as it computes cell type
+expression predictions for all cell types on the original scale. As before, I
+used Pearson's $\rho$ to assess the relationship of predicted expression to
+actual expression.
 
 ### Prediction
 
