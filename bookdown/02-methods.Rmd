@@ -83,7 +83,8 @@ residuals $\mathbf{\epsilon}$ can then be computed:
   \mathbf{\epsilon} = \mathbf{b} - \mathbf{\hat{b}}
 \end{equation*}
 
-For real-world applications (i.e. everything except
+From this it also follows that the estimated TME expression in this context is
+simply $\mathbf{\hat{b}}$. For real-world applications (i.e. everything except
 [normally distributed simulation](#normally-distributed-simulation)), both
 $\mathbf{b}$ and $\mathbf{\hat{b}}$ are log-transformed (adding a pseudo-count
 of one to preserve values of zero on the original scale) so that the variance in
