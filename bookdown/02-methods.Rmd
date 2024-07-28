@@ -351,7 +351,13 @@ The data comprised all samples from 1'095 patients in the TCGA-BRCA project with
 bulk RNA-seq data available. I also retrieved data on survival endpoints derived
 from curated clinical data from @liu.2018 for the corresponding tumor samples. I
 used this data to predict both the PAM50 subtype [@parker.2009] of a tumor and
-the progression-free interval (PFI) for the patient.
+the progression-free interval (PFI) for the patient. The PAM50 subtype
+classifies a breast cancer tumor into one of five categories ("Basal", "Her2",
+"LumA", "LumB", "Normal") based on the microarray expression of a set 50 genes.
+The PFI on the other hand is a property of the patients disease progression.
+Compared to the overall survival of the patient which may be of greater
+interest, it has the advantage of greater avalability of data due to shorter
+followup times [@liu.2018].
 
 Since the PFI is a variable on the patient level, I restricted the bulk data to
 only solid tissue tumor samples (no non-tumor or metastatic samples), and for
