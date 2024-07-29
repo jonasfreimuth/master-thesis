@@ -10,6 +10,9 @@
 
 ### Comparison to BayesPrism
 
+<!-- TODO Mention the number of genes on which comparisons are based for
+BayesPrism. -->
+
 ### Prediction
 
 ## Proof of concept
