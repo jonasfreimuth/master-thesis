@@ -7,7 +7,10 @@
                                 "r-dt"
                                 "r-dplyr"
                                 "r-here"
+                                "r-import"
+                                "r-purrr"
                                 "r-stringr"
+                                "r-styler"
                                 "r-rmarkdown"
                                 "r-tinytex"
                                 "r-yaml"))
