@@ -101,7 +101,6 @@ txt_pr_evl <- function(name) {
 }
 ```
 
-
 ## Transcriptome cleaning overview
 
 Following from the basic deconvolution model of equation
@@ -189,7 +188,7 @@ residuals $\mathbf{\epsilon}$ can then be computed:
 residuals, and cancer expression estimation. -->
 
 From this it also follows that the estimated TME expression in this context is
-simply $\mathbf{\hat{b}}$. For real-world applications (i.e. everything except
+simply $\mathbf{\hat{b}}$. For real-world applications (i.e., everything except
 [normally distributed simulation](#normally-distributed-simulation)), both
 $\mathbf{b}$ and $\mathbf{\hat{b}}$ are log-transformed (adding a pseudo-count
 of one to preserve values of zero on the original scale;
@@ -203,7 +202,7 @@ estimated at zero. High gene expression estimates for cancer due to zero
 estimates from other cell types might, however, also be a genuine signal. To
 mitigate this, I removed all genes which were estimated at an expression of zero
 in the fitted values of the deconvolution model, representing a trade-off
-between preserving the actual cancer expression signal in low fitted-values
+between preserving the actual signal of cancer expression in low fitted-values
 compared to the noise added by erroneous zero estimates for cell type
 expression.
 
@@ -366,8 +365,9 @@ control, during which I filtered genes to be expressed in at least
 potentially introduce batch effects, and removed non-protein coding genes. In
 this, I generally followed the methodology from @chu.2022, except I did not
 remove genes from sex chromosomes as these might play a role in breast cancer.
-Also, I assigned each gene a marker score, quantifying its likely usefulness as
-a gene in the deconvolution reference. Genes with a good score would have an
+
+I also assigned each gene a marker score, quantifying its likely usefulness as a
+gene in the deconvolution reference. Genes with a good score would have an
 expression signature across cell types which would allow for clear
 identification of just a single cell type by having particularly high or low
 expression in just that cell type. I explored multiple ways to determine this
@@ -379,8 +379,8 @@ combination of relative simplicity and accuracy. The marker score for the
 Wilcoxon test based marker selection was the test p-Value [adjusted for multiple
 testing via the Holm-Bonferroni method @holm.1979]. I only considered genes
 differentially expressed in a single cell type with at $p_{adj} < 0.05$ as
-marker genes, with lower values being considered better. I contrasted the
-wilcoxon marker selection method with choosing a random value for the marker
+marker genes, with lower values being considered better. The wilcoxon method of
+marker selection was contrasted with choosing a random value for the marker
 score to ensure any changes in performance were not simply due to the restricted
 size of the set of marker genes.
 
@@ -417,10 +417,10 @@ This was to allow for a broad range of cancer cell type fractions, which would
 have been restricted to lower values due to the normalization.
 
 I then deconvoluted each pseudo-bulk using each reference and calculated the
-average inverse root mean square error ($1 / \text(RMSE)$) between true and
-estimated cell type concentrations, and average Pearson's $\rho$ between true
-and estimated values cancer cell type expression across all deconvolutions with
-the same set of parameters.
+average performance metrics across all deconvolutions with the same set of
+parameters. These were again the inverse root mean squared error ($1 /
+\text(RMSE)$) between true and estimated cell type concentrations, and average
+Pearson's $\rho$ between true and estimated values cancer cell type expression.
 
 ## Evaluation
 
@@ -467,7 +467,7 @@ pseudo-bulks [section](#scrna-seq-pseudo-bulks). Extracting the predictions for
 cancer expression from BayesPrism is straightforward as it computes cell type
 expression predictions for all cell types on the original scale. However, it is
 not capable of estimating gene expression for non-marker genes, so comparisons
-bettween it and my method are based on a different number of genes. As before, I
+between it and my method are based on a different number of genes. As before, I
 used the average Pearson's $\rho$ across deconvolutions with the same
 parameters to assess the relationship of predicted expression to actual
 expression.
@@ -489,16 +489,16 @@ used this data to predict both the PAM50 subtype [@parker.2009] of a tumor and
 the progression-free interval (PFI) for the patient. The PAM50 subtype
 classifies a breast cancer tumor into one of five categories ("Basal", "Her2",
 "LumA", "LumB", "Normal") based on the microarray expression of a set 50 genes.
-The PFI on the other hand is a property of the patients disease progression.
+The PFI on the other hand is a property of the patients' disease progression.
 Compared to the overall survival of the patient which may be of greater
-interest, it has the advantage of greater avalability of data due to shorter
+interest, it has the advantage of greater availability of data due to shorter
 followup times [@liu.2018]. To ensure consistent data, I restricted analysis to
 samples of primary solid tumors (excluding normal and metastatic tissue
 samples). After that, I was left with `r txt_pr_cat_stat("n_sample")` tumor
 samples with data on the PAM50 subtype. Since the PFI is a variable on the
-patient level, I restricted the bulk data to one sample per patient, chosing the
-first sample recorded. This left `r txt_pr_srv_stat("n_sample")` samples with
-PFI data.
+patient level, I restricted the bulk data to one sample per patient, choosing
+the first sample recorded. This left `r txt_pr_srv_stat("n_sample")` samples
+with PFI data.
 
 To generate expression estimates, I applied my method to all bulk data samples
 by deconvoluting it using references derived from the @wu.2021 scRNA-seq data
