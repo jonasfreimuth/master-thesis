@@ -209,55 +209,82 @@ Pearson's $\rho$.
 ### scRNA-seq pseudo-bulks
 
 I then proceeded to apply the method to *in-silico* simulated bulk RNA-seq data
-("pseudo-bulks") generated from the scRNA-seq data obtained from @wu.2021, to
-assess its performance on actual expression data with precisely known cell type
-abundances and expression profiles. I used single cell RNA sequencing data
-consisting of transcript count data breast cancer tumor samples from @wu.2021
-(Gene Expression Omnibus, GEO accession
+("pseudo-bulks") generated from scRNA-seq data, to assess its performance on
+actual expression data with precisely known cell type abundances and expression
+profiles. I used single cell RNA sequencing data consisting of transcript count
+data breast cancer tumor samples from @wu.2021 (Gene Expression Omnibus, GEO
+accession
 [GSE176078](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE176078)). It
 contains 100'064 cells, 29'733 genes, from 26 samples. The cells are annotated
 as belonging to one of nine cell types, with further subtype information
-available. A subset of 20 tumor samples has been processed via bulk RNA-seq.
-Since the dataset provided by @wu.2021 is already filtered for high quality
-cells, I performed no additional cell quality control.
+available. Since the dataset provided by @wu.2021 is already filtered for high
+quality cells, I performed no additional cell quality control.
 
-To explore the effects of restricting the set of genes used for deconvolution on
-estimation accuracy for both cell type abundances and cancer expression, a set
-of selection criteria was applied to the genes of the Reference. (First was
-basic gene quality control, which comprised filtering the genes to be expressed
-in at least 5 cells, removal of [...])
-
-Second, each gene was assigned a marker score, quantifying its likely usefulness
-as a gene in the deconvolution reference. Genes with a good score would have an
-expression signature across cell types which would allow for clear
-identification of just a single cell type by having particularly high or low
-expression in just that cell type. Multiple ways to determine this score were
-explored during preliminary experiments (DESeq2 @love.2014, Hampel filter
-@davies.1993), but ultimately a simple Wilcoxon test [wilcoxon.1945] for
-comparing each cell type to the pooled remaining cell types (via
-`FindAllMarkers` from the R Seurat package v.5, @hao.2023) was chosen for its
+To construct the reference profiles, I averaged the per gene expression counts
+from @wu.2021 across all cells of the same cell type. To explore the effects of
+restricting the set of genes used for deconvolution on estimation accuracy for
+both cell type abundances and cancer expression, I applied a set of selection
+criteria to the genes of the reference. This comprised basic gene quality
+control, during which I filtered genes to be expressed in at least XXX cells,
+removed genes which could potentially introduce batch effects, and removed
+non-protein coding genes. In this, I generally followed the methodology from
+@chu.2022, except I did not remove genes from sex chromosomes as these might
+play a role in breast cancer. Also, I assigned each gene a marker score,
+quantifying its likely usefulness as a gene in the deconvolution reference.
+Genes with a good score would have an expression signature across cell types
+which would allow for clear identification of just a single cell type by having
+particularly high or low expression in just that cell type. I explored multiple
+ways to determine this score during preliminary experiments (DESeq2 @love.2014,
+Hampel filter @davies.1993), but ultimately chose a simple Wilcoxon test
+[wilcoxon.1945] for comparing each cell type to the pooled remaining cell types
+(via `FindAllMarkers` from the R Seurat package v.5, @hao.2023) for its
 combination of relative simplicity and accuracy. The marker score for the
 Wilcoxon test based marker selection was the test p-Value (adjusted for multiple
-testing via the Holm-Bonferroni method [@holm.1979]). Only genes differentially
-expressed in a single cell type with at $p_{adj} < 0.05$ were considered as
-marker genes, with lower values being considered better. It was contrasted with
-choosing a random value for the marker score to ensure any changes in
-performance were not simply due to the restricted size of the set of marker
-genes.
+testing via the Holm-Bonferroni method [@holm.1979]). I only considered genes
+differentially expressed in a single cell type with at $p_{adj} < 0.05$ as
+marker genes, with lower values being considered better. I contrasted the
+wilcoxon marker selection method with choosing a random value for the marker
+score to ensure any changes in performance were not simply due to the restricted
+size of the set of marker genes.
 
 I computed reference profiles across a spectrum of parameters, one reference for
-each combination. For marker selection strategies I used both methods outlined
-above (Wilcoxon test, random score), each with a threshold of the top XXX, XXX,
-..., of the best scoring marker genes being selected. I also contrasted across
-including the cancer cell type or not, and including either only genes passing
-transcript quality control or all marker genes for a reference.
+each combination. For each marker selection strategy I used a threshold
+selecting the top XXX, XXX, ..., of the best scoring marker genes. I also
+contrasted across including the cancer cell type or not, and including either
+only genes passing transcript quality control or all marker genes for a
+reference.
 
-I generated XXX pseudo-bulks by randomly sampling XXX cells (twice the
-median number of cells per sample in the data) with replacement from the
-overall count matrix from @wu.2021, stratified by cell type. Cell type fractions
-were also randomly selected by first choosing each cell type's fraction from
-$[0, 1]$ uniformly at random, and then normalizing the fraction of all
-non-cancer cell types to the complement of the fraction of the cancer cell type.
+I generated XXX pseudo-bulks by randomly sampling XXX cells (twice the median
+number of cells per sample in the data) with replacement from the overall count
+matrix from @wu.2021, stratified by cell type. Cell type fractions $\mathbf{f}$
+were also randomly selected by first choosing each cell type's fraction
+uniformly at random, and then normalizing the fraction of all non-cancer cell
+types to the complement of the fraction of the cancer cell type:
+
+\begin{equation*}
+  \begin{aligned}
+    f_{\text{cancer}}           &\sim \mathcal{U}(0, 1) \\
+    f_{\text{non cancer, raw}}  &\sim \mathcal{U}(0, 1 - f_{\text{cancer}}) \\
+    \left( f_{\text{non cancer, norm}} \right)_j &= \frac{
+      \left( f_{\text{non cancer, raw}} \right)_j
+    } {
+      \sum_{j=1}^{m-1} {f_{\text{non cancer, raw}}}
+    }
+  \end{aligned}
+\end{equation*}
+
+
+
+\begin{equation*}
+  \mathbf{f} = \left( \begin{array}{c|c}
+    f_{\text{cancer}} &
+    \left( f_{\text{non cancer, norm}} \right)_1 &
+    \left( f_{\text{non cancer, norm}} \right)_2 &
+    \cdots &
+    \left( f_{\text{non cancer, norm}} \right)_{m - 1}
+  \end{array} \right)
+\end{equation*}
+
 This was to allow for a broad range of cancer cell type fractions, which would
 have been restricted to lower values due to the normalization.
 
@@ -280,9 +307,10 @@ on raw bulk data.
 To compare my transcriptome cleaning method to an established state-of-the-art
 method of estimating cell type specific expression profiles from bulk RNA-seq
 data, I applied both my method and BayesPrism to tumor sample derived
-pseudo-bulks, and to actual bulk RNA-seq samples, both from @wu.2021. Of the
-three high resolution *in-silico* dissection methods mentioned before, I chose
-BayesPrism for comparison here since it is specifically designed for tumor
+pseudo-bulks, and to actual bulk RNA-seq samples, both from @wu.2021. A subset
+of tumor samples used in their paper has also been processed via bulk RNA-seq.
+Of the three high resolution *in-silico* dissection methods mentioned before, I
+chose BayesPrism for comparison here since it is specifically designed for tumor
 samples, and integrates well with my existing analysis framework since it is
 also written in `R`.
 
