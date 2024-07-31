@@ -319,7 +319,8 @@ cell type. I analyzed the effect of these parameters on the estimation accuracy
 of cell type counts via the inverse root mean squared error ($1 / RMSE$) between
 true and predicted cell type counts. Lastly, I examined the relationship between
 the distribution of residuals to the true expression profile of the cancerous
-cell type using Pearson's $\rho$.
+cell type using Pearson's $\rho$. I repeated this `r txt_rs_stc("n_repeats")`
+times for each level of technical noise and averaged results across replicates.
 
 ```{r rnd-sim-params}
 kable(
@@ -415,13 +416,11 @@ cell type:
 This was to allow for a broad range of cancer cell type fractions, which would
 have been restricted to lower values due to the normalization.
 
-<!-- TODO Mention scaling of expected expression & averaging across
-deconvolutions of the same parameters. Don't forget to do the latter across
-sections -->
-
-I then deconvoluted each pseudo-bulk using each reference and calculated
-Pearson's $\rho$ between true and estimate values for both cell type
-concentrations and cancer cell type expression.
+I then deconvoluted each pseudo-bulk using each reference and calculated the
+average inverse root mean square error ($1 / \text(RMSE)$) between true and
+estimated cell type concentrations, and average Pearson's $\rho$ between true
+and estimated values cancer cell type expression across all deconvolutions with
+the same set of parameters.
 
 ## Evaluation
 
@@ -469,8 +468,9 @@ cancer expression from BayesPrism is straightforward as it computes cell type
 expression predictions for all cell types on the original scale. However, it is
 not capable of estimating gene expression for non-marker genes, so comparisons
 bettween it and my method are based on a different number of genes. As before, I
-used Pearson's $\rho$ to assess the relationship of predicted expression to
-actual expression.
+used the average Pearson's $\rho$ across deconvolutions with the same
+parameters to assess the relationship of predicted expression to actual
+expression.
 
 ### Prediction
 
