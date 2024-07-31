@@ -13,7 +13,7 @@ equations for each bulk $k$:
 \end{equation*}
 
 To reduce the solution space, usually a non-negativity constraint is placed on
-elements of $\mathbf{C}$, as a mixture can't contain negative concentrations
+elements of $\mathbf{C}$, as a bulk can't contain negative concentrations
 [@venet.2001]. Adding this constraint, and considering the bulks $\mathbf{b}$
 and associated concentration vectors $\mathbf{c}$ independently the problem can
 be formulated as
@@ -29,9 +29,6 @@ This can then be solved using a least-squares method with the objective function
   \min_{\mathbf{c} \geq 0} \|\mathbf{Sc} - \mathbf{b}\|^2
 \end{equation}
 
-<!-- TODO Mention the scale on which cell type abundances can be expected to be
-on & scaling considerations. -->
-
 Under the assumption that cancer cells vary stronger in their expression than
 the other cells in the microenvironment, we can expect the residuals to contain
 much of this excess variation. Using these residuals as a measure of true cancer
@@ -40,18 +37,11 @@ expression of non-cancer cells. It may be possible to further enhance the signal
 of pure expression of cancer cells by simply not including the reference profile
 for cancer cells during deconvolution. While this would certainly lead to less
 accurate results for the prediction of cell type abundance as some proportion of
-cancer cell gene expression would be erroneously attributed to other cell types,
-the residuals might then more accurately reflect the patterns of cancer cell
-type expression as when they are already accounted for by the inclusion of the
-cancer cell type reference profile.
-
-To clean a bulk RNA-seq transcriptome, you first need to run a deconvolution on
-it.
-
-<!-- Problem using cleaned bulk RNA-seq profiles as reference: It would need to
-be ensured that each profile represents a single-cell. -->
-
-For this you need a Reference and the bulk RNA-seq data to deconvolute.
+cancer cell gene expression would be erroneously attributed to other cell types
+(although this issue seems to be already present in the ideal case, see
+@aran.2017), the residuals might then more accurately reflect the patterns of
+cancer cell type expression as when they are already accounted for by the
+inclusion of the cancer cell type reference profile.
 
 Prior information on the expression profiles of the cell types present in a set
 of bulk RNA-seq samples may be obtained in different ways. Relatively simple
@@ -61,11 +51,49 @@ effort, but require normalization to eliminate bias from differing cell counts.
 More complex methods allowing for single cell level expression quantification
 like micro-dissection, fluorescence-activated cell sorting, and more recently
 scRNA-seq do not have this problem, but are limited in application due to their
-cost.
+cost. Single cell based reference profiles have a further advantage in
+least-squares deconvolution since they allow quantification of actual cell type
+counts rather than proportions only, since the profile corresponds to the
+expression of a single cell. For this reason, along with the need to construct
+pseudo bulks for which single-cell data is needed, I generally use scRNA derived
+references here (except for random simulations). To construct reference profiles
+from scRNA-seq data, I simply averaged all cells annotated as belonging to the
+same cell type. I also restricted the set of genes used for deconvolution to the
+most discriminant ones (see the later
+[pseudobulk section](#scrna-seq-pseudo-bulks)), to increase deconvolution
+accuracy and reduce computation time.
 
-Here, the Reference is always made up averaged expression profiles derived from
-scRNA data. For this, the per gene expression counts were averaged across all
-cells of the same cell type.
+<!-- Talk about previous work on marker genes for deconvolution? -->
+<!-- TODO Mention the scale on which cell type abundances can be expected to be
+on & scaling considerations. -->
+<!-- TODO Talk about zero transript prediction mitigation. -->
+
+After reference creation, the computation of residuals as a measure for true
+expression of cancerous cells is relatively straightforward. First the
+untransformed bulk RNA-seq data is deconvoluted using the also untransformed
+reference profiles. Using untransformed data has been shown to yield more
+accurate results for least-squares based deconvolution of microarray data
+[@zhong.2011], which I saw to hold true for the data I use here in preliminary
+experiments. Throughout this work, I always used the `nnls` package
+[@katharinem.mullen.2023] in the `R` programming language [@rcoreteam.2023] for
+this step. The deconvolution model estimates for cell type counts ($\mathbf{c}$)
+are then used to compute the *full* predicted gene expression vector of the
+deconvolution model $\mathbf{\hat{b}}$ using all genes from the reference
+profile, not only the marker genes used in deconvolution. From this the
+residuals $\mathbf{\epsilon}$ can then be computed:
+
+\begin{equation*}
+  \mathbf{\epsilon} = \mathbf{b} - \mathbf{\hat{b}}
+\end{equation*}
+
+For real-world applications (i.e. everything except
+[normally distributed simulation](#normally-distributed-simulation)), both
+$\mathbf{b}$ and $\mathbf{\hat{b}}$ are log-transformed (adding a pseudo-count
+of one to preserve values of zero on the original scale) so that the variance in
+residuals stays reasonably consistent across the spectrum of actual and
+predicted gene expression values.
+
+[...]
 
 ## Proof of concept
 
