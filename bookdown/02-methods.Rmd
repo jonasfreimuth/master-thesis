@@ -334,8 +334,73 @@ actual expression.
 As the final evaluation of the method, I compared the predictive power of
 machine learning models trained on both estimated cancer expression data to
 models trained on bulk RNA-seq data alone. For this, I used bulk RNA-seq data of
-breast cancers annotated with clinical data from the Cancer Genome Atlas (TCGA).
-The data comprised all 1'095 patient samples from the TCGA-BRCA project with
-bulk RNA-seq data available . For the survival prediction task, I retrieved data
-on survival endpoints derived from curated clinical data from @liu.2018 for the
-corresponding tumor samples.
+breast cancers annotated with clinical data from the Cancer Genome Atlas [TCGA,
+@colaprico.2016].
+
+<!-- TODO Expand on PAM50 subtype & PFI. -->
+
+The data comprised all samples from 1'095 patients in the TCGA-BRCA project with
+bulk RNA-seq data available. I also retrieved data on survival endpoints derived
+from curated clinical data from @liu.2018 for the corresponding tumor samples. I
+used this data to predict both the PAM50 subtype [@parker.2009] of a tumor and
+the progression-free interval (PFI) for the patient.
+
+Since the PFI is a variable on the patient level, I restricted the bulk data to
+only solid tissue tumor samples (no non-tumor or metastatic samples), and for
+each patient chose the first sample recorded. This left me with XXX tumor
+samples, each corresponding to a unique patient.
+
+First, I applied my method to all bulk data samples by deconvoluting it using
+references derived from the @wu.2021 scRNA-seq data like in the previous
+sections, except with a smaller set of thresholds (XXX) on marker gene scores.
+Like in the [section](#comparison-to-bayesprism) comparing my method to
+BayesPrism, I also ran the latter method on the same data to later compare the
+prediction accuracy of models trained on cancer expression estimations from
+either method. To add more context to the observed differences in the
+performance the models trained on bulk data and estimated cancer expression, I
+also trained models using the estimated combined TME expression. For my method,
+this was simply the fitted values of the deconvolution model
+($\mathbf{\hat{b}}$, see the
+[method overview](#transcriptome-cleaning-overview)). For BayesPrism, this was
+represented by the sum of gene expression predictions across all non-cancer cell
+types. As BayesPrism is not able to estimate expression for non-marker genes,
+there is a possibility that differences in performances of the models trained on
+the expression estimated are due to the differences in the amount of genes. To
+address this, I also trained models on bulk data with gene sets restricted to
+each set of genes from the cancer / TME expression estimates.
+
+I transformed each feature set (i.e., raw bulk, cancer, and TME expression) onto
+a logarithmic scale ($\mathbf{x}_{\text{trans}} = \log_{10}{\left( \mathbf{x} +
+1 \right)}$, only if it was not already on that scale, as was the case for
+expression estimates from my method), and split each into training and test data
+at a ratio of 7:3. Using the preprocessing facilities of the `caret` package
+[@kuhn.2008], I performed removal of zero-variance genes, centering, scaling,
+and finally dimensionality reduction via principal component analysis (at a
+threshold of 95% of variance explained for including components) on the training
+set. The same procedure was applied to the testing data using the same
+parameters for each step as for training data to avoid information leakage.
+
+<!-- TODO Expand on model objectives used? -->
+
+To train machine learning models predicting the PAM50 subtype of a tumor sample,
+I used a linear kernel support vector regression (SVR) approach via the `caret`
+package [@kuhn.2008], optimizing simple accuracy of class predictions. Models
+were trained using XXX-fold cross-validation, repeated XXX times. I used the
+"Synthetic Minority Oversampling Technique" [SMOTE, @chawla.2002] for resampling
+during each training iteration to ensure balanced representation of classes.
+
+To predict the PFI of a patient from expression data, I used random survival
+forests as implemented in the `randomForestSRC` package [@ishwaran.2008]. Here,
+I trained random survival forest models with XXX trees by first performing
+hyperparameter tuning for finding the optimal parameters for the data. These
+were the number of randomly chosen variables for splitting at each node
+(parameter `mtry`), and the minimal number of cases that a terminal node of a
+tree may contain (parameter `nodesize`). The performance for random survival
+forests is measured using the C-index [@harrell.1982], comparing the observed
+ordering of events taking place to the predicted.
+
+I evaluated each model on datasets bootstrapped from the test samples using the
+averaged performance metric across the bootstrap datasets as the final model
+accuracy. For this, I sampled tumor samples from the test data with replacement,
+using half the size of the test data for each evaluation dataset and repeating
+the process 200 times.
