@@ -53,8 +53,6 @@ be ensured that each profile represents a single-cell. -->
 
 For this you need a Reference and the bulk RNA-seq data to deconvolute.
 
-## Data
-
 Prior information on the expression profiles of the cell types present in a set
 of bulk RNA-seq samples may be obtained in different ways. Relatively simple
 approaches like expression profiling of cultured purified cell lines allow for
@@ -63,53 +61,11 @@ effort, but require normalization to eliminate bias from differing cell counts.
 More complex methods allowing for single cell level expression quantification
 like micro-dissection, fluorescence-activated cell sorting, and more recently
 scRNA-seq do not have this problem, but are limited in application due to their
-cost. Here, I used single cell RNA sequencing data consisting of transcript count
-data breast cancer tumor samples from @wu.2021 (Gene Expression Omnibus, GEO
-accession
-[GSE176078](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE176078)). It
-contains 100'064 cells, 29'733 genes, from 26 samples. The cells are annotated
-as belonging to one of nine cell types, with further subtype information
-available. A subset of 20 tumor samples has been processed via bulk RNA-seq.
-
-For prediction tasks, I used bulk RNA-seq data of breast cancers annotated with
-clinical data from the Cancer Genome Atlas (TCGA). The data comprised all 1'095
-patient samples from the TCGA-BRCA project with bulk RNA-seq data available .
-For the survival prediction task, I retrieved data on survival endpoints derived
-from curated clinical data from @liu.2018 for the corresponding tumor samples.
-
-### Reference
+cost.
 
 Here, the Reference is always made up averaged expression profiles derived from
-scRNA data. For this, the per gene expression counts from @wu.2021 were averaged
-across all cells of the same cell type. Since the dataset provided by @wu.2021
-is already filtered for high quality cells, I performed no additional cell
-quality control.
-
-To explore the effects of restricting the set of genes used for deconvolution on
-estimation accuracy for both cell type abundances and cancer expression, a set
-of selection criteria was applied to the genes of the Reference. (First was
-basic gene quality control, which comprised filtering the genes to be expressed
-in at least 5 cells, removal of [...])
-
-Second, each gene was assigned a marker score, quantifying its likely usefulness
-as a gene in the deconvolution reference. Genes with a good score would have an
-expression signature across cell types which would allow for clear
-identification of just a single cell type by having particularly high or low
-expression in just that cell type. Multiple ways to determine this score were
-explored during preliminary experiments (DESeq2 @love.2014, Hampel filter
-@davies.1993), but ultimately a simple Wilcoxon test [wilcoxon.1945] for
-comparing each cell type to the pooled remaining cell types (via
-`FindAllMarkers` from the R Seurat package v.5, @hao.2023) was chosen for its
-combination of relative simplicity and accuracy. The marker score for the
-Wilcoxon test based marker selection was the test p-Value (adjusted for multiple
-testing via the Holm-Bonferroni method [@holm.1979]). Only genes differentially
-expressed in a single cell type with at $p_{adj} < 0.05$ were considered as
-marker genes, with lower values being considered better. It was contrasted with
-choosing a random value for the marker score to ensure any changes in
-performance were not simply due to the restricted size of the set of marker
-genes.
-
-### Bulk
+scRNA data. For this, the per gene expression counts were averaged across all
+cells of the same cell type.
 
 ## Proof of concept
 
@@ -158,7 +114,39 @@ counts.
 I then proceeded to apply the method to *in-silico* simulated bulk RNA-seq data
 ("pseudo-bulks") generated from the scRNA-seq data obtained from @wu.2021, to
 assess its performance on actual expression data with precisely known cell type
-abundances and expression profiles.
+abundances and expression profiles. I used single cell RNA sequencing data
+consisting of transcript count data breast cancer tumor samples from @wu.2021
+(Gene Expression Omnibus, GEO accession
+[GSE176078](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE176078)). It
+contains 100'064 cells, 29'733 genes, from 26 samples. The cells are annotated
+as belonging to one of nine cell types, with further subtype information
+available. A subset of 20 tumor samples has been processed via bulk RNA-seq.
+Since the dataset provided by @wu.2021 is already filtered for high quality
+cells, I performed no additional cell quality control.
+
+To explore the effects of restricting the set of genes used for deconvolution on
+estimation accuracy for both cell type abundances and cancer expression, a set
+of selection criteria was applied to the genes of the Reference. (First was
+basic gene quality control, which comprised filtering the genes to be expressed
+in at least 5 cells, removal of [...])
+
+Second, each gene was assigned a marker score, quantifying its likely usefulness
+as a gene in the deconvolution reference. Genes with a good score would have an
+expression signature across cell types which would allow for clear
+identification of just a single cell type by having particularly high or low
+expression in just that cell type. Multiple ways to determine this score were
+explored during preliminary experiments (DESeq2 @love.2014, Hampel filter
+@davies.1993), but ultimately a simple Wilcoxon test [wilcoxon.1945] for
+comparing each cell type to the pooled remaining cell types (via
+`FindAllMarkers` from the R Seurat package v.5, @hao.2023) was chosen for its
+combination of relative simplicity and accuracy. The marker score for the
+Wilcoxon test based marker selection was the test p-Value (adjusted for multiple
+testing via the Holm-Bonferroni method [@holm.1979]). Only genes differentially
+expressed in a single cell type with at $p_{adj} < 0.05$ were considered as
+marker genes, with lower values being considered better. It was contrasted with
+choosing a random value for the marker score to ensure any changes in
+performance were not simply due to the restricted size of the set of marker
+genes.
 
 I computed reference profiles across a spectrum of parameters, one reference for
 each combination. For marker selection strategies I used both methods outlined
@@ -230,4 +218,9 @@ pseudo-bulks [section](#scrna-seq-pseudo-bulks).
 
 As the final evaluation of the method, I compared the predictive power of
 machine learning models trained on both estimated cancer expression data to
-models trained on bulk RNA-seq data alone.
+models trained on bulk RNA-seq data alone. For this, I used bulk RNA-seq data of
+breast cancers annotated with clinical data from the Cancer Genome Atlas (TCGA).
+The data comprised all 1'095 patient samples from the TCGA-BRCA project with
+bulk RNA-seq data available . For the survival prediction task, I retrieved data
+on survival endpoints derived from curated clinical data from @liu.2018 for the
+corresponding tumor samples.
