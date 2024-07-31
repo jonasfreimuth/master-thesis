@@ -18,4 +18,8 @@
 
 * Need to benchmark microarray expression purification techniques on bulk
   RNA-seq data.
-* [Look into if spillover correction may be worked into method formulation.]
+* Possible deconvolution model improvements:
+  * Penalizing zero predictions
+  * Spillover correction
+  * Bias fitted values to be lower than bulk expression -> Generally positive
+    residuals, sanity check.
