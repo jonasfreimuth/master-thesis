@@ -34,7 +34,8 @@ only differentially expressed genes between the cell types [@ghosh.2004], but
 later ones were already able to estimate cell type specific expression
 [@lahdesmaki.2005], with the latter approach often being called *in-silico*
 purification. Historically, these methods were based on non-negative matrix
-factorization (NMF), which modeled the problem as consisting of
+factorization (NMF), which modeled the problem as consisting of the following
+components:
 
 * a $n \times p$ bulk matrix, $\mathbf{B}$ (also called mixture matrix), giving
   the expression of $n$ genes for $p$ samples (mixtures/measurements, depending
@@ -45,27 +46,27 @@ factorization (NMF), which modeled the problem as consisting of
   each cell type in each sample.
 
 A priori, only $\mathbf{B}$ is experimentally measured, $\mathbf{S}$ and
-$\mathbf{C}$ are estimated by solving
+$\mathbf{C}$ are estimated by solving:
 
 \begin{equation}
   \mathbf{B} = \mathbf{S} \mathbf{C}
   (\#eq:basic-matrix-deconv)
 \end{equation}
 
-with some simple constraints allowing to a tractable, unique solution
-[@venet.2001]. This approach on its own, innovative as it was, had several
-drawbacks. While not as big an issue for deconvoluting only two cell types, the
-resulting cell type specific estimates for abundance and gene expression could
-not be directly attributed to specific cell types. The number of cell types had
-to be known a priori, and misspecification would bias model results
-[@lahdesmaki.2005]. Also, model solutions would depend on the set of samples,
-with a low number of samples leading to worse estimates [@repsilber.2010].
-@gaujoux.2012 improved the NMF approach by incorporating the prior knowledge of
-genes particularly highly expressed in specific cell types. This represents the
-step from an entirely unsupervised method of deconvolution, where no prior
-information besides the mixture data was needed, to more accurate supervised
-methods. However, all of these methods only allow for estimation of the general
-expression profiles of their respective cell types / conditions.
+This is possible with some simple constraints allowing for a tractable, unique
+solution [@venet.2001]. This approach on its own, innovative as it was, had
+several drawbacks. While not as big an issue for deconvoluting only two cell
+types, the resulting cell type specific estimates for abundance and gene
+expression could not be directly attributed to specific cell types. The number
+of cell types had to be known a priori, and misspecification would bias model
+results [@lahdesmaki.2005]. Also, model solutions would depend on the set of
+samples, with a low number of samples leading to worse estimates
+[@repsilber.2010]. @gaujoux.2012 improved the NMF approach by incorporating the
+prior knowledge of genes particularly highly expressed in specific cell types.
+This represents the step from an entirely unsupervised method of deconvolution,
+where no prior information besides the mixture data was needed, to more accurate
+supervised methods. However, all of these methods only allow for estimation of
+the general expression profiles of their respective cell types / conditions.
 
 Today, most methods for *in-silico* purification of bulk tumor RNA-seq data are
 supervised full deconvolution methods, but still only few methods exist for
