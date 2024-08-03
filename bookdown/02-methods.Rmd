@@ -1,6 +1,6 @@
 # Methods & Data
 
-```{r load-data, include = FALSE}
+```{r method-setup, include = FALSE}
 import::from("here", "here")
 import::from("knitr", "kable")
 import::from("magrittr", .all = TRUE)
