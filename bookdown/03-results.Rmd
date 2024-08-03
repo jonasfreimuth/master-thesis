@@ -1,10 +1,141 @@
 # Results
 
+```{r res-setup, include = FALSE}
+import::from("data.table", "fread")
+import::from("dplyr", "arrange", "mutate", "recode", "rename", "select")
+import::from("here", "here")
+import::from("knitr", "include_graphics", "kable")
+import::from(
+  "kableExtra",
+  "add_header_above",
+  "collapse_rows",
+  "kable_styling",
+  "kbl",
+  "landscape"
+)
+import::from("magrittr", "%>%", "extract", "multiply_by")
+import::from("purrr", "map", "reduce")
+import::from("tidyr", "pivot_wider")
+
+# Suppress chunk output by default.
+knitr::opts_chunk$set(echo = FALSE)
+
+here::i_am("bookdown/03-results.Rmd")
+
+analysis_root <- "cancer-cleaning-output"
+main_plot_dir <- "main_plots"
+main_plot_path <- here(paste(analysis_root, main_plot_dir, sep = "/"))
+
+plot_prefixes <- list(
+  "rnd_sim" = "random_deconv_simulation_metric_summary_plot",
+  "pbulk_ctype_acc" = "simulation_celltype_accuracy_plot",
+  "pbulk_cexpr_acc" = "simulation_true_v_predict_cancer_corr_plot",
+  "bp_cexpr_acc" = "bayes_prism_true_v_predict_cancer_corr_plot",
+  "pred_cat_perf" = "categorical_prediction_performance_plot",
+  "pred_srv_perf" = "survival_prediction_performance_plot"
+)
+
+plot_paths <- map(
+  plot_prefixes,
+  \(prefix) paste(main_plot_path, paste0(prefix, ".png"), sep = "/")
+)
+
+plot_caps <- map(
+  plot_prefixes,
+  \(prefix) paste(main_plot_path, paste0(prefix, "_caption.txt"), sep = "/")
+) %>%
+  map(readLines)
+
+plot_data_paths <- map(
+  plot_prefixes,
+  \(prefix) paste(main_plot_path, paste0(prefix, ".csv"), sep = "/")
+)
+
+# TODO Add table captions.
+```
+
 ## Proof of concept
 
 ### Normally distributed simulation
 
+```{r rnd-sim-plt, fig.cap = plot_caps$rnd_sim}
+include_graphics(plot_paths$rnd_sim)
+```
+
+```{r rnd-sim-res-tab}
+rnd_sim_data <- plot_data_paths$rnd_sim %>%
+  fread(sep = ",") %>%
+  mutate(across(
+    where(is.character),
+    \(char_col) factor(char_col, levels = unique(char_col))
+  ))
+
+rnd_sim_data %>%
+  # Maybe the cols removed here will be removed somewhere upriver already. If
+  # that's the case, this can be removed.
+  select(-any_of(c("n", "n_rmse"))) %>%
+  mutate(
+    `95% CI` = round(`max_ci` - `min_ci`, 3),
+    type = recode(
+      type,
+      "True vs. predicted Cell type abundance 1 / RMSE" = "cell type accurracy 1 / RMSE",
+      "Cancer expression vs. Model residuals R²" = "cancer expression accurracy $\\rho$"
+    ),
+    .keep = "unused"
+  ) %>%
+  pivot_wider(
+    values_from = c("mean", "95% CI"),
+    names_from = "type",
+    names_glue = "{type} {.value}"
+  ) %>%
+  select(
+    heterogeneous_cancer,
+    split,
+    bio_tech_ratio,
+    # Should in ctype acc first and mean first
+    all_of(sort(names(.), decr = TRUE))
+  ) %>%
+  arrange(heterogeneous_cancer, split, bio_tech_ratio) %>%
+  kbl(
+    caption = "TODO ADD PROPER TABLE CAPTIONS",
+    escape = TRUE,
+    col.names = c(
+      "Cancer model",
+      "Reference type",
+      "Relative noise level name",
+      rep(c("Mean", "95% CI"), 2)
+    )
+  ) %>%
+  add_header_above(c(
+    " " = 3,
+    "Cell type accurracy, $1 / RMSE$" = 2,
+    "Cancer expression accurracy $\\rho$" = 2
+  )) %>%
+  collapse_rows(columns = 1:3, valign = "top") %>%
+  landscape()
+```
+
 ### scRNA-seq pseudo-bulks
+
+```{r pbulk-ctype-acc-plt, fig.cap = plot_caps$pbulk_ctype_acc}
+include_graphics(plot_paths$pbulk_ctype_acc)
+```
+
+```{r pbulk-ctype-acc-tab}
+plot_data_paths$pbulk_ctype_acc %>%
+  fread(sep = ",") %>%
+  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+```
+
+```{r pbulk-cexpr-acc-plt, fig.cap = plot_caps$pbulk_cexpr_acc}
+include_graphics(plot_paths$pbulk_cexpr_acc)
+```
+
+```{r pbulk-cexpr-acc-tab}
+plot_data_paths$pbulk_cexpr_acc %>%
+  fread(sep = ",") %>%
+  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+```
 
 ## Evaluation
 
@@ -13,6 +144,34 @@
 <!-- TODO Mention the number of genes on which comparisons are based for
 BayesPrism. -->
 
+```{r bp-cexpr-acc-plt, fig.cap = plot_caps$bp_cexpr_acc}
+include_graphics(plot_paths$bp_cexpr_acc)
+```
+
+```{r bp-cexpr-acc-plt-tab}
+plot_data_paths$bp_cexpr_acc %>%
+  fread(sep = ",") %>%
+  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+```
+
 ### Prediction
 
-## Proof of concept
+```{r pred-cat-perf-plt, fig.cap = plot_caps$pred_cat_perf}
+include_graphics(plot_paths$pred_cat_perf)
+```
+
+```{r pred-cat-perf-tab}
+plot_data_paths$pred_cat_perf %>%
+  fread(sep = ",") %>%
+  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+```
+
+```{r pred-srv-perf-plt, fig.cap = plot_caps$pred_srv_perf}
+include_graphics(plot_paths$pred_srv_perf)
+```
+
+```{r pred-srv-perf-tab}
+plot_data_paths$pred_srv_perf %>%
+  fread(sep = ",") %>%
+  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+```

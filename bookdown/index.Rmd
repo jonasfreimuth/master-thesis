@@ -9,6 +9,11 @@ output:
   pdf_book:
     toc: true
     toc_depth: 3
+    latex_engine: xelatex
+  pdf_document2:
+    toc: true
+    toc_depth: 3
+    latex_engine: xelatex
 bibliography: ../citations/cancer-cleaning_File.bib
 ---
 

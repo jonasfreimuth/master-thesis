@@ -8,9 +8,11 @@
                                 "r-dplyr"
                                 "r-here"
                                 "r-import"
+                                "r-kableextra"
                                 "r-purrr"
                                 "r-stringr"
                                 "r-styler"
                                 "r-rmarkdown"
+                                "r-tidyr"
                                 "r-tinytex"
                                 "r-yaml"))
