@@ -14,7 +14,7 @@ import::from(
   .directory = here("modules")
 )
 
-suppressMessages(here::i_am("bookdown/02-methods.Rmd"))
+here::i_am("bookdown/02-methods.Rmd")
 
 source(here("modules/utils.R"))
 
