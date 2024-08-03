@@ -276,11 +276,12 @@ simulating their profile deviation, for this I multiplied it by a factor of $x =
     \mathbf{N}_{\text{non cancer}} &\sim \mathcal{N}(0, \sigma_{cellvar}^2) \\
     \mathbf{N}_{\text{cancer}} &\sim \mathcal{N}(
       0, \left( \sigma_{cellvar} * x \right)^2
-    )
-  \end{aligned} \\
-  \mathbf{N}_{\text{cancer het.}} = \left( \begin{array}{c|c}
-    \mathbf{N}_{\text{non cancer}} & \mathbf{N}_{\text{cancer}}
+    ) \\
+    \\
+    \mathbf{N}_{\text{cancer het.}} &= \left( \begin{array}{c|c}
+      \mathbf{N}_{\text{non cancer}} & \mathbf{N}_{\text{cancer}}
   \end{array} \right)
+  \end{aligned}
 \end{equation*}
 
 The final matrices of simulated cell expression $\mathbf{Q}$, using both
@@ -407,10 +408,10 @@ cell type:
       \left( f_{\text{raw}} \right)_j
     } {
       \sum_{j=1}^{m-1} {\left( f_{\text{raw}} \right)_j}
-    } - {\left( f_{\text{raw}} \right)_m}
-  \end{aligned} \\
-  \text{with} \ 1 \leq j \leq (m - 1) \in
-  \text{non cancer, and} \ m \in \text{cancer}
+    } - {\left( f_{\text{raw}} \right)_m} \\
+    \text{with} \ 1 \leq j \leq (m - 1) &\in
+    \text{non cancer, and} \ m \in \text{cancer}
+  \end{aligned}
 \end{equation*}
 
 This was to allow for a broad range of cancer cell type fractions, which would
