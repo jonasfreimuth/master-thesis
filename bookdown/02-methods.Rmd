@@ -328,7 +328,10 @@ kable(
   caption = paste(
     "Simulation parameters used to evaluate my method's performance on",
     "normally distributed simulated data."
-  )
+  ),
+  # Don't escape the `$` symbols, we want formulas to be rendered in LaTeX
+  # output.
+  escape = FALSE
 )
 ```
 
@@ -338,7 +341,10 @@ kable(
   caption = paste(
     "Levels of techincal noise used for evaluating my method's performance on",
     "normally distributed simulated data."
-  )
+  ),
+  # Don't escape the `$` symbols, we want formulas to be rendered in LaTeX
+  # output.
+  escape = FALSE
 )
 ```
 
