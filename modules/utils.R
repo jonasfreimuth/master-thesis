@@ -5,6 +5,18 @@ import::here("purrr", "map")
 import::here("stringr", "str_replace", "str_detect")
 import::here("yaml", "read_yaml")
 
+update_analysis_dir <- function(dir_name = c("main_plots", "param_tables"),
+                                new_path,
+                                analysis_root = "cancer-cleaning-output") {
+  # Currently, I link in analysis dirs from the repository where they were
+  # created. The analysis dirs are either "main_plots" or "param_tables",
+  # and in this project they live under "analysis_root". The path to which
+  # the dir should be updated is "new_path".
+  dir_path <- paste(analysis_root, dir_name, sep = "/")
+  unlink(dir_path)
+  system2("ln", c("-s", new_path, dir_path))
+}
+
 param_file_path_to_name <- function(param_file_path) {
   param_file_path %>%
     basename() %>%
