@@ -9,6 +9,7 @@ import::from(
   "kableExtra",
   "add_header_above",
   "collapse_rows",
+  "kable_minimal",
   "kable_styling",
   "kbl",
   "landscape"
@@ -104,8 +105,10 @@ rnd_sim_data %>%
       "Reference type",
       "Relative noise level name",
       rep(c("Mean", "95% CI"), 2)
-    )
+    ),
+    align = "l"
   ) %>%
+  kable_minimal() %>%
   add_header_above(c(
     " " = 3,
     "Cell type accurracy, $1 / RMSE$" = 2,
