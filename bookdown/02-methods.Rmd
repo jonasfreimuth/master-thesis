@@ -389,7 +389,9 @@ differentially expressed in a single cell type with at $p_{adj} < 0.05$ as
 marker genes, with lower values being considered better. The wilcoxon method of
 marker selection was contrasted with choosing a random value for the marker
 score to ensure any changes in performance were not simply due to the restricted
-size of the set of marker genes.
+size of the set of marker genes. Since the Wilcoxon test based markers were the
+same across deconvolutions as they were a property of the underlying scRNA-seq
+data, the random values used were also constant for each reference profile.
 
 I computed reference profiles across a spectrum of parameters, one reference for
 each combination. For each marker selection strategy I used a threshold
