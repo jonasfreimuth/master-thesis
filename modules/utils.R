@@ -1,7 +1,7 @@
 import::here("data.table", "fread")
 import::here("knitr", "combine_words")
 import::here("magrittr", .all = TRUE)
-import::here("purrr", "map")
+import::here("purrr", "iwalk", "map")
 import::here("stringr", "str_replace", "str_detect")
 import::here("yaml", "read_yaml")
 
@@ -14,7 +14,15 @@ update_analysis_dir <- function(dir_name = c("main_plots", "param_tables"),
   # the dir should be updated is "new_path".
   dir_path <- paste(analysis_root, dir_name, sep = "/")
   unlink(dir_path)
+
   system2("ln", c("-s", new_path, dir_path))
+}
+
+update_dirs_from_rds <- function(rds_path = "./dir_list.RDS", ...) {
+  iwalk(
+    readRDS(rds_path),
+    \(path, name) update_analysis_dir(dir_name = name, new_path = path, ...)
+  )
 }
 
 param_file_path_to_name <- function(param_file_path) {
