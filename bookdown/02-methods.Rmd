@@ -187,8 +187,7 @@ residuals $\mathbf{\epsilon}$ can then be computed:
 <!-- FIXME Add a diagram explaining the relationship between fitted values,
 residuals, and cancer expression estimation. -->
 
-From this it also follows that the estimated TME expression in this context is
-simply $\mathbf{\hat{b}}$. For real-world applications (i.e., everything except
+For real-world applications (i.e., everything except
 [normally distributed simulation](#normally-distributed-simulation)), the
 absolute value of the residuals was used. This was done since deconvolution
 residuals can inherently take both positive and negative values, but here are
@@ -509,22 +508,16 @@ like in the previous sections, except with a smaller set of thresholds
 (`r txt_pr_stc("thresholds")`) on marker gene scores. Like in the
 [section](#comparison-to-bayesprism) comparing my method to BayesPrism, I also
 ran the latter method on the same data to later compare the prediction accuracy
-of models trained on cancer expression estimations from either method. To add
-more context to the observed differences in the performance the models trained
-on bulk data and estimated cancer expression, I also trained models using the
-estimated combined TME expression. For my method, this was simply the fitted
-values of the deconvolution model ($\mathbf{\hat{b}}$, see the
-[method overview](#transcriptome-cleaning-overview)). For BayesPrism, this was
-represented by the sum of gene expression predictions across all non-cancer cell
-types. As BayesPrism is not able to estimate expression for non-marker genes,
-there is a possibility that differences in performances of the models trained on
-the expression estimated are due to the differences in the amount of genes. To
+of models trained on cancer expression estimations from either method. As
+BayesPrism is not able to estimate expression for non-marker genes, there is a
+possibility that differences in performances of the models trained on the
+expression estimated are due to the differences in the amount of genes. To
 address this, I also trained models on bulk data with gene sets restricted to
-each set of genes from the cancer / TME expression estimates.
+each set of genes from the cancer expression estimates.
 
-I transformed each feature set (i.e., raw bulk, cancer, and TME expression) onto
-a logarithmic scale ($\mathbf{x}_{\text{trans}} = \log_{10}{\left( \mathbf{x} +
-1 \right)}$, only if it was not already on that scale, as was the case for
+I transformed each feature set (i.e., raw bulk and cancer expression) onto a
+logarithmic scale ($\mathbf{x}_{\text{trans}} = \log_{10}{\left( \mathbf{x} + 1
+\right)}$, only if it was not already on that scale, as was the case for
 expression estimates from my method), and split each into training and test data
 at a fraction of `r txt_pr_stc("train_frac")` for training and
 `r txt_pr_stc("test_frac")` for testing. Using the preprocessing facilities of
