@@ -29,7 +29,6 @@ main_plot_path <- here(paste(analysis_root, main_plot_dir, sep = "/"))
 
 plot_prefixes <- list(
   "rnd_sim" = "random_deconv_simulation_metric_summary_plot",
-  "pbulk_ctype_acc" = "simulation_celltype_accuracy_plot",
   "pbulk_cexpr_acc" = "simulation_true_v_predict_cancer_corr_plot",
   "bp_cexpr_acc" = "bayes_prism_true_v_predict_cancer_corr_plot",
   "pred_cat_perf" = "categorical_prediction_performance_plot",
@@ -64,29 +63,12 @@ behaved as expected.
 
 <!-- TODO Rephrase this as groups having more technical noise. -->
 
-<!-- FIXME Do I need to talk about cell type estimation accuracy at all? Is
-mentioning the drop due to cancer splitting & pointing at supplementary enough?
--->
-
-The accuracy in estimating cell type abundance was optimal for high & equal
-biological noise using a reference with the cancer profile still included, and
-assuming that cancer expression varies across cells similar to other cell types
-(Figure \@ref(fig:rnd-sim-plt) A). Cell type estimation accuracy fell slightly
-when replacing the latter assumption with a stronger variation for cancer
-expression across cells, but particularly strongly for the groups of high &
-equal amounts of biological noise. This left the former groups closer in
-accuracy to the low biological noise group. When removing the cancer expression
-profile from the reference, the estimation further decreased, with differences
-between all levels of relative biological noise except the very lowest becoming
-very small to non-existent, even across models for cancer expression
-variability. Lastly, the accuracy for estimated cell types was invariably the
-lowest for simulations with a relatively very low amount of biological noise and
-barely varied in its absolute value across combinations of the remaining
-parameters.
+<!-- TODO Go into more detail of the behavior, especially pairwise cell type
+expression correlation. -->
 
 The accuracy of deconvolution model residuals as an estimate of cancer
 expression on the other hand shows an almost complementary picture (Figure
-\@ref(fig:rnd-sim-plt) B). Here, the correlation under the homogeneous cancer
+\@ref(fig:rnd-sim-plt)). Here, the correlation under the homogeneous cancer
 expression and including cancer profiles in the reference was very poor.
 However, there were still differences between the groups: High & equal
 biological noise had the same levels of accuracy, while the low biological noise
@@ -179,26 +161,6 @@ rnd_sim_data %>%
 When benchmarking my method on pseudo-bulks derived from scRNA-seq data,
 the performance was not as consistent as during the simulation using normally
 distributed data.
-
-<!-- TODO Remove transcript QC from plots and analysis. As far as I can tell
-it's not relevant. -->
-
-When including the cancer expression profile in the reference, cell type
-estimation accuracy was rather good, but only when a reference with randomly
-chosen marker genes was used. Under these conditions I observed a steady
-improvement in cell type estimation accuracy with increasing marker set size,
-even though no individual step was different from the previous in a
-statistically significant way (overlapping 95% confidence intervals).
-
-```{r pbulk-ctype-acc-plt, fig.cap = plot_caps$pbulk_ctype_acc}
-include_graphics(plot_paths$pbulk_ctype_acc)
-```
-
-```{r pbulk-ctype-acc-tab}
-plot_data_paths$pbulk_ctype_acc %>%
-  fread(sep = ",") %>%
-  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
-```
 
 ```{r pbulk-cexpr-acc-plt, fig.cap = plot_caps$pbulk_cexpr_acc}
 include_graphics(plot_paths$pbulk_cexpr_acc)
