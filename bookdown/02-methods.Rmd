@@ -187,26 +187,18 @@ residuals $\mathbf{\epsilon}$ can then be computed:
 <!-- FIXME Add a diagram explaining the relationship between fitted values,
 residuals, and cancer expression estimation. -->
 
-<!-- TODO Switch to absolute residuals description. -->
-
 From this it also follows that the estimated TME expression in this context is
 simply $\mathbf{\hat{b}}$. For real-world applications (i.e., everything except
-[normally distributed simulation](#normally-distributed-simulation)), both
-$\mathbf{b}$ and $\mathbf{\hat{b}}$ are log-transformed (adding a pseudo-count
-of one to preserve values of zero on the original scale;
-$\mathbf{x}_{\text{trans}} = \log_{10}{\left( \mathbf{x} + 1 \right)}$) so that
-the variance of the residuals stays reasonably consistent across the spectrum of
-actual and predicted gene expression values. Another consideration are erroneous
-zero abundance estimates, as in that case the signal of cancer expression (which
-is supposed to come from the *difference* of fitted and observed bulk expression
-values) is overshadowed by noise from genes strongly expressed in the cell types
-estimated at zero. High gene expression estimates for cancer due to zero
-estimates from other cell types might, however, also be a genuine signal. To
-mitigate this, I removed all genes which were estimated at an expression of zero
-in the fitted values of the deconvolution model, representing a trade-off
-between preserving the actual signal of cancer expression in low fitted-values
-compared to the noise added by erroneous zero estimates for cell type
-expression.
+[normally distributed simulation](#normally-distributed-simulation)), the
+absolute value of the residuals was used. This was done since deconvolution
+residuals can inherently take both positive and negative values, but here are
+used to estimate count data which is non-negative. Using the absolute values
+also allows log transformation of the residuals (adding a pseudo-count of one to
+preserve values of zero on the original scale; $\mathbf{x}_{\text{trans}} =
+\log_{10}{\left( \mathbf{x} + 1 \right)}$), which was done so that the variance
+of the residuals stays reasonably consistent across the spectrum of actual and
+predicted gene expression values, and summary statistics assuming a near normal
+distribution (i.e., Pearsons $\rho$) could be used.
 
 ## Proof of concept
 
