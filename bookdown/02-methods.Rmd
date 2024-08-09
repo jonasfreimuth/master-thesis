@@ -386,10 +386,8 @@ data, the random values used were also constant for each reference profile.
 
 I computed reference profiles across a spectrum of parameters, one reference for
 each combination. For each marker selection strategy I used a threshold
-selecting the top `r txt_ss_stc("thresholds")` of the best scoring marker genes.
-I also contrasted across including the cancer cell type or not, and including
-either only genes passing transcript quality control or all marker genes for a
-reference.
+selecting the top `r txt_ss_stc("thresholds")` of the best scoring marker genes,
+and contrasted across including the cancer cell type or not.
 
 I generated `r txt_ss_stc("n_pseudobulk")` pseudo-bulks by randomly sampling
 `r txt_ss_pb("nominal_n_cell")` cells (twice the median number of cells per
