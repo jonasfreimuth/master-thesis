@@ -1,14 +1,14 @@
 # Methods & Data
 
 ```{r method-setup, include = FALSE}
-import::from("here", "here")
-import::from("knitr", "kable")
-import::from("magrittr", .all = TRUE)
-import::from("purrr", "pluck", "map_vec")
+import::here("here", "here")
+import::here("knitr", "kable")
+import::here("magrittr", .all = TRUE)
+import::here("purrr", "pluck", "map_vec")
 
 here::i_am("bookdown/02-methods.Rmd")
 
-import::from(
+import::here(
   "utils.R",
   "load_param_table_dir",
   "formatted_yaml_value",

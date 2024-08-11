@@ -1,11 +1,11 @@
 # Results
 
 ```{r res-setup, include = FALSE}
-import::from("data.table", "fread", "uniqueN")
-import::from("dplyr", "arrange", "mutate", "recode", "rename", "select")
-import::from("here", "here")
-import::from("knitr", "include_graphics")
-import::from(
+import::here("data.table", "fread", "uniqueN")
+import::here("dplyr", "arrange", "mutate", "recode", "rename", "select")
+import::here("here", "here")
+import::here("knitr", "include_graphics")
+import::here(
   "kableExtra",
   "add_header_above",
   "collapse_rows",
@@ -14,10 +14,10 @@ import::from(
   "kbl",
   "landscape"
 )
-import::from("magrittr", "%>%", "extract", "multiply_by", "set_names")
-import::from("purrr", "map", "reduce")
-import::from("tidyr", "pivot_wider")
-import::from("withr", "with_options")
+import::here("magrittr", "%>%", "extract", "multiply_by", "set_names")
+import::here("purrr", "map", "reduce")
+import::here("tidyr", "pivot_wider")
+import::here("withr", "with_options")
 
 # Suppress chunk output by default.
 knitr::opts_chunk$set(echo = FALSE)
