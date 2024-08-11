@@ -15,4 +15,5 @@
                                 "r-rmarkdown"
                                 "r-tidyr"
                                 "r-tinytex"
+                                "r-withr"
                                 "r-yaml"))
