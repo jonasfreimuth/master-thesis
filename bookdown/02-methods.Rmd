@@ -132,9 +132,7 @@ This can then be solved using a least-squares method with the objective function
 
 Under the assumption that cancer cells vary stronger in their expression than
 the other cells in the microenvironment, we can expect the residuals to contain
-much of this excess variation. Using these residuals as a measure of true cancer
-expression thus represents a way to “clean” the bulk cancer expression of the
-expression of non-cancer cells. It may be possible to further enhance the signal
+much of this excess variation. It may be possible to further enhance the signal
 of pure expression of cancer cells by simply not including the reference profile
 for cancer cells during deconvolution. While this would certainly lead to less
 accurate results for the prediction of cell type abundance as some proportion of
