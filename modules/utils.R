@@ -2,6 +2,7 @@ import::here("data.table", "fread")
 import::here("knitr", "combine_words")
 import::here("magrittr", .all = TRUE)
 import::here("purrr", "iwalk", "map", "walk")
+import::here("rmarkdown", "yaml_front_matter")
 import::here("stringr", "str_replace", "str_detect")
 import::here("yaml", "read_yaml")
 
@@ -102,17 +103,44 @@ render_book <- function(book_root = "./bookdown", format = "html") {
     \(debug_file) if (file.exists(debug_file)) unlink(debug_file)
   )
 
-  settings_key <- switch(
-    format,
+  # Get the settings key which needs to match what's in book_root/index.Rmd.
+  # As per markdown custom, it doubles as a callable function, the result of
+  # which goes into the `output_format` arg of the `render_book` call.
+  settings_key <- switch(format,
     "html" = "bookdown::html_document2",
     "pdf" = "bookdown::pdf_document2",
     stop(paste("Can't render to unknown format", format))
   )
 
+  default_settings <- yaml_front_matter(paste0(book_root, "/index.Rmd")) %>%
+    extract2("output") %>%
+    extract2(settings_key)
+
+  # Split off potential package specifiers by splitting on the namespace
+  # delimiter and using the last element of whatever comes out.
+  fun_components <- strsplit(settings_key, "::") %>%
+    unlist()
+
+  fun <- if (length(fun_components) == 2) {
+    # We're assuming we have the format package::fun_name.
+    getFromNamespace(fun_components[[2]], ns = fun_components[[1]])
+  } else if (length(fun_components) == 1) {
+    # We're assuming we have format fun_name, and further assume that fun comes
+    # from bookdown.
+    getFromNamespace(fun_components[[1]], ns = "bookdown")
+  } else {
+    stop(paste(
+      "Somehow an erroneous settings_key was specified:", settings_key
+    ))
+  }
+
+  # Define the output format by calling our format function
+  output_format <- do.call(fun, default_settings)
+
   message(
     bookdown::render_book(
       book_root,
-      output_format = settings_key
+      output_format = output_format
     )
   )
 }
