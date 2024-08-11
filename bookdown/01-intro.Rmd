@@ -80,18 +80,19 @@ computational efficiency are more important than high accuracy.
 
 <!-- Possibly expand on high cancer variability. -->
 
-Here I propose a simple method for estimating the expression profile of cancer
-cells in individual bulk RNA-seq samples through using model residuals from
-simple least-squares based cell type deconvolution. Cell type deconvolution is a
-special case of the NMF method for full deconvolution outlined above for when
-the cell type specific expression profiles are already known. Cancer cells
-generally show increased variability in their expression compared to surrounding
-cell types [@nguyen.2016; @ramonycajal.2020]. For least-squares based cell type
-deconvolution, this implies that a higher proportion of the cancer cell's
-variability in expression will be present in the deconvolution residuals
-compared to the other cell types. Therefore, the residuals of such a
-deconvolution model fit should contain some information specific to the
-expression patterns of cancer cells.
+Here I introduce and examine a simple method for estimating the expression
+profile of cancer cells in individual bulk RNA-seq samples by using model
+residuals from simple least-squares based cell type deconvolution. Thereby, I
+hope to "clean" the TME expression out from the bulk expression profile. Cell
+type deconvolution is a special case of the NMF method for full deconvolution
+outlined above for when the cell type specific expression profiles are already
+known. Cancer cells generally show increased variability in their expression
+compared to surrounding cell types [@nguyen.2016; @ramonycajal.2020]. For
+least-squares based cell type deconvolution, this implies that a higher
+proportion of the cancer cell's variability in expression will be present in the
+deconvolution residuals compared to the other cell types. Therefore, the
+residuals of such a deconvolution model fit should contain some information
+specific to the expression patterns of cancer cells.
 
 Using this approach, I will explore if the residuals from simple least squares
 based cell type deconvolution actually contain information on the expression
