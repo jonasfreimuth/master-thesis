@@ -214,7 +214,7 @@ by sampling expression data for $n$ transcripts & $m$ cell types from a normal
 distribution:
 
 \begin{equation*}
-  \mathbf{S}_{sim} \sim \mathcal{N}(0, \sigma_{gene}^2)
+  \mathbf{S}_{sim} \sim \mathcal{N}(0, \ \sigma_{gene}^2)
 \end{equation*}
 
 For each set of expression profiles, I then simulated the result of a bulk
@@ -235,24 +235,24 @@ cell type reference profiles as often as their simulated count:
 \begin{equation*}
     \mathbf{P} = \left( \begin{array}{c|c|c|c}
         \left(
-          \mathbf{S}_{\text{sim}}
-        \right)_{\cdot 1} \otimes \mathbf{1}_{1 \times \mathbf{c}_1} &
+          \mathbf{S}_{\text{sim}, \ \cdot 1}
+        \right)_{\times \mathbf{c}_{\text{sim}, 1}} &
         \left(
-          \mathbf{S}_{\text{sim}}
-        \right)_{\cdot 2} \otimes \mathbf{1}_{1 \times \mathbf{c}_2} &
+          \mathbf{S}_{\text{sim}, \ \cdot 2}
+        \right)_{\times \mathbf{c}_{\text{sim}, 2}} &
         \cdots &
         \left(
-          \mathbf{S}_{\text{sim}}
-        \right)_{\cdot m} \otimes \mathbf{1}_{1 \times \mathbf{c}_m}
+          \mathbf{S}_{\text{sim}, \ \cdot m}
+        \right)_{\times \mathbf{c}_{\text{sim}, m}}
     \end{array} \right)
 \end{equation*}
 
 Then, to simulate the deviation of individual cells from their reference
 profile, I added a matrix of normally distributed noise
-$\mathbf{N}_{\text{cancer homo.}}$.
+$\mathbf{N}_{\text{cancer homo.}}$:
 
 \begin{equation*}
-  \mathbf{N}_{\text{cancer homo.}} \sim \mathcal{N}(0, \sigma_{cellvar}^2)
+  \mathbf{N}_{\text{cancer homo.}} \sim \mathcal{N}(0, \ \sigma_{cellvar}^2)
 \end{equation*}
 
 I also optionally simulated cancer cells having more heterogeneous expression
@@ -261,7 +261,7 @@ simulating their profile deviation, for this I multiplied it by a factor of $x$.
 
 \begin{equation*}
   \begin{aligned}
-    \mathbf{N}_{\text{non cancer}} &\sim \mathcal{N}(0, \sigma_{cellvar}^2) \\
+    \mathbf{N}_{\text{non cancer}} &\sim \mathcal{N}(0, \ \sigma_{cellvar}^2) \\
     \mathbf{N}_{\text{cancer}} &\sim \mathcal{N}(
       0, \left( \sigma_{cellvar} * x \right)^2
     ) \\
@@ -291,7 +291,7 @@ noise:
 \end{equation*}
 
 \begin{equation*}
-  \left( b_{\text{sim}} \right)_{i} = \sum_{j = 1}^{m} \left(
+  b_{\text{sim}, i} = \sum_{j = 1}^{m} \left(
     q_{i,j}
   \right) + e_j
   \quad \forall \ 1 \leq i \leq n
@@ -397,11 +397,11 @@ cell type:
 \begin{equation*}
   \begin{aligned}
     \mathbf{f}_{\text{raw}} &\sim \mathcal{U}(0, 1) \\
-    \left( f_{\text{norm}} \right)_j &= \frac{
-      \left( f_{\text{raw}} \right)_j
+    f_{\text{norm}, j} &= \frac{
+      f_{\text{raw}, j}
     } {
-      \sum_{j=1}^{m-1} {\left( f_{\text{raw}} \right)_j}
-    } - {\left( f_{\text{raw}} \right)_m} \\
+      \sum_{j=1}^{m-1} {f_{\text{raw}, j}}
+    } - {f_{\text{raw}, m}} \\
     \text{with} \ 1 \leq j \leq (m - 1) &\in
     \text{non cancer, and} \ m \in \text{cancer}
   \end{aligned}
