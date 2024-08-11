@@ -102,20 +102,17 @@ render_book <- function(book_root = "./bookdown", format = "html") {
     \(debug_file) if (file.exists(debug_file)) unlink(debug_file)
   )
 
-  switch(
+  settings_key <- switch(
     format,
-    "html" = message(
-      bookdown::render_book(
-       book_root,
-        output_format = "bookdown::html_document2"
-      )
-    ),
-    "pdf" = message(
-      bookdown::render_book(
-        book_root,
-        output_format = "bookdown::pdf_document2"
-      )
-    ),
+    "html" = "bookdown::html_document2",
+    "pdf" = "bookdown::pdf_document2",
     stop(paste("Can't render to unknown format", format))
+  )
+
+  message(
+    bookdown::render_book(
+      book_root,
+      output_format = settings_key
+    )
   )
 }
