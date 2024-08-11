@@ -16,8 +16,6 @@ import::from(
   .directory = here("modules")
 )
 
-source(here("modules/utils.R"))
-
 # Suppress chunk output by default.
 knitr::opts_chunk$set(echo = FALSE)
 
