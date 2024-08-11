@@ -6,6 +6,8 @@ import::from("knitr", "kable")
 import::from("magrittr", .all = TRUE)
 import::from("purrr", "pluck", "map_vec")
 
+here::i_am("bookdown/02-methods.Rmd")
+
 import::from(
   "utils.R",
   "load_param_table_dir",
@@ -13,8 +15,6 @@ import::from(
   .character_only = TRUE,
   .directory = here("modules")
 )
-
-here::i_am("bookdown/02-methods.Rmd")
 
 source(here("modules/utils.R"))
 
