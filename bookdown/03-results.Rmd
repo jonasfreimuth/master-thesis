@@ -59,6 +59,47 @@ plot_data_paths <- map(
 
 ### Normally distributed simulation
 
+During simulation using normally distributed data, my method's performance
+behaved as expected.
+
+<!-- TODO Rephrase this as groups having more technical noise. -->
+
+<!-- FIXME Do I need to talk about cell type estimation accuracy at all? Is
+mentioning the drop due to cancer splitting & pointing at supplementary enough?
+-->
+
+The accuracy in estimating cell type abundance was optimal for high & equal
+biological noise using a reference with the cancer profile still included, and
+assuming that cancer expression varies across cells similar to other cell types
+(Figure \@ref(fig:rnd-sim-plt) A). Cell type estimation accuracy fell slightly
+when replacing the latter assumption with a stronger variation for cancer
+expression across cells, but particularly strongly for the groups of high &
+equal amounts of biological noise. This left the former groups closer in
+accuracy to the low biological noise group. When removing the cancer expression
+profile from the reference, the estimation further decreased, with differences
+between all levels of relative biological noise except the very lowest becoming
+very small to non-existent, even across models for cancer expression
+variability. Lastly, the accuracy for estimated cell types was invariably the
+lowest for simulations with a relatively very low amount of biological noise and
+barely varied in its absolute value across combinations of the remaining
+parameters.
+
+The accuracy of deconvolution model residuals as an estimate of cancer
+expression on the other hand shows an almost complementary picture (Figure
+\@ref(fig:rnd-sim-plt) B). Here, the correlation under the homogeneous cancer
+expression and including cancer profiles in the reference was very poor.
+However, there were still differences between the groups: High & equal
+biological noise had the same levels of accuracy, while the low biological noise
+group was slightly worse, and the very low biological noise showed levels of
+accuracy barely distinguishable from zero. Under the model of cancer cells
+varying stronger than other cell type's cells, and still including cancer
+profiles in the reference, there was an appreciable improvement in accuracy
+compared to the homogeneous model. The performance across groups remained
+similar to the previous model. The best improvement can be seen however when
+removing the cancer expression profile from the reference. Cancer expression
+accuracy here is very good across levels of biological noise except the lowest,
+and regardless of cancer expression model.
+
 ```{r rnd-sim-plt, fig.cap = plot_caps$rnd_sim}
 include_graphics(plot_paths$rnd_sim)
 ```
