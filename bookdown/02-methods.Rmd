@@ -309,7 +309,8 @@ expression profiles, each either including or excluding the designated cancer
 cell type. I examined the relationship between the distribution of residuals to
 the true expression profile of the cancerous cell type using Pearson's $\rho$. I
 repeated this `r txt_rs_stc("n_repeats")` times for each level of technical
-noise and averaged results across replicates.
+noise and averaged results and calculated 95% confidence intervals (CIs) across
+replicates.
 
 ```{r rnd-sim-params}
 kable(
@@ -413,8 +414,9 @@ This was to allow for a broad range of cancer cell type fractions, which would
 have been restricted to lower values due to the normalization.
 
 I then deconvoluted each pseudo-bulk using each reference and calculated the
-average Pearson's $\rho$ between true and estimated values of cancer cell type
-expression across all deconvolutions with the same set of parameters.
+average Pearson's $\rho$ and its 95% CI between true and estimated values of
+cancer cell type expression across all deconvolutions with the same set of
+parameters.
 
 ## Evaluation
 
@@ -462,8 +464,8 @@ cancer expression from BayesPrism is straightforward as it computes cell type
 expression predictions for all cell types on the original scale. However, it is
 not capable of estimating gene expression for non-marker genes, so comparisons
 between it and my method are based on a different number of genes. As before, I
-used the average Pearson's $\rho$ across deconvolutions with the same
-parameters to assess the relationship of predicted expression to actual
+used the average Pearson's $\rho$ with 95% CI across deconvolutions with the
+same parameters to assess the relationship of predicted expression to actual
 expression.
 
 ### Prediction
@@ -541,7 +543,8 @@ survival forests is measured using the C-index [@harrell.1982], comparing the
 observed ordering of events taking place to the predicted.
 
 I evaluated each model on datasets bootstrapped from the test samples using the
-averaged performance metric across the bootstrap datasets as the final model
-accuracy. For this, I sampled tumor samples from the test data with replacement,
-using `r txt_pr_evl("sample_frac")` of the size of the test data for each
-evaluation dataset and repeating the process `r txt_pr_evl("n_repeat")` times.
+averaged performance metric and its 95% CI across the bootstrap datasets as the
+final model accuracy. For this, I sampled tumor samples from the test data with
+replacement, using `r txt_pr_evl("sample_frac")` of the size of the test data
+for each evaluation dataset and repeating the process `r txt_pr_evl("n_repeat")`
+times.
