@@ -3,14 +3,10 @@ title: "Cancer transcriptome cleaning by deconvolution"
 author: "Jonas Freimuth"
 documentclass: article
 output:
-  html_document2:
+  bookdown::html_document2:
     toc: true
     toc_depth: 3
-  pdf_book:
-    toc: true
-    toc_depth: 3
-    latex_engine: xelatex
-  pdf_document2:
+  bookdown::pdf_document2:
     toc: true
     toc_depth: 3
     latex_engine: xelatex
