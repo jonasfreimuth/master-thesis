@@ -176,6 +176,20 @@ rnd_sim_data %>%
 
 ### scRNA-seq pseudo-bulks
 
+When benchmarking my method on pseudo-bulks derived from scRNA-seq data,
+the performance was not as consistent as during the simulation using normally
+distributed data.
+
+<!-- TODO Remove transcript QC from plots and analysis. As far as I can tell
+it's not relevant. -->
+
+When including the cancer expression profile in the reference, cell type
+estimation accuracy was rather good, but only when a reference with randomly
+chosen marker genes was used. Under these conditions I observed a steady
+improvement in cell type estimation accuracy with increasing marker set size,
+even though no individual step was different from the previous in a
+statistically significant way (overlapping 95% confidence intervals).
+
 ```{r pbulk-ctype-acc-plt, fig.cap = plot_caps$pbulk_ctype_acc}
 include_graphics(plot_paths$pbulk_ctype_acc)
 ```
