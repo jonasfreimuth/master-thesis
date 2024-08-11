@@ -187,6 +187,8 @@ residuals $\mathbf{\epsilon}$ can then be computed:
 <!-- FIXME Add a diagram explaining the relationship between fitted values,
 residuals, and cancer expression estimation. -->
 
+<!-- TODO Switch to absolute residuals description. -->
+
 From this it also follows that the estimated TME expression in this context is
 simply $\mathbf{\hat{b}}$. For real-world applications (i.e., everything except
 [normally distributed simulation](#normally-distributed-simulation)), both
