@@ -110,7 +110,7 @@ equations for each bulk $k$:
 
 \begin{equation*}
   \mathbf{B}_{\cdot k} = \mathbf{S} \mathbf{C}_{\cdot k}
-  \qquad \forall 1 \leq k \leq n
+  \qquad \forall 1 \leq k \leq p
 \end{equation*}
 
 To reduce the solution space, usually a non-negativity constraint is placed on
@@ -121,7 +121,7 @@ be formulated as
 
 \begin{equation*}
   \mathbf{b} = \mathbf{S} \mathbf{c}
-  \qquad s.t.\ \mathbf{c}_i < 0 \; \forall 1 \leq j \leq m
+  \qquad s.t.\ \mathbf{c}_i \geq 0 \; \forall 1 \leq j \leq m
 \end{equation*}
 
 This can then be solved using a least-squares method with the objective function
@@ -174,14 +174,14 @@ accurate results for least-squares based deconvolution of microarray data
 [@zhong.2011], which I saw to hold true for the data I use here in preliminary
 experiments. Throughout this work, I always used the `nnls` package
 [@katharinem.mullen.2023] in the `R` programming language [@rcoreteam.2023] for
-this step. The deconvolution model estimates for cell type counts ($\mathbf{c}$)
+this step. The deconvolution model estimates for cell type counts $\mathbf{c}$
 are then used to compute the *full* predicted gene expression vector of the
 deconvolution model $\mathbf{\hat{b}}$ using all genes from the reference
 profile, not only the marker genes used in deconvolution. From this the
-residuals $\mathbf{\epsilon}$ can then be computed:
+residuals $\epsilon$ can then be computed:
 
 \begin{equation*}
-  \mathbf{\epsilon} = \mathbf{b} - \mathbf{\hat{b}}
+  \epsilon = \mathbf{b} - \mathbf{\hat{b}}
 \end{equation*}
 
 <!-- FIXME Add a diagram explaining the relationship between fitted values,
@@ -297,8 +297,8 @@ noise:
 
 \begin{equation*}
   \left( b_{\text{sim}} \right)_{i} = \sum_{j = 1}^{m} \left(
-    q_{i,j} + e_j
-  \right)
+    q_{i,j}
+  \right) + e_j
   \quad \forall \ 1 \leq i \leq n
 \end{equation*}
 
