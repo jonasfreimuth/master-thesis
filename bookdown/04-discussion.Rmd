@@ -10,7 +10,16 @@
 
 ### Comparison to BayesPrism
 
+* BayesPrism variability due to lower number of actual transcripts used for cor
+  computation.
+
 ### Prediction
+
+<!-- TODO Check novelty of that. -->
+
+* Important finding: Targeted marker selection significantly improves
+  prediction.
+* Lower performance on full bulk data due to lack of QC?
 
 ## Proof of concept
 
