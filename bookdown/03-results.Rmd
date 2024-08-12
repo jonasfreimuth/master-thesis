@@ -262,10 +262,14 @@ plot_data_paths$bp_cexpr_acc %>%
   arrange(bulk_type, deconvolution.deconvolution_method) %>%
   kbl(
     caption = "TODO ADD PROPER TABLE CAPTIONS",
-    escape = TRUE,
+    escape = FALSE,
     col.names = c(
-      "Type", "Method", "Avg. $\\rho$", "95% CI", "n marker genes"
+      # For escape FALSE, `%` nedds to be escaped.
+      "Type", "Method", "Avg. $\\rho$", "95\\% CI", "n marker genes"
     )
+  ) %>%
+  collapse_rows(
+    columns = 1:2, valign = "top", row_group_label_position = "first"
   ) %>%
   kable_minimal()
 ```
@@ -332,13 +336,15 @@ with_options(
     ) %>%
     kbl(
       caption = "TODO ADD PROPER TABLE CAPTIONS",
-      escape = TRUE,
+      escape = FALSE,
       col.names = c(
         "Data type", "Method",
-        "Avg. bootstrapped accuracy", "95% CI", "n genes", "n marker genes"
+        # For escape FALSE, `%` nedds to be escaped.
+        "Avg. bootstrapped accuracy", "95\\% CI", "n genes", "n marker genes"
       )
     ) %>%
-    kable_minimal()
+    kable_minimal() %>%
+    landscape()
 )
 ```
 
@@ -365,12 +371,14 @@ with_options(
     ) %>%
     kbl(
       caption = "TODO ADD PROPER TABLE CAPTIONS",
-      escape = TRUE,
+      escape = FALSE,
       col.names = c(
         "Data type", "Method",
-        "Avg. bootstrapped C index", "95% CI", "n genes", "n marker genes"
+        # For escape FALSE, `%` nedds to be escaped.
+        "Avg. bootstrapped C index", "95\\% CI", "n genes", "n marker genes"
       )
     ) %>%
-    kable_minimal()
+    kable_minimal() %>%
+    landscape()
 )
 ```
