@@ -149,11 +149,10 @@ rnd_sim_data %>%
     align = "l"
   ) %>%
   kable_minimal() %>%
-  add_header_above(c(
-    " " = 3,
-    type_headers
-  )) %>%
-  collapse_rows(columns = 1:3, valign = "top") %>%
+  add_header_above(c(" " = 3, type_headers), escape = FALSE) %>%
+  collapse_rows(
+    columns = 1:3, valign = "top", row_group_label_position = "first"
+  ) %>%
   landscape()
 ```
 
