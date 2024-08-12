@@ -87,9 +87,15 @@ formatted_yaml_value <- function(param_obj, value_name) {
   combine_words(value_formatted)
 }
 
-render_book <- function(book_root = "./bookdown", format = "html") {
+render_book <- function(book_root = "./bookdown",
+                        format = "html",
+                        adaptive_html_theme = FALSE) {
   # Render the book at `book_root` to `format`, either "html" or "pdf".
   # Existing debug files preventing the rendering will be cleared beforehand.
+  # If `adaptive_html_theme` and its dark out (i.e., between 20 and 8 o'clock),
+  # a dark theme will be used for html output.
+  # FIXME Figure out how to do this for pdf output.
+  html_dark_theme <- "darkly"
 
   # Merged debug file bookdown leaves after errors. I don't want to manually
   # delete it every time, it hasn't been helpulf so far.
@@ -112,7 +118,7 @@ render_book <- function(book_root = "./bookdown", format = "html") {
     stop(paste("Can't render to unknown format", format))
   )
 
-  default_settings <- yaml_front_matter(paste0(book_root, "/index.Rmd")) %>%
+  output_settings <- yaml_front_matter(paste0(book_root, "/index.Rmd")) %>%
     extract2("output") %>%
     extract2(settings_key)
 
@@ -134,8 +140,18 @@ render_book <- function(book_root = "./bookdown", format = "html") {
     ))
   }
 
+  if (adaptive_html_theme && format == "html") {
+    current_hour <- Sys.time() %>%
+      format("%H") %>%
+      as.integer()
+
+    if (current_hour >= 20 || current_hour <= 8) {
+      output_settings$theme <- html_dark_theme
+    }
+  }
+
   # Define the output format by calling our format function
-  output_format <- do.call(fun, default_settings)
+  output_format <- do.call(fun, output_settings)
 
   message(
     bookdown::render_book(
