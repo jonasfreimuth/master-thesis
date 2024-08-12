@@ -198,7 +198,7 @@ plot_data_paths$pbulk_cexpr_acc %>%
   ) %>%
   select(
     reference.metric, reference.split_cancer,
-    mean_correlation, `95% CI`, n_transcripts_marker_mean
+    mean_correlation, `95% CI`, reference.threshold, n_transcripts_marker_mean
   ) %>%
   kbl(
     caption = "TODO ADD PROPER TABLE CAPTIONS",
@@ -206,7 +206,7 @@ plot_data_paths$pbulk_cexpr_acc %>%
     col.names = c(
       "Marker method", "Reference type",
       # For escape FALSE, `%` nedds to be escaped.
-      "Avg. $\\rho$", "95\\% CI", "n marker genes"
+      "Avg. $\\rho$", "95\\% CI", "Threshold", "n marker genes"
     )
   ) %>%
   collapse_rows(
@@ -247,7 +247,7 @@ plot_data_paths$bp_cexpr_acc %>%
   select(-starts_with("corr")) %>%
   select(
     bulk_type, deconvolution.deconvolution_method,
-    mean_correlation, `95% CI`, n_transcripts_marker_mean
+    mean_correlation, `95% CI`, reference.threshold, n_transcripts_marker_mean
   ) %>%
   arrange(bulk_type, deconvolution.deconvolution_method) %>%
   kbl(
@@ -255,7 +255,7 @@ plot_data_paths$bp_cexpr_acc %>%
     escape = FALSE,
     col.names = c(
       # For escape FALSE, `%` nedds to be escaped.
-      "Type", "Method", "Avg. $\\rho$", "95\\% CI", "n marker genes"
+      "Type", "Method", "Avg. $\\rho$", "95\\% CI", "Threshold", "n marker genes"
     )
   ) %>%
   collapse_rows(
@@ -322,7 +322,7 @@ with_options(
     select(-c(min_ci, max_ci)) %>%
     select(
       "extract_type", "deconv_method", "mean_accuracy", "95% CI",
-      "n_transcript", "n_marker_transcripts"
+      "n_transcript", "threshold", "n_marker_transcripts"
     ) %>%
     kbl(
       caption = "TODO ADD PROPER TABLE CAPTIONS",
@@ -330,7 +330,8 @@ with_options(
       col.names = c(
         "Data type", "Method",
         # For escape FALSE, `%` nedds to be escaped.
-        "Avg. bootstrapped accuracy", "95\\% CI", "n genes", "n marker genes"
+        "Avg. bootstrapped accuracy", "95\\% CI", "n genes", "Threshold",
+        "n marker genes"
       )
     ) %>%
     kable_minimal() %>%
@@ -357,7 +358,7 @@ with_options(
     select(-c(min_ci, max_ci)) %>%
     select(
       "extract_type", "deconv_method", "mean_c_index", "95% CI",
-      "n_transcript", "n_marker_transcripts"
+      "n_transcript", "threshold", "n_marker_transcripts"
     ) %>%
     kbl(
       caption = "TODO ADD PROPER TABLE CAPTIONS",
@@ -365,7 +366,8 @@ with_options(
       col.names = c(
         "Data type", "Method",
         # For escape FALSE, `%` nedds to be escaped.
-        "Avg. bootstrapped C index", "95\\% CI", "n genes", "n marker genes"
+        "Avg. bootstrapped C index", "95\\% CI", "n genes", "Treshold",
+        "n marker genes"
       )
     ) %>%
     kable_minimal() %>%
