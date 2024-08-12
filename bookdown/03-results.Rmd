@@ -144,7 +144,7 @@ rnd_sim_data %>%
       "Cancer model",
       "Reference type",
       "Relative noise level name",
-      rep(c("Mean", "95% CI"), uniqueN(rnd_sim_data$type))
+      rep(c("Average", "95% CI"), uniqueN(rnd_sim_data$type))
     ),
     align = "l"
   ) %>%
