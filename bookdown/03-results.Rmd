@@ -194,22 +194,12 @@ include_graphics(plot_paths$pbulk_cexpr_acc)
 plot_data_paths$pbulk_cexpr_acc %>%
   fread(sep = ",") %>%
   mutate(
-    `95% CI` = paste("\U00B1", round(mean_correlation - corr_min_ci, 3)),
-    # FIXME Ensure ordering happens in main_plots.
-    reference.metric = factor(
-      reference.metric, levels = c("Random", "Wilcoxon")
-    ),
-    reference.split_cancer = factor(
-      reference.split_cancer, levels = c(
-        "Excl. cancer profile", "Incl. cancer profile"
-      )
-    )
+    `95% CI` = paste("\U00B1", round(mean_correlation - corr_min_ci, 3))
   ) %>%
   select(
     reference.metric, reference.split_cancer,
     mean_correlation, `95% CI`, n_transcripts_marker_mean
   ) %>%
-  arrange(reference.metric, reference.split_cancer) %>%
   kbl(
     caption = "TODO ADD PROPER TABLE CAPTIONS",
     escape = FALSE,
