@@ -4,7 +4,7 @@
 import::from("data.table", "fread", "uniqueN")
 import::from("dplyr", "arrange", "mutate", "recode", "rename", "select")
 import::from("here", "here")
-import::from("knitr", "include_graphics", "kable")
+import::from("knitr", "include_graphics")
 import::from(
   "kableExtra",
   "add_header_above",
@@ -17,6 +17,7 @@ import::from(
 import::from("magrittr", "%>%", "extract", "multiply_by", "set_names")
 import::from("purrr", "map", "reduce")
 import::from("tidyr", "pivot_wider")
+import::from("withr", "with_options")
 
 # Suppress chunk output by default.
 knitr::opts_chunk$set(echo = FALSE)
@@ -193,7 +194,36 @@ include_graphics(plot_paths$pbulk_cexpr_acc)
 ```{r pbulk-cexpr-acc-tab}
 plot_data_paths$pbulk_cexpr_acc %>%
   fread(sep = ",") %>%
-  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+  mutate(
+    `95% CI` = paste("\U00B1", round(mean_correlation - corr_min_ci, 3)),
+    # FIXME Ensure ordering happens in main_plots.
+    reference.metric = factor(
+      reference.metric, levels = c("Random", "Wilcoxon")
+    ),
+    reference.split_cancer = factor(
+      reference.split_cancer, levels = c(
+        "Excl. cancer profile", "Incl. cancer profile"
+      )
+    )
+  ) %>%
+  select(
+    reference.metric, reference.split_cancer,
+    mean_correlation, `95% CI`, n_transcripts_marker_mean
+  ) %>%
+  arrange(reference.metric, reference.split_cancer) %>%
+  kbl(
+    caption = "TODO ADD PROPER TABLE CAPTIONS",
+    escape = FALSE,
+    col.names = c(
+      "Marker method", "Reference type",
+      # For escape FALSE, `%` nedds to be escaped.
+      "Avg. $\\rho$", "95\\% CI", "n marker genes"
+    )
+  ) %>%
+  collapse_rows(
+    columns = 1:2, valign = "top", row_group_label_position = "first"
+  ) %>%
+  kable_minimal()
 ```
 
 ## Evaluation
@@ -222,7 +252,23 @@ include_graphics(plot_paths$bp_cexpr_acc)
 ```{r bp-cexpr-acc-plt-tab}
 plot_data_paths$bp_cexpr_acc %>%
   fread(sep = ",") %>%
-  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+  mutate(
+    `95% CI` = paste("\U00B1", round(mean_correlation - corr_min_ci, 3))
+  ) %>%
+  select(-starts_with("corr")) %>%
+  select(
+    bulk_type, deconvolution.deconvolution_method,
+    mean_correlation, `95% CI`, everything()
+  ) %>%
+  arrange(bulk_type, deconvolution.deconvolution_method) %>%
+  kbl(
+    caption = "TODO ADD PROPER TABLE CAPTIONS",
+    escape = TRUE,
+    col.names = c(
+      "Type", "Method", "Avg. $\\rho$", "95% CI", "n marker genes"
+    )
+  ) %>%
+  kable_minimal()
 ```
 
 ### Prediction
@@ -268,9 +314,33 @@ include_graphics(plot_paths$pred_cat_perf)
 ```
 
 ```{r pred-cat-perf-tab}
-plot_data_paths$pred_cat_perf %>%
-  fread(sep = ",") %>%
-  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+# FIXME Combine pred tables & plots.
+with_options(
+  list(knitr.kable.NA = ""),
+  plot_data_paths$pred_cat_perf %>%
+    fread(sep = ",") %>%
+    mutate(
+      `95% CI` = paste("\U00B1", round(mean_accuracy - min_ci, 3))
+    ) %>%
+    mutate(
+      # To avoid confusion, remove deconv method for downsampled raw bulk.
+      deconv_method = ifelse(extract_type == "Raw bulk", NA, deconv_method)
+    ) %>%
+    select(-c(min_ci, max_ci)) %>%
+    select(
+      "extract_type", "deconv_method", "mean_accuracy", "95% CI",
+      "n_transcript", "n_marker_transcripts"
+    ) %>%
+    kbl(
+      caption = "TODO ADD PROPER TABLE CAPTIONS",
+      escape = TRUE,
+      col.names = c(
+        "Data type", "Method",
+        "Avg. bootstrapped accuracy", "95% CI", "n genes", "n marker genes"
+      )
+    ) %>%
+    kable_minimal()
+)
 ```
 
 ```{r pred-srv-perf-plt, fig.cap = plot_caps$pred_srv_perf}
@@ -278,7 +348,30 @@ include_graphics(plot_paths$pred_srv_perf)
 ```
 
 ```{r pred-srv-perf-tab}
-plot_data_paths$pred_srv_perf %>%
-  fread(sep = ",") %>%
-  kable(caption = "TODO ADD PROPER TABLE CAPTIONS", escape = TRUE)
+with_options(
+  list(knitr.kable.NA = ""),
+  plot_data_paths$pred_srv_perf %>%
+    fread(sep = ",") %>%
+    mutate(
+      `95% CI` = paste("\U00B1", round(mean_c_index - min_ci, 3))
+    ) %>%
+    mutate(
+      # To avoid confusion, remove deconv method for downsampled raw bulk.
+      deconv_method = ifelse(extract_type == "Raw bulk", NA, deconv_method)
+    ) %>%
+    select(-c(min_ci, max_ci)) %>%
+    select(
+      "extract_type", "deconv_method", "mean_c_index", "95% CI",
+      "n_transcript", "n_marker_transcripts"
+    ) %>%
+    kbl(
+      caption = "TODO ADD PROPER TABLE CAPTIONS",
+      escape = TRUE,
+      col.names = c(
+        "Data type", "Method",
+        "Avg. bootstrapped C index", "95% CI", "n genes", "n marker genes"
+      )
+    ) %>%
+    kable_minimal()
+)
 ```
