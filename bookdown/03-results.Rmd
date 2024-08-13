@@ -258,7 +258,7 @@ plot_data_paths$bp_cexpr_acc %>%
   select(-starts_with("corr")) %>%
   select(
     bulk_type, deconvolution.deconvolution_method,
-    mean_correlation, `95% CI`, everything()
+    mean_correlation, `95% CI`, n_transcripts_marker_mean
   ) %>%
   arrange(bulk_type, deconvolution.deconvolution_method) %>%
   kbl(
