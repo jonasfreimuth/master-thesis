@@ -158,9 +158,33 @@ rnd_sim_data %>%
 
 ### scRNA-seq pseudo-bulks
 
-When benchmarking my method on pseudo-bulks derived from scRNA-seq data,
-the performance was not as consistent as during the simulation using normally
-distributed data.
+When benchmarking my method on pseudo-bulks derived from scRNA-seq data, the
+performance was not as consistent as during the simulation using normally
+distributed data. For all parameter combinations, the accuracy of estimated
+cancer expression from absolute values of model residuals was high
+(\@ref(fig:pbulk-cexpr-acc-plt)), with only minor differences.
+
+When including cancer expression in the reference profiles, there was a clear
+difference between marker selection methods. Where Wilcoxon test based markers
+showed improved performance compared to random marker selection across all
+thresholds on the number of markers (significant at $\alpha = 0.05$, 95%
+confidence intervals). Also, while there was very little variation in accuracy
+across thresholds for random markers, on the second-tightest threshold for
+Wilcoxon based markers performance was significantly worse than the on the
+remaining thresholds. When excluding the cancer expression profile from the
+reference, performance further increased across all other parameters
+(significant at $\alpha = 0.05$, 95% confidence intervals), except for the
+tightest marker threshold on Wilcoxon.
+
+General patterns were similar between in- or excluding the cancer expression
+profile but with some exceptions. In the latter case and for the loosest marker
+threshold, random markers resulted in slightly but significantly worse
+performance than looser thresholds, who in turn no longer clearly differed from
+the second-tightest threshold on Wilcoxon markers. Lastly, the within group
+differences for Wilcoxon markers increased such that the two loosest thresholds
+no longer resulted in similar performance. The second-loosest marker threshold
+now resulted in optimal performance across all parameters and was clearly
+distinct from all other parameter combinations.
 
 ```{r pbulk-cexpr-acc-plt, fig.cap = plot_caps$pbulk_cexpr_acc}
 include_graphics(plot_paths$pbulk_cexpr_acc)
@@ -176,8 +200,20 @@ plot_data_paths$pbulk_cexpr_acc %>%
 
 ### Comparison to BayesPrism
 
-<!-- TODO Mention the number of genes on which comparisons are based for
-BayesPrism. -->
+In comparison to BayesPrism, my method largely had a similar performance (Figure
+\@ref(fig:bp-cexpr-acc-plt)). On pseudo-bulks derived from distinct tumor
+samples, my method showed superior correlation performance for the tightest
+threshold on marker metrics, but for any looser thresholds, no clear
+distinctions in performance can be made. BayesPrism showed a general trend of
+better performance for looser marker thresholds, but few differences were
+statistically significant (non-overlapping 95% confidence intervals). Here,
+confidence intervals also became wider for smaller, more restrictive thresholds.
+
+When applied to real-world bulk RNA-seq data, both my method and BayesPrism
+showed significantly worse performance on pairs of otherwise equal parameters.
+Here, my method also showed a general pattern of worse performance (although
+only significant for the second-tightest and loosest threshold, 95% confidence
+intervals).
 
 ```{r bp-cexpr-acc-plt, fig.cap = plot_caps$bp_cexpr_acc}
 include_graphics(plot_paths$bp_cexpr_acc)
@@ -190,6 +226,42 @@ plot_data_paths$bp_cexpr_acc %>%
 ```
 
 ### Prediction
+
+Neither models using data generated from my method, nor from BayesPrism were
+able to predict either the tumor intrinsic property or the patient level
+clinical outcome better than all the models trained on raw bulk data.
+
+When predicting the PAM50 subtype, the optimal model was the one trained on raw
+bulk data using the same set of genes as all models trained with data from my
+method (Figure \@ref(fig:pred-cat-perf-plt)). Models trained on cancer
+expression estimates from my method performed relatively similar, with a looser
+threshold on marker gene scores corresponding to marginally better model
+performance. For models trained on estimates from BayesPrism, there was a
+considerably wider spread in accuracy. Here too, looser thresholds on the marker
+genes resulted in better performance, but the tightest set of marker genes
+resulted in remarkably low accuracy. The optimal gene set for BayesPrism still
+performed as well as the optimum of my method. Models trained on raw bulk data
+generally followed the trend of improving performance with larger gene sets,
+only the model trained on bulk data retaining all its genes had a lower accuracy
+than models trained using smaller gene sets. Except for the second-loosest
+threshold on BayesPrism, no model trained on estimated expression data was able
+to outperform a model trained on raw bulk data using the same set of genes.
+
+The picture of the performance of models predicting a patients PFI was not as
+clear as for the prediction of the PAM50 subtype (Figure
+\@ref(fig:pred-srv-perf-plt)). While my method maintained its general ordering
+in performance, the differences between the loosest and second-loosest
+threshold, and between the tightest and the raw bulk data with the same gene set
+was no longer clean (95% CI overlap). For BayesPrism, models trained on its
+cancer expression estimates no longer conformed to the same pattern. There was
+no clear difference between the loosest and tightest threshold, with both being
+slightly outperformed by the intermediate threshold. The performance of models
+trained on raw bulk data did also not follow a clear pattern across the size of
+the gene set used for prediction. For the smallest set of genes, raw bulk model
+performance was among the lowest overall, but the next larger gene set resulted
+in the overall optimal performance. After this peak, a larger gene set only led
+to worse performance, with the gene set matching the one used for my method, and
+the full gene set both resulting in the worst performance across all models.
 
 ```{r pred-cat-perf-plt, fig.cap = plot_caps$pred_cat_perf}
 include_graphics(plot_paths$pred_cat_perf)
