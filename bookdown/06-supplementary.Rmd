@@ -1,1 +1,40 @@
-# Supplementary Material
+# Supplementary material
+
+```{r supp_setup, include = FALSE}
+import::here("here", "here")
+import::here("knitr", "include_graphics")
+import::here("magrittr", "%>%")
+import::here("purrr", "map")
+
+# Suppress chunk output by default.
+knitr::opts_chunk$set(echo = FALSE)
+
+here::i_am("bookdown/06-supplementary.Rmd")
+
+analysis_root <- "cancer-cleaning-output"
+supp_plot_dir <- "supplementary_plots"
+supp_plot_path <- here(paste(analysis_root, supp_plot_dir, sep = "/"))
+
+plot_prefixes <- list(
+  "rnd_sim_groun_truth" = "ground_truth_plot"
+)
+
+plot_paths <- map(
+  plot_prefixes,
+  \(prefix) paste(supp_plot_path, paste0(prefix, ".png"), sep = "/")
+)
+
+plot_caps <- map(
+  plot_prefixes,
+  \(prefix) {
+    paste(supp_plot_path, paste0(prefix, "_caption.txt"), sep = "/")
+  }
+) %>%
+  map(readLines)
+```
+
+## Supplementary plots
+
+```{r rnd-sim-ground-truth, fig.cap = plot_caps$rnd_sim_groun_truth}
+include_graphics(plot_paths$rnd_sim_groun_truth)
+```
