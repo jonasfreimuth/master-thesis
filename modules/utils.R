@@ -1,7 +1,8 @@
 import::here("data.table", "fread")
 import::here("knitr", "combine_words")
 import::here("magrittr", .all = TRUE)
-import::here("purrr", "iwalk", "map", "walk")
+import::here("purrr", "iwalk", "map", "pmap", "walk")
+import::here("rlang", "list2")
 import::here("rmarkdown", "yaml_front_matter")
 import::here("stringr", "str_replace", "str_detect")
 import::here("yaml", "read_yaml")
@@ -24,6 +25,17 @@ update_dirs_from_rds <- function(rds_path = "./dir_list.RDS", ...) {
     readRDS(rds_path),
     \(path, name) update_analysis_dir(dir_name = name, new_path = path, ...)
   )
+}
+
+update_dirs_from_table <- function(table_path = "./latest_summary_dirs.csv",
+                                   ...) {
+  # The script for running all summary scripts in the analysis repo outputs
+  # a table.
+  read.csv(table_path) %>%
+    pmap(..., list2) %>%
+    walk(\(row) {
+      update_analysis_dir(dir_name = row$name, new_path = row$path, ...)
+    })
 }
 
 param_file_path_to_name <- function(param_file_path) {
