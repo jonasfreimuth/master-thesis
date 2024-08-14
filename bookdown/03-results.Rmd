@@ -178,12 +178,12 @@ When including cancer expression in the reference profiles, there was a clear
 difference between marker selection methods. Where Wilcoxon test based markers
 showed improved performance compared to random marker selection across all
 thresholds on the number of markers (significant at $\alpha = 0.05$, 95%
-confidence intervals). Also, while there was very little variation in accuracy
+CIs). Also, while there was very little variation in accuracy
 across thresholds for random markers, on the second-tightest threshold for
 Wilcoxon based markers performance was significantly worse than the on the
 remaining thresholds. When excluding the cancer expression profile from the
 reference, performance further increased across all other parameters
-(significant at $\alpha = 0.05$, 95% confidence intervals), except for the
+(significant at $\alpha = 0.05$, 95% CIs), except for the
 tightest marker threshold on Wilcoxon.
 
 General patterns were similar between in- or excluding the cancer expression
@@ -235,14 +235,13 @@ samples, my method showed superior correlation performance for the tightest
 threshold on marker metrics, but for any looser thresholds, no clear
 distinctions in performance can be made. BayesPrism showed a general trend of
 better performance for looser marker thresholds, but few differences were
-statistically significant (non-overlapping 95% confidence intervals). Here,
-confidence intervals also became wider for smaller, more restrictive thresholds.
+statistically significant (non-overlapping 95% CIs). Here, CIs also became wider
+for smaller, more restrictive thresholds.
 
 When applied to real-world bulk RNA-seq data, both my method and BayesPrism
 showed significantly worse performance on pairs of otherwise equal parameters.
 Here, my method also showed a general pattern of worse performance (although
-only significant for the second-tightest and loosest threshold, 95% confidence
-intervals).
+only significant for the second-tightest and loosest threshold, 95% CIs).
 
 ```{r bp-cexpr-acc-plt, fig.cap = plot_caps$bp_cexpr_acc}
 include_graphics(plot_paths$bp_cexpr_acc)
