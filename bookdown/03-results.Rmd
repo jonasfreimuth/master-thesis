@@ -43,7 +43,9 @@ plot_paths <- map(
 
 plot_caps <- map(
   plot_prefixes,
-  \(prefix) paste(main_plot_path, paste0(prefix, "_caption.txt"), sep = "/")
+  \(prefix) {
+    paste(main_plot_path, paste0(prefix, "_plot_caption.txt"), sep = "/")
+  }
 ) %>%
   map(readLines)
 
@@ -51,6 +53,14 @@ plot_data_paths <- map(
   plot_prefixes,
   \(prefix) paste(main_plot_path, paste0(prefix, ".csv"), sep = "/")
 )
+
+table_caps <- map(
+  plot_prefixes,
+  \(prefix) {
+    paste(main_plot_path, paste0(prefix, "_table_caption.txt"), sep = "/")
+  }
+) %>%
+  map(readLines)
 
 # TODO Add table captions.
 ```
@@ -138,7 +148,7 @@ rnd_sim_data %>%
   ) %>%
   arrange(heterogeneous_cancer, split, bio_tech_ratio) %>%
   kbl(
-    caption = "TODO ADD PROPER TABLE CAPTIONS",
+    caption = table_caps$rnd_sim,
     escape = TRUE,
     col.names = c(
       "Cancer model",
@@ -201,7 +211,7 @@ plot_data_paths$pbulk_cexpr_acc %>%
     mean_correlation, `95% CI`, reference.threshold, n_transcripts_marker_mean
   ) %>%
   kbl(
-    caption = "TODO ADD PROPER TABLE CAPTIONS",
+    caption = table_caps$pbulk_cexpr_acc,
     escape = FALSE,
     col.names = c(
       "Marker method", "Reference type",
@@ -251,7 +261,7 @@ plot_data_paths$bp_cexpr_acc %>%
   ) %>%
   arrange(bulk_type, deconvolution.deconvolution_method) %>%
   kbl(
-    caption = "TODO ADD PROPER TABLE CAPTIONS",
+    caption = table_caps$bp_cexpr_acc,
     escape = FALSE,
     col.names = c(
       # For escape FALSE, `%` nedds to be escaped.
@@ -325,7 +335,7 @@ with_options(
       "n_transcript", "threshold", "n_marker_transcripts"
     ) %>%
     kbl(
-      caption = "TODO ADD PROPER TABLE CAPTIONS",
+      caption = table_caps$pred_cat_perf,
       escape = FALSE,
       col.names = c(
         "Data type", "Method",
@@ -361,7 +371,7 @@ with_options(
       "n_transcript", "threshold", "n_marker_transcripts"
     ) %>%
     kbl(
-      caption = "TODO ADD PROPER TABLE CAPTIONS",
+      caption = table_caps$pred_srv_perf,
       escape = FALSE,
       col.names = c(
         "Data type", "Method",
