@@ -69,29 +69,34 @@ table_caps <- map(
 
 ### Normally distributed simulation
 
-During simulation using normally distributed data, my method's performance
-behaved as expected.
-
 <!-- TODO Rephrase this as groups having more technical noise. -->
 
 <!-- TODO Go into more detail of the behavior, especially pairwise cell type
 expression correlation. -->
 
-The accuracy of deconvolution model residuals as an estimate of cancer
-expression on the other hand shows an almost complementary picture (Figure
-\@ref(fig:rnd-sim-plt)). Here, the correlation under the homogeneous cancer
-expression and including cancer profiles in the reference was very poor.
-However, there were still differences between the groups: High & equal
-biological noise had the same levels of accuracy, while the low biological noise
-group was slightly worse, and the very low biological noise showed levels of
-accuracy barely distinguishable from zero. Under the model of cancer cells
+During simulation using normally distributed data, my method's performance
+behaved as expected. The estimation accuracy for cancer expression via
+deconvolution model residuals (Figure \@ref(fig:rnd-sim-plt), Table
+\@ref(tab:rnd-sim-res-tab)) shows clear differences across simulation
+parameters, with the largest difference being across reference type.
+
+The average correlation of true and estimated cancer expression under the
+homogeneous cancer expression model using a reference with cancer profiles was
+close to zero. However, there were still differences between relative levels of
+noise: High & equal biological noise had the same levels of accuracy, while the
+low biological noise group was slightly worse, and the group with very low
+biological noise had exactly zero correlation. Under the model of cancer cells
 varying stronger than other cell type's cells, and still including cancer
 profiles in the reference, there was an appreciable improvement in accuracy
 compared to the homogeneous model. The performance across groups remained
-similar to the previous model. The best improvement can be seen however when
-removing the cancer expression profile from the reference. Cancer expression
-accuracy here is very good across levels of biological noise except the lowest,
-and regardless of cancer expression model.
+similar to the previous model. As mentioned, the largest improvement can be seen
+when removing the cancer expression profile from the reference. Here,
+correlation of true and estimated cancer expression is high across almost all
+levels of biological noise except for the lowest. This extends across cancer
+expression models, with the heterogeneous model still showing slightly higher
+correlations. Under these optimal conditions, the average correlation ranged
+between slightly under 0.85, and slightly under 0.8 for high and equal
+biological noise.
 
 ```{r rnd-sim-plt, fig.cap = plot_caps$rnd_sim}
 include_graphics(plot_paths$rnd_sim)
@@ -169,32 +174,31 @@ rnd_sim_data %>%
 ### scRNA-seq pseudo-bulks
 
 When benchmarking my method on pseudo-bulks derived from scRNA-seq data, the
-performance was not as consistent as during the simulation using normally
-distributed data. For all parameter combinations, the accuracy of estimated
-cancer expression from absolute values of model residuals was high
-(\@ref(fig:pbulk-cexpr-acc-plt)), with only minor differences.
+accuracy of estimated cancer expression from absolute values of model residuals
+was high (Figure \@ref(fig:pbulk-cexpr-acc-plt), Table
+\@ref(tab:pbulk-cexpr-acc-tab)) with only minor differences in average
+correlation across parameters.
 
 When including cancer expression in the reference profiles, there was a clear
-difference between marker selection methods. Where Wilcoxon test based markers
-showed improved performance compared to random marker selection across all
-thresholds on the number of markers (significant at $\alpha = 0.05$, 95%
-CIs). Also, while there was very little variation in accuracy
-across thresholds for random markers, on the second-tightest threshold for
-Wilcoxon based markers performance was significantly worse than the on the
-remaining thresholds. When excluding the cancer expression profile from the
-reference, performance further increased across all other parameters
-(significant at $\alpha = 0.05$, 95% CIs), except for the
+difference between marker selection methods. Wilcoxon test based markers showed
+higher average correlation compared to random marker selection across all
+thresholds on the number of markers (no 95% CI overlap). Also, while there was
+very little variation in accuracy across thresholds for random markers, on the
+second-tightest threshold for Wilcoxon based markers performance was
+significantly worse than the on the remaining thresholds. When excluding the
+cancer expression profile from the reference, performance further increased
+across all other parameters (no pairwise 95% CI overlap), except for the
 tightest marker threshold on Wilcoxon.
 
 General patterns were similar between in- or excluding the cancer expression
 profile but with some exceptions. In the latter case and for the loosest marker
-threshold, random markers resulted in slightly but significantly worse
-performance than looser thresholds, who in turn no longer clearly differed from
-the second-tightest threshold on Wilcoxon markers. Lastly, the within group
+threshold, random markers resulted in slightly but significantly worse average
+correlation than looser thresholds, which in turn no longer clearly differed
+from the second-tightest threshold on Wilcoxon markers. Lastly, the within group
 differences for Wilcoxon markers increased such that the two loosest thresholds
 no longer resulted in similar performance. The second-loosest marker threshold
 now resulted in optimal performance across all parameters and was clearly
-distinct from all other parameter combinations.
+distinct from all other parameter combinations (no 95% CI overlap).
 
 ```{r pbulk-cexpr-acc-plt, fig.cap = plot_caps$pbulk_cexpr_acc}
 include_graphics(plot_paths$pbulk_cexpr_acc)
@@ -229,19 +233,26 @@ plot_data_paths$pbulk_cexpr_acc %>%
 
 ### Comparison to BayesPrism
 
-In comparison to BayesPrism, my method largely had a similar performance (Figure
-\@ref(fig:bp-cexpr-acc-plt)). On pseudo-bulks derived from distinct tumor
-samples, my method showed superior correlation performance for the tightest
-threshold on marker metrics, but for any looser thresholds, no clear
-distinctions in performance can be made. BayesPrism showed a general trend of
-better performance for looser marker thresholds, but few differences were
-statistically significant (non-overlapping 95% CIs). Here, CIs also became wider
-for smaller, more restrictive thresholds.
+When comparing my method to BayesPrism on both pseudo-bulk and bulk RNA-seq
+data, both showed similar behavior (Figure \@ref(fig:bp-cexpr-acc-plt), Table
+\@ref(tab:bp-cexpr-acc-plt-tab)).
+
+On pseudo-bulks derived from distinct tumor samples, my method showed superior
+correlation between true and estimated cancer expression for the tightest
+threshold on marker metrics, but for any looser thresholds no clear distinctions
+in performance can be made. BayesPrism showed a general trend of better
+performance for looser marker thresholds, but few differences were statistically
+significant (non-overlapping 95% CIs). Here, CIs also became wider for smaller,
+more restrictive thresholds.
 
 When applied to real-world bulk RNA-seq data, both my method and BayesPrism
-showed significantly worse performance on pairs of otherwise equal parameters.
-Here, my method also showed a general pattern of worse performance (although
-only significant for the second-tightest and loosest threshold, 95% CIs).
+showed significantly worse performance on pairs of otherwise equal parameters
+(no pairwise 95% CI overlap). The trend of better correlation with looser
+thresholds that BayesPrism showed for pseudo-bulks was also present here, and my
+methods followed it as well. Lastly, in addition to the general worse
+performance in bulk RNA-seq data, my method also showed a general pattern of
+slightly lower performance compared to BayesPrism on this type of data (only
+significant for the second-tightest and loosest threshold, 95% CIs).
 
 ```{r bp-cexpr-acc-plt, fig.cap = plot_caps$bp_cexpr_acc}
 include_graphics(plot_paths$bp_cexpr_acc)
@@ -279,33 +290,35 @@ Neither models using data generated from my method, nor from BayesPrism were
 able to predict either the tumor intrinsic property or the patient level
 clinical outcome better than all the models trained on raw bulk data.
 
-When predicting the PAM50 subtype, the optimal model was the one trained on raw
-bulk data using the same set of genes as all models trained with data from my
-method (Figure \@ref(fig:pred-cat-perf-plt)). Models trained on cancer
-expression estimates from my method performed relatively similar, with a looser
-threshold on marker gene scores corresponding to marginally better model
-performance. For models trained on estimates from BayesPrism, there was a
-considerably wider spread in accuracy. Here too, looser thresholds on the marker
-genes resulted in better performance, but the tightest set of marker genes
-resulted in remarkably low accuracy. The optimal gene set for BayesPrism still
-performed as well as the optimum of my method. Models trained on raw bulk data
-generally followed the trend of improving performance with larger gene sets,
-only the model trained on bulk data retaining all its genes had a lower accuracy
-than models trained using smaller gene sets. Except for the second-loosest
-threshold on BayesPrism, no model trained on estimated expression data was able
-to outperform a model trained on raw bulk data using the same set of genes.
+When predicting the PAM50 subtype, the optimal model with the highest average
+accuracy was the one trained on raw bulk data using the same set of genes as all
+models trained with data from my method (Figure \@ref(fig:pred-cat-perf-plt),
+Table \@ref(tab:pred-cat-perf-tab)). Models trained on cancer expression
+estimates from my method performed relatively similar, with a looser threshold
+on marker gene scores corresponding to marginally better model performance. For
+models trained on estimates from BayesPrism, there was a considerably wider
+spread in average accuracy. Here too, looser thresholds on the marker genes
+resulted in better performance, but the tightest set of marker genes resulted in
+remarkably low accuracy. The optimal gene set for BayesPrism still performed as
+well as the optimum of my method. Models trained on raw bulk data generally
+followed the trend of improving performance with larger gene sets, only the
+model trained on bulk data retaining all its genes had a lower accuracy than
+models trained using smaller gene sets. Except for the second-loosest threshold
+on BayesPrism, no model trained on estimated expression data was able to
+outperform a model trained on raw bulk data using the same set of genes.
 
 The picture of the performance of models predicting a patients PFI was not as
 clear as for the prediction of the PAM50 subtype (Figure
-\@ref(fig:pred-srv-perf-plt)). While my method maintained its general ordering
-in performance, the differences between the loosest and second-loosest
-threshold, and between the tightest and the raw bulk data with the same gene set
-was no longer clean (95% CI overlap). For BayesPrism, models trained on its
-cancer expression estimates no longer conformed to the same pattern. There was
-no clear difference between the loosest and tightest threshold, with both being
-slightly outperformed by the intermediate threshold. The performance of models
-trained on raw bulk data did also not follow a clear pattern across the size of
-the gene set used for prediction. For the smallest set of genes, raw bulk model
+\@ref(fig:pred-srv-perf-plt), Table \@ref(tab:pred-srv-perf-tab)). While my method
+maintained its general ordering in performance, the differences between the
+loosest and second-loosest threshold, and between the tightest and the raw bulk
+data with the same gene set was no longer clean (95% CI overlap). For
+BayesPrism, models trained on its cancer expression estimates no longer
+conformed to the same pattern. There was no clear difference in average C-index
+between the loosest and tightest threshold, with both being slightly
+outperformed by the intermediate threshold. The performance of models trained on
+raw bulk data did also not follow a clear pattern across the size of the gene
+set used for prediction. For the smallest set of genes, raw bulk model
 performance was among the lowest overall, but the next larger gene set resulted
 in the overall optimal performance. After this peak, a larger gene set only led
 to worse performance, with the gene set matching the one used for my method, and
