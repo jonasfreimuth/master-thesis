@@ -2,7 +2,15 @@
 
 ```{r res-setup, include = FALSE}
 import::here("data.table", "fread", "uniqueN")
-import::here("dplyr", "arrange", "mutate", "recode", "rename", "select")
+import::here(
+  "dplyr",
+  "arrange",
+  "distinct",
+  "mutate",
+  "recode",
+  "rename",
+  "select"
+)
 import::here("here", "here")
 import::here("knitr", "include_graphics")
 import::here(
@@ -14,8 +22,16 @@ import::here(
   "kbl",
   "landscape"
 )
-import::here("magrittr", "%>%", "extract", "multiply_by", "set_names")
+import::here(
+  "magrittr",
+  "%>%",
+  "extract",
+  "extract2",
+  "multiply_by",
+  "set_names"
+)
 import::here("purrr", "map", "reduce")
+import::here("stringr", "str_to_sentence")
 import::here("tidyr", "pivot_wider")
 import::here("withr", "with_options")
 
@@ -110,20 +126,13 @@ rnd_sim_data <- plot_data_paths$rnd_sim %>%
     \(char_col) factor(char_col, levels = unique(char_col))
   ))
 
-# Recode types so they appear in order when sorting cols after pivot_longer.
-type_recode <- list(
-  # Currently unused.
-  "True vs. predicted Cell type abundance 1 / RMSE" = "a ctype_abundances",
-  "Cancer expression vs. Model residuals R²" = "b cancer_accuracy"
-)
-
-# Depends on the same ordering as type_recode.
-type_headers <- c(
-  # Currently unused.
-  "True vs. predicted Cell type abundance 1 / RMSE" = "Cell type accurracy, $1 / RMSE$",
-  "Cancer expression vs. Model residuals R²" = "Cancer expression accurracy $\\rho$"
-) %>%
-  extract(names(.) %in% unique(rnd_sim_data$type)) %>%
+type_headers <- rnd_sim_data %>%
+  distinct(type, summary_metric) %>%
+  mutate(
+    type = str_to_sentence(type),
+    header = paste0(type, " (", summary_metric, ")")
+  ) %>%
+  extract2("header") %>%
   # Create a list with previous values as names and `2` (fixed width, mean & ci)
   # as values.
   {
@@ -136,9 +145,8 @@ rnd_sim_data %>%
   select(-any_of(c("n", "n_rmse"))) %>%
   mutate(
     `95% CI` = paste("\U00B1", round(mean - min_ci, 3)),
-    type = recode(type, !!!type_recode)
   ) %>%
-  select(-matches("_ci")) %>%
+  select(-matches("_ci"), -summary_metric) %>%
   pivot_wider(
     values_from = c("mean", "95% CI"),
     names_from = "type",
@@ -147,11 +155,10 @@ rnd_sim_data %>%
   select(
     heterogeneous_cancer,
     split,
-    bio_tech_ratio,
-    # Should in ctype acc first and mean first
-    all_of(sort(names(.), decr = TRUE))
+    tech_noise_level,
+    everything()
   ) %>%
-  arrange(heterogeneous_cancer, split, bio_tech_ratio) %>%
+  arrange(heterogeneous_cancer, split, tech_noise_level) %>%
   kbl(
     caption = table_caps$rnd_sim,
     escape = TRUE,

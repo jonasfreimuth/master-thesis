@@ -16,7 +16,7 @@ supp_plot_dir <- "supplementary_plots"
 supp_plot_path <- here(paste(analysis_root, supp_plot_dir, sep = "/"))
 
 plot_prefixes <- list(
-  "rnd_sim_groun_truth" = "ground_truth_plot"
+  "rnd_sim_ground_truth" = "ground_truth_plot"
 )
 
 plot_paths <- map(
@@ -35,6 +35,6 @@ plot_caps <- map(
 
 ## Supplementary plots
 
-```{r rnd-sim-ground-truth, fig.cap = plot_caps$rnd_sim_groun_truth}
-include_graphics(plot_paths$rnd_sim_groun_truth)
+```{r rnd-sim-ground-truth, fig.cap = plot_caps$rnd_sim_ground_truth}
+include_graphics(plot_paths$rnd_sim_ground_truth)
 ```
