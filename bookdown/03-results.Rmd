@@ -83,20 +83,20 @@ parameters, with the largest difference being across reference type.
 The average correlation of true and estimated cancer expression under the
 homogeneous cancer expression model using a reference with cancer profiles was
 close to zero. However, there were still differences between relative levels of
-noise: High & equal biological noise had the same levels of accuracy, while the
-low biological noise group was slightly worse, and the group with very low
-biological noise had exactly zero correlation. Under the model of cancer cells
-varying stronger than other cell type's cells, and still including cancer
-profiles in the reference, there was an appreciable improvement in accuracy
-compared to the homogeneous model. The performance across groups remained
-similar to the previous model. As mentioned, the largest improvement can be seen
-when removing the cancer expression profile from the reference. Here,
-correlation of true and estimated cancer expression is high across almost all
-levels of biological noise except for the lowest. This extends across cancer
+added noise: Absent noise and noise equal to biological variability had the same
+levels of accuracy, while the high noise group was slightly worse, and the group
+with very high biological noise had exactly zero correlation. Under the model of
+cancer cells varying stronger than other cell type's cells, and still including
+cancer profiles in the reference, there was an appreciable improvement in
+accuracy compared to the homogeneous model. The performance across groups
+remained similar to the previous model. As mentioned, the largest improvement
+can be seen when removing the cancer expression profile from the reference.
+Here, correlation of true and estimated cancer expression is high across almost
+all levels of technical noise except for the highest. This extends across cancer
 expression models, with the heterogeneous model still showing slightly higher
 correlations. Under these optimal conditions, the average correlation ranged
-between slightly under 0.85, and slightly under 0.8 for high and equal
-biological noise.
+between slightly under 0.85, and slightly under 0.8 for absent and equal
+technial noise.
 
 ```{r rnd-sim-plt, fig.cap = plot_caps$rnd_sim}
 include_graphics(plot_paths$rnd_sim)
