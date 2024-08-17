@@ -111,8 +111,7 @@ Here, correlation of true and estimated cancer expression is high across almost
 all levels of technical noise except for the highest. This extends across cancer
 expression models, with the heterogeneous model still showing slightly higher
 correlations. Under these optimal conditions, the average correlation ranged
-between slightly under 0.85, and slightly under 0.8 for absent and equal
-technial noise.
+between around 0.9 for absent and equal technial noise.
 
 ```{r rnd-sim-plt, fig.cap = plot_caps$rnd_sim}
 include_graphics(plot_paths$rnd_sim)
