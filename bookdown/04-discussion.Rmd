@@ -4,28 +4,51 @@
 
 ### Normally distributed simulation
 
-* Clear difference between reference types as expected, very strong signal
-  boost.
-* Effect of heterogeneous cancer not that strong.
-* Method seems tolerant up to large amounts of technical noise.
-* Indication of high potential estimation accuracy, but no perfect prediction.
+<!-- TODO Include relative cell varion in random sim. -->
+<!-- TODO Use full width of cancer abundance -->
+<!-- TODO Use prop for prop v acc plots -->
+
+The experiment of applying my method to normally distributed simulated data
+demonstrated the theoretical potential of the method for estimating cancer
+expression from bulk RNA-seq data. It showed that indeed, higher variability
+in one simulated celltype would lead to information about the expression of that
+cell type to be found in the residuals of a linear deconvolution model applied
+to the mixutre. Further, it demonstrated that entirely excluding a cell type
+from the reference profiles would strongly boost that signal to high
+correlations. That boosting effect can be seen even when adding relatively high
+amounts of obscouring technical noise. However, even under perfect conditions,
+the estimation accuracy is not perfect. I suspect this might be due to
+the deviations of individual cells, but would need to manipulate that as well
+to be sure [Will try that still].
 
 ### scRNA-seq pseudo-bulks
 
-* Optimal correlation of over 0.95 indicates high accuracy estimation is
-  possible.
-* Weirdly, correlation higher than during normally distributed sim.
+<!-- TODO Use prop for prop v acc plots -->
+
 * Using Wilcoxon markers gives some improvement, but not as much when excluding
   cancer.
 <!-- Why? -->
 * Relatively high variability for Wilcoxon markers.
-* Very good estimation accuracy even for very small marker sets.
-* Allround high estimation accuracy for both methods using full reference is
-  unexpected.
-* Explained by high co-linearity among cell type expression profiles.
-  <!-- Show cancer abundance vs. estimation accuracy for this? -->
-  * => Already a lot of information on cancer expression in bulk, even for low
-    tumor purity samples.
+
+<!-- TODO Show cancer abundance vs. estimation accuracy for this? -->
+* => Already a lot of information on cancer expression in bulk, even for low
+  tumor purity samples due to colinerarity
+
+When applying my method to pseudo-bulks derived from scRNA-seq data, it was able
+to again show high to very high correlation between estimated and known true
+cancer expression in each sample. This looks very promising, but the minuteness
+of the difference in estimation accuracy between including the cancer profile in
+the reference or not is not in line with the behavior expected from the previous
+simulation experiments. The optimal estimation accuracy achieved on pseudo-bulks
+is also higher than the optimal accuracy during random simulation. This may be
+due to the aforementioned underestimation during these experiments due to high
+cell variability [again, will check this], or it may also be an artifact of the
+between cell type colinerarity. The high correlations achieved acros parameter
+combinations are made even more surprising, considering the small amount of
+marker genes that were used to estimate cell type counts during deconvolution
+(as low as only 62 for the tightest threshold using Wilcoxon based markers;
+Table \@ref(tab:pbulk-cexpr-acc-tab)). This further points towards co-linearity
+between cell type expression profiles leading to high estimation accuracy.
 
 ## Evaluation
 
@@ -72,6 +95,10 @@
     * No clear improvement could be observed, in some cases expression estimates
       led to better model performance than either full bulk data or bulk data
       using the same gene-set, but never at the global optimum.
+
+* Implications of colinerarity.
+  * Again points towards high estimation possbile, but perfect corelation very
+    hard.
 
 * Possible deconvolution model improvements:
   * Spillover correction
