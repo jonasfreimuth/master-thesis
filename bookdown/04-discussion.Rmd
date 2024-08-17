@@ -4,7 +4,28 @@
 
 ### Normally distributed simulation
 
+* Clear difference between reference types as expected, very strong signal
+  boost.
+* Effect of heterogeneous cancer not that strong.
+* Method seems tolerant up to large amounts of technical noise.
+* Indication of high potential estimation accuracy, but no perfect prediction.
+
 ### scRNA-seq pseudo-bulks
+
+* Optimal correlation of over 0.95 indicates high accuracy estimation is
+  possible.
+* Weirdly, correlation higher than during normally distributed sim.
+* Using Wilcoxon markers gives some improvement, but not as much when excluding
+  cancer.
+<!-- Why? -->
+* Relatively high variability for Wilcoxon markers.
+* Very good estimation accuracy even for very small marker sets.
+* Allround high estimation accuracy for both methods using full reference is
+  unexpected.
+* Explained by high co-linearity among cell type expression profiles.
+  <!-- Show cancer abundance vs. estimation accuracy for this? -->
+  * => Already a lot of information on cancer expression in bulk, even for low
+    tumor purity samples.
 
 ## Evaluation
 
@@ -12,23 +33,57 @@
 
 * BayesPrism variability due to lower number of actual transcripts used for cor
   computation.
+* Worse estimation accuracy on bulk partially due to low accuracy of true values
+  of expression used.
+* If this is revisited, finding a proper test dataset using matched flow
+  cytometry data would be sensible.
 
 ### Prediction
 
+#### PAM50
+
+* PAM50 subtype can't be predicted from estimated expression with higher
+  accuracy than from bulk data alone.
+* Lower performance on full bulk data due to lack of QC.
+
+#### PFI
+
+* Already not that easy to estimate PFI.
 <!-- TODO Check novelty of that. -->
-
 * Important finding: Targeted marker selection significantly improves
-  prediction.
-* Lower performance on full bulk data due to lack of QC?
+  prediction for PFI.
+* High co-linearity could partially explain why estimated cancer expression and
+  raw bulk predictions have such similar performance.
 
-## Proof of concept
+* Prediction attempts maybe a bit crude, a more meaningful prediction task
+  could give a better picture of the capability of the method.
 
-## Outlook
+## Conclusion
 
-* Need to benchmark microarray expression purification techniques on bulk
-  RNA-seq data.
+* Answers to the questions:
+  * Accuracy of estimation of cancer expression from bulk data
+    * The modeling approach is theoretically capable of estimating cancer
+      expression at high accuracies.
+    * For the purpose of doing this on bulk RNA-seq data, it seems that the
+      accuracy is not worth it as much of the information is already present
+      in the bulk, and the estimation resolution is not good enough to tease
+      out the finer differences.
+  * Improvement in model training
+    * No clear improvement could be observed, in some cases expression estimates
+      led to better model performance than either full bulk data or bulk data
+      using the same gene-set, but never at the global optimum.
+
 * Possible deconvolution model improvements:
-  * Penalizing zero predictions
   * Spillover correction
-  * Bias fitted values to be lower than bulk expression -> Generally positive
-    residuals, sanity check.
+  * Using high accuracy methods available for cell type deconvolution, use
+    single-cell derived reference to compute estimated expression profile of
+    TME, and calculate residuals from that.
+  * Importance to get as close a reference as possible, reducing noise from
+    distance between reference profile and actual cells.
+  * Following from improved reference: Higher resolution reference (cell,
+    subtype, cell state), like @chu.2022 did.
+
+* All in all:
+  * High accuracy estimation is possible, but not so high that prediction can be
+    improved beyond the already high information content. This approach so far
+    has shown good results for estimation of cancer expression.
