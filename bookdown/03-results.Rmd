@@ -315,11 +315,13 @@ outperform a model trained on raw bulk data using the same set of genes.
 
 The picture of the performance of models predicting a patients PFI was not as
 clear as for the prediction of the PAM50 subtype (Figure
-\@ref(fig:pred-srv-perf-plt), Table \@ref(tab:pred-srv-perf-tab)). While my method
+\@ref(fig:pred-srv-perf-plt), Table \@ref(tab:pred-srv-perf-tab)). Here, some of
+the models trained on my method were able to predict PFI with higher accuracy
+than the model trained on raw bulk data with the same gene set, but not better
+than models trained on raw bulk data with other gene sets. While my method
 maintained its general ordering in performance, the differences between the
-loosest and second-loosest threshold, and between the tightest and the raw bulk
-data with the same gene set was no longer clean (95% CI overlap). For
-BayesPrism, models trained on its cancer expression estimates no longer
+models was no longer statistically significant in some cases (95% CI overlap).
+For BayesPrism, models trained on its cancer expression estimates no longer
 conformed to the same pattern. There was no clear difference in average C-index
 between the loosest and tightest threshold, with both being slightly
 outperformed by the intermediate threshold. The performance of models trained on
