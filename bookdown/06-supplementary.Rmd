@@ -14,6 +14,7 @@ here::i_am("bookdown/06-supplementary.Rmd")
 
 import::here(
   "utils.R",
+  "main_plot_handles_from_path",
   "supp_plot_handles_from_path",
   .character_only = TRUE,
   .directory = here("modules")
@@ -44,6 +45,22 @@ supp_plot_handles <- supp_plot_handles_from_path(supp_plot_path, plot_prefixes)
 
 plot_paths <- supp_plot_handles$plot_paths
 plot_caps <- supp_plot_handles$plot_caps
+
+# I also want to include some main plots.
+main_plot_dir <- "main_plots"
+main_plot_path <- here(paste(analysis_root, main_plot_dir, sep = "/"))
+
+main_plot_prefixes <- list(
+  "pbulk_acc_v_prop" = "simulation_cancer_acc_v_prop_plot",
+  "bp_acc_v_prop" = "bayes_prism_cancer_acc_v_prop_plot"
+)
+
+main_plot_handles <- main_plot_handles_from_path(
+  main_plot_path, main_plot_prefixes
+)
+
+main_plot_paths <- main_plot_handles$plot_paths
+main_plot_caps <- main_plot_handles$plot_caps
 ```
 
 ## Supplementary plots
@@ -62,4 +79,12 @@ include_graphics(plot_paths$deconv_diag_1)
 
 ```{r pbulk-sim-diag-2, fig.cap = plot_caps$deconv_diag_2}
 include_graphics(plot_paths$deconv_diag_2)
+```
+
+```{r pbulk-acc-v-abund, fig.cap = main_plot_caps$pbulk_acc_v_prop}
+include_graphics(main_plot_paths$pbulk_acc_v_prop)
+```
+
+```{r bp-acc-v-abund, fig.cap = main_plot_caps$bp_acc_v_prop}
+include_graphics(main_plot_paths$bp_acc_v_prop)
 ```
