@@ -5,6 +5,7 @@ import::here("here", "here")
 import::here("knitr", "include_graphics")
 import::here("magrittr", "%>%")
 import::here("purrr", "map")
+import::here("stringr", "str_extract")
 
 # Suppress chunk output by default.
 knitr::opts_chunk$set(echo = FALSE)
@@ -22,13 +23,22 @@ analysis_root <- "cancer-cleaning-output"
 supp_plot_dir <- "supplementary_plots"
 supp_plot_path <- here(paste(analysis_root, supp_plot_dir, sep = "/"))
 
+deconv_diag_pattern <- "deconv_diagnostics_[0-9]+"
 
+deconv_diag_plots <- dir(
+  here(supp_plot_path),
+  pattern = deconv_diag_pattern
+) %>%
+  str_extract(deconv_diag_pattern) %>%
+  unique() %>%
+  set_names(paste0("deconv_diag_", seq_along(.)))
 
 
 plot_prefixes <- list(
   "rnd_sim_ground_truth" = "ground_truth_plot",
   "rnd_sim_acc_v_abund" = "acc_v_abund_plot"
-)
+) %>%
+  c(deconv_diag_plots)
 
 supp_plot_handles <- supp_plot_handles_from_path(supp_plot_path, plot_prefixes)
 
@@ -40,4 +50,16 @@ plot_caps <- supp_plot_handles$plot_caps
 
 ```{r rnd-sim-ground-truth, fig.cap = plot_caps$rnd_sim_ground_truth}
 include_graphics(plot_paths$rnd_sim_ground_truth)
+```
+
+```{r rnd-sim-acc-abund, fig.cap = plot_caps$rnd_sim_acc_v_abund}
+include_graphics(plot_paths$rnd_sim_acc_v_abund)
+```
+
+```{r pbulk-sim-diag-1, fig.cap = plot_caps$deconv_diag_1}
+include_graphics(plot_paths$deconv_diag_1)
+```
+
+```{r pbulk-sim-diag-2, fig.cap = plot_caps$deconv_diag_2}
+include_graphics(plot_paths$deconv_diag_2)
 ```
