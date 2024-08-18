@@ -40,6 +40,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 here::i_am("bookdown/03-results.Rmd")
 
+import::here(
+  "utils.R",
+  "main_plot_handles_from_path",
+  .character_only = TRUE,
+  .directory = here("modules")
+)
+
 analysis_root <- "cancer-cleaning-output"
 main_plot_dir <- "main_plots"
 main_plot_path <- here(paste(analysis_root, main_plot_dir, sep = "/"))
@@ -52,33 +59,12 @@ plot_prefixes <- list(
   "pred_srv_perf" = "survival_prediction_performance_plot"
 )
 
-plot_paths <- map(
-  plot_prefixes,
-  \(prefix) paste(main_plot_path, paste0(prefix, ".png"), sep = "/")
-)
+plot_handles <- main_plot_handles_from_path(main_plot_path, plot_prefixes)
 
-plot_caps <- map(
-  plot_prefixes,
-  \(prefix) {
-    paste(main_plot_path, paste0(prefix, "_plot_caption.txt"), sep = "/")
-  }
-) %>%
-  map(readLines)
-
-plot_data_paths <- map(
-  plot_prefixes,
-  \(prefix) paste(main_plot_path, paste0(prefix, ".csv"), sep = "/")
-)
-
-table_caps <- map(
-  plot_prefixes,
-  \(prefix) {
-    paste(main_plot_path, paste0(prefix, "_table_caption.txt"), sep = "/")
-  }
-) %>%
-  map(readLines)
-
-# TODO Add table captions.
+plot_paths <- plot_handles$plot_paths
+plot_caps <- plot_handles$plot_caps
+plot_data_paths <- plot_handles$plot_data_paths
+table_caps <- plot_handles$table_caps
 ```
 
 ## Proof of concept

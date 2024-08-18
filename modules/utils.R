@@ -172,3 +172,48 @@ render_book <- function(book_root = "./bookdown",
     )
   )
 }
+
+main_plot_handles_from_path <- function(plot_path, plot_prefixes) {
+  # Get a list of all the handles available for main plots.
+  list(
+    plot_paths = map(
+      plot_prefixes,
+      \(prefix) paste(plot_path, paste0(prefix, ".png"), sep = "/")
+    ),
+    plot_caps = map(
+      plot_prefixes,
+      \(prefix) {
+        paste(plot_path, paste0(prefix, "_plot_caption.txt"), sep = "/")
+      }
+    ) %>%
+      map(readLines),
+    plot_data_paths = map(
+      plot_prefixes,
+      \(prefix) paste(plot_path, paste0(prefix, ".csv"), sep = "/")
+    ),
+    table_caps = map(
+      plot_prefixes,
+      \(prefix) {
+        paste(plot_path, paste0(prefix, "_table_caption.txt"), sep = "/")
+      }
+    ) %>%
+      map(readLines)
+  )
+}
+
+supp_plot_handles_from_path <- function(plot_path, plot_prefixes) {
+  # Get a list of all the handles available for supplementary plots.
+  list(
+    plot_paths = map(
+      plot_prefixes,
+      \(prefix) paste(plot_path, paste0(prefix, ".png"), sep = "/")
+    ),
+    plot_caps = map(
+      plot_prefixes,
+      \(prefix) {
+        paste(plot_path, paste0(prefix, "_caption.txt"), sep = "/")
+      }
+    ) %>%
+      map(readLines)
+  )
+}

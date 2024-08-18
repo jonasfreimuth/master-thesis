@@ -11,26 +11,29 @@ knitr::opts_chunk$set(echo = FALSE)
 
 here::i_am("bookdown/06-supplementary.Rmd")
 
+import::here(
+  "utils.R",
+  "supp_plot_handles_from_path",
+  .character_only = TRUE,
+  .directory = here("modules")
+)
+
 analysis_root <- "cancer-cleaning-output"
 supp_plot_dir <- "supplementary_plots"
 supp_plot_path <- here(paste(analysis_root, supp_plot_dir, sep = "/"))
 
+
+
+
 plot_prefixes <- list(
-  "rnd_sim_ground_truth" = "ground_truth_plot"
+  "rnd_sim_ground_truth" = "ground_truth_plot",
+  "rnd_sim_acc_v_abund" = "acc_v_abund_plot"
 )
 
-plot_paths <- map(
-  plot_prefixes,
-  \(prefix) paste(supp_plot_path, paste0(prefix, ".png"), sep = "/")
-)
+supp_plot_handles <- supp_plot_handles_from_path(supp_plot_path, plot_prefixes)
 
-plot_caps <- map(
-  plot_prefixes,
-  \(prefix) {
-    paste(supp_plot_path, paste0(prefix, "_caption.txt"), sep = "/")
-  }
-) %>%
-  map(readLines)
+plot_paths <- supp_plot_handles$plot_paths
+plot_caps <- supp_plot_handles$plot_caps
 ```
 
 ## Supplementary plots
