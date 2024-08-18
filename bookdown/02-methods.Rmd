@@ -434,7 +434,9 @@ method, I applied both my method and BayesPrism to pseudo-bulks & bulk RNA-seq
 data of tumor samples from @wu.2021. I chose BayesPrism out of the three high
 resolution *in-silico* dissection methods mentioned above since it is
 specifically designed for tumor samples and integrates well with my existing
-analysis framework since both are written in `R`.
+analysis framework since both are written in `R`. Here I use the `InstaPrism`
+implementation [@hu.2023] providing substantial speedup compared to the
+original.
 
 The general methodology for the comparison to BayesPrism was similar to the
 previous scRNA-seq based [section](#scrna-seq-pseudo-bulks). However, I derived
