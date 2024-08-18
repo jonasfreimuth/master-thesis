@@ -197,7 +197,7 @@ distribution (i.e., Pearsons $\rho$) could be used.
 
 ## Proof of concept
 
-Before applying my method to real-world problems, I carried out two analyses
+Before applying deconvPure to real-world problems, I carried out two analyses
 assessing its performance under ideal conditions. First, I explored the method's
 behavior when applied to normally distributed data with varying levels of
 technical noise added, and then quantified its performance on more realistic
@@ -207,7 +207,7 @@ data using scRNA-seq derived pseudo-bulk data.
 
 To demonstrate the principle of the method, I first generated model expression
 profiles, simulated measurements of expression quantification, and analyzed the
-behavior of my method on it (see Tables \@ref(tab:rnd-sim-params) &
+behavior of deconvPure on it (see Tables \@ref(tab:rnd-sim-params) &
 \@ref(tab:rnd-sim-ratios) for all parameters and their values used for the
 simulation). The simulated expression profiles $\mathbf{S}_{sim}$ were generated
 by sampling expression data for $n$ transcripts & $m$ cell types from a normal
@@ -314,7 +314,7 @@ replicates.
 kable(
   param_tables$table_objs$rnd_sim$static_parameters,
   caption = paste(
-    "Simulation parameters used to evaluate my method's performance on",
+    "Simulation parameters used to evaluate deconvPure's performance on",
     "normally distributed simulated data."
   ),
   # Don't escape the `$` symbols, we want formulas to be rendered in LaTeX
@@ -327,7 +327,7 @@ kable(
 kable(
   param_tables$table_objs$rnd_sim$variable_parmeter_table,
   caption = paste(
-    "Levels of techincal noise used for evaluating my method's performance on",
+    "Levels of techincal noise used for evaluating deconvPure's performance on",
     "normally distributed simulated data."
   ),
   # Don't escape the `$` symbols, we want formulas to be rendered in LaTeX
@@ -419,18 +419,18 @@ parameters.
 
 ## Evaluation
 
-After exploring the behavor of my method under ideal conditions, I compared its
+After exploring the behavor of deconvPure under ideal conditions, I compared its
 performance to an established method. First, I tested performance on correctly
 inferring true cancer expression in both pseudo-bulks and actual RNA-sequencing
 data. Second, I used cancer expression predictions of bulk RNA-seq data to train
 machine learning models predicting tumor subtype and progression free interval
-(PFI) and compared the performance of both BayesPrism and my method to models
+(PFI) and compared the performance of both BayesPrism and deconvPure to models
 trained on raw bulk data.
 
 ### Comparison to BayesPrism
 
 To compare my transcriptome cleaning method to an established state-of-the-art
-method, I applied both my method and BayesPrism to pseudo-bulks & bulk RNA-seq
+method, I applied both deconvPure and BayesPrism to pseudo-bulks & bulk RNA-seq
 data of tumor samples from @wu.2021. I chose BayesPrism out of the three high
 resolution *in-silico* dissection methods mentioned above since it is
 specifically designed for tumor samples and integrates well with my existing
@@ -451,14 +451,14 @@ reference parameters to simplify the analysis. For these other parameters, I
 used the values expected to lead to optimal results, namely including cancer
 splitting, Wilcoxon marker selection, and marker gene quality control. Lastly, I
 deconvoluted every bulk and pseudo-bulk using every reference as before, except
-using both my method and BayesPrism.
+using both deconvPure and BayesPrism.
 
-I extracted and processed residuals from my method the same as in the scRNA-seq
+I extracted and processed residuals from deconvPure the same as in the scRNA-seq
 based pseudo-bulks [section](#scrna-seq-pseudo-bulks). Extracting the
 predictions for cancer expression from BayesPrism is straightforward as it
 computes cell type expression predictions for all cell types on the original
 scale. However, it is not capable of estimating gene expression for non-marker
-genes, so comparisons between it and my method are based on a different number
+genes, so comparisons between it and deconvPure are based on a different number
 of genes. As before, I used the average Pearson's $\rho$ with 95% CI across
 deconvolutions of the same parameters to assess the relationship of predicted
 expression to actual expression.
@@ -489,7 +489,7 @@ patient level, I restricted the bulk data for training and evaluating models
 predicting this variable to one sample per patient and choosing the first sample
 recorded. This left `r txt_pr_srv_stat("n_sample")` samples with PFI data.
 
-To generate expression estimates, I applied my method to all bulk data samples,
+To generate expression estimates, I applied deconvPure to all bulk data samples,
 deconvoluting it using references derived from the @wu.2021 scRNA-seq data as in
 the previous sections, except with a smaller set of thresholds
 (`r txt_pr_stc("thresholds")`) on marker gene scores. To put the results into

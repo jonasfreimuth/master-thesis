@@ -80,12 +80,12 @@ computational efficiency are more important than high accuracy.
 
 <!-- Possibly expand on high cancer variability. -->
 
-Here I introduce a potential simple approach for estimating the expression
-profile of cancer cells in individual bulk RNA-seq samples, and examine its
-usefulnes in predicting clinical variables. The method uses model residuals from
-simple least-squares based cell type deconvolution as a proxy for cancer
-expression to "clean" the TME expression out from the bulk expression profile.
-Cell type deconvolution is a special case of the NMF method for full
+Here I introduce deconvPure, a potential simple approach for estimating the
+expression profile of cancer cells in individual bulk RNA-seq samples, and
+examine its usefulnes in predicting clinical variables. The method uses model
+residuals from simple least-squares based cell type deconvolution as a proxy for
+cancer expression to "clean" the TME expression out from the bulk expression
+profile. Cell type deconvolution is a special case of the NMF method for full
 deconvolution outlined above for when the cell type specific expression profiles
 are already known. Cancer cells generally show increased variability in their
 expression compared to surrounding cell types

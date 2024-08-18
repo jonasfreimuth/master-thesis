@@ -8,7 +8,7 @@
 <!-- TODO Use full width of cancer abundance -->
 <!-- TODO Use prop for prop v acc plots -->
 
-The experiment of applying my method to normally distributed simulated data
+The experiment of applying deconvPure to normally distributed simulated data
 demonstrated the theoretical potential of the method for estimating cancer
 expression from bulk RNA-seq data. It showed that indeed, higher variability
 in one simulated celltype would lead to information about the expression of that
@@ -34,7 +34,7 @@ to be sure [Will try that still].
 * => Already a lot of information on cancer expression in bulk, even for low
   tumor purity samples due to colinerarity
 
-When applying my method to pseudo-bulks derived from scRNA-seq data, it was able
+When applying deconvPure to pseudo-bulks derived from scRNA-seq data, it was able
 to again show high to very high correlation between estimated and known true
 cancer expression in each sample. This looks very promising, but the minuteness
 of the difference in estimation accuracy between including the cancer profile in
