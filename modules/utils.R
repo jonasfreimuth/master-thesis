@@ -217,3 +217,9 @@ supp_plot_handles_from_path <- function(plot_path, plot_prefixes) {
       map(readLines)
   )
 }
+
+style_bib_entries <- function(bib_file = "citations//cancer-cleaning_File.bib",
+                              style_script = "citations//sort_bib_file.sh") {
+  # Run the styling script for bib files on my bib file.
+  system2(style_script, bib_file)
+}
