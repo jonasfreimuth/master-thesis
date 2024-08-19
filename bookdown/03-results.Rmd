@@ -31,7 +31,7 @@ import::here(
   "set_names"
 )
 import::here("purrr", "map", "reduce")
-import::here("stringr", "str_to_sentence")
+import::here("stringr", "str_replace", "str_to_sentence")
 import::here("tidyr", "pivot_wider")
 import::here("withr", "with_options")
 
@@ -118,6 +118,8 @@ type_headers <- rnd_sim_data %>%
     header = paste0(type, " (", summary_metric, ")")
   ) %>%
   extract2("header") %>%
+  # Replace rho literals with formula, to ensure correct display.
+  str_replace("ρ", "$\\\\rho$") %>%
   # Create a list with previous values as names and `2` (fixed width, mean & ci)
   # as values.
   {
