@@ -219,12 +219,32 @@ distribution:
 
 For each set of expression profiles, I then simulated the result of a bulk
 RNA-seq experiment $\mathbf{b}_{sim}$ by convoluting randomly sampled cell type
-counts with their respective reference profiles. For this, I first sampled cell
-type counts $\mathbf{c}_{sim}$ for all cell types uniformly at random:
+counts with their respective reference profiles. For this, cell type counts
+$\mathbf{c}_{sim}$ were randomly selected by first choosing each cell type's
+fraction uniformly at random, and then normalizing the fraction of all
+non-cancer cell types to sum to the complement of the fraction of the cancer
+cell type and scaling it up to the number of cells $z$ required.
 
 \begin{equation*}
-  \mathbf{c}_{sim} \sim \mathcal{U}(0, 1)
+  \begin{aligned}
+    \mathbf{f}_{\text{raw}} &\sim \mathcal{U}(0, 1) \\
+    f_{\text{norm}, j} &= \frac{
+      f_{\text{raw}, j}
+    } {
+      \sum_{j=1}^{m-1} {f_{\text{raw}, j}}
+    } - {f_{\text{raw}, m}}, \\
+    f_{\text{norm}, m} &= f_{\text{raw}, m} \\
+    \text{with} \ 1 \leq j \leq (m - 1) &\in
+    \text{non cancer, and} \ m \in \text{cancer}
+  \end{aligned}
 \end{equation*}
+
+\begin{equation*}
+  \mathbf{c}_{sim} = \mathbf{f}_{\text{norm}} * z
+\end{equation*}
+
+This was to allow for a broad range of cancer cell type fractions, which would
+have been restricted to lower values due to the normalization.
 
 As I wanted to simulate biological variability, I could not carry out the
 convolution by simple matrix multiplication of $\mathbf{S}_{sim}$ and
@@ -390,27 +410,9 @@ cell type expression profile was included.
 I generated `r txt_ss_stc("n_pseudobulk")` pseudo-bulks by sampling
 `r txt_ss_pb("nominal_n_cell")` cells (twice the median number of cells per
 sample in the data) out of the overall cells in the count matrix from @wu.2021.
-Sampling was done with replacement and stratified by cell type. For this, cell
-type fractions $\mathbf{f}_{\text{norm}}$ were randomly selected by first
-choosing each cell type's fraction uniformly at random, and then normalizing the
-fraction of all non-cancer cell types to sum to the complement of the fraction
-of the cancer cell type:
-
-\begin{equation*}
-  \begin{aligned}
-    \mathbf{f}_{\text{raw}} &\sim \mathcal{U}(0, 1) \\
-    f_{\text{norm}, j} &= \frac{
-      f_{\text{raw}, j}
-    } {
-      \sum_{j=1}^{m-1} {f_{\text{raw}, j}}
-    } - {f_{\text{raw}, m}} \\
-    \text{with} \ 1 \leq j \leq (m - 1) &\in
-    \text{non cancer, and} \ m \in \text{cancer}
-  \end{aligned}
-\end{equation*}
-
-This was to allow for a broad range of cancer cell type fractions, which would
-have been restricted to lower values due to the normalization.
+Sampling was done with replacement and stratified by cell type. Cell type counts
+were again randomized using the same prodcedure as during
+[random simulations](#normally-distributed-simulation).
 
 I then deconvoluted each pseudo-bulk using each reference and calculated the
 average Pearson's $\rho$ and its 95% CI between true and estimated values of
