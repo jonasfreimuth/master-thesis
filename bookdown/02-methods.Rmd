@@ -124,9 +124,9 @@ be formulated as
 
 This can then be solved using a least-squares method with the objective function
 
-\begin{equation}
+\begin{equation*}
   \min_{\mathbf{c} \geq 0} \|\mathbf{Sc} - \mathbf{b}\|^2
-\end{equation}
+\end{equation*}
 
 Under the assumption that cancer cells vary stronger in their expression than
 the other cells in the microenvironment, we can expect the residuals to contain
