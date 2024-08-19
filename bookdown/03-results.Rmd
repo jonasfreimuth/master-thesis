@@ -382,8 +382,7 @@ with_options(
         "n marker genes"
       )
     ) %>%
-    kable_minimal() %>%
-    landscape()
+    kable_minimal()
 )
 ```
 
@@ -418,7 +417,6 @@ with_options(
         "n marker genes"
       )
     ) %>%
-    kable_minimal() %>%
-    landscape()
+    kable_minimal()
 )
 ```
