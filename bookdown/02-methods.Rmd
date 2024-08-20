@@ -488,13 +488,15 @@ data on the clinical variables mentioned above.
 To generate expression estimates, I applied deconvPure to all bulk data samples,
 deconvoluting it using references derived from the @wu.2021 scRNA-seq data as in
 the previous sections, except with a smaller set of thresholds
-(`r txt_pr_stc("thresholds")`) on marker gene scores. To put the results into
-context, I also ran BayesPrism on the same data again. However, as BayesPrism is
-not able to estimate expression for non-marker genes, there is a possibility
-that differences in performances of the models trained on the expression
-estimates are confounded by the differences in the number of genes. To address
-this, I also trained models on bulk data with gene sets restricted to each set
-of genes from the cancer expression estimates.
+(`r txt_pr_stc("thresholds")`) on marker gene scores, but again contrasting
+across marker selection methods. The remaining parameters were the same as
+during the [BayesPrism comparison](#comparison-to-bayesprism). To put the
+results into context, I also ran BayesPrism on the same data again. However, as
+BayesPrism is not able to estimate expression for non-marker genes, there is a
+possibility that differences in performances of the models trained on the
+expression estimates are confounded by the differences in the number of genes.
+To address this, I also trained models on bulk data with gene sets restricted to
+each set of genes from the cancer expression estimates.
 
 I ensured each feature set (i.e., all raw bulk and cancer expression estimates)
 was transformed onto a logarithmic scale ($\mathbf{x}_{\text{trans}} =
@@ -507,8 +509,6 @@ analysis (at a threshold of 95% of variance explained for including components)
 on the training set. The same procedure was applied to the testing data using
 the same parameters for each step as for training data to avoid information
 leakage.
-
-<!-- TODO Expand on model objectives used? -->
 
 To train machine learning models predicting the PAM50 subtype of a tumor sample,
 I used a linear kernel support vector machine (SVM) approach via the `caret`
