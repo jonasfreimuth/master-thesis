@@ -80,29 +80,29 @@ include_graphics(plot_paths$rnd_sim)
 
 When benchmarking deconvPure on pseudo-bulks derived from scRNA-seq data, the
 accuracy of estimated cancer expression from absolute values of model residuals
-was high (Figure \@ref(fig:pbulk-cexpr-acc-plt), Table
-\@ref(tab:pbulk-cexpr-acc-tab)) with only minor differences in average
-correlation across parameters.
+was high (Figure \@ref(fig:pbulk-cexpr-acc-plt)) with only minor differences in
+average correlation across parameters. Again all differences mentioned are based
+on 95% CI overlap, actual values can be found in Supp. Table
+\(@ref:pbulk-cexpr-acc-tab).
 
 During simulation and deconvolution I observed that for many samples there
 existed an association between true cancer expression and overall bulk
 expression (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (C) & Supp. Figure
-\@ref(fig:pbulk-sim-diag-2) (C)). Indeed, for almost all of the cell types (
-save for Plasmablasts and to a lesser extent for Myeloid cells), there existed
-strong colinearity in expression profiles between each cell type and the others
-in the sample (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (D) & Supp. Figure
+\@ref(fig:pbulk-sim-diag-2) (C)). Indeed, for almost all the cell types (save
+for Plasmablasts and to a lesser extent for Myeloid cells), there existed strong
+co-linearity in expression profiles between each cell type and the others in the
+sample (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (D) & Supp. Figure
 \@ref(fig:pbulk-sim-diag-2) (D)).
 
 When including cancer expression in the reference profiles, there was a clear
 difference between marker selection methods. Wilcoxon test based markers showed
 higher average correlation compared to random marker selection across all
-thresholds on the number of markers (no 95% CI overlap). Also, while there was
-very little variation in accuracy across thresholds for random markers, on the
-second-tightest threshold for Wilcoxon based markers performance was
-significantly worse than the on the remaining thresholds. When excluding the
-cancer expression profile from the reference, performance further increased
-across all other parameters (no pairwise 95% CI overlap), except for the
-tightest marker threshold on Wilcoxon.
+thresholds on the number of markers. Also, while there was very little variation
+in accuracy across thresholds for random markers, on the second-tightest
+threshold for Wilcoxon based markers performance was significantly worse than on
+the remaining thresholds. When excluding the cancer expression profile from the
+reference, performance further increased across all other parameters, except for
+the tightest marker threshold on Wilcoxon.
 
 General patterns were similar between in- or excluding the cancer expression
 profile but with some exceptions. In the latter case and for the loosest marker
@@ -112,18 +112,16 @@ from the second-tightest threshold on Wilcoxon markers. Lastly, the within group
 differences for Wilcoxon markers increased such that the two loosest thresholds
 no longer resulted in similar performance. The second-loosest marker threshold
 now resulted in optimal performance across all parameters and was clearly
-distinct from all other parameter combinations (no 95% CI overlap).
-
-<!-- TODO Mention approx. point of change. -->
+distinct from all other parameter combinations.
 
 Lastly, I observed a relationship between the proportion of cancer cells in a
 sample and the accuracy of expression estimation (Supp. Figure
 \@ref(fig:pbulk-acc-v-abund)). For samples with very small amounts of cancer
 cells (i.e., low tumor purity), the estimation accuracy was very low, but rose
-sharply with increasing tumor purity. For purities higher than about XXX, the
+sharply with increasing tumor purity. For purities higher than about 0.2, the
 increase in accuracy slowed, and became close to linear up to maximum purity,
 indicating a roughly logarithmic relationship. This behavior was constant across
-paramameter combinations.
+parameter combinations.
 
 ```{r pbulk-cexpr-acc-plt, fig.cap = plot_caps$pbulk_cexpr_acc}
 include_graphics(plot_paths$pbulk_cexpr_acc)
