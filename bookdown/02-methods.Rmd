@@ -437,12 +437,12 @@ tumor samples examined by @wu.2021 has also been processed bulk RNA-seq,
 allowing me to directly compare performance on pseudo-bulk and real-world bulk
 RNA-seq data. For comparability, only those 24 samples were then used for both
 bulk and pseudo-bulk data. To compute references, I used the same set of
-thresholds on the marker genes, but did not include the contrasting across other
-reference parameters to simplify the analysis. For these other parameters, I
-used the values expected to lead to optimal results, namely including cancer
-splitting, Wilcoxon marker selection, and marker gene quality control. Lastly, I
-deconvoluted every bulk and pseudo-bulk using every reference as before, except
-using both deconvPure and BayesPrism.
+thresholds on the marker genes and contrasted across marker selection methods,
+but did not include the contrasting across other reference parameters to
+simplify the analysis. For these other parameters, I used the values expected to
+lead to optimal results, namely including cancer splitting, and marker gene
+quality control. Lastly, I deconvoluted every bulk and pseudo-bulk using every
+reference as before, except using both deconvPure and BayesPrism.
 
 I extracted and processed residuals from deconvPure the same as in the scRNA-seq
 based pseudo-bulks [section](#scrna-seq-pseudo-bulks). Extracting the
