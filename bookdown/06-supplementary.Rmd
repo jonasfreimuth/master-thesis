@@ -175,23 +175,23 @@ rnd_sim_data %>%
     names_glue = "{type} {.value}"
   ) %>%
   select(
-    heterogeneous_cancer,
     split,
-    tech_noise_level,
+    heterogeneous_cancer,
     profile_diff_level,
+    tech_noise_level,
     everything()
   ) %>%
-  arrange(heterogeneous_cancer, split, tech_noise_level, profile_diff_level) %>%
+  arrange(split, heterogeneous_cancer, profile_diff_level, tech_noise_level) %>%
   kbl(
     caption = table_caps$rnd_sim,
     escape = TRUE,
     longtable = TRUE,
     repeat_header_continued = TRUE,
     col.names = c(
-      "Cancer model",
       "Reference type",
-      "Relative noise level",
+      "Cancer model",
       "Relative cell variation",
+      "Relative noise level",
       rep(c("Average", "95% CI"), uniqueN(rnd_sim_data$type))
     ),
     align = "l"
