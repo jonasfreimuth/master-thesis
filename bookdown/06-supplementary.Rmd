@@ -1,11 +1,39 @@
 # Supplementary material
 
 ```{r supp_setup, include = FALSE}
+import::here("data.table", "fread", "uniqueN")
+import::here(
+  "dplyr",
+  "arrange",
+  "distinct",
+  "mutate",
+  "recode",
+  "rename",
+  "select"
+)
 import::here("here", "here")
+import::here(
+  "kableExtra",
+  "add_header_above",
+  "collapse_rows",
+  "kable_minimal",
+  "kable_styling",
+  "kbl",
+  "landscape"
+)
 import::here("knitr", "include_graphics")
-import::here("magrittr", "%>%")
-import::here("purrr", "map")
-import::here("stringr", "str_extract")
+import::here(
+  "magrittr",
+  "%>%",
+  "extract",
+  "extract2",
+  "multiply_by",
+  "set_names"
+)
+import::here("purrr", "map", "reduce")
+import::here("stringr", "str_extract", "str_replace", "str_to_sentence")
+import::here("tidyr", "pivot_wider")
+import::here("withr", "with_options")
 
 # Suppress chunk output by default.
 knitr::opts_chunk$set(echo = FALSE)
@@ -52,7 +80,12 @@ main_plot_path <- here(paste(analysis_root, main_plot_dir, sep = "/"))
 
 main_plot_prefixes <- list(
   "pbulk_acc_v_prop" = "simulation_cancer_acc_v_prop_plot",
-  "bp_acc_v_prop" = "bayes_prism_cancer_acc_v_prop_plot"
+  "bp_acc_v_prop" = "bayes_prism_cancer_acc_v_prop_plot",
+  "rnd_sim" = "random_deconv_simulation_metric_summary_plot",
+  "pbulk_cexpr_acc" = "simulation_true_v_predict_cancer_corr_plot",
+  "bp_cexpr_acc" = "bayes_prism_true_v_predict_cancer_corr_plot",
+  "pred_cat_perf" = "categorical_prediction_performance_plot",
+  "pred_srv_perf" = "survival_prediction_performance_plot"
 )
 
 main_plot_handles <- main_plot_handles_from_path(
@@ -61,6 +94,8 @@ main_plot_handles <- main_plot_handles_from_path(
 
 main_plot_paths <- main_plot_handles$plot_paths
 main_plot_caps <- main_plot_handles$plot_caps
+main_plot_data_paths <- main_plot_handles$plot_data_paths
+table_caps <- main_plot_handles$table_caps
 ```
 
 ## Supplementary plots
@@ -87,4 +122,192 @@ include_graphics(main_plot_paths$pbulk_acc_v_prop)
 
 ```{r bp-acc-v-abund, fig.cap = main_plot_caps$bp_acc_v_prop}
 include_graphics(main_plot_paths$bp_acc_v_prop)
+```
+
+## Supplementary tables
+
+```{r rnd-sim-res-tab}
+rnd_sim_data <- main_plot_data_paths$rnd_sim %>%
+  fread(sep = ",") %>%
+  mutate(across(
+    where(is.character),
+    \(char_col) factor(char_col, levels = unique(char_col))
+  ))
+
+type_headers <- rnd_sim_data %>%
+  distinct(type, summary_metric) %>%
+  mutate(
+    type = str_to_sentence(type),
+    header = paste0(type, " (", summary_metric, ")")
+  ) %>%
+  extract2("header") %>%
+  # Replace rho literals with formula, to ensure correct display.
+  str_replace("ρ", "$\\\\rho$") %>%
+  # Create a list with previous values as names and `2` (fixed width, mean & ci)
+  # as values.
+  {
+    set_names(rep(list(2), length(.)), .)
+  }
+
+rnd_sim_data %>%
+  # Maybe the cols removed here will be removed somewhere upriver already. If
+  # that's the case, this can be removed.
+  select(-any_of(c("n", "n_rmse"))) %>%
+  mutate(
+    `95% CI` = paste("\U00B1", round(mean - min_ci, 3)),
+  ) %>%
+  select(-matches("_ci"), -summary_metric) %>%
+  pivot_wider(
+    values_from = c("mean", "95% CI"),
+    names_from = "type",
+    names_glue = "{type} {.value}"
+  ) %>%
+  select(
+    heterogeneous_cancer,
+    split,
+    tech_noise_level,
+    profile_diff_level,
+    everything()
+  ) %>%
+  arrange(heterogeneous_cancer, split, tech_noise_level, profile_diff_level) %>%
+  kbl(
+    caption = table_caps$rnd_sim,
+    escape = TRUE,
+    longtable = TRUE,
+    repeat_header_continued = TRUE,
+    col.names = c(
+      "Cancer model",
+      "Reference type",
+      "Relative noise level",
+      "Relative cell variation",
+      rep(c("Average", "95% CI"), uniqueN(rnd_sim_data$type))
+    ),
+    align = "l"
+  ) %>%
+  kable_minimal() %>%
+  add_header_above(c(" " = 4, type_headers), escape = FALSE) %>%
+  collapse_rows(
+    columns = 1:3, valign = "top", row_group_label_position = "first"
+  ) %>%
+  kable_styling(latex_options = c("repeat_header")) %>%
+  landscape()
+```
+
+```{r pbulk-cexpr-acc-tab}
+main_plot_data_paths$pbulk_cexpr_acc %>%
+  fread(sep = ",") %>%
+  mutate(
+    `95% CI` = paste("\U00B1", round(mean_correlation - corr_min_ci, 3))
+  ) %>%
+  select(
+    reference.metric, reference.split_cancer,
+    mean_correlation, `95% CI`, reference.threshold, n_transcripts_marker_mean
+  ) %>%
+  kbl(
+    caption = table_caps$pbulk_cexpr_acc,
+    escape = FALSE,
+    col.names = c(
+      "Marker method", "Reference type",
+      # For escape FALSE, `%` nedds to be escaped.
+      "Avg. $\\rho$", "95\\% CI", "Threshold", "n marker genes"
+    )
+  ) %>%
+  collapse_rows(
+    columns = 1:2, valign = "top", row_group_label_position = "first"
+  ) %>%
+  kable_minimal()
+```
+
+```{r bp-cexpr-acc-plt-tab}
+main_plot_data_paths$bp_cexpr_acc %>%
+  fread(sep = ",") %>%
+  mutate(
+    `95% CI` = paste("\U00B1", round(mean_correlation - corr_min_ci, 3))
+  ) %>%
+  select(-starts_with("corr")) %>%
+  select(
+    bulk_type, deconvolution.deconvolution_method, reference.metric,
+    mean_correlation, `95% CI`, reference.threshold, n_transcripts_marker_mean,
+    n_cases_mean
+  ) %>%
+  kbl(
+    caption = table_caps$bp_cexpr_acc,
+    escape = FALSE,
+    longtable = TRUE,
+    repeat_header_continued = TRUE,
+    col.names = c(
+      # For escape FALSE, `%` nedds to be escaped.
+      "Type", "Method", "Marker type", "Avg. $\\rho$", "95\\% CI", "Threshold",
+      "n marker genes", "n total genes"
+    )
+  ) %>%
+  kable_styling(latex_options = c("repeat_header")) %>%
+  collapse_rows(
+    columns = 1:3, valign = "top", row_group_label_position = "first"
+  ) %>%
+  kable_minimal() %>%
+  landscape()
+```
+
+```{r pred-cat-perf-tab}
+# FIXME Combine pred tables & plots.
+with_options(
+  list(knitr.kable.NA = ""),
+  main_plot_data_paths$pred_cat_perf %>%
+    fread(sep = ",") %>%
+    mutate(
+      `95% CI` = paste("\U00B1", round(mean_accuracy - min_ci, 3))
+    ) %>%
+    mutate(
+      # To avoid confusion, remove deconv method for downsampled raw bulk.
+      deconv_method = ifelse(extract_type == "Raw bulk", NA, deconv_method)
+    ) %>%
+    select(-c(min_ci, max_ci)) %>%
+    select(
+      "extract_type", "deconv_method", "mean_accuracy", "95% CI",
+      "n_transcript", "threshold", "n_marker_transcripts"
+    ) %>%
+    kbl(
+      caption = table_caps$pred_cat_perf,
+      escape = FALSE,
+      col.names = c(
+        "Data type", "Method",
+        # For escape FALSE, `%` nedds to be escaped.
+        "Avg. bootstrapped accuracy", "95\\% CI", "n genes", "Threshold",
+        "n marker genes"
+      )
+    ) %>%
+    kable_minimal()
+)
+```
+
+```{r pred-srv-perf-tab}
+with_options(
+  list(knitr.kable.NA = ""),
+  main_plot_data_paths$pred_srv_perf %>%
+    fread(sep = ",") %>%
+    mutate(
+      `95% CI` = paste("\U00B1", round(mean_c_index - min_ci, 3))
+    ) %>%
+    mutate(
+      # To avoid confusion, remove deconv method for downsampled raw bulk.
+      deconv_method = ifelse(extract_type == "Raw bulk", NA, deconv_method)
+    ) %>%
+    select(-c(min_ci, max_ci)) %>%
+    select(
+      "extract_type", "deconv_method", "mean_c_index", "95% CI",
+      "n_transcript", "threshold", "n_marker_transcripts"
+    ) %>%
+    kbl(
+      caption = table_caps$pred_srv_perf,
+      escape = FALSE,
+      col.names = c(
+        "Data type", "Method",
+        # For escape FALSE, `%` nedds to be escaped.
+        "Avg. bootstrapped C index", "95\\% CI", "n genes", "Treshold",
+        "n marker genes"
+      )
+    ) %>%
+    kable_minimal()
+)
 ```
