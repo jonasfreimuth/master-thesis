@@ -233,14 +233,22 @@ main_plot_data_paths$pbulk_cexpr_acc %>%
 ```{r bp-cexpr-acc-plt-tab}
 main_plot_data_paths$bp_cexpr_acc %>%
   fread(sep = ",") %>%
+  mutate(across(
+    where(is.character),
+    \(char_col) factor(char_col, levels = unique(char_col))
+  )) %>%
   mutate(
     `95% CI` = paste("\U00B1", round(mean_correlation - corr_min_ci, 3))
   ) %>%
   select(-starts_with("corr")) %>%
   select(
-    bulk_type, deconvolution.deconvolution_method, reference.metric,
-    mean_correlation, `95% CI`, reference.threshold, n_transcripts_marker_mean,
+    bulk_type, reference.metric, deconvolution.deconvolution_method,
+    reference.threshold, mean_correlation, `95% CI`, n_transcripts_marker_mean,
     n_cases_mean
+  ) %>%
+  arrange(
+    bulk_type, reference.metric, deconvolution.deconvolution_method,
+    reference.threshold
   ) %>%
   kbl(
     caption = table_caps$bp_cexpr_acc,
@@ -249,7 +257,7 @@ main_plot_data_paths$bp_cexpr_acc %>%
     repeat_header_continued = TRUE,
     col.names = c(
       # For escape FALSE, `%` nedds to be escaped.
-      "Type", "Method", "Marker type", "Avg. $\\rho$", "95\\% CI", "Threshold",
+      "Type", "Marker type", "Method", "Threshold", "Avg. $\\rho$", "95\\% CI",
       "n marker genes", "n total genes"
     )
   ) %>%
