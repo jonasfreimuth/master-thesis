@@ -100,31 +100,33 @@ table_caps <- main_plot_handles$table_caps
 
 ## Supplementary plots
 
-```{r rnd-sim-ground-truth, fig.cap = plot_caps$rnd_sim_ground_truth}
+```{r rnd-sim-ground-truth, fig.cap = plot_caps$rnd_sim_ground_truth, fig.pos = "!h"}
 include_graphics(plot_paths$rnd_sim_ground_truth)
 ```
 
-```{r rnd-sim-acc-abund, fig.cap = plot_caps$rnd_sim_acc_v_abund}
+```{r rnd-sim-acc-abund, fig.cap = plot_caps$rnd_sim_acc_v_abund, fig.pos = "!h"}
 include_graphics(plot_paths$rnd_sim_acc_v_abund)
 ```
 
-```{r pbulk-sim-diag-1, fig.cap = plot_caps$deconv_diag_1}
+```{r pbulk-sim-diag-1, fig.cap = plot_caps$deconv_diag_1, fig.pos = "!h"}
 include_graphics(plot_paths$deconv_diag_1)
 ```
 
-```{r pbulk-sim-diag-2, fig.cap = plot_caps$deconv_diag_2}
+```{r pbulk-sim-diag-2, fig.cap = plot_caps$deconv_diag_2, fig.pos = "!h"}
 include_graphics(plot_paths$deconv_diag_2)
 ```
 
-```{r pbulk-acc-v-abund, fig.cap = main_plot_caps$pbulk_acc_v_prop}
+```{r pbulk-acc-v-abund, fig.cap = main_plot_caps$pbulk_acc_v_prop, fig.pos = "!h"}
 include_graphics(main_plot_paths$pbulk_acc_v_prop)
 ```
 
 <!-- TODO Do we really need this? -->
 
-```{r bp-acc-v-abund, fig.cap = main_plot_caps$bp_acc_v_prop}
+```{r bp-acc-v-abund, fig.cap = main_plot_caps$bp_acc_v_prop, fig.pos = "!h"}
 include_graphics(main_plot_paths$bp_acc_v_prop)
 ```
+
+\newpage
 
 ## Supplementary tables
 
