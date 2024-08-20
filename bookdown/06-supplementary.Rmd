@@ -126,6 +126,14 @@ include_graphics(main_plot_paths$pbulk_acc_v_prop)
 include_graphics(main_plot_paths$bp_acc_v_prop)
 ```
 
+```{r pred-cat-perf-supp-plt, fig.cap = main_plot_caps$pred_cat_perf, fig.pos = "!h"}
+include_graphics(main_plot_paths$pred_cat_perf)
+```
+
+```{r pred-srv-perf-supp-plt, fig.cap = main_plot_caps$pred_srv_perf, fig.pos = "!h"}
+include_graphics(main_plot_paths$pred_srv_perf)
+```
+
 \newpage
 
 ## Supplementary tables
