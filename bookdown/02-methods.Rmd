@@ -388,10 +388,13 @@ same across deconvolutions as they were a property of the underlying scRNA-seq
 data, the random values used were also constant for each reference profile.
 
 I computed reference profiles across a spectrum of parameters, one reference for
-each combination. These included the two marker selection strategies, the
+each combination. These included the two marker selection strategies, several
 thresholds selecting the top `r txt_ss_stc("thresholds")` of the best scoring
 marker genes (chosen for empahsis on lower thresholds), and whether the cancer
-cell type expression profile was included.
+cell type expression profile was included. Note however, that a thresholds for
+the different marker selection methods result in marker sets of different sizes
+as a threshold of one (all markers) for Wilcoxon based selection implies all
+genes with a $p$-value below 0.05, but for random markers it implies all genes.
 
 I generated `r txt_ss_stc("n_pseudobulk")` pseudo-bulks by sampling
 `r txt_ss_pb("nominal_n_cell")` cells (twice the median number of cells per
@@ -447,9 +450,10 @@ predictions for cancer expression from BayesPrism is straightforward as it
 computes cell type expression predictions for all cell types on the original
 scale. However, it is not capable of estimating gene expression for non-marker
 genes, so comparisons between it and deconvPure are based on a different number
-of genes. As before, I used the average Pearson's $\rho$ with 95% CI across
-deconvolutions of the same parameters to assess the relationship of predicted
-expression to actual expression.
+of genes (all shared genes between reference and bulk for deconvPure, all marker
+genes for BayesPrism). As before, I used the average Pearson's $\rho$ with 95%
+CI across deconvolutions of the same parameters to assess the relationship of
+predicted expression to actual expression.
 
 ### Prediction
 
