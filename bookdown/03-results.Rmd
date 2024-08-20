@@ -83,7 +83,7 @@ accuracy of estimated cancer expression from absolute values of model residuals
 was high (Figure \@ref(fig:pbulk-cexpr-acc-plt)) with only minor differences in
 average correlation across parameters. Again all differences mentioned are based
 on 95% CI overlap, actual values can be found in Supp. Table
-\(@ref:pbulk-cexpr-acc-tab).
+\@ref(tab:pbulk-cexpr-acc-tab).
 
 During simulation and deconvolution I observed that for many samples there
 existed an association between true cancer expression and overall bulk
@@ -132,25 +132,42 @@ include_graphics(plot_paths$pbulk_cexpr_acc)
 ### Comparison to BayesPrism
 
 When comparing deconvPure to BayesPrism on both pseudo-bulk and bulk RNA-seq
-data, both showed similar behavior (Figure \@ref(fig:bp-cexpr-acc-plt), Table
-\@ref(tab:bp-cexpr-acc-plt-tab)).
+data, both showed similar behavior, with BayesPrism mostly outperforming
+deconvPure (Figure \@ref(fig:bp-cexpr-acc-plt)). When differences are mentioned,
+they are again based on 95% CIs. Exact correlations and CIs can be found in
+Supp. Table \@ref(tab:bp-cexpr-acc-plt-tab).
 
-On pseudo-bulks derived from distinct tumor samples, deconvPure showed superior
-correlation between true and estimated cancer expression for the tightest
-threshold on marker metrics, but for any looser thresholds no clear distinctions
-in performance can be made. BayesPrism showed a general trend of better
-performance for looser marker thresholds, but few differences were statistically
-significant (non-overlapping 95% CIs). Here, CIs also became wider for smaller,
-more restrictive thresholds.
+On pseudo-bulks derived from distinct tumor samples and using random sets of
+genes as markers, there was no variation in performance for each estimation
+method. BayesPrism was able to estimate cancer expression in the pseudo-bulks
+with very good accuracy, achieving $\rho$ values between 0.95 and 0.98. The
+accuracy achieved by deconvPure was not as good, here correlation values only
+ranged between 0.79 and 0.84. For the more restrictive Wilcoxon method of marker
+selection, there is more variability across the marker sets. deconvPure showed
+high estimation accuracy across marker thresholds, while BayesPrism showed only
+medium accuracy at the tightest threshold. BayesPrism also showed a general
+trend of better performance at looser marker thresholds, but no differences
+besides at the tightest threshold were statistically significant. Also, for
+BayesPrism, variability increased for smaller marker gene sets at tighter
+thresholds. For the looser thresholds deconvPure had slightly (but not stat.
+significantly) better performance than throughout the random marker selection.
+BayesPrism on the other hand had worse performance on Wilcoxon markers for the
+loosest threshold than on the tightest using random markers, despite the latter
+marker set being smaller than the former.
 
 When applied to real-world bulk RNA-seq data, both deconvPure and BayesPrism
-showed significantly worse performance on pairs of otherwise equal parameters
-(no pairwise 95% CI overlap). The trend of better correlation with looser
-thresholds that BayesPrism showed for pseudo-bulks was also present here, and my
-methods followed it as well. Lastly, in addition to the general worse
-performance in bulk RNA-seq data, deconvPure also showed a general pattern of
-slightly lower performance compared to BayesPrism on this type of data (only
-significant for the second-tightest and loosest threshold, 95% CIs).
+showed significantly worse performance on pairs of otherwise equal parameters.
+On randomly selected marker genes, both methods only achieved medium to good
+correlations. The estimation accuracy of both estimation methods also became
+more similar, with no clear differences existing for the two loosest thresholds.
+When comparing between pseudo-bulks and real-world bulks, both methods had the
+lowest estimation accuracies for this section, achieving only poor to medium
+correlations between actual and estimated cancer profiles. The trend of better
+correlation with looser thresholds which BayesPrism showed on pseudo-bulks was
+also present, and my methods followed it as well. Lastly, in addition to the
+generally worse performance in bulk RNA-seq data, deconvPure also showed a
+general pattern of slightly lower performance compared to BayesPrism on this
+type of data (only significant at the second-tightest and loosest threshold).
 
 ```{r bp-cexpr-acc-plt, fig.cap = plot_caps$bp_cexpr_acc}
 include_graphics(plot_paths$bp_cexpr_acc)
