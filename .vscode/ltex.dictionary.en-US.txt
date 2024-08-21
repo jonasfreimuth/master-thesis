@@ -4,6 +4,7 @@ convoluting
 Deconvoluted
 Deconvolution
 Deconvolving
+deconvPure
 Hampel
 Holm-Bonferroni
 PFI
@@ -21,5 +22,6 @@ misspecification
 misspecified
 nnls
 pseudobulk
+purities
 scRNA
 scRNA-seq
