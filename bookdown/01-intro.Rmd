@@ -76,9 +76,9 @@ information estimated via $\nu$-SVR. The latter two methods' probabilistic
 approaches use fairly complex model formulations and, in the case of BLADE, need
 to rely on hyperparameter tuning for optimal performance. Hence, a simpler
 deconvolution model might be useful in cases where explainability and
-computational efficiency are more important than high accuracy.
-
-<!-- Possibly expand on high cancer variability. -->
+computational efficiency are more important than high accuracy [although
+improvements to the computational efficiency of these methods are currently
+being made, @hu.2023].
 
 Here I introduce deconvPure, a potential simple approach for estimating the
 expression profile of cancer cells in individual bulk RNA-seq samples, and
