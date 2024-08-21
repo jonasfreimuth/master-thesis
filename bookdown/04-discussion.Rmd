@@ -4,22 +4,16 @@
 
 ### Normally distributed simulation
 
-<!-- TODO Include relative cell varion in random sim. -->
-<!-- TODO Use full width of cancer abundance -->
-<!-- TODO Use prop for prop v acc plots -->
-
 The experiment of applying deconvPure to normally distributed simulated data
 demonstrated the theoretical potential of the method for estimating cancer
-expression from bulk RNA-seq data. It showed that indeed, higher variability
-in one simulated celltype would lead to information about the expression of that
+expression from bulk RNA-seq data. It showed that indeed, higher variability in
+one simulated celltype would lead to information about the expression of that
 cell type to be found in the residuals of a linear deconvolution model applied
 to the mixutre. Further, it demonstrated that entirely excluding a cell type
 from the reference profiles would strongly boost that signal to high
-correlations. That boosting effect can be seen even when adding relatively high
-amounts of obscouring technical noise. However, even under perfect conditions,
-the estimation accuracy is not perfect. I suspect this might be due to
-the deviations of individual cells, but would need to manipulate that as well
-to be sure [Will try that still].
+correlations. That boosting effect can be observed even when adding relatively
+high amounts of obscuring technical noise. Also, variability of cells only
+moderately reduces estimation accuracy.
 
 ### scRNA-seq pseudo-bulks
 
