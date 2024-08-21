@@ -489,12 +489,16 @@ To generate expression estimates, I applied deconvPure to all bulk data samples,
 deconvoluting it using references derived from the @wu.2021 scRNA-seq data as in
 the previous [comparison](#comparison-to-bayesprism), except without doing any
 marker selection, as the comparison sections showed no benefit to estimation
-accuracy.To put the results into context, I also ran BayesPrism on the same data
-again. However, as BayesPrism is not able to estimate expression for non-marker
-genes, there is a possibility that differences in performances of the models
-trained on the expression estimates are confounded by the differences in the
-number of genes. To address this, I also trained models on bulk data with gene
-sets restricted to each set of genes from the cancer expression estimates.
+accuracy. (I still include results generated with different marker selection
+methods and thresholds in the supplementary materal, Supp. Figures
+\@ref(fig:pred-cat-perf-supp-plt) & \@ref(fig:pred-srv-perf-supp-plt), Supp.
+Tables \@ref(tab:pred-cat-perf-tab) & \@ref(tab:pred-srv-perf-tab)). To put the
+results into context, I also ran BayesPrism on the same data again. However, as
+BayesPrism is not able to estimate expression for non-marker genes, there is a
+possibility that differences in performances of the models trained on the
+expression estimates are confounded by the differences in the number of genes.
+To address this, I also trained models on bulk data with gene sets restricted to
+each set of genes from the cancer expression estimates.
 
 I ensured each feature set (i.e., all raw bulk and cancer expression estimates)
 was transformed onto a logarithmic scale ($\mathbf{x}_{\text{trans}} =
