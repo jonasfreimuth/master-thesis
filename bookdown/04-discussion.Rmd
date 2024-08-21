@@ -50,12 +50,41 @@ for the pseudo-bulks (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (D) &
 
 ### Comparison to BayesPrism
 
-* BayesPrism variability due to lower number of actual transcripts used for cor
-  computation.
-* Worse estimation accuracy on bulk partially due to low accuracy of true values
-  of expression used.
-* If this is revisited, finding a proper test dataset using matched flow
-  cytometry data would be sensible.
+<!-- TODO Discuss low wilcoxon performance in more detail. -->
+
+<!-- TODO Discuss lower deconvPure performance compared to random pseudo-bulks.
+-->
+
+Considering its simplicity, deconvPure's performance on matched pseudo-bulk and
+bulk data was rather good in comparison to BayesPrism. While the latter method
+mostly showed higher accuracy, the difference was not particularly large and
+even disappeared on bulk data for some parameters. However, deconvPure had
+slightly lower estimation accuracy on pseudo-bulks derived from real-world tumor
+samples than on pseudo-bulks assembled by randomly sampling cells across all
+tumor samples.
+
+The performances of BayesPrism on bulk data using random markers is in line with
+what @chu.2022 found when benchmarking the method on pseudo-bulks. The apparent
+low and variable performance on BayesPrism on pseudo-bulk data using Wilcoxon
+based markers may be partly due to the method not allowing for expression
+estimation of non-marker genes. As shown in Supp. Table
+\@ref(tab:bp-cexpr-acc-plt-tab), the number of genes on which the correlation
+measures are based are very different, with the small number probably causing
+instability for BayesPrism.
+
+The lower performance of both methods on bulk RNA-seq data compared to pseudo-
+bulks is expected to a degree, as there is additional noise present in bulk data
+compared to pseudo-bulks, such as different sample preparation. In pseudo-bulks
+on the other hand, technical noise shouldn't be a factor impacting the
+estimation accuracy as mixtures are created by simple addition of cell
+expression. An additional source of error for estimation accuracies on bulk data
+is the true value used for the computation of correlations itself. Due to the
+differences in general expression characteristic mentioned above, using
+scRNA-seq data for the purpose of inferring true cancer expression profiles of
+bulk data may result in underestimation, but it is the best thing that was close
+to hand. If this is revisited, I believe repeating this comparison using true
+cancer expression data from cell sorted bulk RNA-seq experiments would lead to
+higher accuracy.
 
 ### Prediction
 
