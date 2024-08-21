@@ -160,8 +160,6 @@ most discriminant ones (see the later
 [pseudobulk section](#scrna-seq-pseudo-bulks)), to increase deconvolution
 accuracy and reduce computation time.
 
-<!-- Talk about previous work on marker genes for deconvolution? -->
-
 After reference creation, the computation of residuals as a measure for true
 expression of cancerous cells is relatively straightforward. First the
 untransformed bulk RNA-seq data is deconvoluted using the also untransformed
