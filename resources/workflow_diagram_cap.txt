@@ -1,0 +1,1 @@
+Simple diagram of deconvPure's process. First a bulk is deconvoluted using a reference without the cancer expression profile. From the bulk and and fitted values of the model, residuals can be computed that highly correlate with cancer expression within the bulk.
