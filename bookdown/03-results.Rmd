@@ -50,16 +50,18 @@ cancer expression model using a reference with cancer profiles was low across
 the remaining parameters. All differences mentioned are statistically
 significant, based on no 95% CI overlap, see Supp. Table
 \@ref(fig:rnd-sim-ground-truth) for detailed values. When modeling bulk mixtures
-without cell variation, the average correlation was exactly zero throughout, but
-for included cell variation, some differences in accuracy emerged. For
-simulations where cancer cells behaved like others, absent noise and noise equal
-to biological variability had the same accuracy. The high technical noise group
-was slightly worse, and very high noise led to very low accuracy. Under the
-model of cancer cells varying stronger than other cell type's cells, there was
-an appreciable improvement in accuracy compared to the homogeneous model, with
-the behavior of individual groups remaining largely similar to the previous
-model. The exception to that was high group, which no longer showed a difference
-to the groups with lower technical noise.
+without cell variation, the average correlation was exactly zero throughout
+(with strong variation in the case of neither technical noise nor cell vatiation
+added due to numerical instability from extemely small residual values). When
+adding cell variation, some differences in accuracy emerged: For simulations
+where cancer cells behaved like others, absent noise and noise equal to
+biological variability had the same accuracy. The high technical noise group was
+slightly worse, and very high noise led to very low accuracy. Under the model of
+cancer cells varying stronger than other cell type's cells, there was an
+appreciable improvement in accuracy compared to the homogeneous model, with the
+behavior of individual groups remaining largely similar to the previous model.
+The exception to that was high group, which no longer showed a difference to the
+groups with lower technical noise.
 
 As mentioned, the largest improvement can be seen when removing the cancer
 expression profile from the reference. Here, when not including any cell
