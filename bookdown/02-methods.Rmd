@@ -2,7 +2,7 @@
 
 ```{r method-setup, include = FALSE}
 import::here("here", "here")
-import::here("knitr", "kable")
+import::here("knitr", "include_graphics", "kable")
 import::here("magrittr", .all = TRUE)
 import::here("purrr", "pluck", "map_vec")
 
@@ -138,7 +138,8 @@ cancer cell gene expression would be erroneously attributed to other cell types
 [although this issue seems to be already present in the ideal case, see
 @aran.2017], the residuals might then more accurately reflect the patterns of
 cancer cell type expression as when they are already accounted for by the
-inclusion of the cancer cell type reference profile.
+inclusion of the cancer cell type reference profile (Figure
+\@ref(fig:workflow)).
 
 Prior information on the expression profiles of the cell types present in a set
 of bulk RNA-seq samples may be obtained in different ways. Relatively simple
@@ -178,9 +179,6 @@ residuals $\epsilon$ can then be computed:
   \epsilon = \mathbf{b} - \mathbf{\hat{b}}
 \end{equation*}
 
-<!-- FIXME Add a diagram explaining the relationship between fitted values,
-residuals, and cancer expression estimation. -->
-
 For real-world applications (i.e., everything except
 [normally distributed simulation](#normally-distributed-simulation)), the
 absolute value of the residuals was used. This was done since deconvolution
@@ -192,6 +190,10 @@ preserve values of zero on the original scale; $\mathbf{x}_{\text{trans}} =
 of the residuals stays reasonably consistent across the spectrum of actual and
 predicted gene expression values, and summary statistics assuming a near normal
 distribution (i.e., Pearsons $\rho$) could be used.
+
+```{r workflow, fig.cap = readLines(here("resources/workflow_diagram_cap.txt"))}
+include_graphics(here("resources/workflow_diagram.png"))
+```
 
 ## Proof of concept
 
