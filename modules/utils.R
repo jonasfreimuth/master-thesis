@@ -223,3 +223,25 @@ style_bib_entries <- function(bib_file = "citations//cancer-cleaning_File.bib",
   # Run the styling script for bib files on my bib file.
   system2(style_script, bib_file)
 }
+
+archive_run_summary_dirs <- function(analysis_root) {
+  exclude_pattern <- "reproducibility"
+  output_file <- paste0(
+    format(Sys.time(), "%Y%m%d"),
+    "_run_output_summaries.tar.gz"
+  )
+
+  summary_dirs <- dir(analysis_root, full.names = TRUE) %>%
+    map(
+      \(summary_dir) {
+        dir(summary_dir) %>%
+          extract(!str_detect(., exclude_pattern)) %>%
+          {
+            paste0(summary_dir, "/", .)
+          }
+      }
+    ) %>%
+    unlist()
+
+  system2("tar", c("-czf", output_file, summary_dirs))
+}
