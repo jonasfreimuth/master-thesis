@@ -1,7 +1,7 @@
 ---
 title: "Cancer Transcriptome Cleaning by Deconvolution"
 subtitle: "Thesis for M.Sc. Bioinformatics at the University of Potsdam"
-author: "Jonas Freimuth"
+author: "Jonas Freimuth (807218)"
 documentclass: article
 output:
   bookdown::html_document2:
