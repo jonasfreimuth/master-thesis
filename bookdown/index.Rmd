@@ -27,18 +27,17 @@ Biology, University of Potsdam, email:&nbsp;*zniko@uni-potsdam.de*
 
 \newpage
 
-# Erklärung {.unlisted .unnumbered}
+## Declaration of Originality {.unlisted .unnumbered}
 
-Hiermit erkläre ich, Jonas Freimuth,
+I, Jonas Freimuth, hereby delcare,
 
-* dass ich diese Arbeit selbst verfasst und keine anderen als die angegebenen
-  Quellen und Hilfsmittel benutzt habe.
-* dass alle wörtlich oder sinngemäß aus anderen Werken übernommenen Aussagen als
-  solche gekennzeichnet sind,
-* dass die eingereichte Arbeit weder vollständig noch in wesentlichen Teilen
-  Gegenstand eines anderen Prüfungsverfahrens gewesen ist oder bereits
-  veröffentlicht wurde.
+* that this thesis is the product of my own work. All the assistance received in
+  preparing this thesis and the sources used have been acknowledged.
+* All statements, literal or paraphrased, which have been taken from other works
+  have been marked as such,
+* and that this work is not in its entirety, nor in substantial parts, part of
+  another examination procedure, nor has it been previously published.
 
-Potsdam, den `r format(Sys.Date(), "%d. %B %Y")`
+Potsdam, the `r format(Sys.Date(), "%d. of %B %Y")`
 
 \newpage
