@@ -79,8 +79,6 @@ main_plot_dir <- "main_plots"
 main_plot_path <- here(paste(analysis_root, main_plot_dir, sep = "/"))
 
 main_plot_prefixes <- list(
-  "pbulk_acc_v_prop" = "simulation_cancer_acc_v_prop_plot",
-  "bp_acc_v_prop" = "bayes_prism_cancer_acc_v_prop_plot",
   "rnd_sim" = "random_deconv_simulation_metric_summary_plot",
   "pbulk_cexpr_acc" = "simulation_true_v_predict_cancer_corr_plot",
   "bp_cexpr_acc" = "bayes_prism_true_v_predict_cancer_corr_plot",
@@ -114,16 +112,6 @@ include_graphics(plot_paths$deconv_diag_1)
 
 ```{r pbulk-sim-diag-2, fig.cap = plot_caps$deconv_diag_2, fig.pos = "!h"}
 include_graphics(plot_paths$deconv_diag_2)
-```
-
-```{r pbulk-acc-v-abund, fig.cap = main_plot_caps$pbulk_acc_v_prop, fig.pos = "!h"}
-include_graphics(main_plot_paths$pbulk_acc_v_prop)
-```
-
-<!-- TODO Do we really need this? -->
-
-```{r bp-acc-v-abund, fig.cap = main_plot_caps$bp_acc_v_prop, fig.pos = "!h"}
-include_graphics(main_plot_paths$bp_acc_v_prop)
 ```
 
 ```{r pred-cat-perf-supp-plt, fig.cap = main_plot_caps$pred_cat_perf, fig.pos = "!h"}
