@@ -373,7 +373,7 @@ an expression signature across cell types which would allow for clear
 identification of just a single cell type by having particularly high or low
 expression in just that cell type. I explored multiple ways to determine this
 score during preliminary experiments [DESeq2 from @love.2014; and Hampel filter
-from @davies.1993], but ultimately chose a simple Wilcoxon test
+from @davies.1993], but ultimately chose a simple Wilcoxon rank-sum test
 [@wilcoxon.1945] for comparing each cell type to the pooled remaining cell types
 [via `FindAllMarkers` from the `R` Seurat package v.5, @hao.2023] for its
 combination of relative simplicity and accuracy. The marker score for the
