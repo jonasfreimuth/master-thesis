@@ -8,7 +8,7 @@ output:
     toc: true
     toc_depth: 3
   bookdown::pdf_document2:
-    toc: true
+    toc: false
     toc_depth: 3
     latex_engine: xelatex
 bibliography: ../citations/cancer-cleaning_File.bib
@@ -39,5 +39,9 @@ I, Jonas Freimuth, hereby delcare,
   another examination procedure, nor has it been previously published.
 
 Potsdam, the `r format(Sys.Date(), "%d. of %B %Y")`
+
+\newpage
+
+\tableofcontents
 
 \newpage
