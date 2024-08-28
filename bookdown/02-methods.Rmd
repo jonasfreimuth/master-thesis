@@ -329,6 +329,15 @@ type using Pearson's $\rho$. I repeated this `r txt_rs_stc("n_repeats")` times
 for each level of technical noise and averaged results and calculated 95%
 confidence intervals (CIs) across replicates.
 
+There may already be a significant amount of information on the true cancer
+expression present in the bulk expression profile for samples with high cancer
+cell content, as high relative cell content can be expected to be associated
+with a high influence on the overall expression profile. To ensure a benefit of
+cancer expression estimates over this inherent information, I also compared the
+correlation of estimated and actual cancer expression (estimation accuracy) to
+the correlation of bulk expression and actual cancer expression (inherent
+information) in a sample.
+
 ```{r rnd-sim-params}
 kable(
   param_tables$table_objs$rnd_sim$static_parameters,
@@ -401,12 +410,10 @@ I generated `r txt_ss_stc("n_pseudobulk")` pseudo-bulks by sampling
 sample in the data) out of the overall cells in the count matrix from @wu.2021.
 Sampling was done with replacement and stratified by cell type. Cell type counts
 were again randomized using the same prodcedure as during
-[random simulations](#normally-distributed-simulation).
-
-I then deconvoluted each pseudo-bulk using each reference and calculated the
-average Pearson's $\rho$ and its 95% CI between true and estimated values of
-cancer cell type expression across all deconvolutions with the same set of
-parameters.
+[random simulations](#normally-distributed-simulation). I then deconvoluted each
+pseudo-bulk using each reference and calculated the average Pearson's $\rho$ and
+its 95% CI between true and estimated values of cancer cell type expression
+across all deconvolutions with the same set of parameters.
 
 ## Evaluation
 
@@ -453,7 +460,9 @@ genes, so comparisons between it and deconvPure are based on a different number
 of genes (all shared genes between reference and bulk for deconvPure, all marker
 genes for BayesPrism). As before, I used the average Pearson's $\rho$ with 95%
 CI across deconvolutions of the same parameters to assess the relationship of
-predicted expression to actual expression.
+predicted expression to actual expression. I also carried out the same analysis
+of the benefit of expression estimation over the inherent information on cancer
+expression in the bulk across cancer cell proportions.
 
 ### Prediction
 
