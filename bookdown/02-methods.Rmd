@@ -427,6 +427,8 @@ trained on raw bulk data.
 
 ### Comparison to BayesPrism
 
+<!-- TODO Characterize real-world bulk data. -->
+
 To compare my transcriptome cleaning method to an established state-of-the-art
 method, I applied both deconvPure and BayesPrism to pseudo-bulks & bulk RNA-seq
 data of tumor samples from @wu.2021. I chose BayesPrism out of the three high
