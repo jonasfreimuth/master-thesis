@@ -208,8 +208,9 @@ type of data (only significant at the second-tightest and loosest threshold).
 
 I also observed a general dependence of estimation accuracy on the tumor sample
 purity similar to previous sections, but not as clear due to the lower amount of
-samples and reduced range in tumor purity (Figure \@ref(fig:bp-acc-v-prop-plt)).
-On pseudo-bulks, the pattern for deconvPure is also similar to the previous
+samples and reduced range in tumor purity (0-70% cancer cells by proportion,
+according to scRNA-seq data; Figure \@ref(fig:bp-acc-v-prop-plt)). On
+pseudo-bulks, the pattern for deconvPure is also similar to the previous
 [pseudo-bulk simulation experiments](#scrna-seq-pseudo-bulks): Low variability
 on random markers, higher variability for Wilcoxon based markers, mostly worse
 than inherent association of bulk and cancer expression. BayesPrism by
