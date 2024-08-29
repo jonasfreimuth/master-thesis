@@ -4,16 +4,22 @@
 
 ### Normally distributed simulation
 
-The experiment of applying deconvPure to normally distributed simulated data
+The experiment of applying deconvPure to normally distributed random data
 demonstrated the theoretical potential of the method for estimating cancer
-expression from bulk RNA-seq data. It showed that indeed, higher variability in
-one simulated celltype would lead to information about the expression of that
-cell type to be found in the residuals of a linear deconvolution model applied
-to the mixutre. Further, it demonstrated that entirely excluding a cell type
-from the reference profiles would strongly boost that signal to high
-correlations. That boosting effect can be observed even when adding relatively
-high amounts of obscuring technical noise. Also, variability of cells only
-moderately reduces estimation accuracy.
+expression from bulk RNA-seq data.
+
+It showed that indeed, higher variability in one cell-type would lead to
+information about the expression of that cell type to be present in the
+residuals of a linear deconvolution model applied to the bulk mixture. Further,
+it demonstrated that entirely excluding a cell type from the reference profiles
+would strongly boost that signal, an effect that is robust to relatively high
+amounts of obscuring technical noise. The inherent variability of cells also
+appears to only moderately impact estimation accuracy, hinting at an ability of
+deconvPure to produce accurate estimates even when the cell types in a tissue
+are in different phases of their cell cycle. Lastly, the random simulation
+experiment shows that deconvPure's expression estimates contain more information
+about the cell type's true expression than is inherently present in the bulk
+expression profile.
 
 ### scRNA-seq pseudo-bulks
 
