@@ -27,7 +27,7 @@ Biology, University of Potsdam, email:&nbsp;*zniko@uni-potsdam.de*
 
 \newpage
 
-## Declaration of Originality {.unlisted .unnumbered}
+## Declaration of Originality {.unnumbered}
 
 I, Jonas Freimuth, hereby delcare,
 
