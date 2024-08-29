@@ -2666,6 +2666,81 @@
   file		= {s41467-018-08023-x:Attachments/s41467-018-08023-x.pdf:application/pdf}
 }
 
+@Article{	  wang.2021,
+  abstract	= {When assessed over a large number of samples, bulk RNA
+		  sequencing provides reliable data for gene expression at
+		  the tissue level. Single-cell RNA sequencing (scRNA-seq)
+		  deepens those analyses by evaluating gene expression at the
+		  cellular level. Both data types lend insights into disease
+		  etiology. With current technologies, scRNA-seq data are
+		  known to be noisy. Constrained by costs, scRNA-seq data are
+		  typically generated from a relatively small number of
+		  subjects, which limits their utility for some analyses,
+		  such as identification of gene expression quantitative
+		  trait loci (eQTLs). To address these issues while
+		  maintaining the unique advantages of each data type, we
+		  develop a Bayesian method (bMIND) to integrate bulk and
+		  scRNA-seq data. With a prior derived from scRNA-seq data,
+		  we propose to estimate sample-level cell type-specific
+		  (CTS) expression from bulk expression data. The CTS
+		  expression enables large-scale sample-level downstream
+		  analyses, such as detection of CTS differentially expressed
+		  genes (DEGs) and eQTLs. Through simulations, we show that
+		  bMIND improves the accuracy of sample-level CTS expression
+		  estimates and increases the power to discover CTS DEGs when
+		  compared to existing methods. To further our understanding
+		  of two complex phenotypes, autism spectrum disorder and
+		  Alzheimer's disease, we apply bMIND to gene expression data
+		  of relevant brain tissue to identify CTS DEGs. Our results
+		  complement findings for CTS DEGs obtained from snRNA-seq
+		  studies, replicating certain DEGs in specific cell types
+		  while nominating other novel genes for those cell types.
+		  Finally, we calculate CTS eQTLs for 11 brain regions by
+		  analyzing Genotype-Tissue Expression Project data, creating
+		  a new resource for biological insights.},
+  author	= {Wang, Jiebiao and Roeder, Kathryn and Devlin, Bernie},
+  year		= {2021},
+  title		= {Bayesian estimation of cell type-specific gene expression
+		  with prior derived from single-cell data},
+  pages		= {1807--1818},
+  volume	= {31},
+  number	= {10},
+  journal	= {Genome research},
+  doi		= {10.1101/gr.268722.120}
+}
+
+@Article{	  wang.2023,
+  abstract	= {Single-cell RNA sequencing (scRNA-seq) has emerged as a
+		  powerful tool for uncovering cellular heterogeneity.
+		  However, the high costs associated with this technique have
+		  rendered it impractical for studying large patient cohorts.
+		  We introduce ENIGMA (Deconvolution based on Regularized
+		  Matrix Completion), a method that addresses this limitation
+		  through accurately deconvoluting bulk tissue RNA-seq data
+		  into a readout with cell-type resolution by leveraging
+		  information from scRNA-seq data. By employing a matrix
+		  completion strategy, ENIGMA minimizes the distance between
+		  the mixture transcriptome obtained with bulk sequencing and
+		  a weighted combination of cell-type-specific expression.
+		  This allows the quantification of cell-type proportions and
+		  reconstruction of cell-type-specific transcriptomes. To
+		  validate its performance, ENIGMA was tested on both
+		  simulated and real datasets, including disease-related
+		  tissues, demonstrating its ability in uncovering novel
+		  biological insights.},
+  author	= {Wang, Weixu and Zhou, Xiaolan and Wang, Jing and Yao, Jun
+		  and Wen, Haimei and Wang, Yi and Sun, Mingwan and Zhang,
+		  Chao and Tao, Wei and Zou, Jiahua and Ni, Ting},
+  year		= {2023},
+  title		= {Approximate estimation of cell-type resolution
+		  transcriptome in bulk tissue through matrix completion},
+  volume	= {24},
+  number	= {5},
+  journal	= {Briefings in bioinformatics},
+  doi		= {10.1093/bib/bbad273},
+  file		= {bbad273:Attachments/bbad273.pdf:application/pdf}
+}
+
 @Article{	  wilcoxon.1945,
   author	= {Wilcoxon, Frank},
   year		= {1945},
@@ -2809,6 +2884,41 @@
   journal	= {Pharmacology {\&} therapeutics},
   doi		= {10.1016/j.pharmthera.2020.107753},
   file		= {nihms-1650386:Attachments/nihms-1650386.pdf:application/pdf}
+}
+
+@Article{	  yoshihara.2013,
+  abstract	= {Infiltrating stromal and immune cells form the major
+		  fraction of normal cells in tumour tissue and not only
+		  perturb the tumour signal in molecular studies but also
+		  have an important role in cancer biology. Here we describe
+		  'Estimation of STromal and Immune cells in MAlignant
+		  Tumours using Expression data' (ESTIMATE)--a method that
+		  uses gene expression signatures to infer the fraction of
+		  stromal and immune cells in tumour samples. ESTIMATE scores
+		  correlate with DNA copy number-based tumour purity across
+		  samples from 11 different tumour types, profiled on
+		  Agilent, Affymetrix platforms or based on RNA sequencing
+		  and available through The Cancer Genome Atlas. The
+		  prediction accuracy is further corroborated using 3,809
+		  transcriptional profiles available elsewhere in the public
+		  domain. The ESTIMATE method allows consideration of
+		  tumour-associated normal cells in genomic and
+		  transcriptomic studies. An R-library is available on
+		  https://sourceforge.net/projects/estimateproject/.},
+  author	= {Yoshihara, Kosuke and Shahmoradgoli, Maria and
+		  Mart{\'i}nez, Emmanuel and Vegesna, Rahulsimham and Kim,
+		  Hoon and Torres-Garcia, Wandaliz and Trevi{\~n}o, Victor
+		  and Shen, Hui and Laird, Peter W. and Levine, Douglas A.
+		  and Carter, Scott L. and Getz, Gad and Stemke-Hale,
+		  Katherine and Mills, Gordon B. and Verhaak, Roel G. W.},
+  year		= {2013},
+  title		= {Inferring tumour purity and stromal and immune cell
+		  admixture from expression data},
+  pages		= {2612},
+  volume	= {4},
+  journal	= {Nature communications},
+  doi		= {10.1038/ncomms3612},
+  file		= {ncomms9971:Attachments/ncomms9971.pdf:application/pdf}
 }
 
 @Article{	  zaitsev.2022,
