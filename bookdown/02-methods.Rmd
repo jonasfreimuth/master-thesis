@@ -191,7 +191,7 @@ of the residuals stays reasonably consistent across the spectrum of actual and
 predicted gene expression values, and summary statistics assuming a near normal
 distribution (i.e., Pearsons $\rho$) could be used.
 
-```{r workflow, fig.cap = paste(readLines(here("resources/workflow_diagram_cap.txt")), collapse = " ")}
+```{r workflow, fig.cap = paste(readLines(here("resources/workflow_diagram_cap.md")), collapse = " ")}
 include_graphics(here("resources/workflow_diagram.png"))
 ```
 
