@@ -1,8 +1,9 @@
 # Methods & Data
 
 ```{r method-setup, include = FALSE}
+import::here("dplyr", "mutate")
 import::here("here", "here")
-import::here("kableExtra", "kbl")
+import::here("kableExtra", "kbl", "linebreak")
 import::here("knitr", "include_graphics")
 import::here("magrittr", .all = TRUE)
 import::here("purrr", "pluck", "map_vec")
@@ -341,6 +342,7 @@ information) in a sample.
 
 ```{r rnd-sim-params}
 param_tables$table_objs$rnd_sim$static_parameters %>%
+  mutate(`Parameter value` = linebreak(`Parameter value`)) %>%
   kbl(
     caption = paste(
       "Simulation parameters used to evaluate deconvPure's performance on",
