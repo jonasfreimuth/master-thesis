@@ -16,6 +16,7 @@ deconvolute
 deconvoluted
 deconvoluting
 deconvolution
+deconvolutions
 in-silico
 misattributed
 misspecification
