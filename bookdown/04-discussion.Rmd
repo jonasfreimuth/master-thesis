@@ -55,6 +55,14 @@ benefit difficult. The observed lack of difference in the selection method used
 could be due to an actual lack of effect, or due to the effect of marker
 selection being canceled out by an effect of sheer marker set size.
 
+<!-- If need be, we can put in the number of marker genes ESTIMATE
+[@yoshihara.2013] uses for inferring tumor purity. Also, marker selection is
+only indirectly important for cancer expression estimation, it primarily
+influences cell type inference. On that note, there may be an issue as the
+removal of the cancer reference profile effectively further reduces the number
+of marker genes, as the markers for cancer by definition cease to be markers
+for cancer. -->
+
 Alternatively, it may just be important that certain genes are part of the
 reference, which has a high probability of being the case for the large amounts
 of marker genes used for random marker selection. In turn, this effect may also
