@@ -137,38 +137,40 @@ type specific profiles poses.
 
 ### Prediction
 
-Considering how similar accuracies of models predicting cancer subtype trained
-on both estimated cancer expression and matched bulk data were, it seems
-unlikely that using estimated cancer expression provides a benefit over simply
-using bulk expression data. Nevertheless, the gene set used for model training
-appears to have an influence on the prediction accuracy, with the gene set used
-by BayesPrism being optimal. Again, both deconvPure use the same set of marker
-genes for deconvolution (all genes not removed by the gene level quality control
-mentioned in the
-[pseudo-bulk proof-of-concept methods](#scrna-seq-pseudo-bulks)), but deconvPure
-is able to estimate cancer expression for all genes shared by bulk and reference
-profiles. On the other hand, when including tighter thresholds, performance did
-not increase (Supp. Figure \@ref(fig:pred-cat-perf-supp-plt), Supp. Table
-\@ref(tab:pred-cat-perf-tab)).
+Considering how similar accuracies of models predicting cancer subtype from both
+estimated cancer expression and matched bulk data were, it seems unlikely that
+using estimated cancer expression provides a clear benefit over simply using
+bulk expression data. Nevertheless, the gene set used for model training appears
+to have an influence on the prediction accuracy, with the gene set used by
+BayesPrism being optimal, at least for predicting cancer subtype.
+
+<!-- TODO Discuss PAM50. -->
 
 From the overall poor prediction accuracy for PFI, it is clear that this is a
-challenging outcome to predict. Still, deconvPure was almost entirely unable to
-help in predicting PFI, even counterproductive when considering the considerably
-higher accuracy of the model trained with matched bulk data. BayesPrism on the
-other hand was able to improve prediction accuracy, although not by very much.
-This could still be an indication that an improvement in prediction accuracy by
-using estimated cancer expression is possible at all, but when considering the
-full picture with marker selection, this result appears to be a result of chance
-(Supp. Figure \@ref(fig:pred-srv-perf-supp-plt), Supp. Table
-\@ref(tab:pred-srv-perf-tab)).
+challenging outcome to predict. deconvPure was almost entirely unable to help in
+predicting PFI, even counterproductive when considering the considerably higher
+accuracy of the model trained with matched bulk data. BayesPrism's prediction
+leading to a slightly better model for predicting PFI could still be an
+indication that an improvement in prediction accuracy by using estimated cancer
+expression is possible at all. However, when considering the full picture with
+marker selection, the lack of a general pattern of this, makes this outcome seem
+rather to be due to chance (Supp. Figure \@ref(fig:pred-srv-perf-supp-plt),
+Supp. Table \@ref(tab:pred-srv-perf-tab)).
 
 The similar prediction accuracy between models trained on estimated cancer
-expression and bulk expression on both prediction tasks may be partly explained
-by the strong association between bulk and cancer expression observed during
-pseudo-bulk based simulation (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (C) &
-\@ref(fig:pbulk-sim-diag-2) (C)). Under the condition of high correlation
-between bulk and cancer cell type expression, there is also not much difference
-in the information the two measurements hold.
+expression and bulk expression on both prediction tasks may be explained in
+large part by the inherent information of bulk expression on cancer profiles. If
+both sets of features contain information that is highly correlated, we can't
+expect a large difference in predictive power. Given the inability of deconvPure
+to predict the cancer expression profile of a bulk with higher accuracy than
+inherent information seen in previous sections, the lower predictive ability of
+the models is not surprising. The fact that BayesPrism did manage to improve
+model accuracy also fits with the superior estimation accuracy demonstrated on
+bulk data during the [comparison section](#comparison-to-bayesprism). However,
+we would expect a consistent improvement in accuracy over matched bulk data
+then, but this is not what we see when examining performance across thresholds
+on marker selection (Supp. Figures \@ref(fig:pred-cat-perf-supp-plt) and
+\@ref(fig:pred-srv-perf-supp-plt)).
 
 ## Conclusion
 
