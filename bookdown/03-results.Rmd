@@ -212,13 +212,17 @@ according to scRNA-seq data; Figure \@ref(fig:bp-acc-v-prop-plt)). On
 pseudo-bulks, the pattern for deconvPure is also similar to the previous
 [pseudo-bulk simulation experiments](#scrna-seq-pseudo-bulks): Low variability
 on random markers, higher variability for Wilcoxon based markers, mostly worse
-than inherent association of bulk and cancer expression. BayesPrism by
-comparison, was capable of slightly outperforming the inherent association
-between bulk and cancer expression (no statistical test performed) when using
-randomly selected marker genes (except for some samples using the tightest
-threshold). On Wilcoxon based markers, BayesPrism's cancer expression estimates
-were generally far below the inherent association, with the only some exceptions
-due to the high variability of estimation accuracy.
+than inherent association of bulk and cancer expression. The one exception is
+that, on pseudo-bulks derived from real-world samples and across parameters,
+deconvPure manged to outperform the inherent association only on a single
+pseudo-bulk, and that only by a small margin.
+
+BayesPrism by comparison, was capable of slightly outperforming the inherent
+association between bulk and cancer expression (no statistical test performed)
+when using randomly selected marker genes (except for some samples using the
+tightest threshold). On Wilcoxon based markers, BayesPrism's cancer expression
+estimates were generally far below the inherent association, with the only some
+exceptions due to the high variability of estimation accuracy.
 
 On the matched real-world bulk data, there was slightly more variability in the
 relationship of bulk to cancer expression, but also in the estimation accuracy.
