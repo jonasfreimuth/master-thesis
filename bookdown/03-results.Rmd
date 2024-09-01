@@ -101,15 +101,6 @@ average correlation across parameters. Again all differences in averages
 mentioned are based on 95% CI overlap, actual values can be found in Supp. Table
 \@ref(tab:pbulk-cexpr-acc-tab).
 
-During simulation and deconvolution I observed that for many samples there
-existed an association between true cancer expression and overall bulk
-expression (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (C) & Supp. Figure
-\@ref(fig:pbulk-sim-diag-2) (C)). Indeed, for almost all the cell types (save
-for Plasmablasts and to a lesser extent for Myeloid cells), there existed strong
-co-linearity in expression profiles between each cell type and the others in the
-sample (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (D) & Supp. Figure
-\@ref(fig:pbulk-sim-diag-2) (D)).
-
 When including cancer expression in the reference profiles, there was a clear
 difference between marker selection methods. Wilcoxon test based markers showed
 higher average correlation compared to random marker selection across all
@@ -152,6 +143,14 @@ with true cancer expression than overall bulk expression did, especially when
 also excluding the cancer profile from the reference. These, however, were not
 enough to lead to a clearly superior estimation accuracy compared to the
 inherent relationship between bulk and cancer expression.
+
+The association between cancer expression and overall bulk expression can be
+clearly observed on the level of the indiviual sample (Supp. Figure
+\@ref(fig:pbulk-sim-diag-1) (C) & Supp. Figure \@ref(fig:pbulk-sim-diag-2) (C)).
+For almost all the cell types (save for Plasmablasts and to a lesser extent for
+Myeloid cells), there existed strong co-linearity in expression profiles between
+each cell type and the others in the sample (Supp. Figure
+\@ref(fig:pbulk-sim-diag-1) (D) & Supp. Figure \@ref(fig:pbulk-sim-diag-2) (D)).
 
 ```{r pbulk-cexpr-acc-plt, fig.cap = plot_caps$pbulk_cexpr_acc}
 include_graphics(plot_paths$pbulk_cexpr_acc)
