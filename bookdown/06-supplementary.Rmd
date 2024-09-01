@@ -1,4 +1,4 @@
-# Supplementary material
+# Supplementary material  {.unnumbered}
 
 ```{r supp_setup, include = FALSE}
 import::here("data.table", "fread", "uniqueN")
