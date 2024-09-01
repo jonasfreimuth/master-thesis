@@ -174,15 +174,19 @@ on marker selection (Supp. Figures \@ref(fig:pred-cat-perf-supp-plt) and
 
 ## Conclusion
 
+<!-- If one has to choose BayesPrism works pretty well on these data when using
+all data possible. Improvement on bulk data not that good actually. Seems really
+good method is needed for actual improvements. -->
+
 The principle behind deconvPure is sound and capable of inferring the expression
 profile of a cell type from deconvolution residuals when excluding that cell
 type's profile from the reference. The method has been benchmarked on pseudo-
 bulk data and achieved high accuracy across a wide range of tumor purities.
-deconvPure has shown itself to be capable of reasonable estimation accuracy on
-cancer expression profiles from bulk data, having similar performance to the
-more advanced method of BayesPrism. However, I could not demonstrate a clear
-improvement in prediction accuracy for models using cancer expression profiles
-estimated by deconvPure.
+However, while deconvPure has shown itself to be capable of reasonable
+estimation accuracy on cancer expression profiles from bulk data, it could not
+demonstrate an improvement over the inherent information in bulk expression. As
+a consequence, I could not demonstrate a clear improvement in prediction
+accuracy for models using cancer expression profiles estimated by deconvPure.
 
 Since deconvPure is a very simple method, it has multiple straightforward
 avenues of further improving its estimation accuracy. The decrease in cell type
