@@ -102,10 +102,12 @@ samples than on pseudo-bulks assembled by randomly sampling cells across all
 tumor samples.
 
 The performances of BayesPrism on bulk data using random markers is in line with
-what @chu.2022 found when benchmarking the method on pseudo-bulks. The apparent
-low and variable performance on BayesPrism on pseudo-bulk data using Wilcoxon
-based markers may be partly due to the method not allowing for expression
-estimation of non-marker genes. As shown in Supp. Table
+what @chu.2022 found when benchmarking the method on pseudo-bulks. (Although
+curiously, their pseudo-bulk data derived from glioblastoma appears to not have
+as much inherent information for lower tumor purities than mine does.) The
+apparent low and variable performance on BayesPrism on pseudo-bulk data using
+Wilcoxon based markers may be partly due to the method not allowing for
+expression estimation of non-marker genes. As shown in Supp. Table
 \@ref(tab:bp-cexpr-acc-plt-tab), the number of genes on which the correlation
 measures are based are very different, with the small number probably causing
 instability for BayesPrism.
