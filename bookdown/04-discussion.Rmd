@@ -88,18 +88,16 @@ the artificial nature of the data on which this was observed.
 
 ### Comparison to BayesPrism
 
-<!-- TODO Discuss low wilcoxon performance in more detail. -->
-
-<!-- TODO Discuss lower deconvPure performance compared to random pseudo-bulks.
--->
-
 Considering its simplicity, deconvPure's performance on matched pseudo-bulk and
-bulk data was rather good in comparison to BayesPrism. While the latter method
-mostly showed higher accuracy, the difference was not particularly large and
-even disappeared on bulk data for some parameters. However, deconvPure had
-slightly lower estimation accuracy on pseudo-bulks derived from real-world tumor
-samples than on pseudo-bulks assembled by randomly sampling cells across all
-tumor samples.
+bulk data in absolute numbers compared to BayesPrism was rather good, especially
+on bulk data. The slightly lower average estimation accuracy that deconvPure
+achieved on tumor sample derived pseudo-bulks, rather than pseudo-bulks with
+randomly chosen tumor purities, may be partly due to the smaller range of tumor
+purities covered by the former pseudo-bulk construction method. As the previous
+experiments have shown, deconvPure's estimation accuracy is associated with
+estimation accuracy of cancer expression, so it is expected that running the
+method on samples with generally lower tumor purity will produce slightly worse
+estimation accuracy.
 
 The performances of BayesPrism on bulk data using random markers is in line with
 what @chu.2022 found when benchmarking the method on pseudo-bulks. (Although
@@ -125,6 +123,17 @@ bulk data may result in underestimation, but it is the best thing that was close
 to hand. If this is revisited, I believe repeating this comparison using true
 cancer expression data from cell sorted bulk RNA-seq experiments would lead to
 higher accuracy.
+
+deconvPure's inability to estimate cancer expression with higher accuracy than
+the inherent information in bulk profiles is already expected from the previous
+experiment. The almost complete lack of samples on which it managed to beat out
+the inherent bulk information adds further explanation to the lower overall
+accuracy. It is not only due to the smaller range of tumor purities covered, but
+also due to the data examined. That BayesPrism did achieve higher estimation
+accuracy than inherent information, seems to indicate that the simple
+approach that deconvPure represents is not sufficient to address the
+challenges that accurately decomposing the bulk expression profile into cell
+type specific profiles poses.
 
 ### Prediction
 
