@@ -430,7 +430,8 @@ trained on raw bulk data.
 
 ### Comparison to BayesPrism
 
-<!-- TODO Characterize real-world bulk data. -->
+<!-- TODO Characterize real-world bulk data. Add table explaining cancer content
+-->
 
 To compare my transcriptome cleaning method to an established state-of-the-art
 method, I applied both deconvPure and BayesPrism to pseudo-bulks & bulk RNA-seq
@@ -447,8 +448,9 @@ pseudo-bulks not from random cell indices, but rather used all cells belonging
 to a distinct tumor sample in the original data. As mentioned, a subset of 24
 tumor samples examined by @wu.2021 has also been processed bulk RNA-seq,
 allowing me to directly compare performance on pseudo-bulk and real-world bulk
-RNA-seq data. For comparability, only those 24 samples were then used for both
-bulk and pseudo-bulk data. To compute references, I used the same set of
+RNA-seq data. Of those, only 18 included cells annotated as belonging to the
+cancer cell type. For comparability, only those 18 samples were then used for
+both bulk and pseudo-bulk data. To compute references, I used the same set of
 thresholds on the marker genes and contrasted across marker selection methods,
 but did not include the contrasting across other reference parameters to
 simplify the analysis. For these other parameters, I used the values expected to
