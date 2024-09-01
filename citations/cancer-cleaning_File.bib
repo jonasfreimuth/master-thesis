@@ -1280,6 +1280,65 @@
   doi		= {10.18637/jss.v028.i05}
 }
 
+@Article{	  kumar.2019,
+  abstract	= {Cancer is one of the leading cause of death, worldwide.
+		  Many believe that genomic data will enable us to better
+		  predict the survival time of these patients, which will
+		  lead to better, more personalized treatment options and
+		  patient care. As standard survival prediction models have a
+		  hard time coping with the high-dimensionality of such gene
+		  expression data, many projects use some dimensionality
+		  reduction techniques to overcome this hurdle. We introduce
+		  a novel methodology, inspired by topic modeling from the
+		  natural language domain, to derive expressive features from
+		  the high-dimensional gene expression data. There, a
+		  document is represented as a mixture over a relatively
+		  small number of topics, where each topic corresponds to a
+		  distribution over the words; here, to accommodate the
+		  heterogeneity of a patient's cancer, we represent each
+		  patient ($\approx$ document) as a mixture over
+		  cancer-topics, where each cancer-topic is a mixture over
+		  gene expression values ($\approx$ words). This required
+		  some extensions to the standard LDA model-e.g., to
+		  accommodate the real-valued expression values-leading to
+		  our novel discretized Latent Dirichlet Allocation (dLDA)
+		  procedure. After using this dLDA to learn these
+		  cancer-topics, we can then express each patient as a
+		  distribution over a small number of cancer-topics, then use
+		  this low-dimensional {\textquotedbl}distribution
+		  vector{\textquotedbl} as input to a learning
+		  algorithm-here, we ran the recent survival prediction
+		  algorithm, MTLR, on this representation of the cancer
+		  dataset. We initially focus on the METABRIC dataset, which
+		  describes each of n = 1,981 breast cancer patients using
+		  the r = 49,576 gene expression values, from microarrays.
+		  Our results show that our approach (dLDA followed by MTLR)
+		  provides survival estimates that are more accurate than
+		  standard models, in terms of the standard Concordance
+		  measure. We then validate this
+		  {\textquotedbl}dLDA+MTLR{\textquotedbl} approach by running
+		  it on the n = 883 Pan-kidney (KIPAN) dataset, over r =
+		  15,529 gene expression values-here using the mRNAseq
+		  modality-and find that it again achieves excellent results.
+		  In both cases, we also show that the resulting model is
+		  calibrated, using the recent
+		  {\textquotedbl}D-calibrated{\textquotedbl} measure. These
+		  successes, in two different cancer types and expression
+		  modalities, demonstrates the generality, and the
+		  effectiveness, of this approach. The dLDA+MTLR source code
+		  is available at https://github.com/nitsanluke/GE-LDA-Survival.},
+  author	= {Kumar, Luke and Greiner, Russell},
+  year		= {2019},
+  title		= {Gene expression based survival prediction for cancer
+		  patients-A topic modeling approach},
+  pages		= {e0224446},
+  volume	= {14},
+  number	= {11},
+  journal	= {PloS one},
+  doi		= {10.1371/journal.pone.0224446},
+  file		= {document:Attachments/document.pdf:application/pdf}
+}
+
 @Article{	  lahdesmaki.2005,
   abstract	= {BACKGROUND
 		  
@@ -2884,6 +2943,69 @@
   journal	= {Pharmacology {\&} therapeutics},
   doi		= {10.1016/j.pharmthera.2020.107753},
   file		= {nihms-1650386:Attachments/nihms-1650386.pdf:application/pdf}
+}
+
+@Article{	  xu.2022,
+  abstract	= {BACKGROUND
+		  
+		  Breast cancer (BC) is the most common malignancy in women
+		  with high heterogeneity. The heterogeneity of cancer cells
+		  from different BC subtypes has not been thoroughly
+		  characterized and there is still no valid biomarker for
+		  predicting the prognosis of BC patients in clinical
+		  practice.
+		  
+		  METHODS
+		  
+		  Cancer cells were identified by calculating single cell
+		  copy number variation using the inferCNV algorithm. SCENIC
+		  was utilized to infer gene regulatory networks. CellPhoneDB
+		  software was used to analyze the intercellular
+		  communications in different cell types. Survival analysis,
+		  univariate Cox, least absolute shrinkage and selection
+		  operator (LASSO) regression and multivariate Cox analysis
+		  were used to construct subtype specific prognostic models.
+		  
+		  RESULTS
+		  
+		  Triple-negative breast cancer (TNBC) has a higher
+		  proportion of cancer cells than subtypes of HER2+ BC and
+		  luminal BC, and the specifically upregulated genes of the
+		  TNBC subtype are associated with antioxidant and chemical
+		  stress resistance. Key transcription factors (TFs) of tumor
+		  cells for three subtypes varied, and most of the TF-target
+		  genes are specifically upregulated in corresponding BC
+		  subtypes. The intercellular communications mediated by
+		  different receptor-ligand pairs lead to an inflammatory
+		  response with different degrees in the three BC subtypes.
+		  We establish a prognostic model containing 10 genes (risk
+		  genes: ATP6AP1, RNF139, BASP1, ESR1 and TSKU; protective
+		  genes: RPL31, PAK1, STARD10, TFPI2 and SIAH2) for luminal
+		  BC, seven genes (risk genes: ACTR6 and C2orf76; protective
+		  genes: DIO2, DCXR, NDUFA8, SULT1A2 and AQP3) for HER2+ BC,
+		  and seven genes (risk genes: HPGD, CDC42 and PGK1;
+		  protective genes: SMYD3, LMO4, FABP7 and PRKRA) for TNBC.
+		  Three prognostic models can distinguish high-risk patients
+		  from low-risk patients and accurately predict patient
+		  prognosis.
+		  
+		  CONCLUSIONS
+		  
+		  Comparative analysis of the three BC subtypes based on
+		  cancer cell heterogeneity in this study will be of great
+		  clinical significance for the diagnosis, prognosis and
+		  targeted therapy for BC patients.},
+  author	= {Xu, Jieyun and Qin, Shijie and Yi, Yunmeng and Gao, Hanyu
+		  and Liu, Xiaoqi and Ma, Fei and Guan, Miao},
+  year		= {2022},
+  title		= {Delving into the Heterogeneity of Different Breast Cancer
+		  Subtypes and the Prognostic Models Utilizing scRNA-Seq and
+		  Bulk RNA-Seq},
+  volume	= {23},
+  number	= {17},
+  journal	= {International journal of molecular sciences},
+  doi		= {10.3390/ijms23179936},
+  file		= {ijms-23-09936:Attachments/ijms-23-09936.pdf:application/pdf}
 }
 
 @Article{	  yoshihara.2013,
