@@ -383,10 +383,17 @@ I also assigned each gene a marker score, quantifying its likely usefulness as a
 marker gene in the deconvolution reference. Genes with a good score would have
 an expression signature across cell types which would allow for clear
 identification of just a single cell type by having particularly high or low
-expression in just that cell type. I explored multiple ways to determine this
-score during preliminary experiments [DESeq2 from @love.2014; and Hampel filter
-from @davies.1993], but ultimately chose a simple Wilcoxon rank-sum test
-[@wilcoxon.1945] for comparing each cell type to the pooled remaining cell types
+expression in just that cell type. I did this to potentially speed up the
+deconvolution step, which should run faster when operating on a reduced set of
+genes, with a minimal reduction in cell type accuracy when choosing an
+appropriate set of marker genes. @avilacobos.2020 already tested some marker
+selection strategies for NNLS based deconvolution, and found no large impact on
+cell type accuracy when using sufficiently specific markers.
+
+I explored multiple ways to determine the marker score during preliminary
+experiments [DESeq2 from @love.2014; and Hampel filter from @davies.1993], but
+ultimately chose a simple Wilcoxon rank-sum test [@wilcoxon.1945] for comparing
+each cell type to the pooled remaining cell types
 [via `FindAllMarkers` from the `R` Seurat package v.5, @hao.2023] for its
 combination of relative simplicity and accuracy. The marker score for the
 Wilcoxon test based marker selection was the test p-Value [adjusted for multiple
