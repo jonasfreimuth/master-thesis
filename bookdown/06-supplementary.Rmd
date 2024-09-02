@@ -42,11 +42,15 @@ here::i_am("bookdown/06-supplementary.Rmd")
 
 import::here(
   "utils.R",
+  "load_param_table_dir",
   "main_plot_handles_from_path",
   "supp_plot_handles_from_path",
   .character_only = TRUE,
   .directory = here("modules")
 )
+
+param_table_dir <- here("cancer-cleaning-output/param_tables")
+param_tables <- load_param_table_dir(param_table_dir)
 
 analysis_root <- "cancer-cleaning-output"
 supp_plot_dir <- "supplementary_plots"
@@ -216,6 +220,31 @@ main_plot_data_paths$pbulk_cexpr_acc %>%
     columns = 1:2, valign = "top", row_group_label_position = "first"
   ) %>%
   kable_minimal()
+```
+
+```{r bp-sample-data}
+param_tables$table_objs$bp$sample_data %>%
+  select(sample, n_celltype, prop_true, tumor_purity) %>%
+  mutate(
+    across(
+      where(is.numeric),
+      \(col) {
+        col %>%
+          round(3) %>%
+          format(big.mark = "'")
+      }
+    )
+  ) %>%
+  kbl(
+    caption = paste(
+      "Samples from Wu et al. (2021) used during the comparison between",
+      "BayesPrism."
+    ),
+    col.names = c(
+      "Sample ID", "N cell types with expression", "N Cancer cells",
+      "Tumor purity"
+    )
+  )
 ```
 
 ```{r bp-cexpr-acc-plt-tab}
