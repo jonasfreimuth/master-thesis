@@ -494,20 +494,23 @@ the progression-free interval (PFI) for the patient.
 
 The PAM50 subtype classifies a breast cancer tumor into one of five categories
 ("Basal", "Her2", "LumA", "LumB", "Normal") based on the microarray expression
-of a set 50 genes. The PFI on the other hand, is a property of the patients'
-disease progression. Compared to the overall survival of the patient which may
-be of greater interest, it has the advantage of greater availability of data due
-to shorter followup times [@liu.2018]. As predicting a clinical outcome from
-expression data alone is bound to result in low accuracy, I included the age and
-tumor status at diagnosis in the prediction model along with the expression data
-during model training. To ensure consistent data, I restricted analysis to
-samples of primary solid tumors (excluding normal and metastatic tissue
-samples). After that, I was left with `r txt_pr_cat_stat("n_sample")` tumor
-samples with data on the PAM50 subtype. Since the PFI is a variable on the
-patient level, I restricted the bulk data for training and evaluating models
-predicting this variable to one sample per patient and choosing the first sample
-recorded. This left `r txt_pr_srv_stat("n_sample")` samples with PFI data and
-data on the clinical variables mentioned above.
+of a set 50 genes. Due to the simplicity of its definition, it should represent
+a relatively easy sample property to predict, with clear differences between the
+type of data used (estimated cancer expression vs. bulk). The PFI on the other
+hand, is a property of the patients' disease progression. Compared to the
+overall survival of the patient which may be of greater interest, it has the
+advantage of greater availability of data due to shorter followup times
+[@liu.2018]. As predicting a clinical outcome from expression data alone is
+bound to result in low accuracy, I included the age and tumor status at
+diagnosis in the prediction model along with the expression data during model
+training. To ensure consistent data, I restricted analysis to samples of primary
+solid tumors (excluding normal and metastatic tissue samples). After that, I was
+left with `r txt_pr_cat_stat("n_sample")` tumor samples with data on the PAM50
+subtype. Since the PFI is a variable on the patient level, I restricted the bulk
+data for training and evaluating models predicting this variable to one sample
+per patient and choosing the first sample recorded. This left
+`r txt_pr_srv_stat("n_sample")` samples with PFI data and data on the clinical
+variables mentioned above.
 
 To generate expression estimates, I applied deconvPure to all bulk data samples,
 deconvoluting it using references derived from the @wu.2021 scRNA-seq data as in
