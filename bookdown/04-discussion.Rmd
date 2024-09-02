@@ -141,25 +141,27 @@ type specific profiles poses.
 
 ### Prediction
 
+The prediction of a tumor sample's PAM50 subtype did not produce results as
+clear as expected. The range of the average model accuracies is rather narrow,
+indicating that using estimated cancer expression or raw bulk data does not
+matter either way. From the overall poor prediction accuracy for PFI, it is
+clear that this is a challenging outcome to predict. deconvPure was almost
+entirely unable to help in predicting PFI, even counterproductive when
+considering the considerably higher accuracy of the model trained with matched
+bulk data. BayesPrism's prediction leading to a slightly better model for
+predicting PFI could still be an indication that an improvement in prediction
+accuracy by using estimated cancer expression is possible at all. However, when
+considering the full picture with marker selection, the lack of a general
+pattern of this, makes this outcome seem rather to be due to chance (Supp.
+Figure \@ref(fig:pred-srv-perf-supp-plt), Supp. Table
+\@ref(tab:pred-srv-perf-tab)).
+
 Considering how similar accuracies of models predicting cancer subtype from both
 estimated cancer expression and matched bulk data were, it seems unlikely that
 using estimated cancer expression provides a clear benefit over simply using
 bulk expression data. Nevertheless, the gene set used for model training appears
 to have an influence on the prediction accuracy, with the gene set used by
 BayesPrism being optimal, at least for predicting cancer subtype.
-
-<!-- TODO Discuss PAM50. -->
-
-From the overall poor prediction accuracy for PFI, it is clear that this is a
-challenging outcome to predict. deconvPure was almost entirely unable to help in
-predicting PFI, even counterproductive when considering the considerably higher
-accuracy of the model trained with matched bulk data. BayesPrism's prediction
-leading to a slightly better model for predicting PFI could still be an
-indication that an improvement in prediction accuracy by using estimated cancer
-expression is possible at all. However, when considering the full picture with
-marker selection, the lack of a general pattern of this, makes this outcome seem
-rather to be due to chance (Supp. Figure \@ref(fig:pred-srv-perf-supp-plt),
-Supp. Table \@ref(tab:pred-srv-perf-tab)).
 
 The similar prediction accuracy between models trained on estimated cancer
 expression and bulk expression on both prediction tasks may be explained in
