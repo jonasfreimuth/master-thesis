@@ -34,13 +34,17 @@ simulation experiments. The high correlations achieved across parameter
 combinations are even more surprising when considering the small amount of
 marker genes that were used to estimate cell type counts during some
 deconvolutions (Supp. Table \@ref(tab:pbulk-cexpr-acc-tab)). The unexpectedly
-high estimation accuracy, barely influenced by the amount of marker genes used
-during deconvolution, could be explained by the relationship of cell type
-expression profiles among each other. As seen in Supp. Figure
-\@ref(fig:rnd-sim-ground-truth) (D), during random simulation there was
-essentially no co-linearity between cell types. This is not the case, however,
-for the pseudo-bulks (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (D) &
-\@ref(fig:pbulk-sim-diag-2) (D)).
+high estimation accuracy, regardless of the reference type used, and barely
+influenced by the amount of marker genes used during deconvolution, could be
+explained by the relationship of cell type expression profiles among each other.
+As seen in Supp. Figure \@ref(fig:rnd-sim-ground-truth) (D), during random
+simulation there was essentially no co-linearity between cell types. This is not
+the case, however, for the pseudo-bulks (Supp. Figure
+\@ref(fig:pbulk-sim-diag-1) (D) & \@ref(fig:pbulk-sim-diag-2) (D)), where the
+large amounts of mutual correlation between cell types may be responsible for
+the high estimation accuracy. The high co-linearity observed for the pseudobulks
+could also be the driver of the high amount of information on cancer expression
+present in the bulk (see below).
 
 Also, the absence of a significant effect of the type of marker selection
 methods used on estimation accuracy, especially when excluding the cancer
