@@ -490,15 +490,16 @@ The data comprised all samples from 1'095 patients in the TCGA-BRCA project with
 bulk RNA-seq data available. I also retrieved data on survival endpoints derived
 from curated clinical data from @liu.2018 for the corresponding tumor samples. I
 used this data to predict both the PAM50 subtype [@parker.2009] of a tumor and
-the progression-free interval (PFI) for the patient. The PAM50 subtype
-classifies a breast cancer tumor into one of five categories ("Basal", "Her2",
-"LumA", "LumB", "Normal") based on the microarray expression of a set 50 genes.
-The PFI on the other hand, is a property of the patients' disease progression.
-Compared to the overall survival of the patient which may be of greater
-interest, it has the advantage of greater availability of data due to shorter
-followup times [@liu.2018]. As predicting a clinical outcome from expression
-data alone is bound to result in low accuracy, I included the age and tumor
-status at diagnosis in the prediction model along with the expression data
+the progression-free interval (PFI) for the patient.
+
+The PAM50 subtype classifies a breast cancer tumor into one of five categories
+("Basal", "Her2", "LumA", "LumB", "Normal") based on the microarray expression
+of a set 50 genes. The PFI on the other hand, is a property of the patients'
+disease progression. Compared to the overall survival of the patient which may
+be of greater interest, it has the advantage of greater availability of data due
+to shorter followup times [@liu.2018]. As predicting a clinical outcome from
+expression data alone is bound to result in low accuracy, I included the age and
+tumor status at diagnosis in the prediction model along with the expression data
 during model training. To ensure consistent data, I restricted analysis to
 samples of primary solid tumors (excluding normal and metastatic tissue
 samples). After that, I was left with `r txt_pr_cat_stat("n_sample")` tumor
@@ -537,8 +538,10 @@ leakage.
 
 To train machine learning models predicting the PAM50 subtype of a tumor sample,
 I used a linear kernel support vector machine (SVM) approach via the `caret`
-package [@kuhn.2008], optimizing simple accuracy of class predictions. Models
-were trained using `r txt_pr_cat("cv_fold")`-fold cross-validation, repeated
+package [@kuhn.2008], optimizing simple accuracy of class predictions. Previous
+work on microarray data has shown SVM to be optimal for classifying tumor
+samples in such a way [@statnikov.2008]. Models were trained using
+`r txt_pr_cat("cv_fold")`-fold cross-validation, repeated
 `r txt_pr_cat("cv_repeat")` times. I used the "Synthetic Minority Oversampling
 Technique" [SMOTE, @chawla.2002] for resampling during each training iteration
 to ensure balanced representation of classes.
