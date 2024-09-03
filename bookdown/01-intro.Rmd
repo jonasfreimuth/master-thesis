@@ -21,7 +21,7 @@ improve model performance.
 
 Researchers have focused on dissecting the combined expression of heterogeneous
 cell mixtures since the widespread adoption of bulk gene expression
-quantification technologies, such as microarrays
+quantification technologies in the form of microarrays
 [@venet.2001; @ghosh.2004; @stuart.2004]. Initially, most methods aimed to infer
 only differentially expressed genes between cell types [@ghosh.2004], but later
 methods could estimate cell type-specific expression [@lahdesmaki.2005], often
@@ -46,11 +46,11 @@ $\mathbf{C}$ are estimated by solving:
 \end{equation}
 
 This is feasible with some simple constraints that allow for a tractable, unique
-solution [@venet.2001]. However, this innovative approach had several drawbacks.
+solution [@venet.2001]. However, this approach still had several drawbacks.
 While not a significant issue for deconvoluting only two cell types, the
-resulting cell type-specific estimates for abundance and gene expression could
-not be directly attributed to specific cell types. The number of cell types had
-to be known a priori, and misspecification would bias model results
+resulting group-specific estimates for abundance and gene expression could not
+be directly attributed to specific cell types. The number of expected cell types
+had to be known a priori, and misspecification would bias model results
 [@lahdesmaki.2005]. Additionally, model solutions depended on the set of
 samples, with a low number of samples leading to poorer estimates
 [@repsilber.2010]. @gaujoux.2012 improved the NMF approach by incorporating
