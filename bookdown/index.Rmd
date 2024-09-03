@@ -70,10 +70,10 @@ be attributed to individual cell types. If pure expression of cancer cells is of
 interest, the expression of other cell types in the sample (the tumor
 microenvironment, TME) can obscure the cancer expression signal. The wealth of
 existing tumor bulk expression data could be used even more effectively if it
-were possible to reduce or remove this noise. I explored the feasibility of
+were possible to reduce or remove this noise. Here, I explore the feasibility of
 using simple, least-squares based cell type deconvolution to estimate pure
 cancer expression from bulk RNA-seq data of tumor samples. By intentionally
-mis-specifying the deconvolution model, I hoped to enrich the cancer expression
+mis-specifying the deconvolution model, I aim to enrich the cancer expression
 signal in the model residuals. In simulation experiments I was able to
 demonstrate that this works for normally distributed data and is tolerant to
 simulated technical noise. When applied to simulated bulk data, I still achieved
