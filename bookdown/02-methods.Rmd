@@ -156,12 +156,9 @@ least-squares deconvolution since they allow quantification of actual cell type
 counts rather than proportions only, since the profile corresponds to the
 expression of a single cell. For this reason, along with the need to construct
 pseudo bulks for which single-cell data is needed, I generally use scRNA derived
-references here (except for random simulations). To construct reference profiles
-from scRNA-seq data, I simply averaged all cells annotated as belonging to the
-same cell type. I also restricted the set of genes used for deconvolution to the
-most discriminant ones (see the later
-[pseudobulk section](#scrna-seq-pseudo-bulks)), to increase deconvolution
-accuracy and reduce computation time.
+references here (with the exception of random data simulations). To construct
+reference profiles from scRNA-seq data, I simply averaged all cells annotated as
+belonging to the same cell type.
 
 After reference creation, the computation of residuals as a measure for true
 expression of cancerous cells is relatively straightforward. First the
@@ -410,10 +407,10 @@ I computed reference profiles across a spectrum of parameters, one reference for
 each combination. These included the two marker selection strategies, several
 thresholds selecting the top `r txt_ss_stc("thresholds")` of the best scoring
 marker genes (chosen for empahsis on lower thresholds), and whether the cancer
-cell type expression profile was included. Note however, that a thresholds for
-the different marker selection methods result in marker sets of different sizes
-as a threshold of one (all markers) for Wilcoxon based selection implies all
-genes with a $p$-value below 0.05, but for random markers it implies all genes.
+cell type expression profile was included. Note however, that thresholds for the
+different marker selection methods result in marker sets of different sizes as a
+threshold of one (all markers) for Wilcoxon based selection implies all genes
+with a $p$-value below 0.05, but for random markers it implies all genes.
 
 I generated `r txt_ss_stc("n_pseudobulk")` pseudo-bulks by sampling
 `r txt_ss_pb("nominal_n_cell")` cells (twice the median number of cells per
@@ -427,13 +424,14 @@ across all deconvolutions with the same set of parameters.
 
 ## Evaluation
 
-After exploring the behavor of deconvPure under ideal conditions, I compared its
-performance to an established method. First, I tested performance on correctly
-inferring true cancer expression in both pseudo-bulks and actual RNA-sequencing
-data. Second, I used cancer expression predictions of bulk RNA-seq data to train
-machine learning models predicting tumor subtype and progression free interval
-(PFI) and compared the performance of both BayesPrism and deconvPure to models
-trained on raw bulk data.
+After exploring the behavor of deconvPure under ideal conditions, I evaluated
+its performance by comparing it to an established method and attempting to use
+the cancer expression estimates for clinical predictions. First, I tested
+performance on correctly inferring true cancer expression in both pseudo-bulks
+and actual RNA-sequencing data. Second, I used cancer expression predictions of
+bulk RNA-seq data to train machine learning models predicting tumor subtype and
+progression free interval (PFI) and compared the performance of both BayesPrism
+and deconvPure to models trained on raw bulk data.
 
 ### Comparison to BayesPrism
 
@@ -442,26 +440,26 @@ method, I applied both deconvPure and BayesPrism to pseudo-bulks & bulk RNA-seq
 data of tumor samples from @wu.2021. I chose BayesPrism out of the three high
 resolution *in-silico* dissection methods mentioned above since it is
 specifically designed for tumor samples and integrates well with my existing
-analysis framework since both are written in `R`. Here I use the `InstaPrism`
-implementation [@hu.2023] providing substantial speedup compared to the
-original.
+analysis framework since both are written in `R` [@rcoreteam.2023]. Here I use
+the `InstaPrism` implementation [@hu.2023] providing substantial speedup
+compared to the original.
 
 The general methodology for the comparison to BayesPrism was similar to the
 previous scRNA-seq based [section](#scrna-seq-pseudo-bulks). However, I derived
 pseudo-bulks not from random cell indices, but rather used all cells belonging
-to a distinct tumor sample in the original data. As mentioned, a subset of 24
-tumor samples examined by @wu.2021 has also been processed bulk RNA-seq,
-allowing me to directly compare performance on pseudo-bulk and real-world bulk
-RNA-seq data. Of those, only 18 included cells annotated as belonging to the
-cancer cell type. For comparability, only those 18 samples were then used for
-both bulk and pseudo-bulk data, see Supp. Table \@ref(tab:bp-sample-data) for
-which samples were used. To compute references, I used the same set of
-thresholds on the marker genes and contrasted across marker selection methods,
-but did not include the contrasting across other reference parameters to
-simplify the analysis. For these other parameters, I used the values expected to
-lead to optimal results, namely including cancer splitting, and marker gene
-quality control. Lastly, I deconvoluted every bulk and pseudo-bulk using every
-reference as before, except using both deconvPure and BayesPrism.
+to a distinct tumor sample in the original data. A subset of 24 tumor samples
+from the dataset by @wu.2021 has bulk RNA-seq data available, allowing me to
+directly compare performance on pseudo-bulk and real-world bulk RNA-seq data. Of
+those, only 18 included cells annotated as belonging to the cancer cell type.
+For comparability, only those 18 samples were then used for both bulk and
+pseudo-bulk data, see Supp. Table \@ref(tab:bp-sample-data) for which samples
+were used. To compute references, I used the same set of thresholds on the
+marker genes and contrasted across marker selection methods, but did not include
+the contrasting across other reference parameters to simplify the analysis. For
+these other parameters, I used the values expected to lead to optimal results,
+namely including cancer splitting, and marker gene quality control. Lastly, I
+deconvoluted every bulk and pseudo-bulk using every reference as before, except
+using both deconvPure and BayesPrism.
 
 I extracted and processed residuals from deconvPure the same as in the scRNA-seq
 based pseudo-bulks [section](#scrna-seq-pseudo-bulks). Extracting the
@@ -518,7 +516,7 @@ accuracy. (I still include results generated with different marker selection
 methods and thresholds in the supplementary materal, Supp. Figures
 \@ref(fig:pred-cat-perf-supp-plt) & \@ref(fig:pred-srv-perf-supp-plt), Supp.
 Tables \@ref(tab:pred-cat-perf-tab) & \@ref(tab:pred-srv-perf-tab)). To put the
-results into context, I also ran BayesPrism on the same data again. However, as
+results into context, I also ran BayesPrism on the same data. However, as
 BayesPrism is not able to estimate expression for non-marker genes, there is a
 possibility that differences in performances of the models trained on the
 expression estimates are confounded by the differences in the number of genes.
