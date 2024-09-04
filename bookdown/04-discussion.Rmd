@@ -124,10 +124,11 @@ on the other hand, technical noise shouldn't be a factor impacting the
 estimation accuracy as mixtures are created by simple addition of cell
 expression. Using an appropriate reference is both one of the most difficult and
 important steps in leas-squares based deconvolution [@qiao.2012]. As outlined in
-the [methods](#transcriptome-cleaning-overview), the reference profile needs to
-represent a single cell, necessitating the use of scRNA-seq data. This however
-introduces its own method specific biases relevant for devonvolution, such as
-differences in tissue dissociation across cell types [@lambrechts.2018].
+the methods (Section \@ref(transcriptome-cleaning-overview)), the reference
+profile needs to represent a single cell, necessitating the use of scRNA-seq
+data. This however introduces its own method specific biases relevant for
+devonvolution, such as differences in tissue dissociation across cell types
+[@lambrechts.2018].
 
 An additional source of error for estimation accuracies on bulk data is the true
 value used for the computation of correlations itself. Due to the differences in
@@ -191,12 +192,11 @@ deconvPure to predict the cancer expression profile of a bulk with higher
 accuracy than inherent information seen in previous sections, the lower
 predictive ability of the models is not surprising. The fact that BayesPrism did
 manage to improve model accuracy also fits with the superior estimation accuracy
-demonstrated on bulk data during the
-[comparison section](#comparison-to-bayesprism). However, a consistent
-improvement in accuracy over matched bulk data would be expected then, but this
-is not how the performance across thresholds on marker selection behaved (Supp.
-Figures \@ref(fig:pred-cat-perf-supp-plt) and
-\@ref(fig:pred-srv-perf-supp-plt)).
+demonstrated on bulk data during the previous comparison (Section
+\@ref(res-comparison-to-bayesprism)). However, a consistent improvement in
+accuracy over matched bulk data would be expected then, but this is not how the
+performance across thresholds on marker selection behaved (Supp. Figures
+\@ref(fig:pred-cat-perf-supp-plt) and \@ref(fig:pred-srv-perf-supp-plt)).
 
 ## Conclusion
 

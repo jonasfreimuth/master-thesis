@@ -38,7 +38,7 @@ plot_caps <- plot_handles$plot_caps
 
 ## Proof of concept
 
-### Normally distributed simulation
+### Normally distributed simulation {#res-normally-dist-sim}
 
 During simulation using normally distributed data deconvPure's performance
 behaved as expected. The estimation accuracy for cancer expression via
@@ -92,7 +92,7 @@ for higher tumor purities as inherent information of the bulk rose in turn.
 include_graphics(plot_paths$rnd_sim)
 ```
 
-### scRNA-seq pseudo-bulks
+### scRNA-seq pseudo-bulks {#res-scrna-seq-pseudo-bulks}
 
 When benchmarking deconvPure on pseudo-bulks derived from scRNA-seq data, the
 accuracy of estimated cancer expression from absolute values of model residuals
@@ -161,7 +161,7 @@ include_graphics(plot_paths$pbulk_acc_v_prop)
 
 ## Evaluation
 
-### Comparison to BayesPrism
+### Comparison to BayesPrism {#res-comparison-to-bayesprism}
 
 When comparing deconvPure to BayesPrism on pseudo-bulk and bulk RNA-seq data,
 both showed similar behavior with BayesPrism mostly outperforming deconvPure
@@ -209,12 +209,12 @@ purity similar to previous sections, but not as clear due to the lower amount of
 samples and reduced range in tumor purity (0-70% cancer cells by proportion,
 according to scRNA-seq data; Figure \@ref(fig:bp-acc-v-prop-plt)). On
 pseudo-bulks, the pattern for deconvPure is also similar to the previous
-[pseudo-bulk simulation experiments](#scrna-seq-pseudo-bulks): Low variability
-on random markers, higher variability for Wilcoxon based markers, mostly worse
-than inherent association of bulk and cancer expression. The one exception is
-that, on pseudo-bulks derived from real-world samples and across parameters,
-deconvPure manged to outperform the inherent association only on a single
-pseudo-bulk, and that only by a small margin.
+pseudo-bulk simulation experiments (Section \@ref(res-scrna-seq-pseudo-bulks)):
+Low variability on random markers, higher variability for Wilcoxon based
+markers, mostly worse than inherent association of bulk and cancer expression.
+The one exception is that, on pseudo-bulks derived from real-world samples and
+across parameters, deconvPure manged to outperform the inherent association only
+on a single pseudo-bulk, and that only by a small margin.
 
 BayesPrism by comparison, was capable of slightly outperforming the inherent
 association between bulk and cancer expression (no statistical test performed)
