@@ -71,6 +71,16 @@ expression in one cell type only). This can lead to variable estimation accuracy
 if those marker genes are not consistently present across samples, or be subject
 to variation in expression or detection themselves.
 
+The slightly inconsistent pattern of average cancer expression estimates across
+thresholds could be an artifact of the method of ordering marker genes I used. I
+designated the $p$-value as the metric, and lower values as more optimal, but
+that may be not entirely appropriate. @avilacobos.2020 rather used the
+fold-change of the gene expression between the cells belonging to a type and the
+remaining types as the metric determining the optimal markger genes. When
+ordering by $p$-value, the optimal marker genes by the fold-change metric could
+already be removed at tighter thresholds, leading to unexpectedly low
+performance.
+
 The inferior correlation of deconvPure's cancer expression estimates with actual
 cancer expression compared to simple bulk expression adds important context to
 the absolute estimation accuracy. deconvPure, as it is, is not able to provide a
@@ -100,27 +110,39 @@ estimation accuracy.
 The performances of BayesPrism on bulk data using random markers is in line with
 what @chu.2022 found when benchmarking the method on pseudo-bulks. (Although
 curiously, their pseudo-bulk data derived from glioblastoma appears to not have
-as much inherent information for lower tumor purities than mine does.) The
-apparent low and variable performance on BayesPrism on pseudo-bulk data using
-Wilcoxon based markers may be partly due to the method not allowing for
-expression estimation of non-marker genes. As shown in Supp. Table
-\@ref(tab:bp-cexpr-acc-plt-tab), the number of genes on which the correlation
-measures are based are very different, with the small number probably causing
-instability for BayesPrism.
+as much inherent information for lower tumor purities than the breast cancer
+data examined here does.) The apparent low and variable performance on
+BayesPrism on pseudo-bulk data using Wilcoxon based markers may be partly due to
+the method not allowing for expression estimation of non-marker genes. As shown
+in Supp. Table \@ref(tab:bp-cexpr-acc-plt-tab), the number of genes on which the
+correlation measures are based are very different, with the small number
+probably causing instability for BayesPrism.
 
 The lower performance of both methods on bulk RNA-seq data compared to pseudo-
 bulks is expected to a degree, as there is additional noise present in bulk data
 compared to pseudo-bulks, such as different sample preparation. In pseudo-bulks
 on the other hand, technical noise shouldn't be a factor impacting the
 estimation accuracy as mixtures are created by simple addition of cell
-expression. An additional source of error for estimation accuracies on bulk data
-is the true value used for the computation of correlations itself. Due to the
-differences in general expression characteristic mentioned above, using
-scRNA-seq data for the purpose of inferring true cancer expression profiles of
-bulk data may result in underestimation, but it is the best thing that was close
-to hand. If this is revisited, I believe repeating this comparison using true
-cancer expression data from cell sorted bulk RNA-seq experiments would lead to
-higher accuracy.
+expression. Using an appropriate reference is both one of the most difficult and
+important steps in leas-squares based deconvolution [@qiao.2012]. As outlined in
+the [methods](#transcriptome-cleaning-overview), the reference profile needs to
+represent a single cell, necessitating the use of scRNA-seq data. This however
+introduces its own method specific biases relevant for devonvolution, such as
+differences in tissue dissociation across cell types [@lambrechts.2018].
+
+An additional source of error for estimation accuracies on bulk data is the true
+value used for the computation of correlations itself. Due to the differences in
+general expression characteristic mentioned above, using scRNA-seq data for the
+purpose of inferring true cancer expression profiles of bulk data may result in
+underestimation, but it is the best thing that was close to hand. If this is
+revisited, I believe repeating this comparison using true cancer expression data
+from cell sorted bulk RNA-seq experiments would lead to higher accuracy.
+
+The issue of the compromised comparability of the marker selection methods also
+exists here. However, since there seems to be no improvement in using
+thresholded marker genes over just all genes passing quality control (random
+markers at a threshold of one), the lack of comparability of the selection
+methods appears to not be particularly relevant.
 
 deconvPure's inability to estimate cancer expression with higher accuracy than
 the inherent information in bulk profiles is already expected from the previous
@@ -128,10 +150,10 @@ experiment. The almost complete lack of samples on which it managed to beat out
 the inherent bulk information adds further explanation to the lower overall
 accuracy. It is not only due to the smaller range of tumor purities covered, but
 also due to the data examined. That BayesPrism did achieve higher estimation
-accuracy than inherent information, seems to indicate that the simple
-approach that deconvPure represents is not sufficient to address the
-challenges that accurately decomposing the bulk expression profile into cell
-type specific profiles poses.
+accuracy than inherent information, seems to indicate that the simple approach
+that deconvPure represents is not sufficient to address the challenges that
+accurately decomposing the bulk expression profile into cell type specific
+profiles poses.
 
 ### Prediction
 
