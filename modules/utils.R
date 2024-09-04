@@ -173,6 +173,11 @@ render_book <- function(book_root = "./bookdown",
   )
 }
 
+copy_output <- function(from, to) {
+  # Simple, non-fussy wrapper around file.copy.
+  invisible(file.copy(from, to, overwrite = TRUE))
+}
+
 main_plot_handles_from_path <- function(plot_path, plot_prefixes) {
   # Get a list of all the handles available for main plots.
   list(
