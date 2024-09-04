@@ -201,39 +201,44 @@ Figures \@ref(fig:pred-cat-perf-supp-plt) and
 
 ## Conclusion
 
-<!-- If one has to choose BayesPrism works pretty well on these data when using
-all data possible. Improvement on bulk data not that good actually. Seems really
-good method is needed for actual improvements. -->
-
 The principle behind deconvPure is sound and capable of inferring the expression
 profile of a cell type from deconvolution residuals when excluding that cell
-type's profile from the reference. The method has been benchmarked on pseudo-
-bulk data and achieved high accuracy across a wide range of tumor purities.
-However, while deconvPure has shown itself to be capable of reasonable
-estimation accuracy on cancer expression profiles from bulk data, it could not
-demonstrate an improvement over the inherent information in bulk expression. As
-a consequence, I could not demonstrate a clear improvement in prediction
-accuracy for models using cancer expression profiles estimated by deconvPure.
+type's profile from the reference. It has the rare ability of generating
+expression estimates not just on marker genes, but on all shared genes between
+the used reference profiles and the bulk expression data. The method has been
+benchmarked on pseudo- bulk data and achieved high accuracy across a wide range
+of tumor purities. However, while deconvPure has shown itself to be capable of
+reasonable estimation accuracy on cancer expression profiles from bulk data, it
+could not demonstrate an improvement over the inherent information in bulk
+expression. As a consequence, I could not demonstrate a clear improvement in
+prediction accuracy for models using cancer expression profiles estimated by
+deconvPure. Based on the results of this work, I would recommend the use of
+BayesPrism for this task.
 
-Since deconvPure is a very simple method, it has multiple straightforward
-avenues of further improving its estimation accuracy. The decrease in cell type
-accuracy due to the absence of the cancer reference profile could perhaps be
-mitigated by using a two-step approach: First estimating cell type proportions
-accurately, possibly with some other method better able to account for the
-specific challenges of cell type deconvolution, and then using the same approach
-of constructing "fitted values" using reference profiles without including the
-cancer reference. From that a form of residuals could be computed again and used
-as an estimate of cancer expression. Alternatively, the approach used in xCell
-[@aran.2017] of correcting cell type estimates by known "spillover" propensities
-could mitigate the effect of cancer expression being misattributed to other cell
-types and thus leading to selective underestimation of cancer expression. The
-best improvement could probably be achieved by simply using as accurate a
-reference as can be obtained, for example by replicating experimental conditions
-when re-analyzing bulk RNA-seq samples.
+However, since deconvPure is a very simple method, it has multiple
+straightforward avenues of further improving its estimation accuracy. The
+decrease in cell type accuracy due to the absence of the cancer reference
+profile could perhaps be mitigated by using a two-step approach: First
+estimating cell type proportions accurately, possibly with some other method
+better able to account for the specific challenges of cell type deconvolution,
+and then using the same approach of constructing "fitted values" using reference
+profiles without including the cancer reference. From that a form of residuals
+could be computed again and used as an estimate of cancer expression.
+Alternatively, the approach used in xCell [@aran.2017] of correcting cell type
+estimates by known "spillover" propensities could mitigate the effect of cancer
+expression being misattributed to other cell types and thus leading to selective
+underestimation of cancer expression. The best improvement could probably be
+achieved by simply using as accurate a reference as can be obtained, for example
+by replicating experimental conditions when re-analyzing bulk RNA-seq samples.
 
 Further study might include exploring these improvements to deconvPure alongside
-state-of-the-art methods answering actual biological questions. Also, the
-estimation accuracy so far has only been assessed on breast cancer data, as I
-deemed it out of the scope of this work to find other cancer scRNA-seq datasets.
-Perhaps other cancer types have characteristics that are particularly favorable
-or challenging for this approach.
+state-of-the-art methods answering actual clinical questions, as the prediction
+tasks on which I evaluated the expression estimates, were potentially too
+simplistic. In a more realistic setting, better informed by biological
+knowledge, more conclusive results could be generated. Also, the estimation
+accuracy so far has only been assessed on breast cancer data, as I deemed it out
+of the scope of this work to find other cancer scRNA-seq datasets. Perhaps other
+cancer types have characteristics that are particularly favorable or challenging
+for this approach. One example might be the particularly high inherent
+information that breast cancer seems to have compared to the glioblastoma used
+in @chu.2022.
