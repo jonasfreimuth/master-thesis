@@ -154,7 +154,9 @@ scRNA-seq do not have this problem, but are limited in application due to their
 cost. Single cell based reference profiles have a further advantage in
 least-squares deconvolution since they allow quantification of actual cell type
 counts rather than proportions only, since the profile corresponds to the
-expression of a single cell. For this reason, along with the need to construct
+expression of a single cell. This in turn allows the estimation of cancer
+expression on the original scale, otherwise only some normalized expression
+score would be possible. For this reason, along with the need to construct
 pseudo bulks for which single-cell data is needed, I generally use scRNA derived
 references here (with the exception of random data simulations). To construct
 reference profiles from scRNA-seq data, I simply averaged all cells annotated as
