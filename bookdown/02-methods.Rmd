@@ -117,7 +117,7 @@ To reduce the solution space, usually a non-negativity constraint is placed on
 elements of $\mathbf{C}$, as a bulk can't contain negative concentrations
 [@venet.2001]. Adding this constraint, and considering the bulks $\mathbf{b}$
 and associated concentration vectors $\mathbf{c}$ independently, the problem can
-be formulated as
+be formulated as follows:
 
 \begin{equation*}
   \mathbf{b} = \mathbf{S} \mathbf{c}
@@ -223,7 +223,7 @@ counts with their respective reference profiles. For this, cell type counts
 $\mathbf{c}_{sim}$ were randomly selected by first choosing each cell type's
 fraction uniformly at random and then normalizing the fraction of all non-cancer
 cell types to sum to the complement of the fraction of the cancer cell type and
-scaling it up to the number of cells $z$ required.
+scaling it up to the number of cells $z$ required:
 
 \begin{equation*}
   \begin{aligned}
@@ -278,7 +278,7 @@ $\mathbf{N}_{\text{cancer homo.}}$:
 I also optionally simulated cancer cells having more heterogeneous expression
 ($\mathbf{N}_{\text{cancer het.}}$) by using a greater standard deviation for
 simulating their profile deviation. For this I just multiplied the normal
-standard deviation for cell variability by a factor of $x$.
+standard deviation for cell variability by a factor of $x$:
 
 \begin{equation*}
   \begin{aligned}
