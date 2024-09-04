@@ -65,15 +65,16 @@ gotten here without any of them.
 
 Bulk RNA-sequencing (bulk RNA-seq) is now a widely adopted method for
 quantifying gene expression of biological samples, including in cancer research.
-With more advanced but expensive methods becoming available, today bulk RNA-seq
-represents a trade-off between cost and resolution, as expression profiles can't
-be attributed to individual cell types. If pure expression of cancer cells is of
-interest, the expression of other cell types in the sample (the tumor
-microenvironment, TME) can obscure the cancer expression signal. The wealth of
-existing tumor bulk expression data could be used even more effectively if it
-were possible to reduce or remove this noise. Here, I explore the feasibility of
-using simple, least-squares based cell type deconvolution to estimate pure
-cancer expression from bulk RNA-seq data of tumor samples. By intentionally
+With more advanced but expensive methods becoming available, bulk RNA-seq
+represents a trade-off between cost and resolution. Since expression profiles
+can't be attributed to individual cell types, the expression of other cell types
+in the sample (the tumor microenvironment, TME) can obscure the cancer
+expression signal. This represents a challenge for analyses in which the pure
+expression of cancer cells is of interest. The wealth of existing tumor bulk
+expression data could be used even more effectively if it were possible to
+reduce or remove the TME expression. Here, I explore the feasibility of using
+simple, least-squares based cell type deconvolution to estimate pure cancer
+expression from bulk RNA-seq data of tumor samples. By intentionally
 mis-specifying the deconvolution model, I aim to enrich the cancer expression
 signal in the model residuals. In simulation experiments I was able to
 demonstrate that this works for normally distributed data and is tolerant to
