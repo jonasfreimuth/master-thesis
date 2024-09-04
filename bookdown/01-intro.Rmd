@@ -6,8 +6,9 @@ and spatial transcriptomics provide detailed cellular-level expression
 profiling, their high cost limits large-scale, high-quality data generation.
 These datasets, combined with machine-learning applications
 [e.g. @garg.2021; @newell.2022], could significantly enhance cancer research.
-Therefore, improving the usability of tumor bulk RNA-seq data for
-machine-learning tasks is crucial.
+Therefore, improving the usability of tumor bulk RNA-seq data for reasearch, and
+especially machine-learning tasks, is an important effort towards enhancing the
+understanding of this disease [@lei.2022].
 
 The lower resolution of bulk RNA-seq data, typically encompassing entire tissue
 samples, carries the risk of incorporating non-cancerous cells, such as
