@@ -116,7 +116,7 @@ equations for each bulk $k$:
 To reduce the solution space, usually a non-negativity constraint is placed on
 elements of $\mathbf{C}$, as a bulk can't contain negative concentrations
 [@venet.2001]. Adding this constraint, and considering the bulks $\mathbf{b}$
-and associated concentration vectors $\mathbf{c}$ independently the problem can
+and associated concentration vectors $\mathbf{c}$ independently, the problem can
 be formulated as
 
 \begin{equation*}
@@ -221,9 +221,9 @@ For each set of expression profiles, I then simulated the result of a bulk
 RNA-seq experiment $\mathbf{b}_{sim}$ by convoluting randomly sampled cell type
 counts with their respective reference profiles. For this, cell type counts
 $\mathbf{c}_{sim}$ were randomly selected by first choosing each cell type's
-fraction uniformly at random, and then normalizing the fraction of all
-non-cancer cell types to sum to the complement of the fraction of the cancer
-cell type and scaling it up to the number of cells $z$ required.
+fraction uniformly at random and then normalizing the fraction of all non-cancer
+cell types to sum to the complement of the fraction of the cancer cell type and
+scaling it up to the number of cells $z$ required.
 
 \begin{equation*}
   \begin{aligned}
@@ -386,7 +386,7 @@ expression in just that cell type. I did this to potentially speed up the
 deconvolution step, which should run faster when operating on a reduced set of
 genes, with a minimal reduction in cell type accuracy when choosing an
 appropriate set of marker genes. @avilacobos.2020 already tested some marker
-selection strategies for NNLS based deconvolution, and found no large impact on
+selection strategies for NNLS based deconvolution and found no large impact on
 cell type accuracy when using sufficiently specific markers.
 
 I explored multiple ways to determine the marker score during preliminary
@@ -492,12 +492,12 @@ the progression-free interval (PFI) for the patient.
 
 The PAM50 subtype classifies a breast cancer tumor into one of five categories
 ("Basal", "Her2", "LumA", "LumB", "Normal") based on the microarray expression
-of a set 50 genes. Due to the simplicity of its definition, it should represent
-a relatively easy sample property to predict, with clear differences between the
-type of data used (estimated cancer expression vs. bulk). The PFI on the other
-hand, is a property of the patients' disease progression. Compared to the
-overall survival of the patient which may be of greater interest, it has the
-advantage of greater availability of data due to shorter followup times
+of a set of 50 genes. Due to the simplicity of its definition, it should
+represent a relatively easy sample property to predict, with clear differences
+between the type of data used (estimated cancer expression vs. bulk). The PFI on
+the other hand is a property of the patients' disease progression. Compared to
+the overall survival of the patient, which may be of greater interest, it has
+the advantage of greater availability of data due to shorter followup times
 [@liu.2018]. As predicting a clinical outcome from expression data alone is
 bound to result in low accuracy, I included the age and tumor status at
 diagnosis in the prediction model along with the expression data during model
@@ -552,9 +552,9 @@ forests as implemented in the `randomForestSRC` package [@ishwaran.2008]. Here,
 I trained random survival forest models with `r txt_pr_srv("n_tree")` trees by
 first performing hyperparameter tuning for finding the optimal parameters for
 the data. These were the number of randomly chosen variables for splitting at
-each node (parameter `mtry`), and the minimal number of cases that a terminal
+each node (parameter `mtry`) and the minimal number of cases that a terminal
 node of a tree may contain (parameter `nodesize`). The performance for random
-survival forests is measured using the C-index [@harrell.1982], mesuring the
+survival forests is measured using the C-index [@harrell.1982], measuring the
 concordance in the ordering of actual events and of predicted ones.
 
 I evaluated each model on datasets bootstrapped from the test samples using the

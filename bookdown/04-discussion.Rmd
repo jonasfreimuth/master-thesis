@@ -73,7 +73,7 @@ to variation in expression or detection themselves.
 
 The slightly inconsistent pattern of average cancer expression estimates across
 thresholds could be an artifact of the method of ordering marker genes I used. I
-designated the $p$-value as the metric, and lower values as more optimal, but
+designated the $p$-value as the metric and lower values as more optimal, but
 that may be not entirely appropriate. @avilacobos.2020 rather used the
 fold-change of the gene expression between the cells belonging to a type and the
 remaining types as the metric determining the optimal markger genes. When
@@ -91,7 +91,6 @@ Considering the variability of estimation accuracy, however, this seems too
 tenuous to be useful in any real-world application, especially when considering
 the artificial nature of the data on which this was observed.
 
-
 ## Evaluation
 
 ### Comparison to BayesPrism
@@ -108,13 +107,13 @@ method on samples with generally lower tumor purity will produce slightly worse
 estimation accuracy.
 
 The performances of BayesPrism on bulk data using random markers is in line with
-what @chu.2022 found when benchmarking the method on pseudo-bulks. (Although
-curiously, their pseudo-bulk data derived from glioblastoma appears to not have
-as much inherent information for lower tumor purities than the breast cancer
-data examined here does.) The apparent low and variable performance on
-BayesPrism on pseudo-bulk data using Wilcoxon based markers may be partly due to
-the method not allowing for expression estimation of non-marker genes. As shown
-in Supp. Table \@ref(tab:bp-cexpr-acc-plt-tab), the number of genes on which the
+what @chu.2022 found when benchmarking the method on pseudo-bulks. Curiously
+though, their pseudo-bulk data derived from glioblastoma appears to not have as
+much inherent information for lower tumor purities than the breast cancer data
+examined here does. The apparent low and variable performance on BayesPrism on
+pseudo-bulk data using Wilcoxon based markers may be partly due to the method
+not allowing for expression estimation of non-marker genes. As shown in Supp.
+Table \@ref(tab:bp-cexpr-acc-plt-tab), the number of genes on which the
 correlation measures are based are very different, with the small number
 probably causing instability for BayesPrism.
 

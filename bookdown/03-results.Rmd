@@ -40,14 +40,14 @@ plot_caps <- plot_handles$plot_caps
 
 ### Normally distributed simulation
 
-During simulation using normally distributed data, deconvPure's performance
+During simulation using normally distributed data deconvPure's performance
 behaved as expected. The estimation accuracy for cancer expression via
 deconvolution model residuals (Figure \@ref(fig:rnd-sim-plt)) shows clear
 differences across simulation parameters, with the largest difference being
 across reference type.
 
-The average estimation accuracy for cancer expression, (measured by the
-correlation of true and estimated cancer expression) under the homogeneous
+The average estimation accuracy for cancer expression, measured by the
+correlation of true and estimated cancer expression, under the homogeneous
 cancer expression model using a reference with cancer profiles was low across
 the remaining parameters. All differences in averages mentioned are
 statistically significant, based on no 95% CI overlap, see Supp. Table
@@ -58,7 +58,7 @@ added due to numerical instability from extemely small residual values). When
 adding cell variation, some differences in accuracy emerged: For simulations
 where cancer cells behaved like others, absent noise and noise equal to
 biological variability had the same accuracy. The high technical noise group was
-slightly worse, and very high noise led to very low accuracy. Under the model of
+slightly worse and very high noise led to very low accuracy. Under the model of
 cancer cells varying stronger than other cell type's cells, there was an
 appreciable improvement in accuracy compared to the homogeneous model, with the
 behavior of individual groups remaining largely similar to the previous model.
@@ -70,7 +70,7 @@ expression profile from the reference. Here, when not including any cell
 variation, deconvPure is able to perfectly estimate cancer expression, i.e., the
 deconvolution residuals correlate perfectly with the expression profile of the
 bulk mixture. Again, equal and high noise groups showed little difference
-(performance only distinct on none vs. high), and high noise even showing medium
+(performance only distinct on none vs. high) and high noise even showing medium
 accuracy. Including cell variation led to a slight drop in estimation accuracy
 for the three lowest noise groups, now they varied around 0.9 rather than close
 to 1.0, but no clear effect for very high technical noise. Varying cancer
@@ -83,7 +83,7 @@ Modeling cancer expression as more variable than other celltypes increased while
 still including the cancer reference during deconvolution resulted in estimation
 accuracies slighlty above inherent information, but the effect was only present
 for low simulated tumor purities. For all the parameter combinations resulting
-in high overall accuracy on the other hand, the estimation accuracy was always
+in high overall accuracy on the other hand the estimation accuracy was always
 higher than the association of bulk and cancer, showing a benefit of the
 approach over just using bulk expression data. That benefit, however, diminished
 for higher tumor purities as inherent information of the bulk rose in turn.
@@ -125,12 +125,11 @@ I observed a relationship between the proportion of cancer cells in a sample and
 the accuracy of expression estimation (Figure \@ref(fig:pbulk-acc-v-prop-plt)).
 For samples with very small amounts of cancer cells (i.e., low tumor purity),
 the estimation accuracy was very low, but rose sharply with increasing tumor
-purity. For purities higher than about 0.15, the increase in accuracy slowed,
-and became close to linear up to maximum purity, indicating a roughly
-logarithmic relationship. This behavior was constant across parameter
-combinations, only the average accuracy of the near-linear section (i.e., its
-y-axis intercept) differed according to the overall average accuracy of the
-parameter combination.
+purity. For purities higher than about 0.15 the increase in accuracy slowed and
+became close to linear up to maximum purity, indicating a roughly logarithmic
+relationship. This behavior was constant across parameter combinations, only the
+average accuracy of the near-linear section (i.e., its y-axis intercept)
+differed according to the overall average accuracy of the parameter combination.
 
 Using random marker selection resulted in relatively low variation in estimation
 accuracy among samples of similar purity. However, there was no point where the
@@ -165,7 +164,7 @@ include_graphics(plot_paths$pbulk_acc_v_prop)
 ### Comparison to BayesPrism
 
 When comparing deconvPure to BayesPrism on pseudo-bulk and bulk RNA-seq data,
-both showed similar behavior, with BayesPrism mostly outperforming deconvPure
+both showed similar behavior with BayesPrism mostly outperforming deconvPure
 (Figure \@ref(fig:bp-cexpr-acc-plt)). Only BayesPrism was able to reliably
 generate cancer expression estimates with higher accuracy than the inherent
 association between the overall bulk expression profile and true cancer
@@ -199,8 +198,8 @@ more similar, with no clear differences existing for the two loosest thresholds.
 On Wilcoxon based markers, both methods had the lowest estimation accuracies for
 this section, achieving only poor to medium correlations between actual and
 estimated cancer profiles. The trend of better correlation with looser
-thresholds which BayesPrism showed on pseudo-bulks was also present, and my
-methods followed it as well. Lastly, in addition to the generally worse
+thresholds which BayesPrism showed on pseudo-bulks was also present and
+deconvPure followed it as well. Lastly, in addition to the generally worse
 performance in bulk RNA-seq data, deconvPure also showed a general pattern of
 slightly lower performance compared to BayesPrism on this type of data (only
 significant at the second-tightest and loosest threshold).
@@ -229,9 +228,9 @@ relationship of bulk to cancer expression, but also in the estimation accuracy.
 For deconvPure and on estimations using randomly selected markers, the
 estimation accuracy was close, but never than the inherent correlation of bulk
 and cancer expression. On Wilcoxon based markers, there was little association
-between tumor purity and estimation accuracy for all thresholds, and a large gap
+between tumor purity and estimation accuracy for all thresholds and a large gap
 between estimation accuracy and inherent correlation. BayesPrism on the other
-hand, was again able to estimate cancer expression with higher accuracy than the
+hand was again able to estimate cancer expression with higher accuracy than the
 inherent association for most samples when using random marker genes (though
 with some variability across thresholds used). This was no longer the case when
 using Wilcoxon markers though. As with deconvPure, no improvement over the
