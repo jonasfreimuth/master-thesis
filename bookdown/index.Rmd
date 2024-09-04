@@ -92,22 +92,22 @@ improve and become useful for cancer research.
 
 Die Bulk-RNA-Sequenzierung ist heute eine weit verbreitete Methode zur
 Quantifizierung der Genexpression in biologischen Proben, unter anderem in der
-Krebsforschung. Sie stellt einen Kompromiss zwischen Kosten und Auflösung dar,
-da Expressionsprofile nicht einzelnen Zelltypen zugeordnet werden können. Wenn
-allerdings die reine Expression von Krebszellen für eine Fragestellung relevant
-ist, kann die Expression anderer Zelltypen (der Tumormikroumgebung, TME) das
-Krebsexpressionssignal abschwächen. Die Fülle vorhandener Bulk-Expressionsdaten
-aus Tumorproben könnte noch effektiver genutzt werden, wenn es möglich wäre,
-dieses Rauschen zu reduzieren oder zu entfernen. Hier untersuche ich die
-Möglichkeit, mithilfe einfacher Zelltyp-Dekonvolution die Expressionsprofile der
-Krebszellen in Bulk-RNA-Sequenzdaten von Tumorproben zu schätzen. Die Methode
-beinhaltet das falsche Spezifizieren des Dekonvolutionsmodells, um das
-Krebsexpressionssignal in den Modellresiduen anzureichern. In
-Simulationsexperimenten konnte ich nachweisen, dass dies für normalverteilte
-Daten funktioniert und simuliertes technisches Rauschen toleriert. Auf
-simulierten Bulk-RNA-Sequenzdaten erreichte ich immer noch eine hohe
-Schätzgenauigkeit, konnte jedoch keine klare Verbesserung gegenüber dem bereits
-in den Rohdaten vorhandenen Signal nachweisen. Dasselbe galt für
+Krebsforschung. Sie stellt einen Kompromiss zwischen Kosten und analytischer
+Auflösung dar, da Expressionsprofile nicht einzelnen Zelltypen zugeordnet werden
+können. Wenn allerdings die reine Expression von Krebszellen für eine
+Fragestellung relevant ist, kann die Expression anderer Zelltypen (der
+Tumormikroumgebung, TME) das Krebsexpressionssignal abschwächen. Die Fülle
+vorhandener Bulk-Expressionsdaten aus Tumorproben könnte noch effektiver genutzt
+werden, wenn es möglich wäre, dieses Rauschen zu reduzieren oder zu entfernen.
+Hier untersuche ich die Möglichkeit, mithilfe einfacher Zelltyp-Dekonvolution
+die Expressionsprofile der Krebszellen in Bulk-RNA-Sequenzdaten von Tumorproben
+zu schätzen. Die Methode beinhaltet das falsche Spezifizieren des
+Dekonvolutionsmodells, um das Krebsexpressionssignal in den Modellresiduen
+anzureichern. In Simulationsexperimenten konnte ich nachweisen, dass dies für
+normalverteilte Daten funktioniert und simuliertes technisches Rauschen
+toleriert. Auf simulierten Bulk-RNA-Sequenzdaten erreichte ich immer noch eine
+hohe Schätzgenauigkeit, konnte jedoch keine klare Verbesserung gegenüber dem
+bereits in den Rohdaten vorhandenen Signal nachweisen. Dasselbe galt für
 RNA-Sequenzdaten aus echten Tumorproben. Ebenfalls konnte ich keine Verbesserung
 der Vorhersagegenauigkeit feststellen, als ich versucht habe, mithilfe der
 geschätzten Expressionsprofile der Krebszellen Vorhersagemodelle für Variablen
