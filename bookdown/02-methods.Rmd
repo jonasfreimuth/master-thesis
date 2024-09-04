@@ -131,16 +131,16 @@ This can then be solved using a least-squares method with the objective function
 \end{equation*}
 
 Under the assumption that cancer cells vary stronger in their expression than
-the other cells in the microenvironment, we can expect the residuals to contain
-much of this excess variation. It may be possible to further enhance the signal
-of pure expression of cancer cells by simply not including the reference profile
-for cancer cells during deconvolution. While this would certainly lead to less
-accurate results for the prediction of cell type abundance as some proportion of
-cancer cell gene expression would be erroneously attributed to other cell types
-[although this issue seems to be already present in the ideal case, see
-@aran.2017], the residuals might then more accurately reflect the patterns of
-cancer cell type expression as when they are already accounted for by the
-inclusion of the cancer cell type reference profile (Figure
+the other cells in the microenvironment, it is expected that the residuals
+contain much of this excess variation. It may be possible to further enhance the
+signal of pure expression of cancer cells by simply not including the reference
+profile for cancer cells during deconvolution. While this would certainly lead
+to less accurate results for the prediction of cell type abundance as some
+proportion of cancer cell gene expression would be erroneously attributed to
+other cell types [although this issue seems to be already present in the ideal
+case, see @aran.2017], the residuals might then more accurately reflect the
+patterns of cancer cell type expression as when they are already accounted for
+by the inclusion of the cancer cell type reference profile (Figure
 \@ref(fig:workflow)).
 
 Prior information on the expression profiles of the cell types present in a set
