@@ -23,9 +23,6 @@ expression profile.
 
 ### scRNA-seq pseudo-bulks
 
-<!-- TODO Expand on why this leads to residuals correlating with cancer even
-when including cancer profiles. -->
-
 The high estimation accuracy achieved by deconvPure when applied to pseudo-bulks
 derived from scRNA-seq data looks very promising. However, the minuteness of the
 difference in estimation accuracy between including the cancer profile in the
@@ -33,39 +30,36 @@ reference or not, is not in line with the behavior expected from the previous
 simulation experiments. The high correlations achieved across parameter
 combinations are even more surprising when considering the small amount of
 marker genes that were used to estimate cell type counts during some
-deconvolutions (Supp. Table \@ref(tab:pbulk-cexpr-acc-tab)). The unexpectedly
-high estimation accuracy, regardless of the reference type used, and barely
-influenced by the amount of marker genes used during deconvolution, could be
-explained by the relationship of cell type expression profiles among each other.
-As seen in Supp. Figure \@ref(fig:rnd-sim-ground-truth) (D), during random
-simulation there was essentially no co-linearity between cell types. This is not
-the case, however, for the pseudo-bulks (Supp. Figure
-\@ref(fig:pbulk-sim-diag-1) (D) & \@ref(fig:pbulk-sim-diag-2) (D)), where the
-large amounts of mutual correlation between cell types may be responsible for
-the high estimation accuracy. The high co-linearity observed for the pseudobulks
-could also be the driver of the high amount of information on cancer expression
-present in the bulk (see below).
+deconvolutions (Supp. Table \@ref(tab:pbulk-cexpr-acc-tab)). One explanation for
+the unexpectedly high estimation accuracy could simply be a very high
+variability of cancer expression across cells. As the previous simulation
+experiment showed, this has the potential to induce correlation between
+residuals and cancer expression, at least on normally distributed data.
 
-Also, the absence of a significant effect of the type of marker selection
-methods used on estimation accuracy, especially when excluding the cancer
-profile from the reference, is unexpected but might indicate a flaw in the
-comparison of marker methods. For an accurate comparison, the same amount of
-marker genes should be used for both random and Wilcoxon based references. As it
-is, the relatively high amount of markers for random selection compared to
-Wilcoxon test based markers (Supp. Table \@ref(tab:pbulk-cexpr-acc-tab)),
-confounds the effect of the marker selection method with the absolute amount of
-markers. This makes inference about whether the method of selection provides a
-benefit difficult. The observed lack of difference in the selection method used
-could be due to an actual lack of effect, or due to the effect of marker
-selection being canceled out by an effect of sheer marker set size.
+Another explanation for the unexpectedly high estimation accuracy, regardless of
+the reference type used, and barely influenced by the amount of marker genes
+used during deconvolution, could be the relationship of cell type expression
+profiles among each other. As seen in Supp. Figure
+\@ref(fig:rnd-sim-ground-truth) (D), during random simulation there was
+essentially no co-linearity between cell types. This is not the case, however,
+for the pseudo-bulks (Supp. Figure \@ref(fig:pbulk-sim-diag-1) (D) &
+\@ref(fig:pbulk-sim-diag-2) (D)), where the large amounts of mutual correlation
+between cell types may be responsible for the high estimation accuracy. The high
+co-linearity observed for the pseudobulks could also be the driver of the high
+amount of information on cancer expression present in the bulk (see below).
 
-<!-- If need be, we can put in the number of marker genes ESTIMATE
-[@yoshihara.2013] uses for inferring tumor purity. Also, marker selection is
-only indirectly important for cancer expression estimation, it primarily
-influences cell type inference. On that note, there may be an issue as the
-removal of the cancer reference profile effectively further reduces the number
-of marker genes, as the markers for cancer by definition cease to be markers
-for cancer. -->
+The absence of a significant effect of the type of marker selection methods used
+on estimation accuracy, especially when excluding the cancer profile from the
+reference, is unexpected but might indicate a flaw in the comparison of marker
+methods. For an accurate comparison, the same amount of marker genes should be
+used for both random and Wilcoxon based references. As it is, the relatively
+high amount of markers for random selection compared to Wilcoxon test based
+markers (Supp. Table \@ref(tab:pbulk-cexpr-acc-tab)), confounds the effect of
+the marker selection method with the absolute amount of markers. This makes
+inference about whether the method of selection provides a benefit difficult.
+The observed lack of difference in the selection method used could be due to an
+actual lack of effect, or due to the effect of marker selection being canceled
+out by an effect of sheer marker set size.
 
 Alternatively, it may just be important that certain genes are part of the
 reference, which has a high probability of being the case for the large amounts
