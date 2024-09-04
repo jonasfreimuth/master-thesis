@@ -250,3 +250,9 @@ archive_run_summary_dirs <- function(analysis_root) {
 
   system2("tar", c("-czf", output_file, summary_dirs))
 }
+
+restore_run_summary_dirs <- function(analysis_root, run_archive) {
+  if (!dir.exists(analysis_root)) {
+    system2("tar", c("-xzf", run_archive))
+  }
+}
