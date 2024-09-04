@@ -177,21 +177,26 @@ estimated cancer expression and matched bulk data were, it seems unlikely that
 using estimated cancer expression provides a clear benefit over simply using
 bulk expression data. Nevertheless, the gene set used for model training appears
 to have an influence on the prediction accuracy, with the gene set used by
-BayesPrism being optimal, at least for predicting cancer subtype.
+BayesPrism being optimal, at least for predicting cancer subtype. The
+differences in the gene set between the two methods were due to BayesPrism not
+being able to produce expression estimates for genes removed during the quality
+control for deconvolution. Perhaps the genes removed are also detrimental to the
+prediction accuracy.
 
 The similar prediction accuracy between models trained on estimated cancer
 expression and bulk expression on both prediction tasks may be explained in
 large part by the inherent information of bulk expression on cancer profiles. If
-both sets of features contain information that is highly correlated, we can't
-expect a large difference in predictive power. Given the inability of deconvPure
-to predict the cancer expression profile of a bulk with higher accuracy than
-inherent information seen in previous sections, the lower predictive ability of
-the models is not surprising. The fact that BayesPrism did manage to improve
-model accuracy also fits with the superior estimation accuracy demonstrated on
-bulk data during the [comparison section](#comparison-to-bayesprism). However,
-we would expect a consistent improvement in accuracy over matched bulk data
-then, but this is not what we see when examining performance across thresholds
-on marker selection (Supp. Figures \@ref(fig:pred-cat-perf-supp-plt) and
+both sets of features contain information that is highly correlated, a large
+difference in predictive power can't be expected. Given the inability of
+deconvPure to predict the cancer expression profile of a bulk with higher
+accuracy than inherent information seen in previous sections, the lower
+predictive ability of the models is not surprising. The fact that BayesPrism did
+manage to improve model accuracy also fits with the superior estimation accuracy
+demonstrated on bulk data during the
+[comparison section](#comparison-to-bayesprism). However, a consistent
+improvement in accuracy over matched bulk data would be expected then, but this
+is not how the performance across thresholds on marker selection behaved (Supp.
+Figures \@ref(fig:pred-cat-perf-supp-plt) and
 \@ref(fig:pred-srv-perf-supp-plt)).
 
 ## Conclusion
