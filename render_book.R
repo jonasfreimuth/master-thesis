@@ -11,3 +11,4 @@ import::from(
 )
 
 render_book(here("bookdown"), format = "html")
+render_book(here("bookdown"), format = "pdf")
