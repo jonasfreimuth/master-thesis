@@ -51,11 +51,11 @@ computation capacity I could access for the thesis. I also extend my thanks to
 Prof. Dr. Zoran Nikoloski for agreeing to review this work. I want to thank the
 members of the Akalin lab for making the long commute to Berlin worth it, and
 for providing important suggestions when I was stuck on particularly annoying
-problems and dispelling doubts about my work. I also wish to thank my friends
-for keeping me sane through the darker parts of my journey. Finally, I want to
-thank my family very much for supporting me through all these years of study,
-both financially and emotionally. I could not have gotten here without any of
-them.
+problems and dispelling doubts about my work. I also wish to thank all my
+friends, online and offline, for keeping me sane through the rockier parts of my
+journey. Finally, I want to thank my family very much for supporting me through
+all these years of study, both financially and emotionally. I could not have
+gotten here without any of them.
 
 \- Jonas
 
