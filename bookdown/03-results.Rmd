@@ -5,7 +5,7 @@ import::here("here", "here")
 import::here("knitr", "include_graphics")
 
 # Suppress chunk output by default.
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, fig.pos = "h")
 
 here::i_am("bookdown/03-results.Rmd")
 
