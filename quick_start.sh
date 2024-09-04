@@ -1,5 +1,7 @@
 #!/bin/bash
 
+tar -xzf "run_summary_archive.tar.gz" 
+
 # check if guix is available
 if command -v guix &> /dev/null
 then
