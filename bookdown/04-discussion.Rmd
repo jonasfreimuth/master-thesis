@@ -123,8 +123,8 @@ compared to pseudo-bulks, such as different sample preparation. In pseudo-bulks
 on the other hand, technical noise shouldn't be a factor impacting the
 estimation accuracy as mixtures are created by simple addition of cell
 expression. Using an appropriate reference is both one of the most difficult and
-important steps in leas-squares based deconvolution [@qiao.2012]. As outlined in
-the methods (Section \@ref(transcriptome-cleaning-overview)), the reference
+important steps in least-squares based deconvolution [@qiao.2012]. As outlined
+in the methods (Section \@ref(transcriptome-cleaning-overview)), the reference
 profile needs to represent a single cell, necessitating the use of scRNA-seq
 data. This however introduces its own method specific biases relevant for
 devonvolution, such as differences in tissue dissociation across cell types
