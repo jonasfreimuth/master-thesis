@@ -12,7 +12,7 @@ then
 Using guix environment created from $manifest_path & \
 $channels_path..."
     
-    guix time-machine -C "$channels_path" -- shell -m "$manifest_path" -- \
+    guix time-machine -C "$channels_path" -- shell -CNm "$manifest_path" -- \
         Rscript --vanilla ./render_book.R
 else
     echo "Using plain bash..."
