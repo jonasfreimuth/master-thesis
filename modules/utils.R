@@ -5,6 +5,7 @@ import::here("purrr", "iwalk", "map", "pmap", "walk")
 import::here("rlang", "list2")
 import::here("rmarkdown", "yaml_front_matter")
 import::here("stringr", "str_replace", "str_detect")
+import::here("withr", "with_locale")
 import::here("yaml", "read_yaml")
 
 update_analysis_dir <- function(dir_name = c("main_plots", "param_tables"),
@@ -165,12 +166,19 @@ render_book <- function(book_root = "./bookdown",
   # Define the output format by calling our format function
   output_format <- do.call(fun, output_settings)
 
-  message(
-    bookdown::render_book(
-      book_root,
-      output_format = output_format
-    )
+  locale <- "C.UTF-8"
+
+  render_output <- with_locale(
+    c("LC_CTYPE" = locale),
+    {
+      bookdown::render_book(
+        book_root,
+        output_format = output_format
+      )
+    }
   )
+
+  message(render_output)
 }
 
 copy_output <- function(from, to) {
